@@ -1,27 +1,47 @@
-FROM php:8.2-apache
+# =========================
+# STAGE 1: Build Frontend
+# =========================
+FROM node:20-alpine AS frontend
 
-# Install dependencies
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm install
+
+COPY resources resources
+COPY vite.config.js .
+RUN npm run build
+
+# =========================
+# STAGE 2: PHP + Apache
+# =========================
+FROM php:8.4-apache
+
+# System deps
 RUN apt-get update && apt-get install -y \
     git zip unzip libpng-dev libonig-dev libxml2-dev \
-    && docker-php-ext-install pdo pdo_mysql mbstring exif pcntl bcmath gd
+    && docker-php-ext-install pdo pdo_mysql mbstring exif bcmath gd
 
-# Enable apache rewrite
+# Apache rewrite
 RUN a2enmod rewrite
 
-# Set working directory
+# Set document root ke /public
+RUN sed -i 's|/var/www/html|/var/www/html/public|g' \
+    /etc/apache2/sites-available/000-default.conf
+
 WORKDIR /var/www/html
 
-# Copy project
+# Copy backend
 COPY . .
 
-# Install composer
+# Copy built frontend assets
+COPY --from=frontend /app/public/build public/build
+
+# Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 RUN composer install --no-dev --optimize-autoloader
 
-# Laravel permission
-RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
-
-# Apache config
-RUN sed -i 's|/var/www/html|/var/www/html/public|g' /etc/apache2/sites-available/000-default.conf
+# Permission Laravel
+RUN chown -R www-data:www-data storage bootstrap/cache
 
 EXPOSE 80
