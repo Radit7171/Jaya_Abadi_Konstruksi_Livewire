@@ -23,14 +23,17 @@ RUN apt-get update && apt-get install -y \
     git zip unzip libpng-dev libonig-dev libxml2-dev \
     && docker-php-ext-install pdo pdo_mysql mbstring exif bcmath gd
 
-# 🔥 FORCE SINGLE MPM (ANTI AH00534)
-RUN rm -f /etc/apache2/mods-enabled/mpm_event.load \
-          /etc/apache2/mods-enabled/mpm_worker.load \
-    && echo "LoadModule mpm_prefork_module /usr/lib/apache2/modules/mod_mpm_prefork.so" \
-       > /etc/apache2/mods-enabled/mpm_prefork.load
+# 🔥 FIX: HAPUS SEMUA MPM TERLEBIH DAHULU, LALU AKTIFKAN SATU SAJA
+RUN rm -f /etc/apache2/mods-enabled/mpm_*.load \
+    && a2dismod mpm_event mpm_worker 2>/dev/null || true
 
+# AKTIFKAN HANYA MPM PREFORK (required for PHP with mod_php)
+RUN a2enmod mpm_prefork
+
+# AKTIFKAN MODUL LAIN YANG DIBUTUHKAN
 RUN a2enmod rewrite
 
+# Pastikan konfigurasi Apache menggunakan document root yang benar
 RUN sed -i 's|/var/www/html|/var/www/html/public|g' \
     /etc/apache2/sites-available/000-default.conf
 
