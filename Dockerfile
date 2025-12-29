@@ -10,7 +10,11 @@ RUN npm install
 
 COPY resources resources
 COPY vite.config.js .
+COPY postcss.config.js ./
+# COPY tailwind.config.js ./   # uncomment jika pakai tailwind
+
 RUN npm run build
+
 
 # =========================
 # STAGE 2: PHP + Apache
@@ -21,6 +25,10 @@ FROM php:8.4-apache
 RUN apt-get update && apt-get install -y \
     git zip unzip libpng-dev libonig-dev libxml2-dev \
     && docker-php-ext-install pdo pdo_mysql mbstring exif bcmath gd
+
+# 🔧 FIX APACHE MPM (WAJIB)
+RUN a2dismod mpm_event mpm_worker || true \
+    && a2enmod mpm_prefork
 
 # Apache rewrite
 RUN a2enmod rewrite
@@ -41,7 +49,7 @@ COPY --from=frontend /app/public/build public/build
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 RUN composer install --no-dev --optimize-autoloader
 
-# Permission Laravel
+# Laravel permissions
 RUN chown -R www-data:www-data storage bootstrap/cache
 
 EXPOSE 80
