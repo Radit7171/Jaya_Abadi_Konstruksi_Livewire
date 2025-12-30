@@ -70,6 +70,11 @@ body {
     }
 }
 
+/* Adjust main content for fixed navbar */
+main {
+    padding-top: 70px;
+}
+
 /* Loading overlay default state
    (digunakan bersama wire:loading di layout) */
 #loading-overlay {

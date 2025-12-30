@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg border-bottom sticky-top bg-body">
+<nav class="navbar navbar-expand-lg border-bottom fixed-top bg-body">
     <div class="container px-3 px-md-4">
         <!-- Logo dengan Teks -->
         <div class="d-flex align-items-center">
