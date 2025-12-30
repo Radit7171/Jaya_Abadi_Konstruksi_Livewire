@@ -1,9 +1,16 @@
-{{-- Copyright Component --}}
+{{-- resources/views/components/footer/copyright.blade.php --}}
 <div class="footer-copyright">
     <p class="small text-body-secondary mb-2">
         &copy; {{ date('Y') }} PT Jaya Abadi Konstruksi. All rights reserved.
     </p>
-    <div class="footer-legal-links">
+
+    {{-- Ganti ini --}}
+    {{-- <x-footer.theme-toggle compact="true" /> --}}
+
+    {{-- Menjadi ini --}}
+    <x-theme-toggle compact="true" showLabel="false" />
+
+    <div class="footer-legal-links mt-2">
         <a href="/kebijakan-privasi" class="small text-body-secondary text-decoration-none me-3">
             Kebijakan Privasi
         </a>

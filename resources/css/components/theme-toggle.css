@@ -115,3 +115,165 @@
         min-width: 50px;
     }
 }
+
+/* Theme Toggler khusus untuk Footer */
+.footer-theme-toggle {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--bs-border-color);
+}
+
+/* Compact version untuk mobile */
+.footer-theme-compact {
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+}
+
+.footer-theme-capsule {
+    display: inline-flex;
+    background: var(--bs-tertiary-bg);
+    border: 1px solid var(--bs-border-color);
+    border-radius: 50px;
+    padding: 3px;
+    gap: 2px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: 160px;
+    margin: 0 auto;
+}
+
+.footer-theme-capsule::before {
+    content: '';
+    position: absolute;
+    top: 3px;
+    bottom: 3px;
+    left: 0;
+    width: calc(100% / 3);
+    background: var(--bs-primary);
+    border-radius: 50px;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 0;
+}
+
+.footer-theme-capsule[data-theme="light"]::before {
+    transform: translateX(0);
+}
+
+.footer-theme-capsule[data-theme="system"]::before {
+    transform: translateX(100%);
+}
+
+.footer-theme-capsule[data-theme="dark"]::before {
+    transform: translateX(200%);
+}
+
+.footer-theme-capsule-btn {
+    position: relative;
+    z-index: 1;
+    border: none;
+    background: transparent;
+    border-radius: 50px;
+    padding: 0.375rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--bs-secondary-color);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.375rem;
+    min-width: 36px;
+    min-height: 32px;
+    cursor: pointer;
+    flex: 1;
+}
+
+.footer-theme-capsule-btn i {
+    font-size: 0.75rem;
+    line-height: 1;
+}
+
+.footer-theme-capsule-btn:hover {
+    color: var(--bs-primary);
+    background: rgba(var(--bs-primary-rgb), 0.08);
+}
+
+.footer-theme-capsule-btn.active {
+    color: white !important;
+    font-weight: 600;
+}
+
+.footer-theme-label-text {
+    font-size: 0.6875rem;
+    letter-spacing: 0.2px;
+    line-height: 1;
+}
+
+/* Dark mode adjustments */
+[data-bs-theme="dark"] .footer-theme-capsule {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Mobile Responsive */
+@media (max-width: 767.98px) {
+    .footer-theme-toggle {
+        text-align: center;
+        margin-top: 0.75rem;
+        padding-top: 0.75rem;
+    }
+
+    .footer-theme-compact {
+        margin-top: 0.5rem;
+        padding-top: 0.5rem;
+    }
+
+    .footer-theme-capsule {
+        max-width: 140px;
+    }
+
+    .footer-theme-capsule-btn {
+        padding: 0.25rem 0.5rem;
+        min-width: 32px;
+        min-height: 28px;
+        font-size: 0.6875rem;
+    }
+
+    .footer-theme-capsule-btn i {
+        font-size: 0.6875rem;
+    }
+
+    .footer-theme-label-text {
+        display: none !important;
+    }
+}
+
+/* Desktop */
+@media (min-width: 768px) {
+    .footer-theme-capsule {
+        max-width: 180px;
+    }
+
+    .footer-theme-capsule-btn {
+        padding: 0.5rem 1rem;
+        min-width: 40px;
+        min-height: 36px;
+    }
+}
+
+/* Touch Optimization */
+@media (hover: none) and (pointer: coarse) {
+    .footer-theme-capsule-btn {
+        min-height: 44px;
+        min-width: 44px;
+    }
+}
+
+/* Print styles */
+@media print {
+    .footer-theme-toggle {
+        display: none !important;
+    }
+}
