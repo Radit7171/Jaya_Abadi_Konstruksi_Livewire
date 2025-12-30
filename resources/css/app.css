@@ -11,6 +11,8 @@
    ========================================================================== */
 @import "./components/navbar.css";
 @import "./components/theme-toggle.css";
+/* Import Footer Styles */
+@import './components/footer.css';
 
 /* ==========================================================================
    Brand Color (Steel Theme)

@@ -37,9 +37,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="border-top mt-5">
-        @yield('footer')
-    </footer>
+    @include('components.footer')
 
     @livewireScripts
 

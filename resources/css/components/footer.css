@@ -1,0 +1,134 @@
+/* Mobile Footer Optimization */
+@media (max-width: 991.98px) {
+    .site-footer {
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+
+    .footer-top {
+        padding-top: 1.5rem !important;
+        padding-bottom: 1.5rem !important;
+    }
+
+    .footer-bottom {
+        padding-top: 1rem !important;
+        padding-bottom: 1rem !important;
+    }
+
+    /* Mobile Accordion */
+    .mobile-footer-accordion .accordion-item {
+        border: none !important;
+        background: transparent;
+    }
+
+    .mobile-footer-accordion .accordion-button {
+        background: transparent;
+        border: none;
+        padding: 0.75rem 0;
+        font-size: 0.875rem;
+        color: var(--bs-body-color);
+        box-shadow: none !important;
+    }
+
+    .mobile-footer-accordion .accordion-button:not(.collapsed) {
+        color: var(--bs-primary);
+        background: transparent;
+    }
+
+    .mobile-footer-accordion .accordion-button::after {
+        background-size: 0.75rem;
+        width: 0.75rem;
+        height: 0.75rem;
+    }
+
+    .mobile-footer-accordion .accordion-body {
+        padding: 0;
+    }
+
+    /* Compact Layout */
+    .footer-brand {
+        margin-bottom: 1.5rem;
+    }
+
+    .footer-brand h2 {
+        font-size: 1rem !important;
+    }
+
+    .footer-logo-wrapper img {
+        width: 40px !important;
+        height: 40px !important;
+    }
+
+    /* Contact Mobile Version */
+    .footer-contact.mobile-version li {
+        margin-bottom: 0.75rem;
+    }
+
+    /* Social Icons */
+    .footer-social .social-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 0.875rem;
+    }
+
+    /* Copyright */
+    .footer-copyright {
+        text-align: center;
+    }
+
+    .footer-legal-links {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 0.5rem;
+    }
+}
+
+/* Extra Small Devices */
+@media (max-width: 575.98px) {
+    .footer-top {
+        padding-top: 1.25rem !important;
+        padding-bottom: 1.25rem !important;
+    }
+
+    .footer-brand {
+        margin-bottom: 1rem;
+    }
+
+    .mobile-footer-accordion .accordion-button {
+        font-size: 0.8125rem;
+        padding: 0.5rem 0;
+    }
+
+    .footer-social .social-icons {
+        gap: 0.5rem;
+    }
+
+    .footer-social .social-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 0.75rem;
+    }
+}
+
+/* Desktop Styles */
+@media (min-width: 992px) {
+    .mobile-footer-accordion {
+        display: none;
+    }
+}
+
+/* Touch Optimization */
+@media (hover: none) and (pointer: coarse) {
+    .footer-link,
+    .footer-contact a,
+    .social-icon {
+        min-height: 44px;
+        min-width: 44px;
+        display: inline-flex;
+        align-items: center;
+    }
+
+    .mobile-footer-accordion .accordion-button {
+        min-height: 44px;
+    }
+}
