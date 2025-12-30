@@ -1,145 +1,8 @@
-/* Mobile Footer Optimization */
-@media (max-width: 991.98px) {
-    .site-footer {
-        padding-bottom: env(safe-area-inset-bottom);
-    }
-
-    .footer-top {
-        padding-top: 1.5rem !important;
-        padding-bottom: 1.5rem !important;
-    }
-
-    .footer-bottom {
-        padding-top: 1rem !important;
-        padding-bottom: 1rem !important;
-    }
-
-    /* Mobile Accordion */
-    .mobile-footer-accordion .accordion-item {
-        border: none !important;
-        background: transparent;
-    }
-
-    .mobile-footer-accordion .accordion-button {
-        background: transparent;
-        border: none;
-        padding: 0.75rem 0;
-        font-size: 0.875rem;
-        color: var(--bs-body-color);
-        box-shadow: none !important;
-    }
-
-    .mobile-footer-accordion .accordion-button:not(.collapsed) {
-        color: var(--bs-primary);
-        background: transparent;
-    }
-
-    .mobile-footer-accordion .accordion-button::after {
-        background-size: 0.75rem;
-        width: 0.75rem;
-        height: 0.75rem;
-    }
-
-    .mobile-footer-accordion .accordion-body {
-        padding: 0;
-    }
-
-    /* Compact Layout */
-    .footer-brand {
-        margin-bottom: 1.5rem;
-    }
-
-    .footer-brand h2 {
-        font-size: 1rem !important;
-    }
-
-    .footer-logo-wrapper img {
-        width: 40px !important;
-        height: 40px !important;
-    }
-
-    /* Contact Mobile Version */
-    .footer-contact.mobile-version li {
-        margin-bottom: 0.75rem;
-    }
-
-    /* Social Icons */
-    .footer-social .social-icon {
-        width: 36px;
-        height: 36px;
-        font-size: 0.875rem;
-    }
-
-    /* Copyright */
-    .footer-copyright {
-        text-align: center;
-    }
-
-    .footer-legal-links {
-        display: flex;
-        justify-content: center;
-        gap: 1rem;
-        margin-top: 0.5rem;
-    }
-}
-
-/* Extra Small Devices */
-@media (max-width: 575.98px) {
-    .footer-top {
-        padding-top: 1.25rem !important;
-        padding-bottom: 1.25rem !important;
-    }
-
-    .footer-brand {
-        margin-bottom: 1rem;
-    }
-
-    .mobile-footer-accordion .accordion-button {
-        font-size: 0.8125rem;
-        padding: 0.5rem 0;
-    }
-
-    .footer-social .social-icons {
-        gap: 0.5rem;
-    }
-
-    .footer-social .social-icon {
-        width: 32px;
-        height: 32px;
-        font-size: 0.75rem;
-    }
-}
-
-/* Desktop Styles */
-@media (min-width: 992px) {
-    .mobile-footer-accordion {
-        display: none;
-    }
-}
-
-/* Touch Optimization */
-@media (hover: none) and (pointer: coarse) {
-    .footer-link,
-    .footer-contact a,
-    .social-icon {
-        min-height: 44px;
-        min-width: 44px;
-        display: inline-flex;
-        align-items: center;
-    }
-
-    .mobile-footer-accordion .accordion-button {
-        min-height: 44px;
-    }
-}
-
-/* {{-- Tambahkan di file CSS utama atau di bagian <style> --}} */
-
 /* ==================== */
-/* FOOTER LINK HOVER EFFECTS */
+/* FOOTER BASE STYLES */
 /* ==================== */
 
-/* Link di footer-links (desktop & mobile) */
+/* Link styles */
 .footer-link {
     position: relative;
     padding: 2px 0;
@@ -167,7 +30,7 @@
     width: 100%;
 }
 
-/* Link di contact section */
+/* Contact link styles */
 .footer-contact a {
     position: relative;
     padding: 2px 0;
@@ -192,59 +55,7 @@
     left: -10px;
 }
 
-/* Social icons hover effects */
-.social-icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 8px;
-    background: rgba(var(--bs-body-color-rgb), 0.05);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    overflow: hidden;
-}
-
-.social-icon:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-.social-icon::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--bs-primary);
-    opacity: 0;
-    transform: scale(0);
-    transition: all 0.3s ease;
-    border-radius: 8px;
-}
-
-.social-icon:hover::before {
-    opacity: 1;
-    transform: scale(1);
-}
-
-.social-icon i {
-    position: relative;
-    z-index: 1;
-    transition: all 0.3s ease;
-}
-
-.social-icon:hover i {
-    color: white !important;
-    transform: scale(1.1);
-}
-
-/* Specific colors untuk social icons */
-.social-icon:nth-child(1):hover::before { background: #1877F2; } /* Facebook */
-.social-icon:nth-child(2):hover::before { background: #E4405F; } /* Instagram */
-.social-icon:nth-child(3):hover::before { background: #0A66C2; } /* LinkedIn */
-.social-icon:nth-child(4):hover::before { background: #25D366; } /* WhatsApp */
-
-/* Legal links hover */
+/* Legal links */
 .footer-legal-links a {
     position: relative;
     padding: 0 5px;
@@ -267,7 +78,7 @@
     display: none;
 }
 
-/* Brand logo hover effect */
+/* Brand hover effects */
 .footer-brand a {
     transition: all 0.3s ease;
 }
@@ -304,10 +115,105 @@
     transform: scale(1);
 }
 
-/* Accordion button hover effects */
+/* ==================== */
+/* SOCIAL ICONS */
+/* ==================== */
+
+.social-icon {
+    --x: 50%;
+    --y: 50%;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background: rgba(var(--bs-body-color-rgb), 0.05);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.social-icon:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.social-icon::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    background: var(--bs-primary);
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.3s ease;
+}
+
+.social-icon::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at var(--x) var(--y),
+                rgba(255, 255, 255, 0.3) 0%,
+                transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.social-icon:hover::before {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.social-icon:hover::after {
+    opacity: 1;
+}
+
+.social-icon i {
+    position: relative;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+.social-icon:hover i {
+    color: white !important;
+    transform: scale(1.1);
+}
+
+/* Social media specific colors */
+.social-icon:nth-child(1):hover::before { background: #1877F2; } /* Facebook */
+.social-icon:nth-child(2):hover::before { background: #E4405F; } /* Instagram */
+.social-icon:nth-child(3):hover::before { background: #0A66C2; } /* LinkedIn */
+.social-icon:nth-child(4):hover::before { background: #25D366; } /* WhatsApp */
+
+/* ==================== */
+/* MOBILE ACCORDION */
+/* ==================== */
+
+.mobile-footer-accordion .accordion-item {
+    border: none !important;
+    background: transparent;
+}
+
 .mobile-footer-accordion .accordion-button {
+    background: transparent;
+    border: none;
+    padding: 0.75rem 0;
+    font-size: 0.875rem;
+    color: var(--bs-body-color);
+    box-shadow: none !important;
     position: relative;
     transition: all 0.3s ease;
+    min-height: 44px;
+}
+
+.mobile-footer-accordion .accordion-button:not(.collapsed) {
+    color: var(--bs-primary);
+    background: transparent;
 }
 
 .mobile-footer-accordion .accordion-button:hover {
@@ -326,19 +232,20 @@
     transform: rotate(180deg);
 }
 
-/* Theme toggle in footer */
-.footer-copyright .theme-toggle {
-    transition: all 0.3s ease;
+.mobile-footer-accordion .accordion-button::after {
+    background-size: 0.75rem;
+    width: 0.75rem;
+    height: 0.75rem;
 }
 
-.footer-copyright .theme-toggle:hover {
-    transform: scale(1.05);
-    opacity: 0.9;
+.mobile-footer-accordion .accordion-body {
+    padding: 0;
 }
 
 /* ==================== */
 /* ANIMATIONS */
 /* ==================== */
+
 @keyframes slideIn {
     from {
         opacity: 0;
@@ -370,44 +277,18 @@
 .social-icon:nth-child(4) { animation-delay: 0.4s; }
 
 /* ==================== */
-/* MOBILE OPTIMIZATIONS */
+/* THEME & OTHER ELEMENTS */
 /* ==================== */
-@media (max-width: 991.98px) {
-    .footer-link:hover {
-        transform: translateX(3px);
-    }
 
-    .social-icon {
-        width: 36px;
-        height: 36px;
-    }
-
-    .social-icon:hover {
-        transform: translateY(-2px);
-    }
-
-    .footer-contact a:hover::before {
-        display: none; /* Sembunyikan arrow di mobile untuk simplicity */
-    }
+.footer-copyright .theme-toggle {
+    transition: all 0.3s ease;
 }
 
-@media (hover: none) and (pointer: coarse) {
-    .footer-link:active,
-    .footer-contact a:active,
-    .social-icon:active,
-    .footer-legal-links a:active {
-        opacity: 0.7;
-        transform: scale(0.98);
-    }
-
-    .social-icon:active::before {
-        opacity: 0.7;
-    }
+.footer-copyright .theme-toggle:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
 }
 
-/* ==================== */
-/* DARK MODE SUPPORT */
-/* ==================== */
 [data-bs-theme="dark"] .social-icon {
     background: rgba(255, 255, 255, 0.05);
 }
@@ -416,34 +297,143 @@
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
-/* Ripple effect untuk social icons */
-.social-icon {
-    --x: 50%;
-    --y: 50%;
+/* ==================== */
+/* RESPONSIVE DESIGN */
+/* ==================== */
+
+/* Tablet & Mobile (≤ 991px) */
+@media (max-width: 991.98px) {
+    .site-footer {
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+
+    .footer-top {
+        padding-top: 1.5rem !important;
+        padding-bottom: 1.5rem !important;
+    }
+
+    .footer-bottom {
+        padding-top: 1rem !important;
+        padding-bottom: 1rem !important;
+    }
+
+    .mobile-footer-accordion {
+        display: block;
+    }
+
+    .footer-brand {
+        margin-bottom: 1.5rem;
+    }
+
+    .footer-brand h2 {
+        font-size: 1rem !important;
+    }
+
+    .footer-logo-wrapper img {
+        width: 40px !important;
+        height: 40px !important;
+    }
+
+    .footer-contact.mobile-version li {
+        margin-bottom: 0.75rem;
+    }
+
+    .footer-social .social-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 0.875rem;
+    }
+
+    .footer-copyright {
+        text-align: center;
+    }
+
+    .footer-legal-links {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 0.5rem;
+    }
+
+    /* Adjust hover effects for mobile */
+    .footer-link:hover {
+        transform: translateX(3px);
+    }
+
+    .social-icon:hover {
+        transform: translateY(-2px);
+    }
+
+    .footer-contact a:hover::before {
+        display: none;
+    }
 }
 
-.social-icon::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at var(--x) var(--y),
-                rgba(255, 255, 255, 0.3) 0%,
-                transparent 70%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
+/* Extra Small Mobile (≤ 575px) */
+@media (max-width: 575.98px) {
+    .footer-top {
+        padding-top: 1.25rem !important;
+        padding-bottom: 1.25rem !important;
+    }
+
+    .footer-brand {
+        margin-bottom: 1rem;
+    }
+
+    .mobile-footer-accordion .accordion-button {
+        font-size: 0.8125rem;
+        padding: 0.5rem 0;
+    }
+
+    .footer-social .social-icons {
+        gap: 0.5rem;
+    }
+
+    .footer-social .social-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 0.75rem;
+    }
 }
 
-.social-icon:hover::after {
-    opacity: 1;
+/* Desktop (≥ 992px) */
+@media (min-width: 992px) {
+    .mobile-footer-accordion {
+        display: none;
+    }
 }
 
-/* Active state untuk touch devices */
+/* ==================== */
+/* TOUCH DEVICE OPTIMIZATION */
+/* ==================== */
+
+/* Active states for touch devices */
 .footer-link.active,
 .social-icon.active,
 .footer-contact a.active {
     transform: scale(0.95) !important;
     opacity: 0.8 !important;
+}
+
+.social-icon:active::before {
+    opacity: 0.7 !important;
+}
+
+@media (hover: none) and (pointer: coarse) {
+    .footer-link,
+    .footer-contact a,
+    .social-icon {
+        min-height: 44px;
+        min-width: 44px;
+        display: inline-flex;
+        align-items: center;
+    }
+
+    .footer-link:active,
+    .footer-contact a:active,
+    .social-icon:active,
+    .footer-legal-links a:active {
+        opacity: 0.7;
+        transform: scale(0.98);
+    }
 }
