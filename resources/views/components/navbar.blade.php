@@ -1,7 +1,24 @@
 <nav class="navbar navbar-expand-lg border-bottom sticky-top bg-body">
     <div class="container px-3 px-md-4">
-        <!-- Logo -->
-        <x-logo />
+        <!-- Logo dengan Teks -->
+        <div class="d-flex align-items-center">
+            <!-- Logo/Icon Perusahaan (ganti dengan logo asli) -->
+            <div class="logo-placeholder me-3">
+                <img src="{{ asset('images/logo-jaya-abadi-konstruksi.png') }}"
+                     alt="Logo Jaya Abadi Konstruksi"
+                     width="50"
+                     height="50"
+                     class="rounded-circle object-fit-cover">
+                <!-- Jika tidak ada logo, gunakan icon placeholder -->
+                <!-- <i class="bi bi-building fs-3"></i> -->
+            </div>
+
+            <!-- Teks Perusahaan -->
+            <div class="company-text">
+                <h1 class="h5 fw-bold mb-0 lh-1 text-body-emphasis">Jaya Abadi Konstruksi</h1>
+                <p class="small text-body-secondary mb-0 lh-1">spesialis konstruksi</p>
+            </div>
+        </div>
 
         <!-- Mobile Toggle -->
         <button

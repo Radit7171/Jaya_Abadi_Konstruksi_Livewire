@@ -139,3 +139,70 @@
         flex-basis: auto;
     }
 }
+
+/* Styling untuk logo dan teks perusahaan */
+
+/* Styling untuk logo dan teks perusahaan */
+.company-text h1 {
+    font-size: 1.25rem;
+    color: var(--bs-body-color);
+    transition: color 0.3s ease;
+}
+
+.company-text p {
+    font-size: 0.875rem;
+    color: var(--bs-secondary-color);
+    transition: color 0.3s ease;
+}
+
+/* Untuk mobile responsiveness */
+@media (max-width: 768px) {
+    .company-text h1 {
+        font-size: 1rem;
+    }
+
+    .company-text p {
+        font-size: 0.75rem;
+    }
+
+    .logo-placeholder img {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* Logo placeholder styling */
+.logo-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bs-light-bg-subtle, #f8f9fa);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    transition: background-color 0.3s ease;
+}
+
+.logo-placeholder i {
+    color: var(--bs-secondary-color, #6c757d);
+    transition: color 0.3s ease;
+}
+
+/* Dark mode adjustments for logo */
+[data-bs-theme="dark"] .logo-placeholder {
+    background-color: var(--bs-dark-bg-subtle, #2d3748);
+}
+
+[data-bs-theme="dark"] .logo-placeholder i {
+    color: var(--bs-light-text, #e2e8f0);
+}
+
+/* Object fit utility for logo */
+.object-fit-cover {
+    object-fit: cover;
+}
+
+/* Dark mode logo image adjustments */
+[data-bs-theme="dark"] .logo-placeholder img {
+    filter: brightness(1.1);
+}
