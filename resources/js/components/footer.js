@@ -1,63 +1,63 @@
 // resources/js/components/footer.js
-class MobileFooter {
+class FooterEnhancements {
     constructor() {
         this.footer = document.querySelector('.site-footer');
         this.init();
     }
 
     init() {
-        this.updateCopyrightYear();
-        this.optimizeMobileView();
-        this.addEventListeners();
+        this.addHoverEffects();
+        this.addTouchEffects();
+        this.observeFooterVisibility();
     }
 
-    updateCopyrightYear() {
-        const yearElements = document.querySelectorAll('[data-current-year]');
-        const currentYear = new Date().getFullYear();
+    addHoverEffects() {
+        // Add ripple effect untuk social icons
+        const socialIcons = this.footer?.querySelectorAll('.social-icon');
+        socialIcons?.forEach(icon => {
+            icon.addEventListener('mouseenter', (e) => {
+                const rect = icon.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
 
-        yearElements.forEach(el => {
-            el.textContent = currentYear;
+                icon.style.setProperty('--x', `${x}px`);
+                icon.style.setProperty('--y', `${y}px`);
+            });
         });
     }
 
-    optimizeMobileView() {
-        if (!this.footer) return;
+    addTouchEffects() {
+        // Touch feedback untuk mobile
+        const touchElements = this.footer?.querySelectorAll('.footer-link, .social-icon, .footer-contact a');
+        touchElements?.forEach(el => {
+            el.addEventListener('touchstart', () => {
+                el.classList.add('active');
+            });
 
-        const isMobile = window.innerWidth < 992;
+            el.addEventListener('touchend', () => {
+                setTimeout(() => {
+                    el.classList.remove('active');
+                }, 150);
+            });
+        });
+    }
 
-        if (isMobile) {
-            // Close all accordions by default
-            const accordions = this.footer.querySelectorAll('.accordion-collapse');
-            accordions.forEach(acc => {
-                if (!acc.classList.contains('show')) {
-                    new bootstrap.Collapse(acc, { toggle: false });
+    observeFooterVisibility() {
+        // Observer untuk animasi saat footer masuk viewport
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
                 }
             });
-        }
-    }
+        }, { threshold: 0.1 });
 
-    addEventListeners() {
-        window.addEventListener('resize', () => {
-            this.optimizeMobileView();
-        });
-
-        // Social media click tracking
-        const socialLinks = this.footer?.querySelectorAll('.social-icon');
-        socialLinks?.forEach(link => {
-            link.addEventListener('click', (e) => {
-                const platform = link.getAttribute('aria-label');
-                console.log(`Social clicked: ${platform}`);
-            });
-        });
+        const sections = this.footer?.querySelectorAll('.footer-top, .footer-bottom');
+        sections?.forEach(section => observer.observe(section));
     }
 }
 
-// Initialize when DOM is ready
+// Initialize
 document.addEventListener('DOMContentLoaded', () => {
-    new MobileFooter();
-});
-
-// Livewire support
-document.addEventListener('livewire:navigated', () => {
-    new MobileFooter();
+    new FooterEnhancements();
 });
