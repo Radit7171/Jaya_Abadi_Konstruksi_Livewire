@@ -453,6 +453,83 @@ server: {
 })
 ```
 
+#### 6. CSS TRANSITIONS CONFLICT DENGAN THEME SWITCHING
+**Masalah:**
+- Visual glitches saat switch theme (light/dark)
+- Warna berflash atau tidak smooth
+- Transition pada background-color bertabrakan dengan theme change
+
+**Penyebab:**
+- CSS transitions mencoba animate perubahan warna
+- Theme switch terjadi instant via JS
+- Race condition antara CSS animation dan JS execution
+- Background-color transition pada navbar mengganggu
+
+**Solusi:**
+1. **JavaScript Theme Store** (resources/js/components/theme.js)
+   - Tambah class `theme-transition-disabled` saat theme change
+   - Disable SEMUA transition untuk saat itu
+   - Re-enable dengan requestAnimationFrame untuk smooth execution
+
+```javascript
+apply() {
+    const html = document.documentElement;
+
+    // Disable transitions temporarily
+    html.classList.add('theme-transition-disabled');
+    
+    // Apply theme...
+    html.setAttribute("data-bs-theme", this.current);
+    
+    // Re-enable transitions after paint
+    requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+            html.classList.remove('theme-transition-disabled');
+        });
+    });
+}
+```
+
+2. **Global CSS** (resources/css/app.css)
+   - Ketika class `theme-transition-disabled` aktif, matikan semua transition
+
+```css
+html.theme-transition-disabled,
+html.theme-transition-disabled * {
+    transition: none !important;
+    animation: none !important;
+}
+```
+
+3. **Navbar CSS** (resources/css/components/navbar.css)
+   - Remove `background-color` dari transition
+   - Hanya transition `box-shadow` dan `border-color`
+   - Background theme change instant, tanpa flicker
+
+```css
+.navbar {
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+    /* JANGAN transition background-color */
+}
+```
+
+4. **Theme Toggle CSS** (resources/css/components/theme-toggle.css)
+   - Tambah `background-color` ke transition untuk pseudo-element
+   - Ini untuk handle primary color change yang smooth
+
+```css
+.theme-capsule::before {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+                background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+```
+
+**Hasil:**
+- ✅ Theme switch tanpa glitch visual
+- ✅ Transition on hover tetap smooth
+- ✅ Tidak ada flashing atau color pop
+- ✅ Konsisten di light & dark mode
+
 ### Development Checklist
 
 Sebelum commit perubahan frontend, pastikan:
@@ -505,7 +582,7 @@ php artisan serve --host=0.0.0.0 --port=8000  # Terminal 2
 --------------------------------------------------
 
 Last Updated : December 2024
-Version      : 1.1.0 (SPA & Alpine Fixes)
+Version      : 1.2.0 (CSS Transitions & Theme Switching Optimization)
 Maintainer   : Frontend Team & GitHub Copilot
 Company      : PT Jaya Abadi Konstruksi
 
@@ -515,3 +592,5 @@ Fixed Issues:
 - SPA navigation consistency
 - Vite HMR CORS blocking
 - Middleware conflicts
+- CSS transitions conflict dengan theme switching
+- Visual glitches saat switch light/dark mode

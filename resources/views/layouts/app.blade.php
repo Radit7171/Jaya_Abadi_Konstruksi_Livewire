@@ -41,13 +41,6 @@
 
     @livewireScripts
 
-    <script>
-        // Smooth scroll on SPA navigation
-        document.addEventListener('livewire:navigated', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-    </script>
-
 </body>
 
 </html>

@@ -5,6 +5,7 @@ import "./bootstrap";
 
 // Import components - they register with Alpine via alpine:init event listener
 import "./components/theme";
+import "./components/scroll";
 import "./Livewire/navigation";
 import "./components/navbar";
 import "./components/footer";
