@@ -1,10 +1,14 @@
-// resources/js/components/theme.js kosong
-
 /**
  * Alpine Theme Store
+ * Registers when alpine:init event fires
  */
 
 document.addEventListener("alpine:init", () => {
+    // window.Alpine is provided by Livewire
+    const Alpine = window.Alpine;
+    if (!Alpine) return;
+
+    // Register theme store
     Alpine.store("theme", {
         current: "system",
 
@@ -35,7 +39,7 @@ document.addEventListener("alpine:init", () => {
                 return;
             }
 
-            // system
+            // system - detect preference
             const prefersDark = window.matchMedia(
                 "(prefers-color-scheme: dark)"
             ).matches;
@@ -47,14 +51,19 @@ document.addEventListener("alpine:init", () => {
         },
     });
 
-    // Listen perubahan system theme
+    // Listen untuk perubahan system theme
     window
         .matchMedia("(prefers-color-scheme: dark)")
         .addEventListener("change", () => {
-            if (Alpine.store("theme").current === "system") {
-                Alpine.store("theme").apply();
+            const themeStore = Alpine.store("theme");
+            if (themeStore && themeStore.current === "system") {
+                themeStore.apply();
             }
         });
 
-    Alpine.store("theme").init();
+    // Initialize theme after store is created
+    const themeStore = Alpine.store("theme");
+    if (themeStore && themeStore.init) {
+        themeStore.init();
+    }
 });
