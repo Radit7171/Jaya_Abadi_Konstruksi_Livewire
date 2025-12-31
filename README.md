@@ -328,9 +328,190 @@ Arsitektur ini dirancang agar:
 - Cocok untuk perusahaan konstruksi (baja, besi, industrial)
 - Stabil, tegas, dan predictable
 
+
+--------------------------------------------------
+LIVEWIRE SPA SETUP & TROUBLESHOOTING GUIDE
 --------------------------------------------------
 
-Last Updated : February 2024
-Version      : 1.0.0
-Maintainer   : Frontend Team
+### Issue yang Pernah Terjadi & Solusinya
+
+#### 1. MULTIPLE ALPINE INSTANCES ERROR
+**Masalah:**
+- Pesan: "Detected multiple instances of Alpine running"
+- Theme store tidak bekerja
+- JavaScript intermittent
+
+**Penyebab:**
+- app.js import Alpine (instance 1)
+- Livewire juga include Alpine (instance 2)
+- Conflict menyebabkan store register ke instance yang salah
+
+**Solusi:**
+- JANGAN import Alpine di app.js
+- Biarkan Livewire menyediakan Alpine via window.Alpine
+- app.js hanya import components yang listen ke alpine:init event
+
+```javascript
+// ❌ WRONG
+import Alpine from "alpinejs";
+window.Alpine = Alpine;
+
+// ✅ CORRECT
+// Alpine disediakan oleh Livewire di window.Alpine
+// app.js hanya orchestrate components
+```
+
+#### 2. THEME STORE UNDEFINED
+**Masalah:**
+- Error: "Cannot read properties of undefined (reading 'current')"
+- Theme switcher tidak bekerja
+
+**Penyebab:**
+- x-data x-init="$store.theme.init()" di HTML tag
+- Trigger terlalu cepat, sebelum store ter-register
+- Race condition dengan Alpine initialization
+
+**Solusi:**
+- Remove x-data dan x-init dari HTML tag
+- Biarkan theme.js handle initialization via alpine:init event
+- Theme store diinit SETELAH Alpine siap
+
+```html
+<!-- ❌ WRONG -->
+<html x-data x-init="$store.theme.init()">
+
+<!-- ✅ CORRECT -->
+<html>
+```
+
+#### 3. SPA NAVIGATION TIDAK KONSISTEN
+**Masalah:**
+- SPA kadang bekerja, kadang full page reload
+- Livewire navigate event kadang tidak fire
+
+**Penyebab:**
+- Alpine.start() dipanggil di waktu yang salah
+- Race condition antara script loading
+- Layout middleware conflict
+
+**Solusi:**
+- Hapus manual Alpine.start() dari app.js
+- Biarkan Livewire handle Alpine initialization
+- Layout hanya berisi @livewireScripts tanpa custom Alpine logic
+
+```javascript
+// ❌ WRONG
+import Alpine from "alpinejs";
+Alpine.start(); // Jangan di app.js!
+
+// ✅ CORRECT
+// Layout file handle initialization
+// app.js hanya import components
+```
+
+#### 4. VITE HMR CORS BLOCKED
+**Masalah:**
+- Error: "net::ERR_BLOCKED_BY_CLIENT"
+- CSS dan JS tidak ter-load
+
+**Penyebab:**
+- Browser akses via 0.0.0.0, Vite via localhost
+- Origin mismatch
+
+**Solusi:**
+```javascript
+// vite.config.js
+server: {
+    host: '0.0.0.0',
+    port: 5173,
+    hmr: {
+        host: 'localhost',
+        port: 5173,
+    },
+}
+
+// SELALU akses via http://localhost:8000
+// Jangan via http://0.0.0.0:8000 atau IP address
+```
+
+#### 5. MIDDLEWARE CONFLICT
+**Masalah:**
+- Middleware redirect guest atau CSRF validation error
+
+**Penyebab:**
+- Overly restrictive middleware di bootstrap/app.php
+
+**Solusi:**
+```php
+// bootstrap/app.php
+->withMiddleware(function (Middleware $middleware): void {
+    $middleware->use([
+        \Illuminate\Http\Middleware\HandleCors::class,
+    ]);
+    // Jangan tambah middleware kompleks
+    // Livewire handle sendiri
+})
+```
+
+### Development Checklist
+
+Sebelum commit perubahan frontend, pastikan:
+
+- [ ] Tidak ada "multiple Alpine instances" di console
+- [ ] SPA navigation berfungsi (URL change, no reload)
+- [ ] Theme switcher bekerja (light/dark)
+- [ ] Tidak ada race condition di Livewire navigasi
+- [ ] Vite HMR bekerja (file save instant reload)
+- [ ] Console log bersih (no errors/warnings)
+
+### Testing Commands
+
+```bash
+# Clear cache
+php artisan cache:clear
+php artisan view:clear
+php artisan config:clear
+
+# Start development
+npm run dev        # Terminal 1
+php artisan serve --host=0.0.0.0 --port=8000  # Terminal 2
+
+# Access via
+# http://localhost:8000
+```
+
+### Common Gotchas
+
+1. **Jangan akses via 0.0.0.0:8000 atau IP**
+   - Browser tidak bisa akses 0.0.0.0
+   - Vite HMR akan blocked
+   - Gunakan localhost:8000
+
+2. **Jangan import Alpine di app.js**
+   - Livewire sudah provide window.Alpine
+   - Dual instance akan menyebabkan masalah
+   - Percayakan ke Livewire
+
+3. **Jangan gunakan x-data x-init di HTML root**
+   - Trigger sebelum stores ter-register
+   - Akan cause undefined store errors
+   - Gunakan alpine:init event listener
+
+4. **Jangan manual Alpine.start() atau Alpine.reinit()**
+   - Livewire handle otomatis
+   - Bisa cause race condition
+   - Biarkan framework yang manage lifecycle
+
+--------------------------------------------------
+
+Last Updated : December 2024
+Version      : 1.1.0 (SPA & Alpine Fixes)
+Maintainer   : Frontend Team & GitHub Copilot
 Company      : PT Jaya Abadi Konstruksi
+
+Fixed Issues:
+- Multiple Alpine instances race condition
+- Theme store initialization timing
+- SPA navigation consistency
+- Vite HMR CORS blocking
+- Middleware conflicts
