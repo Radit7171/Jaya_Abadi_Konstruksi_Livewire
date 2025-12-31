@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id" x-data x-init="$store.theme.init()">
+<html lang="id">
 
 <head>
     <meta charset="utf-8">
@@ -37,11 +37,16 @@
     </main>
 
     <!-- Footer -->
-    <footer class="border-top mt-5">
-        @yield('footer')
-    </footer>
+    @include('components.footer')
 
     @livewireScripts
+
+    <script>
+        // Smooth scroll on SPA navigation
+        document.addEventListener('livewire:navigated', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
 
 </body>
 

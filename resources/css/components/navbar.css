@@ -1,13 +1,25 @@
 /* resources/css/components/navbar.css */
 .navbar {
+    position: fixed;
+    top: 0;
+    z-index: 1030;
+
     min-height: 70px;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    background-color: rgba(var(--bs-body-bg-rgb), 0.98) !important;
+    background-color: rgba(var(--bs-body-bg-rgb), 0.98);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
+
+    /* JANGAN transition all */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
+
+@supports ((-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px))) {
+    .navbar {
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+}
+
 
 .navbar-brand {
     padding: 0;
@@ -138,4 +150,71 @@
         display: flex !important;
         flex-basis: auto;
     }
+}
+
+/* Styling untuk logo dan teks perusahaan */
+
+/* Styling untuk logo dan teks perusahaan */
+.company-text h1 {
+    font-size: 1.25rem;
+    color: var(--bs-body-color);
+    transition: color 0.3s ease;
+}
+
+.company-text p {
+    font-size: 0.875rem;
+    color: var(--bs-secondary-color);
+    transition: color 0.3s ease;
+}
+
+/* Untuk mobile responsiveness */
+@media (max-width: 768px) {
+    .company-text h1 {
+        font-size: 1rem;
+    }
+
+    .company-text p {
+        font-size: 0.75rem;
+    }
+
+    .logo-placeholder img {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* Logo placeholder styling */
+.logo-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bs-light-bg-subtle, #f8f9fa);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    transition: background-color 0.3s ease;
+}
+
+.logo-placeholder i {
+    color: var(--bs-secondary-color, #6c757d);
+    transition: color 0.3s ease;
+}
+
+/* Dark mode adjustments for logo */
+[data-bs-theme="dark"] .logo-placeholder {
+    background-color: var(--bs-dark-bg-subtle, #2d3748);
+}
+
+[data-bs-theme="dark"] .logo-placeholder i {
+    color: var(--bs-light-text, #e2e8f0);
+}
+
+/* Object fit utility for logo */
+.object-fit-cover {
+    object-fit: cover;
+}
+
+/* Dark mode logo image adjustments */
+[data-bs-theme="dark"] .logo-placeholder img {
+    filter: brightness(1.1);
 }
