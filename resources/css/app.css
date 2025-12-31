@@ -35,6 +35,13 @@
     scroll-behavior: var(--scroll-behavior);
 }
 
+/* Disable transitions during theme switching */
+html.theme-transition-disabled,
+html.theme-transition-disabled * {
+    transition: none !important;
+    animation: none !important;
+}
+
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     -webkit-font-smoothing: antialiased;
