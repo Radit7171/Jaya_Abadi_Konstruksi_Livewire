@@ -29,26 +29,33 @@ document.addEventListener("alpine:init", () => {
         apply() {
             const html = document.documentElement;
 
+            // Disable transitions temporarily to prevent visual glitches
+            html.classList.add('theme-transition-disabled');
+
             if (this.current === "light") {
                 html.setAttribute("data-bs-theme", "light");
-                return;
-            }
-
-            if (this.current === "dark") {
+            } else if (this.current === "dark") {
                 html.setAttribute("data-bs-theme", "dark");
-                return;
+            } else {
+                // system - detect preference
+                const prefersDark = window.matchMedia(
+                    "(prefers-color-scheme: dark)"
+                ).matches;
+
+                html.setAttribute(
+                    "data-bs-theme",
+                    prefersDark ? "dark" : "light"
+                );
             }
 
-            // system - detect preference
-            const prefersDark = window.matchMedia(
-                "(prefers-color-scheme: dark)"
-            ).matches;
-
-            html.setAttribute(
-                "data-bs-theme",
-                prefersDark ? "dark" : "light"
-            );
-        },
+            // Re-enable transitions after theme change
+            // Use requestAnimationFrame twice to ensure the DOM has painted
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    html.classList.remove('theme-transition-disabled');
+                });
+            });
+        }
     });
 
     // Listen untuk perubahan system theme

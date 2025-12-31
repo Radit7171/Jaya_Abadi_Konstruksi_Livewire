@@ -14,6 +14,9 @@
 /* Import Footer Styles */
 @import './components/footer.css';
 
+/* import home-page styles */
+@import './pages/home/home-page.css';
+
 /* ==========================================================================
    Brand Color (Steel Theme)
    ========================================================================== */
@@ -31,14 +34,27 @@
 /* ==========================================================================
    Global Styles
    ========================================================================== */
+html {
+    overflow-x: hidden;
+    scrollbar-gutter: stable;
+}
+
 * {
     scroll-behavior: var(--scroll-behavior);
+}
+
+/* Disable transitions during theme switching */
+html.theme-transition-disabled,
+html.theme-transition-disabled * {
+    transition: none !important;
+    animation: none !important;
 }
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
 }
 
 /* ==========================================================================
@@ -71,12 +87,61 @@ body {
 }
 
 /* Adjust main content for fixed navbar */
-main {
-    padding-top: 70px;
-}
+/* main {
+    /* padding-top: 70px; */
+/* } */
 
 /* Loading overlay default state
    (digunakan bersama wire:loading di layout) */
 #loading-overlay {
     display: none;
+}
+
+/* ==========================================================================
+   Custom Scrollbar (Global UI Enhancement)
+   - Theme-aware
+   - Corporate / Industrial style
+   - No JS, CSS only
+   ========================================================================== */
+
+/* Default (Light Mode) */
+:root {
+    --scrollbar-size: 10px;
+    --scrollbar-track: #f1f3f5;
+    --scrollbar-thumb: #c1c7cd;
+    --scrollbar-thumb-hover: #9aa0a6;
+    --scrollbar-radius: 8px;
+}
+
+/* Dark Mode */
+[data-bs-theme="dark"] {
+    --scrollbar-track: #1f2328;
+    --scrollbar-thumb: #3a3f45;
+    --scrollbar-thumb-hover: #4b525a;
+}
+
+/* WebKit Browsers (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+    width: var(--scrollbar-size);
+    height: var(--scrollbar-size);
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-thumb);
+    border-radius: var(--scrollbar-radius);
+    border: 2px solid var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--scrollbar-thumb-hover);
+}
+
+/* Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
 }
