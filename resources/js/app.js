@@ -10,4 +10,7 @@ import "./Livewire/navigation";
 import "./components/navbar";
 import "./components/footer";
 
+// import home-page
+import "./pages/home/home-page";
+
 // Alpine will be initialized by Livewire automatically

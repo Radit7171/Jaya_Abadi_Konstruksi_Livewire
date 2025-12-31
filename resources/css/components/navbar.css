@@ -2,7 +2,7 @@
 .navbar {
     position: fixed;
     top: 0;
-    z-index: 1030;
+    z-index: 4030;
 
     min-height: 70px;
     /* IMPORTANT: Use bg-body class in blade for reactive dark mode
@@ -115,7 +115,7 @@
         left: 0;
         right: 0;
         /* Use Bootstrap's bg-body for reactive theming */
-        background: inherit;
+        background-color: var(--bs-body-bg);
         padding: 1rem;
         border-top: 1px solid var(--bs-border-color);
         border-radius: 0 0 16px 16px;
