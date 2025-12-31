@@ -37,7 +37,7 @@ class FooterEnhancements {
             el.addEventListener('touchend', () => {
                 setTimeout(() => {
                     el.classList.remove('active');
-                }, 150);
+                }, 50);
             });
         });
     }
