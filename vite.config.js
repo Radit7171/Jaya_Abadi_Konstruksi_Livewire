@@ -13,9 +13,10 @@ export default defineConfig({
     ],
     server: {
         host: '0.0.0.0',
-        port: 5173, // DEFAULT VITE PORT (jangan 8000)
-        watch: {
-            ignored: ['**/storage/**'],
+        port: 5173,
+        hmr: {
+            host: 'localhost',
+            port: 5173,
         },
     },
 });

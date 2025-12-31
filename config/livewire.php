@@ -1,27 +1,18 @@
 <?php
 
 return [
-    // ...
-
-    'navigation' => [
-        // Enable SPA mode
-        'spa_mode' => true,
-
-        // Show loading indicators
-        'show_loading_indicator' => true,
-
-        // Scroll to top on navigation
-        'scroll_to_top' => true,
+    'class_namespace' => 'App\\Livewire',
+    'view_path' => resource_path('views/livewire'),
+    'layout' => 'layouts.app',
+    'lazy_loading_placeholder' => null,
+    'morphdom' => [
+        'skip' => ['alpine:ignore', '@raw'],
     ],
-
-    'features' => [
-        // Enable wire:navigate for anchor tags
-        'wire_navigate' => true,
-
-        // Enable script and style persistence
-        'persistent' => [
-            'scripts' => true,
-            'styles' => true,
-        ],
+    'inject_assets' => true,
+    'navigate' => [
+        'enabled' => true,
+    ],
+    'pagination' => [
+        'default' => 'tailwind',
     ],
 ];
