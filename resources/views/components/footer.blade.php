@@ -64,11 +64,11 @@
                                             <div class="mb-4">
                                                 <h6 class="small fw-bold mb-2">Link Cepat</h6>
                                                 <ul class="list-unstyled mb-0">
-                                                    <li><a href="/" class="small text-body-secondary d-block py-1">Home</a></li>
-                                                    <li><a href="/tentang-kami" class="small text-body-secondary d-block py-1">Tentang Kami</a></li>
-                                                    <li><a href="/layanan" class="small text-body-secondary d-block py-1">Layanan</a></li>
-                                                    <li><a href="/proyek" class="small text-body-secondary d-block py-1">Proyek</a></li>
-                                                    <li><a href="/kontak" class="small text-body-secondary d-block py-1">Kontak</a></li>
+                                                    <li><a href="/" wire:navigate class="small text-body-secondary d-block py-1">Home</a></li>
+                                                    <li><a href="/tentang-kami" wire:navigate class="small text-body-secondary d-block py-1">Tentang Kami</a></li>
+                                                    <li><a href="/layanan" wire:navigate class="small text-body-secondary d-block py-1">Layanan</a></li>
+                                                    <li><a href="/proyek" wire:navigate class="small text-body-secondary d-block py-1">Proyek</a></li>
+                                                    <li><a href="/kontak" wire:navigate class="small text-body-secondary d-block py-1">Kontak</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -76,11 +76,11 @@
                                             <div class="mb-4">
                                                 <h6 class="small fw-bold mb-2">Layanan</h6>
                                                 <ul class="list-unstyled mb-0">
-                                                    <li><a href="/layanan#konstruksi-baja" class="small text-body-secondary d-block py-1">Konstruksi Baja</a></li>
-                                                    <li><a href="/layanan#fabrication" class="small text-body-secondary d-block py-1">Fabrication</a></li>
-                                                    <li><a href="/layanan#erection" class="small text-body-secondary d-block py-1">Erection</a></li>
-                                                    <li><a href="/layanan#maintenance" class="small text-body-secondary d-block py-1">Maintenance</a></li>
-                                                    <li><a href="/layanan#perencanaan" class="small text-body-secondary d-block py-1">Perencanaan</a></li>
+                                                    <li><a href="/layanan#konstruksi-baja" wire:navigate class="small text-body-secondary d-block py-1">Konstruksi Baja</a></li>
+                                                    <li><a href="/layanan#fabrication" wire:navigate class="small text-body-secondary d-block py-1">Fabrication</a></li>
+                                                    <li><a href="/layanan#erection" wire:navigate class="small text-body-secondary d-block py-1">Erection</a></li>
+                                                    <li><a href="/layanan#maintenance" wire:navigate class="small text-body-secondary d-block py-1">Maintenance</a></li>
+                                                    <li><a href="/layanan#perencanaan" wire:navigate class="small text-body-secondary d-block py-1">Perencanaan</a></li>
                                                 </ul>
                                             </div>
                                         </div>

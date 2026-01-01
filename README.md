@@ -75,6 +75,47 @@ Penjelasan tentang:
 -   Architecture compliance
 -   Maintainability rules
 
+### 7. [ICON SYSTEM](readme/07-ICON-SYSTEM.md)
+
+Penjelasan tentang:
+
+-   Font Awesome 6 integration
+-   Icon naming conventions
+-   Available icons & usage
+-   Customization & theming
+-   Best practices
+
+### 8. [EXTERNAL LINKS & NAVIGATION](readme/08-EXTERNAL-LINKS-GUIDE.md)
+
+Penjelasan tentang:
+
+-   External links (email, phone, WhatsApp)
+-   Social media links
+-   Security best practices (`rel="noopener noreferrer"`)
+-   Link format & validation
+-   Common mistakes & fixes
+
+### 9. [TYPOGRAPHY SYSTEM](readme/09-TYPOGRAPHY-SYSTEM.md)
+
+Penjelasan tentang:
+
+-   Font families (Sora, Inter, Fira Code)
+-   Modern typography stack
+-   Font applications & usage
+-   Performance optimization
+-   Dark mode support
+
+### 10. [DESIGN OPTIMIZATION](readme/10-DESIGN-OPTIMIZATION.md)
+
+Dokumentasi tentang:
+
+-   Optimasi UI/UX untuk "kecil, slim, modern"
+-   Spacing & padding optimization
+-   Typography refinement
+-   Navbar compact design
+-   Font consistency verification
+-   Maintenance checklist
+
 ---
 
 ## 🚀 QUICK START
@@ -117,20 +158,19 @@ npm run build
 
 ## 📝 METADATA
 
-**Last Updated:** December 2024  
-**Version:** 1.2.0 (CSS Transitions & Theme Switching Optimization)  
+**Last Updated:** January 1, 2026  
+**Version:** 1.3.0 (Design Optimization - Kecil, Slim, Modern)  
 **Maintainer:** Frontend Team & GitHub Copilot  
 **Company:** PT Jaya Abadi Konstruksi
 
-**Fixed Issues:**
+**Latest Changes:**
 
--   Multiple Alpine instances race condition
--   Theme store initialization timing
--   SPA navigation consistency
--   Vite HMR CORS blocking
--   Middleware conflicts
--   CSS transitions conflict dengan theme switching
--   Visual glitches saat switch light/dark mode
+-   Design optimization untuk filosofi "kecil, slim, modern"
+-   Section padding & spacing reduction (-30%)
+-   Typography refinement (heading font size optimization)
+-   Navbar compact design (8 improvements)
+-   Button padding optimization
+-   Font consistency verification (Sora, Inter, Fira Code)
 
 ---
 

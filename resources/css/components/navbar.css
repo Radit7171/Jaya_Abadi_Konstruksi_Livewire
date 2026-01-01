@@ -4,7 +4,7 @@
     top: 0;
     z-index: 4030;
 
-    min-height: 70px;
+    min-height: 65px;
     /* IMPORTANT: Use bg-body class in blade for reactive dark mode
        Do NOT hardcode background-color here - it breaks theme switching */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
@@ -24,11 +24,11 @@
 
 .navbar-brand {
     padding: 0;
-    margin-right: 2rem;
+    margin-right: 1.5rem;
 }
 
 .navbar-logo {
-    height: 45px;
+    height: 40px;
     width: auto;
     max-width: 200px;
     object-fit: contain;
@@ -102,11 +102,11 @@
 /* Mobile Responsive */
 @media (max-width: 991.98px) {
     .navbar {
-        min-height: 65px;
+        min-height: 60px;
     }
 
     .navbar-logo {
-        height: 40px;
+        height: 35px;
     }
 
     .navbar-collapse {
@@ -180,8 +180,8 @@
     }
 
     .logo-placeholder img {
-        width: 40px;
-        height: 40px;
+        width: 35px;
+        height: 35px;
     }
 }
 
@@ -192,8 +192,8 @@
     justify-content: center;
     background-color: var(--bs-light-bg-subtle, #f8f9fa);
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     transition: background-color 0.3s ease;
 }
 

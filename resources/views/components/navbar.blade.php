@@ -42,31 +42,31 @@
                         [
                             'route' => '/',
                             'label' => 'Home',
-                            'icon' => 'bi bi-house-door',
+                            'icon' => 'fas fa-home',
                             'active' => request()->is('/')
                         ],
                         [
                             'route' => '/tentang-kami',
                             'label' => 'Tentang Kami',
-                            'icon' => 'bi bi-building',
+                            'icon' => 'fas fa-building',
                             'active' => request()->is('tentang-kami*')
                         ],
                         [
                             'route' => '/layanan',
                             'label' => 'Layanan',
-                            'icon' => 'bi bi-tools',
+                            'icon' => 'fas fa-wrench',
                             'active' => request()->is('layanan*')
                         ],
                         [
                             'route' => '/proyek',
                             'label' => 'Proyek',
-                            'icon' => 'bi bi-bricks',
+                            'icon' => 'fas fa-hammer',
                             'active' => request()->is('proyek*')
                         ],
                         [
                             'route' => '/kontak',
                             'label' => 'Kontak',
-                            'icon' => 'bi bi-envelope',
+                            'icon' => 'fas fa-envelope',
                             'active' => request()->is('kontak*')
                         ],
                     ];
