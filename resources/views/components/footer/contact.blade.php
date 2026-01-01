@@ -10,26 +10,31 @@
         <li class="mb-2 d-flex align-items-start">
             <i class="fas fa-location-dot text-primary me-2 mt-1"></i>
             <span class="small text-body-secondary">
-                Jl. Industri Raya No. 123<br>
-                Jakarta Barat, 11730
+                Jaya Abadi Konstruksi<br>
+                Jl. Raya Tapos No 72, Cimpaeun, Tapos, Kota Depok
             </span>
         </li>
         <li class="mb-2 d-flex align-items-center">
             <i class="fas fa-phone text-primary me-2"></i>
-            <a href="tel:+62211234567" class="small text-body-secondary text-decoration-none">
-                (021) 123-4567
+            <a href="javascript:void(0)"
+               class="external-link small text-body-secondary text-decoration-none"
+               data-link="https://wa.me/6287817695973"
+               rel="noopener noreferrer">
+                0878-1769-5973
             </a>
         </li>
         <li class="mb-2 d-flex align-items-center">
             <i class="fas fa-envelope text-primary me-2"></i>
-            <a href="mailto:info@jayaabadi.com" class="small text-body-secondary text-decoration-none">
-                info@jayaabadi.com
+            <a href="javascript:void(0)"
+               class="external-link small text-body-secondary text-decoration-none"
+               data-link="mailto:lasjayaabadi123@gmail.com">
+                lasjayaabadi123@gmail.com
             </a>
         </li>
         <li class="d-flex align-items-center">
             <i class="fas fa-clock text-primary me-2"></i>
             <span class="small text-body-secondary">
-                Senin - Jumat: 08:00 - 17:00
+                Setiap Hari : 08:00 - 17:00
             </span>
         </li>
     </ul>

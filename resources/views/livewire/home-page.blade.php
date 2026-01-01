@@ -29,7 +29,7 @@
                 {{-- HERO TEXT --}}
                 <div class="col-12 col-lg-6">
                     <div class="home-hero-badge">
-                        <span class="home-hero-badge-text">Terpercaya Sejak 2005</span>
+                        <span class="home-hero-badge-text">Terpercaya Sejak 2013</span>
                     </div>
 
                     <h1 class="home-hero-title">
@@ -38,7 +38,7 @@
                     </h1>
 
                     <p class="home-hero-subtitle">
-                        PT Jaya Abadi Konstruksi - Partner terpercaya untuk solusi konstruksi
+                        Jaya Abadi Konstruksi - Partner terpercaya untuk solusi konstruksi
                         gedung dan infrastruktur industri berstandar internasional.
                     </p>
 
@@ -49,7 +49,7 @@
                             <span class="home-stat-label">Proyek Selesai</span>
                         </div>
                         <div class="home-stat-item">
-                            <span class="home-stat-number">15+</span>
+                            <span class="home-stat-number">10+</span>
                             <span class="home-stat-label">Tahun Pengalaman</span>
                         </div>
                         <div class="home-stat-item">
@@ -83,12 +83,12 @@
                         </div>
 
                         {{-- Floating Achievement Badge --}}
-                        <div class="home-floating-badge home-badge-award">
+                        {{-- <div class="home-floating-badge home-badge-award">
                             <svg class="home-badge-icon" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
                             </svg>
                             <span>ISO 9001:2015 Certified</span>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
 
@@ -103,11 +103,11 @@
         <div class="container">
             <p class="home-trusted-label">Dipercaya Oleh</p>
             <div class="home-trusted-logos">
-                <div class="home-trusted-logo">Perusahaan A</div>
-                <div class="home-trusted-logo">Perusahaan B</div>
-                <div class="home-trusted-logo">Perusahaan C</div>
-                <div class="home-trusted-logo">Perusahaan D</div>
-                <div class="home-trusted-logo">Perusahaan E</div>
+                <div class="home-trusted-logo text-center">Lucy In The Sky <br> PT Lima Dua Lima Tiga Tbk</div>
+                <div class="home-trusted-logo">PT Wikinara Bening Bersama Putra</div>
+                <div class="home-trusted-logo">PMPP TNI</div>
+                {{-- <div class="home-trusted-logo">Perusahaan D</div>
+                <div class="home-trusted-logo">Perusahaan E</div> --}}
             </div>
         </div>
     </section>
@@ -121,7 +121,7 @@
                 <div class="col-12 col-lg-6">
                     <div class="home-about-visual">
                         <div class="home-about-image-wrapper">
-                            <img src="/images/home/about-company.jpg"
+                            <img src="/images/founder.jpg"
                                  alt="Tim profesional PT Jaya Abadi Konstruksi"
                                  class="home-about-image"
                                  loading="lazy">
@@ -284,7 +284,7 @@
                 <div class="col-12 col-md-6 col-lg-4">
                     <article class="home-project-card">
                         <div class="home-project-image-wrapper">
-                            <img src="/images/home/project-1.jpg"
+                            <img src="/images/home/proyek.jpg"
                                  alt="Gedung Industri Manufaktur Modern"
                                  class="home-project-image"
                                  loading="lazy">
@@ -312,7 +312,7 @@
                 <div class="col-12 col-md-6 col-lg-4">
                     <article class="home-project-card">
                         <div class="home-project-image-wrapper">
-                            <img src="/images/home/project-2.jpg"
+                            <img src="/images/home/proyek2.jpg"
                                  alt="Infrastruktur Kawasan Industri"
                                  class="home-project-image"
                                  loading="lazy">
@@ -340,7 +340,7 @@
                 <div class="col-12 col-md-6 col-lg-4">
                     <article class="home-project-card">
                         <div class="home-project-image-wrapper">
-                            <img src="/images/home/project-3.jpg"
+                            <img src="/images/home/proyek3.jpg"
                                  alt="Renovasi Fasilitas Produksi"
                                  class="home-project-image"
                                  loading="lazy">
@@ -397,11 +397,14 @@
                             <path d="M21 3l-6.5 18a.55.55 0 01-1 0L10 14l-7-3.5a.55.55 0 010-1L21 3z"/>
                         </svg>
                     </a>
-                    <a href="tel:+62215551234" class="home-btn home-btn-outline-light">
+                    <a href="javascript:void(0)"
+                       class="home-btn home-btn-outline-light external-link"
+                       data-link="https://wa.me/6287817695973"
+                       rel="noopener noreferrer">
                         <svg class="home-btn-icon" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
                             <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
                         </svg>
-                        <span>+62 21 555 1234</span>
+                        <span>0878-1769-5973</span>
                     </a>
                 </div>
             </div>

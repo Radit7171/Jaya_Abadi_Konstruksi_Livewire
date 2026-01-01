@@ -85,6 +85,16 @@ Penjelasan tentang:
 -   Customization & theming
 -   Best practices
 
+### 8. [EXTERNAL LINKS & NAVIGATION](readme/08-EXTERNAL-LINKS-GUIDE.md)
+
+Penjelasan tentang:
+
+-   External links (email, phone, WhatsApp)
+-   Social media links
+-   Security best practices (`rel="noopener noreferrer"`)
+-   Link format & validation
+-   Common mistakes & fixes
+
 ---
 
 ## 🚀 QUICK START
