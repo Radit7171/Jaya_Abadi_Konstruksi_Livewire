@@ -5,10 +5,10 @@
         <div class="social-icons d-flex gap-2">
             @php
                 $socialLinks = [
-                    ['icon' => 'bi-facebook', 'url' => '#', 'label' => 'Facebook'],
-                    ['icon' => 'bi-instagram', 'url' => '#', 'label' => 'Instagram'],
-                    ['icon' => 'bi-linkedin', 'url' => '#', 'label' => 'LinkedIn'],
-                    ['icon' => 'bi-whatsapp', 'url' => '#', 'label' => 'WhatsApp'],
+                    ['icon' => 'fab fa-facebook', 'url' => '#', 'label' => 'Facebook'],
+                    ['icon' => 'fab fa-instagram', 'url' => '#', 'label' => 'Instagram'],
+                    ['icon' => 'fab fa-linkedin', 'url' => '#', 'label' => 'LinkedIn'],
+                    ['icon' => 'fab fa-whatsapp', 'url' => '#', 'label' => 'WhatsApp'],
                 ];
             @endphp
 

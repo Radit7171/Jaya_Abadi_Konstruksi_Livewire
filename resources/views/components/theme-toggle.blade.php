@@ -22,7 +22,7 @@
             title="Light Mode"
             aria-label="Light Mode"
         >
-            <i class="bi bi-sun"></i>
+            <i class="fas fa-sun"></i>
             <span class="theme-label d-none d-lg-inline">Terang</span>
         </button>
 
@@ -35,7 +35,7 @@
             title="System Theme"
             aria-label="System Theme"
         >
-            <i class="bi bi-display"></i>
+            <i class="fas fa-circle-half-stroke"></i>
             <span class="theme-label d-none d-lg-inline">Sistem</span>
         </button>
 
@@ -48,7 +48,7 @@
             title="Dark Mode"
             aria-label="Dark Mode"
         >
-            <i class="bi bi-moon"></i>
+            <i class="fas fa-moon"></i>
             <span class="theme-label d-none d-lg-inline">Gelap</span>
         </button>
     </div>

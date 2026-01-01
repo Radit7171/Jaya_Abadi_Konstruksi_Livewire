@@ -10,7 +10,8 @@
     <title>@yield('title', 'Jaya Abadi Konstruksi')</title>
     <meta name="description" content="@yield('description', 'Spesialis konstruksi besi dan baja profesional')">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <!-- Font Awesome Pro Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles

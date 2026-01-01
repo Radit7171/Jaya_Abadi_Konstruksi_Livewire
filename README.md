@@ -75,6 +75,16 @@ Penjelasan tentang:
 -   Architecture compliance
 -   Maintainability rules
 
+### 7. [ICON SYSTEM](readme/07-ICON-SYSTEM.md)
+
+Penjelasan tentang:
+
+-   Font Awesome 6 integration
+-   Icon naming conventions
+-   Available icons & usage
+-   Customization & theming
+-   Best practices
+
 ---
 
 ## 🚀 QUICK START
