@@ -19,6 +19,9 @@
 /* import home-page styles */
 @import './pages/home/home-page.css';
 
+/* import about-page styles */
+@import './pages/about-page.css';
+
 /* ==========================================================================
    Brand Color (Steel Theme)
    ========================================================================== */
@@ -100,9 +103,9 @@ code, pre, .code {
 }
 
 /* Adjust main content for fixed navbar */
-/* main {
-    /* padding-top: 70px; */
-/* } */
+main {
+    padding-top: 65px;
+}
 
 /* Loading overlay default state
    (digunakan bersama wire:loading di layout) */
