@@ -83,6 +83,7 @@
     color: var(--home-text);
     letter-spacing: -0.025em;
     transition: color 0.3s ease;
+    font-family: 'Sora', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 .home-page .home-section-subtitle {
@@ -99,8 +100,8 @@
     font-size: 1.125rem;
     color: var(--home-text-muted);
     line-height: 1.7;
-    max-width: 48rem;
-    margin: 0 auto;
+    max-width: 100%;
+    margin: 0;
     transition: color 0.3s ease;
 }
 
@@ -256,6 +257,7 @@
     color: var(--home-text);
     letter-spacing: -0.025em;
     transition: color 0.3s ease;
+    font-family: 'Sora', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 .home-hero-highlight {
@@ -742,6 +744,7 @@
     margin-bottom: 1rem;
     line-height: 1.2;
     color: var(--home-inverse-text);
+    font-family: 'Sora', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 .home-cta-desc {

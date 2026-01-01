@@ -95,6 +95,16 @@ Penjelasan tentang:
 -   Link format & validation
 -   Common mistakes & fixes
 
+### 9. [TYPOGRAPHY SYSTEM](readme/09-TYPOGRAPHY-SYSTEM.md)
+
+Penjelasan tentang:
+
+-   Font families (Sora, Inter, Fira Code)
+-   Modern typography stack
+-   Font applications & usage
+-   Performance optimization
+-   Dark mode support
+
 ---
 
 ## 🚀 QUICK START
