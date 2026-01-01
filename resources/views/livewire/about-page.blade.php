@@ -170,11 +170,11 @@
 
                             <div class="about-timeline-item">
                                 <div class="about-timeline-dot">
-                                    <i class="fas fa-certificate"></i>
+                                    <i class="fas fa-chart-line"></i>
                                 </div>
                                 <div class="about-timeline-content">
                                     <h3 class="about-timeline-year">2015</h3>
-                                    <p class="about-timeline-text">Sertifikasi ISO 9001:2015 diraih dan perluasan signifikan layanan ke berbagai sektor konstruksi industri.</p>
+                                    <p class="about-timeline-text">Peningkatan kapasitas operasional dan ekspansi ke berbagai sektor konstruksi dengan sistem manajemen proyek yang semakin matang.</p>
                                 </div>
                             </div>
 
@@ -427,31 +427,31 @@
 
                             <div class="about-expertise-item">
                                 <div class="about-expertise-icon">
-                                    <i class="fas fa-certificate"></i>
+                                    <i class="fas fa-lightbulb"></i>
                                 </div>
                                 <div>
-                                    <h4 class="about-expertise-item-title">Arsitek & Engineer Bersertifikat</h4>
-                                    <p class="about-expertise-item-text">Profesional berlisensi dengan sertifikasi internasional dari lembaga terkemuka dunia</p>
+                                    <h4 class="about-expertise-item-title">Pengalaman Teknis yang Mendalam</h4>
+                                    <p class="about-expertise-item-text">Tim berpengalaman puluhan tahun dengan pemahaman mendalam tentang konstruksi gedung dan infrastruktur industri</p>
                                 </div>
                             </div>
 
                             <div class="about-expertise-item">
                                 <div class="about-expertise-icon">
-                                    <i class="fas fa-heartbeat"></i>
+                                    <i class="fas fa-shield-alt"></i>
                                 </div>
                                 <div>
-                                    <h4 class="about-expertise-item-title">Program Pelatihan K3 Berkelanjutan</h4>
-                                    <p class="about-expertise-item-text">Program pelatihan rutin dan update untuk menjaga standar keselamatan kerja tertinggi</p>
+                                    <h4 class="about-expertise-item-title">Komitmen Keselamatan Kerja</h4>
+                                    <p class="about-expertise-item-text">Prioritas utama pada keselamatan kerja dengan protokol ketat dan budaya safety-first di setiap proyek</p>
                                 </div>
                             </div>
 
                             <div class="about-expertise-item">
                                 <div class="about-expertise-icon">
-                                    <i class="fas fa-microchip"></i>
+                                    <i class="fas fa-cogs"></i>
                                 </div>
                                 <div>
-                                    <h4 class="about-expertise-item-title">Teknologi Konstruksi Terdepan</h4>
-                                    <p class="about-expertise-item-text">Penguasaan mendalam teknologi terkini dan metodologi konstruksi paling modern</p>
+                                    <h4 class="about-expertise-item-title">Metodologi Kerja Terbukti</h4>
+                                    <p class="about-expertise-item-text">Proses kerja terstruktur dan terbukti efektif melalui puluhan tahun pengalaman lapangan praktis</p>
                                 </div>
                             </div>
 

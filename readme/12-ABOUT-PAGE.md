@@ -49,10 +49,10 @@ Home > Tentang Kami
 ### 3. History Section
 - **Title:** "Perjalanan Kami" dengan section label "HISTORY"
 - **Content:** Timeline 4 milestone penting
-  - **2013:** Founding (icon: `fa-rocket`)
-  - **2015:** ISO Certification (icon: `fa-certificate`)
-  - **2018:** Industry Recognition (icon: `fa-trophy`)
-  - **2023:** Market Leader (icon: `fa-crown`)
+  - **2013:** Peluncuran PT Jaya Abadi Konstruksi (icon: `fa-rocket`)
+  - **2015:** Peningkatan kapasitas operasional & sistem manajemen (icon: `fa-chart-line`)
+  - **2018:** Pencapaian 200+ proyek sukses & penghargaan klien (icon: `fa-trophy`)
+  - **2023:** Melampaui 500+ proyek & menjadi pemimpin industri (icon: `fa-crown`)
 - **Features:**
   - Timeline visual dengan gradient line (primary → secondary)
   - Animated dots pada setiap milestone
@@ -60,6 +60,7 @@ Home > Tentang Kami
   - Keyboard accessible (tabindex)
 - **Image:** Company image dengan badge overlay
 - **Animations:** `fade-up-left/right` cascading
+- **Design Approach:** Fokus pada achievements nyata & track record, bukan claim sertifikasi
 
 ### 4. Mission & Vision Section
 - **Layout:** 2 cards side-by-side (stacked di mobile)
@@ -101,15 +102,16 @@ Home > Tentang Kami
 - **Title:** "Keahlian Tim Kami" dengan section label "TEAM"
 - **Background:** Gradient section dengan pattern overlay
 - **Content:** 4 expertise categories dengan icons
-  - Project Management (fa-tasks)
-  - Technical Excellence (fa-microchip)
-  - Quality Assurance (fa-certificate)
-  - Innovation & Design (fa-lightbulb)
+  - **Pengalaman Teknis yang Mendalam** (fa-lightbulb) - Tim berpengalaman puluhan tahun di konstruksi gedung & infrastruktur
+  - **Komitmen Keselamatan Kerja** (fa-shield-alt) - Prioritas keselamatan dengan protokol ketat & budaya safety-first
+  - **Metodologi Kerja Terbukti** (fa-cogs) - Proses terstruktur efektif dari pengalaman lapangan praktis
+  - **Manajemen Proyek Profesional** (fa-chart-line) - Track record on-time dan on-budget delivery
 - **Each Item Contains:**
   - Icon dengan background circle
-  - Title
-  - Description/bullet points
+  - Title & description yang authentic
+  - Fokus pada capabilities nyata bukan sertifikasi
 - **Animations:** `fade-up` dengan delays
+- **Design Rationale:** Emphasis pada pengalaman real, track record, dan proses terbukti daripada klaim sertifikat atau teknologi "terdepan"
 
 ### 7. Achievements Section
 - **Title:** "Pencapaian Kami" dengan section label "ACHIEVEMENTS"
@@ -348,21 +350,21 @@ document.addEventListener('DOMContentLoaded', () => {
 |------|-------|-------|
 | `fa-building` | Hero badge | Primary |
 | `fa-rocket` | History 2013 | Primary |
-| `fa-certificate` | History 2015 | Green |
+| `fa-chart-line` | History 2015 | Green |
 | `fa-trophy` | History 2018 | Orange |
 | `fa-crown` | History 2023 | Purple |
 | `fa-compass` | Mission | Primary |
-| `fa-heart` | Vision | Red |
-| `fa-shield-alt` | Value 01 (Integrity) | Blue |
-| `fa-lightbulb` | Value 02 (Innovation) | Green |
-| `fa-star` | Value 03 (Excellence) | Purple |
-| `fa-heart` | Value 04 (Safety) | Red |
-| `fa-leaf` | Value 05 (Sustainability) | Teal |
-| `fa-handshake` | Value 06 (Collaboration) | Orange |
-| `fa-tasks` | Expertise 1 | Primary |
-| `fa-microchip` | Expertise 2 | Secondary |
-| `fa-certificate` | Expertise 3 | Tertiary |
-| `fa-lightbulb` | Expertise 4 | Accent |
+| `fa-star` | Vision | Purple |
+| `fa-handshake` | Value 01 (Integritas) | Blue |
+| `fa-lightbulb` | Value 02 (Inovasi) | Green |
+| `fa-trophy` | Value 03 (Keunggulan) | Purple |
+| `fa-shield-alt` | Value 04 (Keselamatan) | Red |
+| `fa-leaf` | Value 05 (Keberlanjutan) | Teal |
+| `fa-users` | Value 06 (Kolaborasi) | Orange |
+| `fa-lightbulb` | Expertise 1 (Pengalaman Teknis) | Primary |
+| `fa-shield-alt` | Expertise 2 (Keselamatan Kerja) | Secondary |
+| `fa-cogs` | Expertise 3 (Metodologi Kerja) | Tertiary |
+| `fa-chart-line` | Expertise 4 (Manajemen Proyek) | Accent |
 | `fa-check-circle` | CTA checklist | Primary |
 | `fa-arrow-left` | Back to home | Secondary |
 
@@ -505,6 +507,31 @@ Potential improvements untuk iterasi berikutnya:
 4. **Image Gallery:** Lightbox untuk project showcase
 5. **PDF Download:** Downloadable company profile/brochure
 6. **CMS Integration:** Dynamic content dari database
+
+---
+
+## Content Strategy: Authenticity & Genuine Value
+
+**Philosophy:**
+Page dirancang dengan pendekatan **authenticity-first** yang menghindari:
+- ❌ Klaim sertifikasi yang tidak ada (ISO, internasional licenses)
+- ❌ Talenta yang belum tentu ada (engineer bersertifikat internasional)
+- ❌ Program yang tidak berjalan (pelatihan K3 berkelanjutan)
+- ❌ Teknologi "terdepan" yang tidak spesifik (teknologi konstruksi terdepan)
+
+**Fokus pada hal-hal genuine yang dapat diverifikasi:**
+- ✅ **Track record nyata:** 500+ projects, 10+ years experience
+- ✅ **Pengalaman mendalam:** Puluhan tahun di industri konstruksi
+- ✅ **Komitmen genuine:** Safety-first culture, customer satisfaction focus
+- ✅ **Proses terbukti:** Metodologi kerja yang proven effective, on-time/on-budget delivery
+- ✅ **Nilai-nilai nyata:** Integritas, inovasi, keunggulan, keselamatan, keberlanjutan, kolaborasi
+
+**Result:**
+Halaman yang tetap **highly convincing dan professional** karena fokus pada:
+1. Kapabilitas real yang demonstrable
+2. Track record yang dapat diverifikasi
+3. Value proposition yang sustainable
+4. Honest messaging yang builds long-term trust
 
 ---
 
