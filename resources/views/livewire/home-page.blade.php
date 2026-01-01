@@ -28,38 +28,38 @@
 
                 {{-- HERO TEXT --}}
                 <div class="col-12 col-lg-6">
-                    <div class="home-hero-badge">
+                    <div class="home-hero-badge" data-aos="fade-up" data-aos-delay="0" data-aos-duration="600">
                         <span class="home-hero-badge-text">Terpercaya Sejak 2013</span>
                     </div>
 
-                    <h1 class="home-hero-title">
+                    <h1 class="home-hero-title" data-aos="fade-up" data-aos-delay="100" data-aos-duration="700">
                         Membangun Masa Depan dengan
                         <span class="home-hero-highlight">Inovasi & Keunggulan</span>
                     </h1>
 
-                    <p class="home-hero-subtitle">
+                    <p class="home-hero-subtitle" data-aos="fade-up" data-aos-delay="200" data-aos-duration="700">
                         Jaya Abadi Konstruksi - Partner terpercaya untuk solusi konstruksi
                         gedung dan infrastruktur industri berstandar internasional.
                     </p>
 
                     {{-- Hero Stats --}}
                     <div class="home-hero-stats">
-                        <div class="home-stat-item">
+                        <div class="home-stat-item" data-aos="zoom-in" data-aos-delay="300" data-aos-duration="600">
                             <span class="home-stat-number">500+</span>
                             <span class="home-stat-label">Proyek Selesai</span>
                         </div>
-                        <div class="home-stat-item">
+                        <div class="home-stat-item" data-aos="zoom-in" data-aos-delay="400" data-aos-duration="600">
                             <span class="home-stat-number">10+</span>
                             <span class="home-stat-label">Tahun Pengalaman</span>
                         </div>
-                        <div class="home-stat-item">
+                        <div class="home-stat-item" data-aos="zoom-in" data-aos-delay="500" data-aos-duration="600">
                             <span class="home-stat-number">98%</span>
                             <span class="home-stat-label">Kepuasan Klien</span>
                         </div>
                     </div>
 
                     {{-- Hero CTA --}}
-                    <div class="home-hero-actions">
+                    <div class="home-hero-actions" data-aos="fade-up" data-aos-delay="600" data-aos-duration="700">
                         <a wire:navigate href="/proyek" class="home-btn home-btn-primary">
                             <span>Lihat Portofolio</span>
                             <svg class="home-btn-icon" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
@@ -74,7 +74,7 @@
 
                 {{-- HERO VISUAL --}}
                 <div class="col-12 col-lg-6">
-                    <div class="home-hero-visual">
+                    <div class="home-hero-visual" data-aos="fade-in-left" data-aos-delay="200" data-aos-duration="800">
                         <div class="home-hero-image-wrapper">
                             <img src="/images/home/hero-project.jpg"
                                  alt="Proyek konstruksi modern PT Jaya Abadi Konstruksi"
@@ -101,11 +101,11 @@
          ====================================================== --}}
     <section class="home-trusted">
         <div class="container">
-            <p class="home-trusted-label">Dipercaya Oleh</p>
+            <p class="home-trusted-label" data-aos="fade-up" data-aos-duration="600">Dipercaya Oleh</p>
             <div class="home-trusted-logos">
-                <div class="home-trusted-logo text-center">Lucy In The Sky <br> PT Lima Dua Lima Tiga Tbk</div>
-                <div class="home-trusted-logo">PT Wikinara Bening Bersama Putra</div>
-                <div class="home-trusted-logo">PMPP TNI</div>
+                <div class="home-trusted-logo text-center" data-aos="fade-up" data-aos-delay="100" data-aos-duration="600">Lucy In The Sky <br> PT Lima Dua Lima Tiga Tbk</div>
+                <div class="home-trusted-logo" data-aos="fade-up" data-aos-delay="200" data-aos-duration="600">PT Wikinara Bening Bersama Putra</div>
+                <div class="home-trusted-logo" data-aos="fade-up" data-aos-delay="300" data-aos-duration="600">PMPP TNI</div>
                 {{-- <div class="home-trusted-logo">Perusahaan D</div>
                 <div class="home-trusted-logo">Perusahaan E</div> --}}
             </div>
@@ -119,7 +119,7 @@
         <div class="container">
             <div class="row g-5 align-items-center">
                 <div class="col-12 col-lg-6">
-                    <div class="home-about-visual">
+                    <div class="home-about-visual" data-aos="fade-in-right" data-aos-duration="800">
                         <div class="home-about-image-wrapper">
                             <img src="/images/founder.jpg"
                                  alt="Tim profesional PT Jaya Abadi Konstruksi"
@@ -131,19 +131,19 @@
 
                 <div class="col-12 col-lg-6">
                     <div class="home-about-content">
-                        <h2 class="home-section-title">
+                        <h2 class="home-section-title" data-aos="fade-up" data-aos-delay="0" data-aos-duration="700">
                             <span class="home-section-subtitle">Tentang Perusahaan</span>
                             Membangun Kepercayaan melalui Kualitas & Inovasi
                         </h2>
 
-                        <p class="home-about-text">
+                        <p class="home-about-text" data-aos="fade-up" data-aos-delay="100" data-aos-duration="700">
                             Sebagai perusahaan konstruksi terkemuka di Indonesia,
                             kami berkomitmen memberikan solusi konstruksi terintegrasi
                             dengan standar kualitas tertinggi dan teknologi terkini.
                         </p>
 
                         <div class="home-about-features">
-                            <div class="home-feature-item">
+                            <div class="home-feature-item" data-aos="fade-up" data-aos-delay="200" data-aos-duration="700">
                                 <svg class="home-feature-icon" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                                     <path d="M5 13l4 4L19 7"/>
                                 </svg>
@@ -152,7 +152,7 @@
                                     <p class="home-feature-desc">Material premium & standar SNI</p>
                                 </div>
                             </div>
-                            <div class="home-feature-item">
+                            <div class="home-feature-item" data-aos="fade-up" data-aos-delay="300" data-aos-duration="700">
                                 <svg class="home-feature-icon" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                                     <path d="M12 15v3m0 3v-3m0 0h3m-3 0H9m12-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
                                 </svg>
@@ -163,7 +163,7 @@
                             </div>
                         </div>
 
-                        <a wire:navigate href="/tentang-kami" class="home-btn home-btn-link">
+                        <a wire:navigate href="/tentang-kami" class="home-btn home-btn-link" data-aos="fade-up" data-aos-delay="400" data-aos-duration="700">
                             <span>Pelajari Selengkapnya</span>
                             <svg class="home-btn-icon" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
                                 <path d="M5 12h14M12 5l7 7-7 7"></path>
@@ -181,11 +181,11 @@
     <section class="home-services">
         <div class="container">
             <div class="home-section-header">
-                <h2 class="home-section-title text-center">
+                <h2 class="home-section-title text-center" data-aos="fade-up" data-aos-duration="700">
                     <span class="home-section-subtitle">Solusi Terintegrasi</span>
                     Layanan Konstruksi Unggulan
                 </h2>
-                <p class="home-section-desc text-center">
+                <p class="home-section-desc text-center" data-aos="fade-up" data-aos-delay="100" data-aos-duration="700">
                     Menyediakan berbagai solusi konstruksi untuk kebutuhan industri,
                     komersial, dan infrastruktur.
                 </p>
@@ -193,7 +193,7 @@
 
             <div class="row g-4">
                 <div class="col-12 col-md-6 col-lg-4">
-                    <div class="home-service-card">
+                    <div class="home-service-card" data-aos="fade-up" data-aos-delay="100" data-aos-duration="700">
                         <div class="home-service-icon-wrapper">
                             <svg class="home-service-icon" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                                 <path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
@@ -213,7 +213,7 @@
                 </div>
 
                 <div class="col-12 col-md-6 col-lg-4">
-                    <div class="home-service-card">
+                    <div class="home-service-card" data-aos="fade-up" data-aos-delay="200" data-aos-duration="700">
                         <div class="home-service-icon-wrapper">
                             <svg class="home-service-icon" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                                 <path d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l5.447 2.724A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/>
@@ -233,7 +233,7 @@
                 </div>
 
                 <div class="col-12 col-md-6 col-lg-4">
-                    <div class="home-service-card">
+                    <div class="home-service-card" data-aos="fade-up" data-aos-delay="300" data-aos-duration="700">
                         <div class="home-service-icon-wrapper">
                             <svg class="home-service-icon" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                                 <path d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-8 4-8-4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
@@ -254,7 +254,7 @@
             </div>
 
             <div class="text-center mt-6 spasi-tombol">
-                <a wire:navigate href="/layanan" class="home-btn home-btn-secondary">
+                <a wire:navigate href="/layanan" class="home-btn home-btn-secondary" data-aos="fade-up" data-aos-delay="400" data-aos-duration="700">
                     <span>Jelajahi Semua Layanan</span>
                     <svg class="home-btn-icon" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
                         <path d="M9 5l7 7-7 7"></path>
@@ -270,11 +270,11 @@
     <section class="home-projects">
         <div class="container">
             <div class="home-section-header">
-                <h2 class="home-section-title">
+                <h2 class="home-section-title" data-aos="fade-up" data-aos-duration="700">
                     <span class="home-section-subtitle">Portofolio Terbaru</span>
                     Proyek Unggulan Kami
                 </h2>
-                <p class="home-section-desc">
+                <p class="home-section-desc" data-aos="fade-up" data-aos-delay="100" data-aos-duration="700">
                     Bukti nyata keahlian kami dalam menyelesaikan proyek-proyek
                     konstruksi berkualitas tinggi.
                 </p>
@@ -282,7 +282,7 @@
 
             <div class="row g-4">
                 <div class="col-12 col-md-6 col-lg-4">
-                    <article class="home-project-card">
+                    <article class="home-project-card" data-aos="zoom-in-up" data-aos-delay="100" data-aos-duration="700">
                         <div class="home-project-image-wrapper">
                             <img src="/images/home/proyek.jpg"
                                  alt="Gedung Industri Manufaktur Modern"
@@ -310,7 +310,7 @@
                 </div>
 
                 <div class="col-12 col-md-6 col-lg-4">
-                    <article class="home-project-card">
+                    <article class="home-project-card" data-aos="zoom-in-up" data-aos-delay="200" data-aos-duration="700">
                         <div class="home-project-image-wrapper">
                             <img src="/images/home/proyek2.jpg"
                                  alt="Infrastruktur Kawasan Industri"
@@ -338,7 +338,7 @@
                 </div>
 
                 <div class="col-12 col-md-6 col-lg-4">
-                    <article class="home-project-card">
+                    <article class="home-project-card" data-aos="zoom-in-up" data-aos-delay="300" data-aos-duration="700">
                         <div class="home-project-image-wrapper">
                             <img src="/images/home/proyek3.jpg"
                                  alt="Renovasi Fasilitas Produksi"
@@ -367,7 +367,7 @@
             </div>
 
             <div class="text-center mt-6 spasi-tombol">
-                <a wire:navigate href="/proyek" class="home-btn home-btn-primary">
+                <a wire:navigate href="/proyek" class="home-btn home-btn-primary" data-aos="fade-up" data-aos-delay="400" data-aos-duration="700">
                     <span>Lihat Semua Proyek</span>
                     <svg class="home-btn-icon" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
                         <path d="M5 12h14M12 5l7 7-7 7"></path>
@@ -383,14 +383,14 @@
     <section class="home-cta">
         <div class="container">
             <div class="home-cta-content">
-                <h2 class="home-cta-title">
+                <h2 class="home-cta-title" data-aos="fade-up" data-aos-duration="700">
                     Siap Membangun Proyek Impian Anda?
                 </h2>
-                <p class="home-cta-desc">
+                <p class="home-cta-desc" data-aos="fade-up" data-aos-delay="100" data-aos-duration="700">
                     Konsultasikan kebutuhan konstruksi Anda dengan tim ahli kami.
                     Dapatkan solusi terbaik untuk proyek Anda.
                 </p>
-                <div class="home-cta-actions">
+                <div class="home-cta-actions" data-aos="fade-up" data-aos-delay="200" data-aos-duration="700">
                     <a wire:navigate href="/kontak" class="home-btn home-btn-light">
                         <span>Hubungi Kami Sekarang</span>
                         <svg class="home-btn-icon" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">

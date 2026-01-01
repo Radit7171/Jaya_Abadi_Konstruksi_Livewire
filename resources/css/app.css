@@ -13,6 +13,8 @@
 @import "./components/theme-toggle.css";
 /* Import Footer Styles */
 @import './components/footer.css';
+/* Import AOS Custom Styles */
+@import './components/aos.css';
 
 /* import home-page styles */
 @import './pages/home/home-page.css';

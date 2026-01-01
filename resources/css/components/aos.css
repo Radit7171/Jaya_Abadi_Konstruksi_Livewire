@@ -1,0 +1,235 @@
+/**
+ * AOS (Animate On Scroll) Custom Styles
+ * Customization untuk animasi yang lebih modern & professional
+ *
+ * DESIGN PRINCIPLES:
+ * - Enhanced easing functions
+ * - Smooth, professional feel
+ * - Respects theme (light/dark)
+ * - Performance optimized
+ */
+
+/* ==========================================================================
+   AOS CUSTOM EASING & ANIMATION ENHANCEMENTS
+   ========================================================================== */
+
+:root {
+    /* Custom easing for smoother animations */
+    --aos-easing-ease-in-out-cubic: cubic-bezier(0.645, 0.045, 0.355, 1);
+    --aos-easing-ease-out-cubic: cubic-bezier(0.215, 0.61, 0.355, 1);
+    --aos-easing-ease-in-out-quart: cubic-bezier(0.77, 0, 0.175, 1);
+    --aos-easing-ease-out-quart: cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* Override AOS default animations dengan easing yang lebih baik */
+[data-aos] {
+    opacity: 0;
+    transition-property: opacity, transform, filter;
+    transition-duration: 0.6s;
+    transition-timing-function: var(--aos-easing-ease-out-cubic);
+    pointer-events: none;
+}
+
+[data-aos][data-aos-duration="600"] {
+    transition-duration: 0.6s;
+}
+
+[data-aos][data-aos-duration="700"] {
+    transition-duration: 0.7s;
+}
+
+[data-aos][data-aos-duration="800"] {
+    transition-duration: 0.8s;
+}
+
+[data-aos][data-aos-duration="1000"] {
+    transition-duration: 1s;
+}
+
+[data-aos].aos-animate {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* ==========================================================================
+   ANIMATION PRESETS - MODERN & PROFESSIONAL
+   ========================================================================== */
+
+/* FADE UP - Standard entry animation */
+[data-aos="fade-up"] {
+    transform: translate3d(0, 60px, 0);
+}
+
+[data-aos="fade-up"].aos-animate {
+    transform: translate3d(0, 0, 0);
+}
+
+/* FADE DOWN - For top-entering elements */
+[data-aos="fade-down"] {
+    transform: translate3d(0, -60px, 0);
+}
+
+[data-aos="fade-down"].aos-animate {
+    transform: translate3d(0, 0, 0);
+}
+
+/* FADE LEFT - From right to left slide */
+[data-aos="fade-in-left"] {
+    transform: translate3d(40px, 0, 0);
+}
+
+[data-aos="fade-in-left"].aos-animate {
+    transform: translate3d(0, 0, 0);
+}
+
+/* FADE RIGHT - From left to right slide */
+[data-aos="fade-in-right"] {
+    transform: translate3d(-40px, 0, 0);
+}
+
+[data-aos="fade-in-right"].aos-animate {
+    transform: translate3d(0, 0, 0);
+}
+
+/* ZOOM IN - Subtle scale-in effect */
+[data-aos="zoom-in"] {
+    transform: scale3d(0.95, 0.95, 1);
+    opacity: 0;
+}
+
+[data-aos="zoom-in"].aos-animate {
+    transform: scale3d(1, 1, 1);
+    opacity: 1;
+}
+
+/* ZOOM IN UP - Scale up while coming from bottom */
+[data-aos="zoom-in-up"] {
+    transform: translate3d(0, 40px, 0) scale3d(0.95, 0.95, 1);
+    opacity: 0;
+}
+
+[data-aos="zoom-in-up"].aos-animate {
+    transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+    opacity: 1;
+}
+
+/* ==========================================================================
+   STAGGER/DELAY CLASSES - For sequential animations
+   ========================================================================== */
+
+/* Auto stagger delay untuk list items */
+[data-aos][data-aos-delay="50"] {
+    transition-delay: 0.05s;
+}
+
+[data-aos][data-aos-delay="100"] {
+    transition-delay: 0.1s;
+}
+
+[data-aos][data-aos-delay="150"] {
+    transition-delay: 0.15s;
+}
+
+[data-aos][data-aos-delay="200"] {
+    transition-delay: 0.2s;
+}
+
+[data-aos][data-aos-delay="300"] {
+    transition-delay: 0.3s;
+}
+
+/* ==========================================================================
+   PREFERS REDUCED MOTION RESPECT
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    [data-aos] {
+        transition: none !important;
+        animation: none !important;
+    }
+
+    [data-aos] {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}
+
+/* ==========================================================================
+   THEME AWARE ANIMATIONS
+   ========================================================================== */
+
+/* Light theme adjustments */
+[data-bs-theme="light"] [data-aos] {
+    /* No special changes needed for light theme */
+}
+
+/* Dark theme adjustments */
+[data-bs-theme="dark"] [data-aos] {
+    /* No special changes needed for dark theme */
+}
+
+/* ==========================================================================
+   PERFORMANCE OPTIMIZATIONS
+   ========================================================================== */
+
+/* Use will-change sparingly for better performance */
+[data-aos] {
+    will-change: opacity, transform;
+}
+
+[data-aos].aos-animate {
+    will-change: auto;
+}
+
+/* GPU acceleration untuk smooth animations */
+[data-aos] {
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+/* ==========================================================================
+   ENHANCED ANIMATIONS UNTUK SPECIFIC CONTEXTS
+   ========================================================================== */
+
+/* Hero section - Dramatic entrance */
+[data-aos].aos-hero {
+    opacity: 0;
+    transform: translate3d(0, 80px, 0);
+}
+
+[data-aos].aos-hero.aos-animate {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+}
+
+/* Card hover effect (paired dengan AOS) */
+[data-aos-type="card"] {
+    transition-property: opacity, transform, box-shadow;
+}
+
+[data-aos-type="card"].aos-animate:hover {
+    transform: translateY(-8px) scale(1.02);
+}
+
+/* Service card - Stagger effect */
+[data-aos-type="service-card"] {
+    flex-basis: 100%;
+}
+
+[data-aos-type="service-card"].aos-animate {
+    opacity: 1;
+}
+
+/* Portfolio items - Image reveal */
+[data-aos-type="portfolio"] img {
+    opacity: 0;
+    transform: scale3d(0.95, 0.95, 1);
+    transition: opacity 0.6s var(--aos-easing-ease-out-cubic),
+                transform 0.6s var(--aos-easing-ease-out-cubic);
+}
+
+[data-aos-type="portfolio"].aos-animate img {
+    opacity: 1;
+    transform: scale3d(1, 1, 1);
+}

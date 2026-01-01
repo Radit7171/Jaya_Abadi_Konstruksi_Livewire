@@ -3,6 +3,10 @@ import "./bootstrap";
 // DO NOT import Alpine here - Livewire v3 provides it via window.Alpine
 // Livewire includes Alpine automatically
 
+// Import AOS (Animate On Scroll)
+import aosManager from "./components/aos";
+window.aosManager = aosManager;
+
 // Import components - they register with Alpine via alpine:init event listener
 import "./components/theme";
 import "./components/scroll";
@@ -15,3 +19,15 @@ import "./components/footer";
 import "./pages/home/home-page";
 
 // Alpine will be initialized by Livewire automatically
+
+// Initialize AOS after Livewire is ready
+document.addEventListener('livewire:initialized', () => {
+    aosManager.init();
+});
+
+// Fallback initialization if Livewire doesn't fire event (for non-Livewire pages)
+document.addEventListener('DOMContentLoaded', () => {
+    if (!aosManager.initialized) {
+        aosManager.init();
+    }
+});

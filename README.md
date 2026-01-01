@@ -116,6 +116,20 @@ Dokumentasi tentang:
 -   Font consistency verification
 -   Maintenance checklist
 
+### 11. [AOS (ANIMATE ON SCROLL) INTEGRATION](readme/11-AOS-ANIMATIONS.md)
+
+Penjelasan tentang:
+
+-   AOS library integration & architecture
+-   AOSManager class untuk centralized management
+-   Custom CSS animations dengan professional easing
+-   Livewire v3 auto-integration
+-   Available animations & timing configuration
+-   Implementation patterns (Hero, Grid, Portfolio)
+-   Accessibility support (prefers-reduced-motion)
+-   Performance optimization & best practices
+-   Debug & troubleshooting guide
+
 ---
 
 ## 🚀 QUICK START
@@ -159,18 +173,19 @@ npm run build
 ## 📝 METADATA
 
 **Last Updated:** January 1, 2026  
-**Version:** 1.3.0 (Design Optimization - Kecil, Slim, Modern)  
+**Version:** 1.4.0 (AOS Animations Integration)  
 **Maintainer:** Frontend Team & GitHub Copilot  
 **Company:** PT Jaya Abadi Konstruksi
 
 **Latest Changes:**
 
--   Design optimization untuk filosofi "kecil, slim, modern"
--   Section padding & spacing reduction (-30%)
--   Typography refinement (heading font size optimization)
--   Navbar compact design (8 improvements)
--   Button padding optimization
--   Font consistency verification (Sora, Inter, Fira Code)
+-   AOS (Animate On Scroll) integration untuk smooth animations
+-   AOSManager class untuk centralized animation management
+-   Custom CSS animations dengan professional easing functions
+-   Livewire v3 auto-integration untuk SPA navigation
+-   Home page fully animated (25+ elements)
+-   Accessibility support (prefers-reduced-motion respected)
+-   Complete documentation & implementation patterns
 
 ---
 
