@@ -29,6 +29,12 @@
     --about-gradient: linear-gradient(135deg, #2563eb 0%, #10b981 100%);
     --about-gradient-accent: linear-gradient(135deg, #f59e0b 0%, #ec4899 100%);
 
+    /* Animation & Interaction Variables */
+    --about-ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+    --about-ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --about-transition-slow: all 0.4s var(--about-ease-smooth);
+    --about-transition-fast: all 0.2s var(--about-ease-smooth);
+
     background-color: var(--about-bg);
     color: var(--about-text);
     transition: background-color 0.3s ease, color 0.3s ease;
@@ -170,39 +176,33 @@
     font-size: 0.95rem;
     border-radius: var(--about-radius);
     border: 2px solid transparent;
-    transition: var(--about-transition);
+    transition: var(--about-transition-slow);
     text-decoration: none;
     cursor: pointer;
     white-space: nowrap;
+    position: relative;
+    overflow: hidden;
 }
 
-.about-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--about-shadow);
-}
-
-.about-btn:active {
-    transform: translateY(0);
-}
-
-.about-btn-icon {
-    width: 1.25rem;
-    height: 1.25rem;
-    transition: transform 0.3s ease;
-}
-
-.about-btn:hover .about-btn-icon {
-    transform: translateX(4px);
+.about-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.15) 50%, transparent 70%);
+    animation: about-shine 3s infinite;
 }
 
 .about-btn-primary {
     background: var(--about-gradient);
     color: var(--about-inverse-text);
+    box-shadow: 0 8px 16px rgba(37, 99, 235, 0.3);
 }
 
 .about-btn-primary:hover {
     background: linear-gradient(135deg, #1d4ed8 0%, #0d9488 100%);
     color: var(--about-inverse-text);
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(37, 99, 235, 0.4);
 }
 
 .about-btn-outline {
@@ -214,6 +214,17 @@
 .about-btn-outline:hover {
     background-color: var(--about-primary);
     color: var(--about-inverse-text);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+}
+
+.about-btn-icon {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+    position: relative;
+    z-index: 1;
 }
 
 .about-btn-lg {
@@ -555,16 +566,23 @@
     position: relative;
     padding: 2.5rem;
     background: var(--about-card-bg);
-    border: 1px solid var(--about-border);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: var(--about-radius-lg);
-    transition: var(--about-transition);
+    transition: var(--about-transition-slow);
     overflow: hidden;
 }
 
 .about-card:hover {
-    border-color: var(--about-primary);
-    box-shadow: 0 20px 40px -10px var(--about-shadow-color);
-    transform: translateY(-4px);
+    border-color: rgba(37, 99, 235, 0.2);
+    box-shadow: 0 30px 60px -15px var(--about-shadow-lg-color);
+    transform: translateY(-12px);
+    background: rgba(255, 255, 255, 0.98);
+}
+
+[data-bs-theme="dark"] .about-card:hover {
+    background: rgba(30, 41, 59, 0.99);
+    border-color: rgba(37, 99, 235, 0.3);
 }
 
 .about-card-corner-accent {
@@ -845,6 +863,7 @@
     overflow: hidden;
     position: relative;
     background: var(--about-light);
+    padding: 4rem 0;
 }
 
 .about-achievements-bg-pattern {
@@ -860,31 +879,51 @@
     position: relative;
     padding: 2rem;
     background: var(--about-card-bg);
-    border: 1px solid var(--about-border);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: var(--about-radius-lg);
     text-align: center;
-    transition: var(--about-transition);
+    transition: var(--about-transition-slow);
     overflow: hidden;
     z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
 }
 
 .about-achievement-card:hover {
-    border-color: var(--about-primary);
-    box-shadow: 0 20px 40px -10px var(--about-shadow-color);
-    transform: translateY(-6px);
+    border-color: rgba(37, 99, 235, 0.2);
+    box-shadow: 0 30px 60px -15px var(--about-shadow-lg-color);
+    transform: translateY(-12px);
+    background: rgba(255, 255, 255, 0.98);
+}
+
+[data-bs-theme="dark"] .about-achievement-card:hover {
+    background: rgba(30, 41, 59, 0.99);
+    border-color: rgba(37, 99, 235, 0.3);
 }
 
 .about-achievement-icon {
     width: 60px;
     height: 60px;
     border-radius: var(--about-radius);
-    background: linear-gradient(135deg, var(--about-primary-light), var(--about-primary-light));
+    background: linear-gradient(135deg, var(--about-primary) 0%, rgba(37, 99, 235, 0.1) 100%);
     color: var(--about-primary);
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.75rem;
     margin: 0 auto 1.5rem;
+    transition: var(--about-transition-slow);
+    position: relative;
+    overflow: hidden;
+}
+
+.about-achievement-card:hover .about-achievement-icon {
+    transform: scale(1.15) rotate(5deg);
+    box-shadow: 0 15px 30px rgba(37, 99, 235, 0.3);
 }
 
 .about-achievement-counter {
@@ -899,6 +938,12 @@
     font-size: 2.5rem;
     font-weight: 900;
     color: var(--about-primary);
+    transition: var(--about-transition-fast);
+    display: inline-block;
+}
+
+.about-achievement-card:hover .about-achievement-number {
+    color: var(--about-primary-dark);
 }
 
 .about-achievement-symbol {
@@ -912,6 +957,11 @@
     font-weight: 700;
     color: var(--about-text);
     margin-bottom: 0.5rem;
+    transition: var(--about-transition-fast);
+}
+
+.about-achievement-card:hover .about-achievement-label {
+    color: var(--about-primary);
 }
 
 .about-achievement-description {
@@ -1207,6 +1257,70 @@
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
+    }
+}
+
+/* ==========================================================
+   ANIMATIONS & KEYFRAMES
+   ========================================================== */
+
+@keyframes about-shine {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+@keyframes about-fade-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes about-float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes about-pulse-glow {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(37, 99, 235, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 40px rgba(37, 99, 235, 0.8);
+    }
+}
+
+/* Fade-in animation dengan stagger */
+.about-fade-in {
+    opacity: 0;
+    animation: about-fade-in-up 0.6s ease forwards;
+}
+
+.about-ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.6);
+    transform: scale(0);
+    animation: about-ripple-animation 0.6s ease-out;
+    pointer-events: none;
+}
+
+@keyframes about-ripple-animation {
+    to {
+        transform: scale(4);
+        opacity: 0;
     }
 }
 

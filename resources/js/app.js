@@ -18,13 +18,18 @@ import "./components/footer";
 // import home-page
 import "./pages/home/home-page";
 
+// import services-page
+import "./pages/services-page";
+
+// import about-page
+import "./pages/about-page";
+
 // Alpine will be initialized by Livewire automatically
 
 // Initialize AOS after Livewire is ready
 document.addEventListener('livewire:initialized', () => {
     aosManager.init();
 });
-
 // Fallback initialization if Livewire doesn't fire event (for non-Livewire pages)
 document.addEventListener('DOMContentLoaded', () => {
     if (!aosManager.initialized) {
