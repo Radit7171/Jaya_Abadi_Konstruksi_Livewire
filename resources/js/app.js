@@ -24,6 +24,9 @@ import "./pages/services-page";
 // import about-page
 import "./pages/about-page";
 
+// import projects-page
+import "./pages/projects/projects-page";
+
 // Alpine will be initialized by Livewire automatically
 
 // Initialize AOS after Livewire is ready
