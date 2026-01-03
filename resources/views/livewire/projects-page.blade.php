@@ -190,14 +190,9 @@
 
             </div>
 
-            {{-- Load More Button --}}
-            <div class="projects-load-more-wrapper" data-aos="fade-up" data-aos-delay="100" data-aos-duration="600">
-                <button wire:click="loadMore" class="projects-btn projects-btn-outline projects-load-more-btn">
-                    Tampilkan Lebih Banyak
-                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
-                        <path d="M12 5v14M5 12h14"></path>
-                    </svg>
-                </button>
+            {{-- Pagination Links --}}
+            <div class="projects-pagination" data-aos="fade-up" data-aos-delay="100" data-aos-duration="600">
+                {{ $projects->links() }}
             </div>
 
         </div>

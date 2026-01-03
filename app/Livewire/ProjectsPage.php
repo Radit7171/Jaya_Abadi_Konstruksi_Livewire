@@ -17,10 +17,10 @@ class ProjectsPage extends Component
 
     // Properties
     public string $selectedFilter = 'all';
-    public int $perPage = 6;
+    private const ITEMS_PER_PAGE = 6;
 
     /**
-     * Get projects based on filter
+     * Get projects based on filter with pagination
      */
     public function getProjects()
     {
@@ -31,9 +31,9 @@ class ProjectsPage extends Component
             $query->where('category', $this->selectedFilter);
         }
 
-        // Order by created_at descending
+        // Order by created_at descending & paginate
         return $query->orderBy('created_at', 'desc')
-                     ->paginate($this->perPage);
+                     ->paginate(self::ITEMS_PER_PAGE);
     }
 
     /**
@@ -42,15 +42,6 @@ class ProjectsPage extends Component
     public function filterProjects(string $category): void
     {
         $this->selectedFilter = $category;
-        $this->resetPage();
-    }
-
-    /**
-     * Load more projects (increment per page and reset pagination)
-     */
-    public function loadMore(): void
-    {
-        $this->perPage += 6;
         $this->resetPage();
     }
 

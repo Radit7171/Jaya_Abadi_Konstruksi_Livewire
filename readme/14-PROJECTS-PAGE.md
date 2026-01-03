@@ -209,17 +209,27 @@ Grid dari project cards dengan filter & pagination.
 @endforelse
 ```
 
-#### Load More Button
+#### Pagination Links
 
 **Functionality:**
-- `wire:click="loadMore"` untuk increment perPage (tambah 6 items)
-- Alternative ke pagination links
-- Reset pagination ke page 1
+- `{{ $projects->links() }}` untuk render Livewire pagination component
+- Fixed 6 items per page (ITEMS_PER_PAGE constant)
+- Performance-optimized: consistent DOM size regardless of total pages
+- Automatic page handling via Livewire
 
 **Styling:**
-- Button classes: `projects-btn projects-btn-outline projects-load-more-btn`
-- Icons: + (plus icon)
-- Centered alignment dengan margin-top 2.5rem
+- Pagination wrapper: `projects-pagination`
+- Link classes: auto-applied by Livewire with responsive adjustments
+- Active state: `.active span` dengan primary color background
+- Disabled state: `.disabled span` dengan reduced opacity
+- Mobile-optimized: tighter spacing, smaller font on small screens
+
+**Why Pagination Links (not Load More)?**
+- ✅ Consistent memory usage (doesn't accumulate DOM)
+- ✅ Better performance on slow connections
+- ✅ User controls exact page (not "infinite scroll")
+- ✅ Accessible page indicators
+- ✅ Traditional UX pattern users expect
 
 ---
 
@@ -332,6 +342,14 @@ Dark Mode:
 - `.projects-card-description` - Card description
 - `.projects-card-link` - Detail link
 
+**Pagination:**
+- `.projects-pagination` - Pagination wrapper container
+- `.projects-pagination ul` - Links list
+- `.projects-pagination a` - Pagination link
+- `.projects-pagination span` - Pagination text (prev/next labels)
+- `.projects-pagination .active span` - Current page indicator
+- `.projects-pagination .disabled span` - Disabled state
+
 **CTA Section:**
 - `.projects-cta` - CTA container
 - `.projects-cta-title` - CTA title
@@ -352,7 +370,7 @@ Dark Mode:
 @media (max-width: 1199px) { }
 
 /* Medium screens (≥768px) */
-@media (max-width: 991px) { 
+@media (max-width: 991px) {
   Font size reductions
   Adjusted spacing
 }
@@ -415,7 +433,11 @@ use WithPagination;        // Livewire pagination support
 **Properties:**
 ```php
 public string $selectedFilter = 'all';    // Current filter category
-public int $perPage = 6;                  // Items per page
+```
+
+**Constants:**
+```php
+private const ITEMS_PER_PAGE = 6;         // Fixed items per page
 ```
 
 **Methods:**
@@ -425,7 +447,7 @@ public int $perPage = 6;                  // Items per page
 - Returns paginated collection
 - Filters by category (if not 'all')
 - Orders by created_at descending
-- Pagination: 6 items per page (default)
+- Pagination: 6 items per page (via constant)
 
 ```php
 public function getProjects()
@@ -437,7 +459,7 @@ public function getProjects()
     }
     
     return $query->orderBy('created_at', 'desc')
-                 ->paginate($this->perPage);
+                 ->paginate(self::ITEMS_PER_PAGE);
 }
 ```
 
@@ -454,18 +476,11 @@ public function filterProjects(string $category): void
 }
 ```
 
-#### `loadMore()`
-- Increment `$perPage` by 6
-- Reset pagination (untuk smooth scrolling)
-- Livewire auto-show lebih banyak items
-
-```php
-public function loadMore(): void
-{
-    $this->perPage += 6;
-    $this->resetPage();
-}
-```
+#### Page Management
+- Pagination otomatis via Livewire `WithPagination` trait
+- Fixed 6 items per page via `ITEMS_PER_PAGE` constant
+- `resetPage()` dalam `filterProjects()` untuk reset ke page 1 saat filter berubah
+- Livewire auto-handle page routing & caching
 
 #### `render()`
 - Pass `projects` data ke Blade view
@@ -494,7 +509,7 @@ public function render()
 @endforelse
 
 <!-- Load more button -->
-<button wire:click="loadMore">Load More</button>
+{{ $projects->links() }}
 ```
 
 ---
