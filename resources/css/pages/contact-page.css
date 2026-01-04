@@ -1,0 +1,1218 @@
+/* ==========================================================
+   CONTACT PAGE STYLES - Modern & Professional
+   Scope: .contact-page
+   ========================================================== */
+
+.contact-page {
+    padding-top: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    overflow-x: hidden;
+
+    /* CSS Variables untuk konsistensi theme */
+    --contact-primary: #2563eb;
+    --contact-primary-dark: #1d4ed8;
+    --contact-primary-light: #eff6ff;
+    --contact-secondary: #10b981;
+    --contact-accent: #f59e0b;
+    --contact-light: #f8fafc;
+    --contact-dark: #1e293b;
+    --contact-gray: #64748b;
+    --contact-border: #e2e8f0;
+    --contact-bg: #ffffff;
+    --contact-card-bg: #ffffff;
+    --contact-section-bg: #ffffff;
+    --contact-shadow-color: rgba(0, 0, 0, 0.1);
+    --contact-shadow-lg-color: rgba(0, 0, 0, 0.15);
+    --contact-text: #1e293b;
+    --contact-text-muted: #64748b;
+    --contact-inverse-text: #ffffff;
+    --contact-gradient: linear-gradient(135deg, #2563eb 0%, #10b981 100%);
+    --contact-gradient-accent: linear-gradient(135deg, #f59e0b 0%, #ec4899 100%);
+    --contact-success: #10b981;
+    --contact-warning: #f59e0b;
+    --contact-error: #ef4444;
+
+    /* Animation & Interaction Variables */
+    --contact-ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+    --contact-ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --contact-transition-slow: all 0.4s var(--contact-ease-smooth);
+    --contact-transition-fast: all 0.2s var(--contact-ease-smooth);
+
+    --contact-shadow: 0 10px 25px -5px var(--contact-shadow-color);
+    --contact-shadow-lg: 0 20px 40px -15px var(--contact-shadow-lg-color);
+    --contact-radius: 12px;
+    --contact-radius-lg: 16px;
+    --contact-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    background-color: var(--contact-bg);
+    color: var(--contact-text);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ==========================================================
+   DARK MODE OVERRIDES
+   ========================================================== */
+[data-bs-theme="dark"] .contact-page {
+    --contact-primary: #3b82f6;
+    --contact-primary-dark: #2563eb;
+    --contact-primary-light: #1e3a8a;
+    --contact-secondary: #10b981;
+    --contact-accent: #f59e0b;
+    --contact-light: #1e293b;
+    --contact-dark: #f8fafc;
+    --contact-gray: #94a3b8;
+    --contact-border: #334155;
+    --contact-bg: #0f172a;
+    --contact-card-bg: #1e293b;
+    --contact-section-bg: #1e293b;
+    --contact-shadow-color: rgba(0, 0, 0, 0.25);
+    --contact-shadow-lg-color: rgba(0, 0, 0, 0.35);
+    --contact-text: #f1f5f9;
+    --contact-text-muted: #cbd5e1;
+    --contact-inverse-text: #0f172a;
+}
+
+/* ==========================================================
+   BREADCRUMB NAVIGATION
+   ========================================================== */
+.contact-breadcrumb {
+    background: linear-gradient(180deg, var(--contact-light) 0%, transparent 100%);
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--contact-border);
+}
+
+.contact-breadcrumb-list {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.875rem;
+}
+
+.contact-breadcrumb-link {
+    color: var(--contact-primary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--contact-transition);
+}
+
+.contact-breadcrumb-link:hover {
+    color: var(--contact-primary-dark);
+    text-decoration: underline;
+}
+
+.contact-breadcrumb-current {
+    color: var(--contact-text-muted);
+    font-weight: 600;
+}
+
+/* ==========================================================
+   SECTION BASE STYLES
+   ========================================================== */
+.contact-page section {
+    padding: 4rem 0;
+    position: relative;
+    transition: background-color 0.3s ease;
+}
+
+.contact-page section:nth-child(odd) {
+    background-color: var(--contact-section-bg);
+}
+
+.contact-section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--contact-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.75rem;
+}
+
+.contact-section-label i {
+    font-size: 1rem;
+}
+
+/* ==========================================================
+   BUTTON COMPONENTS
+   ========================================================== */
+.contact-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.75rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-radius: var(--contact-radius);
+    border: 2px solid transparent;
+    transition: var(--contact-transition-slow);
+    text-decoration: none;
+    cursor: pointer;
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.contact-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.15) 50%, transparent 70%);
+    animation: contact-shine 3s infinite;
+}
+
+.contact-btn-primary {
+    background: var(--contact-gradient);
+    color: var(--contact-inverse-text);
+    box-shadow: 0 8px 16px rgba(37, 99, 235, 0.3);
+}
+
+.contact-btn-primary:hover {
+    background: linear-gradient(135deg, #1d4ed8 0%, #0d9488 100%);
+    color: var(--contact-inverse-text);
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(37, 99, 235, 0.4);
+}
+
+.contact-btn-outline {
+    background-color: transparent;
+    color: var(--contact-primary);
+    border-color: var(--contact-primary);
+}
+
+.contact-btn-outline:hover {
+    background-color: var(--contact-primary);
+    color: var(--contact-inverse-text);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+}
+
+.contact-btn-white {
+    background: var(--contact-inverse-text);
+    color: var(--contact-primary);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.contact-btn-white:hover {
+    background: var(--contact-inverse-text);
+    color: var(--contact-primary-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+.contact-btn-outline-white {
+    background-color: transparent;
+    color: var(--contact-inverse-text);
+    border-color: var(--contact-inverse-text);
+}
+
+.contact-btn-outline-white:hover {
+    background-color: var(--contact-inverse-text);
+    color: var(--contact-primary);
+    transform: translateY(-3px);
+}
+
+.contact-btn-icon {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+/* ==========================================================
+   HERO SECTION
+   ========================================================== */
+.contact-hero {
+    position: relative;
+    padding: 4.5rem 0;
+    overflow: hidden;
+}
+
+.contact-hero-decoration {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    opacity: 0.08;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.contact-hero-decoration-top {
+    top: -200px;
+    right: -150px;
+    background: var(--contact-gradient);
+}
+
+.contact-hero-decoration-bottom {
+    bottom: -200px;
+    left: -150px;
+    background: var(--contact-gradient-accent);
+}
+
+.contact-hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1.5rem;
+    background: var(--contact-primary-light);
+    color: var(--contact-primary);
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+.contact-hero-badge-icon {
+    font-size: 1.1rem;
+}
+
+.contact-hero-title {
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    color: var(--contact-text);
+    letter-spacing: -0.02em;
+    font-family: 'Sora', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.contact-hero-highlight {
+    background: var(--contact-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: block;
+    margin-top: 0.25rem;
+}
+
+.contact-hero-subtitle {
+    font-size: 1.125rem;
+    color: var(--contact-text-muted);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    max-width: 500px;
+}
+
+.contact-hero-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.contact-info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.contact-info-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    border-radius: var(--contact-radius);
+    background: var(--contact-primary-light);
+    color: var(--contact-primary);
+    font-size: 1.2rem;
+}
+
+.contact-info-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.contact-info-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--contact-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.contact-info-item a {
+    color: var(--contact-text);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.contact-info-item a:hover {
+    color: var(--contact-primary);
+}
+
+.contact-hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.contact-hero-visual {
+    position: relative;
+}
+
+.contact-hero-image-wrapper {
+    position: relative;
+    border-radius: var(--contact-radius-lg);
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+}
+
+.contact-hero-image-bg {
+    position: absolute;
+    inset: 0;
+    background: var(--contact-gradient);
+    opacity: 0.1;
+    z-index: 1;
+}
+
+.contact-hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease-out;
+}
+
+.contact-hero-visual:hover .contact-hero-image {
+    transform: scale(1.05);
+}
+
+/* ==========================================================
+   CONTACT INFO SECTION
+   ========================================================== */
+.contact-info-section {
+    padding: 4rem 0;
+}
+
+.contact-info-section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.contact-info-section-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+    color: var(--contact-text);
+    margin-bottom: 1rem;
+    letter-spacing: -0.025em;
+    font-family: 'Sora', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.contact-info-section-subtitle {
+    font-size: 1.125rem;
+    color: var(--contact-text-muted);
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-info-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem;
+    background: var(--contact-card-bg);
+    border: 1px solid var(--contact-border);
+    border-radius: var(--contact-radius-lg);
+    text-align: center;
+    transition: var(--contact-transition);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.contact-info-card:hover {
+    border-color: var(--contact-primary);
+    box-shadow: 0 10px 30px rgba(37, 99, 235, 0.15);
+    transform: translateY(-5px);
+}
+
+.contact-info-card-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    background: var(--contact-primary-light);
+    color: var(--contact-primary);
+    font-size: 1.75rem;
+    transition: var(--contact-transition);
+}
+
+.contact-info-card:hover .contact-info-card-icon {
+    background: var(--contact-primary);
+    color: var(--contact-inverse-text);
+    transform: scale(1.1);
+}
+
+.contact-info-card-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--contact-text);
+    margin: 0;
+    font-family: 'Sora', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.contact-info-card-text {
+    font-size: 0.95rem;
+    color: var(--contact-text-muted);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.contact-info-card-text a {
+    color: var(--contact-primary);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.contact-info-card-text a:hover {
+    color: var(--contact-primary-dark);
+    text-decoration: underline;
+}
+
+.contact-quick-actions {
+    margin-top: 3rem;
+}
+
+.contact-social-card {
+    padding: 2.5rem;
+    background: var(--contact-card-bg);
+    border: 1px solid var(--contact-border);
+    border-radius: var(--contact-radius-lg);
+    text-align: center;
+}
+
+.contact-social-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--contact-text);
+    margin-bottom: 1.5rem;
+    font-family: 'Sora', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.contact-social-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.contact-social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: auto;
+    min-width: 120px;
+    padding: 0.75rem 1rem;
+    background: var(--contact-primary-light);
+    color: var(--contact-primary);
+    border-radius: var(--contact-radius);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: var(--contact-transition);
+    border: 1px solid transparent;
+}
+
+.contact-social-link:hover {
+    background: var(--contact-primary);
+    color: var(--contact-inverse-text);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(37, 99, 235, 0.3);
+}
+
+.contact-social-link-whatsapp {
+    background: #25d366;
+    color: var(--contact-inverse-text);
+}
+
+.contact-social-link-whatsapp:hover {
+    background: #1da853;
+    color: var(--contact-inverse-text);
+}
+
+.contact-social-link i {
+    font-size: 1.1rem;
+}
+
+/* ==========================================================
+   MAPS SECTION
+   ========================================================== */
+.contact-maps {
+    padding: 4rem 0;
+    background: var(--contact-section-bg);
+}
+
+.contact-maps-wrapper {
+    position: relative;
+    height: 100%;
+    min-height: 400px;
+}
+
+.contact-maps-container {
+    position: absolute;
+    inset: 0;
+    border-radius: var(--contact-radius-lg);
+    overflow: hidden;
+    box-shadow: var(--contact-shadow-lg);
+    border: 1px solid var(--contact-border);
+}
+
+.contact-maps-iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: var(--contact-radius-lg);
+}
+
+.contact-maps-info {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.contact-maps-info-header {
+    margin-bottom: 2rem;
+}
+
+.contact-maps-title {
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1.2;
+    color: var(--contact-text);
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.025em;
+    font-family: 'Sora', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.contact-maps-subtitle {
+    font-size: 1rem;
+    color: var(--contact-text-muted);
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Maps Location Card */
+.contact-maps-location-card {
+    background: var(--contact-card-bg);
+    border: 1px solid var(--contact-border);
+    border-radius: var(--contact-radius-lg);
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: var(--contact-transition);
+    margin-bottom: 1.5rem;
+}
+
+.contact-maps-location-card:hover {
+    border-color: var(--contact-primary);
+    box-shadow: 0 12px 32px rgba(37, 99, 235, 0.12);
+    transform: translateY(-4px);
+}
+
+.contact-maps-location-header {
+    background: linear-gradient(135deg, var(--contact-primary-light) 0%, rgba(37, 99, 235, 0.05) 100%);
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--contact-border);
+}
+
+.contact-maps-location-badge {
+    display: inline-block;
+    padding: 0.4rem 0.9rem;
+    background: var(--contact-primary);
+    color: var(--contact-inverse-text);
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.contact-maps-location-body {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.contact-maps-location-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+.contact-maps-location-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    border-radius: 10px;
+    background: var(--contact-primary-light);
+    color: var(--contact-primary);
+    font-size: 1.1rem;
+    transition: var(--contact-transition);
+}
+
+.contact-maps-location-item:hover .contact-maps-location-icon {
+    background: var(--contact-primary);
+    color: var(--contact-inverse-text);
+    transform: scale(1.1);
+}
+
+.contact-maps-location-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    flex: 1;
+}
+
+.contact-maps-location-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--contact-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.contact-maps-location-text {
+    font-size: 0.95rem;
+    color: var(--contact-text);
+    line-height: 1.5;
+    margin: 0;
+    font-weight: 500;
+}
+
+/* Maps Location Actions */
+.contact-maps-location-actions {
+    display: flex;
+    gap: 0.75rem;
+    padding: 0 1.5rem 1.5rem;
+}
+
+.contact-maps-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    border-radius: var(--contact-radius);
+    border: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: var(--contact-transition);
+    flex: 1;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.contact-maps-btn-primary {
+    background: var(--contact-primary);
+    color: var(--contact-inverse-text);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+}
+
+.contact-maps-btn-primary:hover {
+    background: var(--contact-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.35);
+}
+
+.contact-maps-btn-secondary {
+    background: var(--contact-light);
+    color: var(--contact-primary);
+    border: 1px solid var(--contact-border);
+}
+
+.contact-maps-btn-secondary:hover {
+    background: var(--contact-primary-light);
+    border-color: var(--contact-primary);
+    transform: translateY(-2px);
+}
+
+.contact-maps-btn i {
+    font-size: 1rem;
+}
+
+/* Quick Info */
+.contact-maps-quick-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.contact-maps-quick-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    background: rgba(16, 185, 129, 0.08);
+    border-radius: var(--contact-radius);
+    color: var(--contact-text);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.contact-maps-quick-item i {
+    color: var(--contact-secondary);
+    font-size: 1rem;
+}
+
+/* ==========================================================
+   FAQ SECTION
+   ========================================================== */
+.contact-faq {
+    padding: 4rem 0;
+}
+
+.contact-faq-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.contact-faq-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+    color: var(--contact-text);
+    margin-bottom: 1rem;
+    letter-spacing: -0.025em;
+    font-family: 'Sora', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.contact-faq-subtitle {
+    font-size: 1.125rem;
+    color: var(--contact-text-muted);
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-faq-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.contact-faq-item {
+    background: var(--contact-card-bg);
+    border: 1px solid var(--contact-border);
+    border-radius: var(--contact-radius-lg);
+    overflow: visible;
+    transition: var(--contact-transition);
+}
+
+.contact-faq-item:hover {
+    border-color: var(--contact-primary);
+    box-shadow: 0 8px 24px rgba(37, 99, 235, 0.1);
+}
+
+.contact-faq-question {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.3s ease;
+}
+
+.contact-faq-question:hover {
+    background: var(--contact-primary-light);
+}
+
+.contact-faq-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    border-radius: 50%;
+    background: var(--contact-primary);
+    color: var(--contact-inverse-text);
+    font-size: 0.9rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.contact-faq-icon i {
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.contact-faq-item.active .contact-faq-icon {
+    background: var(--contact-secondary);
+}
+
+.contact-faq-item.active .contact-faq-icon i {
+    transform: rotate(180deg);
+}
+
+.contact-faq-question-text {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--contact-text);
+    margin: 0;
+    font-family: 'Sora', -apple-system, BlinkMacSystemFont, sans-serif;
+    flex: 1;
+}
+
+.contact-faq-answer {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    padding: 0 1.5rem;
+    border-top: 1px solid var(--contact-border);
+    transition: max-height 0.5s ease, opacity 0.5s ease, padding 0.5s ease;
+    pointer-events: none;
+}
+
+.contact-faq-item.active .contact-faq-answer {
+    max-height: 1000px;
+    opacity: 1;
+    overflow: visible;
+    padding: 1.5rem 1.5rem 1.5rem;
+    pointer-events: auto;
+}
+
+.contact-faq-answer p {
+    font-size: 0.95rem;
+    color: var(--contact-text-muted);
+    line-height: 1.7;
+    margin: 0;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+}
+
+
+/* ==========================================================
+   CTA SECTION
+   ========================================================== */
+.contact-cta {
+    position: relative;
+    padding: 5rem 0;
+    background: var(--contact-gradient);
+    color: var(--contact-inverse-text);
+    overflow: hidden;
+}
+
+.contact-cta-bg-pattern {
+    position: absolute;
+    inset: 0;
+    opacity: 0.05;
+    background-image:
+        url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+}
+
+.contact-cta-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.contact-cta-title {
+    font-size: 2.75rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    letter-spacing: -0.025em;
+    font-family: 'Sora', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.contact-cta-subtitle {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+    opacity: 0.95;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contact-cta-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.contact-cta-footer {
+    font-size: 0.95rem;
+    opacity: 0.9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 0;
+}
+
+.contact-cta-footer i {
+    font-size: 1.1rem;
+}
+
+/* ==========================================================
+   ANIMATIONS
+   ========================================================== */
+@keyframes contact-shine {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==========================================================
+   RESPONSIVE DESIGN
+   ========================================================== */
+
+/* Tablet */
+@media (max-width: 991.98px) {
+    .contact-hero-title {
+        font-size: 2.25rem;
+    }
+
+    .contact-info-section-title,
+    .contact-maps-title,
+    .contact-faq-title {
+        font-size: 2rem;
+    }
+
+    .contact-cta-title {
+        font-size: 2rem;
+    }
+
+    .contact-social-links {
+        gap: 0.75rem;
+    }
+
+    .contact-social-link {
+        min-width: 100px;
+        padding: 0.65rem 0.9rem;
+        font-size: 0.85rem;
+    }
+
+    .contact-maps-wrapper {
+        min-height: 350px;
+    }
+
+    .contact-maps-location-actions {
+        flex-direction: column;
+    }
+
+    .contact-maps-btn {
+        width: 100%;
+    }
+}
+
+/* Mobile */
+@media (max-width: 767.98px) {
+    .contact-page section {
+        padding: 2.5rem 0;
+    }
+
+    .contact-hero {
+        padding: 3rem 0;
+    }
+
+    .contact-hero-title {
+        font-size: 1.75rem;
+        margin-bottom: 1rem;
+    }
+
+    .contact-hero-subtitle {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .contact-hero-info {
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .contact-hero-actions {
+        gap: 0.75rem;
+    }
+
+    .contact-btn {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.9rem;
+        flex: 1;
+        min-width: 150px;
+    }
+
+    .contact-info-section-title,
+    .contact-maps-title,
+    .contact-faq-title {
+        font-size: 1.5rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .contact-info-section-subtitle,
+    .contact-maps-subtitle,
+    .contact-faq-subtitle {
+        font-size: 1rem;
+    }
+
+    .contact-info-card {
+        padding: 1.5rem;
+    }
+
+    .contact-social-card {
+        padding: 1.5rem;
+    }
+
+    .contact-social-title {
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+    }
+
+    .contact-social-links {
+        gap: 0.5rem;
+    }
+
+    .contact-social-link {
+        min-width: 80px;
+        padding: 0.6rem 0.8rem;
+        font-size: 0.8rem;
+    }
+
+    .contact-social-link span {
+        display: none;
+    }
+
+    .contact-faq-question {
+        padding: 1.25rem;
+    }
+
+    .contact-faq-answer {
+        padding: 0 1.25rem 1.25rem;
+    }
+
+    .contact-cta {
+        padding: 3rem 0;
+    }
+
+    .contact-cta-title {
+        font-size: 1.75rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .contact-cta-subtitle {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .contact-cta-actions {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .contact-btn-white,
+    .contact-btn-outline-white {
+        width: 100%;
+    }
+}
+
+/* Extra Small */
+@media (max-width: 575.98px) {
+    .contact-hero-decoration {
+        width: 400px;
+        height: 400px;
+    }
+
+    .contact-hero-decoration-top {
+        top: -150px;
+        right: -100px;
+    }
+
+    .contact-hero-decoration-bottom {
+        bottom: -150px;
+        left: -100px;
+    }
+
+    .contact-breadcrumb-list {
+        font-size: 0.8rem;
+        gap: 0.5rem;
+    }
+
+    .contact-info-section-header,
+    .contact-maps-info-header,
+    .contact-faq-header {
+        margin-bottom: 2rem;
+    }
+
+    .contact-maps-wrapper {
+        min-height: 300px;
+    }
+
+    .contact-maps-location-card {
+        margin-bottom: 1rem;
+    }
+
+    .contact-maps-location-actions {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .contact-maps-btn {
+        padding: 0.65rem 1rem;
+        font-size: 0.85rem;
+    }
+
+    .contact-maps-container {
+        border-radius: 8px;
+    }
+
+    .contact-maps-iframe {
+        border-radius: 8px;
+    }
+
+    .contact-maps-title {
+        font-size: 1.5rem;
+    }
+
+    .contact-maps-quick-item {
+        font-size: 0.85rem;
+        padding: 0.65rem 0.9rem;
+    }
+
+    .contact-faq-items {
+        gap: 1rem;
+    }
+}

@@ -188,6 +188,32 @@ Penjelasan mendalam tentang:
 -   Accessibility features (keyboard navigation, reduced motion support, semantic HTML)
 -   Future enhancement roadmap (project detail page, advanced filters, search, galleries, testimonials, timeline view)
 
+### 15. [CONTACT PAGE ARCHITECTURE](readme/15-CONTACT-PAGE.md)
+
+Penjelasan mendalam tentang:
+
+-   Contact page sections & file structure (Blade, CSS, JS)
+-   Page structure & 6 major sections (breadcrumb, hero, contact info cards, maps & location, FAQ accordion, CTA)
+-   WhatsApp-centric contact strategy dengan multiple touchpoints
+-   Contact info cards (4 columns layout) dengan lokasi, telepon, email, jam operasional
+-   Social media links integration (WhatsApp, Instagram, Facebook, LinkedIn)
+-   Google Maps embedded iframe dengan location info card
+-   FAQ accordion dengan 4 items, smooth expand/collapse animation, keyboard support
+-   CSS architecture (1217 lines) dengan FAQ styling, icon color transitions, responsive grid layouts
+-   JavaScript functionality (315 lines) dengan FAQ toggle, smooth scroll, button ripple effects, analytics tracking
+-   Icon system compliance (Font Awesome icons untuk sections & UI)
+-   Typography system compliance (Sora, Inter, Fira Code)
+-   Design optimization ("kecil, slim, modern" aesthetic, mobile-first responsive)
+-   AOS animations integration untuk hero, cards, maps, FAQ, CTA sections
+-   Responsive design untuk mobile, tablet, & desktop views
+-   Dark mode support dengan CSS variables override
+-   Accessibility features (keyboard navigation pada FAQ, ARIA labels, semantic HTML, reduced motion support)
+-   FAQ accordion features (single item open policy, icon color change blue→green, icon rotation 180deg, smooth max-height animation)
+-   External links handling (WhatsApp, phone, email, maps search, services navigation)
+-   Button styling consistency (primary gradient, outline, white variants)
+-   Performance optimization dengan CSS-based animations & efficient JavaScript
+-   Error handling & troubleshooting guide untuk FAQ & maps issues
+
 ---
 
 ## 🚀 QUICK START
@@ -230,36 +256,41 @@ npm run build
 
 ## 📝 METADATA
 
-**Last Updated:** January 3, 2026  
-**Version:** 1.7.0 (Projects Page Implementation)  
+**Last Updated:** January 4, 2026  
+**Version:** 1.8.0 (Contact Page Implementation)  
 **Maintainer:** Frontend Team & GitHub Copilot  
 **Company:** PT Jaya Abadi Konstruksi
 
 **Latest Changes:**
 
--   Projects page implementation dengan 4 major sections (breadcrumb, hero overview, projects grid dengan filter & pagination, CTA)
--   Database-driven projects dengan Project Model & Migration (projects table dengan fields: title, description, category, image_url, is_published, published_at)
--   Livewire backend dengan WithPagination trait untuk reactive filtering & pagination (6 items per page, load more functionality)
--   Filter buttons untuk 4 kategori (Semua, Konstruksi Gedung, Infrastruktur, Renovasi) dengan wire:click binding
--   Dynamic project cards dengan database integration (@forelse loop, dynamic data binding)
--   Empty state handling jika tidak ada proyek dalam kategori filter
--   Hero section dengan quick stats (500+ Proyek Selesai, 10+ Tahun Pengalaman, 98% Kepuasan Klien)
--   Responsive grid layout (3 columns desktop, 2 columns tablet, 1 column mobile) dengan gap & aspect ratio
--   Project cards dengan image overlay effect (eye icon on hover), category badge, title, description truncation, detail link
--   CSS architecture (650+ lines) dengan scoped `.projects-` prefix, CSS variables untuk theme-aware colors, dark mode support
--   JavaScript behavior (200+ lines) dengan image lazy loading, card interactions, button ripple effects, filter state management, smooth scroll
--   Livewire integration untuk auto re-init behaviors after SPA navigation (livewire:navigated listener)
--   AOS animations (fade-up, fade-in-left, zoom-in) dengan staggered delays untuk hero, cards, CTA
--   Load More button untuk pagination alternative (increments perPage by 6)
--   CTA section dengan gradient background, decorative circles, dual buttons (primary light & outline light)
--   Dark mode support dengan CSS variables override di [data-bs-theme="dark"]
--   Accessibility features (keyboard navigation for filters, reduced motion support, semantic HTML, ARIA labels)
+-   Contact page implementation dengan 6 major sections (breadcrumb, hero dengan quick contact info, contact info cards dengan social media, maps embedding dengan location card, FAQ accordion, CTA)
+-   WhatsApp-centric contact strategy dengan multiple touchpoints (hero, info cards, social card, maps buttons, CTA)
+-   Contact info cards grid (4 columns desktop, 2 columns tablet, 1 column mobile) dengan lokasi, telepon, email, jam operasional
+-   Social media links integration (WhatsApp primary highlight, Instagram, Facebook, LinkedIn)
+-   Google Maps embedded iframe dengan responsive container
+-   Location info card dengan main office details, operating hours, action buttons (directions, contact via WhatsApp)
+-   Quick info checklist (lokasi strategis, mudah diakses, parkir gratis)
+-   FAQ accordion component dengan 4 FAQs, smooth expand/collapse animation, single item open policy
+-   FAQ functionality dengan JavaScript toggle logic, CSS-based max-height animation, icon color transitions (blue → green), icon rotation 180deg
+-   Icon styling per section (blue primary for hero/info, green secondary for FAQ toggle)
+-   CSS architecture (1217 lines) dengan scoped `.contact-*` prefix, CSS variables untuk theme-aware colors, dark mode support
+-   JavaScript behavior (315 lines) dengan FAQ accordion, smooth scroll, button ripple effects, intersection observer, analytics tracking
+-   Responsive button variants (primary gradient, outline, white for dark backgrounds)
+-   External links handling via `class="external-link" data-link="[url]"` pattern
+-   Breadcrumb navigation untuk SPA context (Home > Hubungi Kami)
+-   Hero section dengan badge, headline gradient, quick contact info, dual CTAs (WhatsApp primary, services secondary)
+-   CTA section dengan gradient background, decorative SVG pattern, dual buttons (white primary, outline white secondary)
+-   Accessibility features (keyboard navigation on FAQ, ARIA labels on breadcrumb, semantic HTML, reduced motion support)
+-   AOS animations integration (fade-up, fade-in-left) dengan staggered delays untuk hero, cards, maps, FAQ, CTA
 -   Mobile-first responsive design dengan font size reductions, padding adjustments, button stacking
--   Breadcrumb navigation untuk improved UX consistency across all pages
--   Projects Page documentation (14-PROJECTS-PAGE.md) dengan architectural guidelines, backend architecture, database schema, JavaScript behavior
+-   Dark mode support dengan automatic CSS variables override
+-   Livewire v3 integration dengan livewire:navigated listener untuk behavior re-init
+-   Performance optimization dengan CSS-based animations (no JavaScript transitions), efficient event handling
+-   Error handling & troubleshooting guide (FAQ toggle issues, maps CSP errors, external link handling)
+-   Contact Page documentation (15-CONTACT-PAGE.md) dengan architectural guidelines, CSS architecture, JavaScript behavior, responsive design, accessibility features
 -   Complete integration dengan core architecture principles (Blade markup-only, CSS styling-only, JS behavior-only)
 -   100% compliance dengan icon system, typography, design optimization, & AOS animation guidelines
--   Production-ready implementation dengan error handling, performance optimization, progressive enhancement
+-   Production-ready implementation dengan console debugging, memory management, cleanup on SPA navigation
 
 ---
 
