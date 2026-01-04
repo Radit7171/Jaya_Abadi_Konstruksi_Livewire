@@ -28,6 +28,9 @@
 /* import projects-page styles */
 @import './pages/projects-page.css';
 
+/* import contact-page styles */
+@import './pages/contact-page.css';
+
 /* ==========================================================================
    Brand Color (Steel Theme)
    ========================================================================== */
