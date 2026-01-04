@@ -22,6 +22,12 @@
 /* import about-page styles */
 @import './pages/about-page.css';
 
+/* import services-page styles */
+@import './pages/services-page.css';
+
+/* import projects-page styles */
+@import './pages/projects-page.css';
+
 /* ==========================================================================
    Brand Color (Steel Theme)
    ========================================================================== */
@@ -105,6 +111,13 @@ code, pre, .code {
 /* Adjust main content for fixed navbar */
 main {
     padding-top: 65px;
+}
+
+/* Mobile navbar adjustment - match navbar min-height */
+@media (max-width: 991.98px) {
+    main {
+        padding-top: 60px;
+    }
 }
 
 /* Loading overlay default state

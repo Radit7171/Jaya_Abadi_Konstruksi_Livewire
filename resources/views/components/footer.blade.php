@@ -31,11 +31,12 @@
                             <x-footer.links
                                 title="Layanan"
                                 :links="[
-                                    ['url' => '/layanan#konstruksi-baja', 'label' => 'Konstruksi Baja'],
-                                    ['url' => '/layanan#fabrication', 'label' => 'Fabrication'],
-                                    ['url' => '/layanan#erection', 'label' => 'Erection'],
-                                    ['url' => '/layanan#maintenance', 'label' => 'Maintenance'],
-                                    ['url' => '/layanan#perencanaan', 'label' => 'Perencanaan'],
+                                    ['url' => '/layanan#konstruksi-gedung', 'label' => 'Konstruksi Gedung'],
+                                    ['url' => '/layanan#infrastruktur', 'label' => 'Infrastruktur'],
+                                    ['url' => '/layanan#renovasi', 'label' => 'Renovasi & Perawatan'],
+                                    ['url' => '/layanan#quality-assurance', 'label' => 'Quality Assurance'],
+                                    ['url' => '/layanan#maintenance-support', 'label' => 'Maintenance & Support'],
+                                    ['url' => '/layanan#supply-management', 'label' => 'Supply & Management'],
                                 ]"
                             />
                         </div>
@@ -76,11 +77,12 @@
                                             <div class="mb-4">
                                                 <h6 class="small fw-bold mb-2">Layanan</h6>
                                                 <ul class="list-unstyled mb-0">
-                                                    <li><a href="/layanan#konstruksi-baja" wire:navigate class="small text-body-secondary d-block py-1">Konstruksi Baja</a></li>
-                                                    <li><a href="/layanan#fabrication" wire:navigate class="small text-body-secondary d-block py-1">Fabrication</a></li>
-                                                    <li><a href="/layanan#erection" wire:navigate class="small text-body-secondary d-block py-1">Erection</a></li>
-                                                    <li><a href="/layanan#maintenance" wire:navigate class="small text-body-secondary d-block py-1">Maintenance</a></li>
-                                                    <li><a href="/layanan#perencanaan" wire:navigate class="small text-body-secondary d-block py-1">Perencanaan</a></li>
+                                                    <li><a href="/layanan#konstruksi-gedung" wire:navigate class="small text-body-secondary d-block py-1">Konstruksi Gedung</a></li>
+                                                    <li><a href="/layanan#infrastruktur" wire:navigate class="small text-body-secondary d-block py-1">Infrastruktur</a></li>
+                                                    <li><a href="/layanan#renovasi" wire:navigate class="small text-body-secondary d-block py-1">Renovasi & Perawatan</a></li>
+                                                    <li><a href="/layanan#quality-assurance" wire:navigate class="small text-body-secondary d-block py-1">Quality Assurance</a></li>
+                                                    <li><a href="/layanan#maintenance-support" wire:navigate class="small text-body-secondary d-block py-1">Maintenance & Support</a></li>
+                                                    <li><a href="/layanan#supply-management" wire:navigate class="small text-body-secondary d-block py-1">Supply & Management</a></li>
                                                 </ul>
                                             </div>
                                         </div>

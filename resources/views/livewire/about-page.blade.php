@@ -519,7 +519,7 @@
                             <i class="fas fa-building"></i>
                         </div>
                         <div class="about-achievement-counter">
-                            <span class="about-achievement-number" data-target="500">0</span>
+                            <span class="about-achievement-number" data-target="500">500</span>
                             <span class="about-achievement-symbol">+</span>
                         </div>
                         <div class="about-achievement-label">Proyek Selesai</div>
@@ -534,7 +534,7 @@
                             <i class="fas fa-calendar-alt"></i>
                         </div>
                         <div class="about-achievement-counter">
-                            <span class="about-achievement-number" data-target="10">0</span>
+                            <span class="about-achievement-number" data-target="10">10</span>
                             <span class="about-achievement-symbol">+</span>
                         </div>
                         <div class="about-achievement-label">Tahun Pengalaman</div>
@@ -549,7 +549,7 @@
                             <i class="fas fa-grin-stars"></i>
                         </div>
                         <div class="about-achievement-counter">
-                            <span class="about-achievement-number" data-target="98">0</span>
+                            <span class="about-achievement-number" data-target="98">98</span>
                             <span class="about-achievement-symbol">%</span>
                         </div>
                         <div class="about-achievement-label">Kepuasan Klien</div>
@@ -564,7 +564,7 @@
                             <i class="fas fa-users"></i>
                         </div>
                         <div class="about-achievement-counter">
-                            <span class="about-achievement-number" data-target="50">0</span>
+                            <span class="about-achievement-number" data-target="50">50</span>
                             <span class="about-achievement-symbol">+</span>
                         </div>
                         <div class="about-achievement-label">Tim Profesional</div>
