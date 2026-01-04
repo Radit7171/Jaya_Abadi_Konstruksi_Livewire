@@ -192,7 +192,7 @@
 
             {{-- Pagination Links --}}
             <div class="projects-pagination" data-aos="fade-up" data-aos-delay="100" data-aos-duration="600">
-                {{ $projects->links() }}
+                {{ $projects->links('vendor.pagination.projects') }}
             </div>
 
         </div>
