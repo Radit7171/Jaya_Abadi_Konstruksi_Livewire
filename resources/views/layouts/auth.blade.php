@@ -27,9 +27,6 @@
 </head>
 
 <body class="auth-layout" wire:navigate>
-    <!-- Scrollbar gutter -->
-    <div class="scrollbar-gutter"></div>
-
     <!-- Theme Toggle -->
     <div class="auth-theme-toggle">
         <x-theme-toggle />

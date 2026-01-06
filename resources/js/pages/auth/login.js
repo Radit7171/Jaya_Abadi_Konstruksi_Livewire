@@ -1,6 +1,7 @@
 /**
  * LOGIN PAGE JAVASCRIPT
  * Progressive enhancement untuk form functionality
+ * All validation handled by Livewire server-side
  */
 
 class LoginPageEnhancer {
@@ -16,10 +17,57 @@ class LoginPageEnhancer {
      * Initialize all features
      */
     init() {
+        this.ensureInputsClickable();
         this.setupPasswordToggle();
-        this.setupFormValidation();
-        this.setupFormSubmit();
         this.setupAccessibility();
+        console.log('Login page enhancer initialized (validation by Livewire)');
+    }
+
+    /**
+     * Ensure inputs are clickable - fix for pointer-events issues
+     */
+    ensureInputsClickable() {
+        const inputs = this.page.querySelectorAll('input, button, label');
+        inputs.forEach((element) => {
+            // Force pointer-events: auto
+            element.style.pointerEvents = 'auto';
+
+            // Set proper cursor for each element
+            if (element.tagName === 'INPUT') {
+                if (element.type === 'text' || element.type === 'email' || element.type === 'password') {
+                    element.style.cursor = 'text';
+                } else if (element.type === 'checkbox') {
+                    element.style.cursor = 'pointer';
+                }
+            } else if (element.tagName === 'BUTTON') {
+                element.style.cursor = 'pointer';
+            } else if (element.tagName === 'LABEL') {
+                element.style.cursor = 'pointer';
+            }
+
+            // Ensure elements can receive clicks
+            element.addEventListener('mousedown', (e) => {
+                e.stopPropagation();
+            });
+
+            // Also listen to click to ensure it works
+            element.addEventListener('click', (e) => {
+                e.stopPropagation();
+            });
+        });
+
+        // Also ensure parent containers don't block events
+        const containers = this.page.querySelectorAll('.auth-form, .auth-form-group, .auth-checkbox-label');
+        containers.forEach((container) => {
+            container.style.pointerEvents = 'auto';
+        });
+
+        // Specific fix for checkbox label - make it more interactive
+        const checkboxLabel = this.page.querySelector('.auth-checkbox-label');
+        if (checkboxLabel) {
+            checkboxLabel.style.pointerEvents = 'auto';
+            checkboxLabel.style.cursor = 'pointer';
+        }
     }
 
     /**
@@ -50,6 +98,7 @@ class LoginPageEnhancer {
             toggleBtn.setAttribute('aria-label', 'Toggle password visibility');
             toggleBtn.setAttribute('title', 'Tampilkan/Sembunyikan password');
             toggleBtn.innerHTML = '<i class="fas fa-eye"></i>';
+            toggleBtn.style.pointerEvents = 'auto';
             wrapper.appendChild(toggleBtn);
         }
 
@@ -84,131 +133,13 @@ class LoginPageEnhancer {
     }
 
     /**
-     * Real-time form validation
-     */
-    setupFormValidation() {
-        const emailInput = this.page.querySelector('#email');
-        const passwordInput = this.page.querySelector('#password');
-        const form = this.page.querySelector('.auth-form');
-
-        if (!form) return;
-
-        // Email validation
-        if (emailInput) {
-            emailInput.addEventListener('blur', () => {
-                this.validateEmail(emailInput);
-            });
-
-            emailInput.addEventListener('input', () => {
-                if (emailInput.value.trim()) {
-                    this.clearError(emailInput);
-                }
-            });
-        }
-
-        // Password validation
-        if (passwordInput) {
-            passwordInput.addEventListener('blur', () => {
-                this.validatePassword(passwordInput);
-            });
-
-            passwordInput.addEventListener('input', () => {
-                if (passwordInput.value.trim()) {
-                    this.clearError(passwordInput);
-                }
-            });
-        }
-    }
-
-    /**
-     * Validate email format
-     */
-    validateEmail(input) {
-        const email = input.value.trim();
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-        if (!email) {
-            this.showError(input, 'Email wajib diisi');
-            return false;
-        }
-
-        if (!emailRegex.test(email)) {
-            this.showError(input, 'Format email tidak valid');
-            return false;
-        }
-
-        this.clearError(input);
-        return true;
-    }
-
-    /**
-     * Validate password
-     */
-    validatePassword(input) {
-        const password = input.value;
-
-        if (!password) {
-            this.showError(input, 'Password wajib diisi');
-            return false;
-        }
-
-        if (password.length < 8) {
-            this.showError(input, 'Password minimal 8 karakter');
-            return false;
-        }
-
-        this.clearError(input);
-        return true;
-    }
-
-    /**
-     * Show error message (disabled - Livewire handles server-side validation)
-     */
-    showError(input, message) {
-        // Let Livewire handle error display via blade
-        input.classList.add('auth-input-error');
-    }
-
-    /**
-     * Clear error message (disabled - Livewire handles server-side validation)
-     */
-    clearError(input) {
-        // Let Livewire handle error display via blade
-        input.classList.remove('auth-input-error');
-    }
-
-    /**
-     * Form submit handling
-     */
-    setupFormSubmit() {
-        const form = this.page.querySelector('.auth-form');
-        const submitBtn = form?.querySelector('.auth-btn-primary');
-
-        if (!form || !submitBtn) return;
-
-        form.addEventListener('submit', (e) => {
-            const emailInput = form.querySelector('#email');
-            const passwordInput = form.querySelector('#password');
-
-            // Validate on submit
-            const emailValid = emailInput ? this.validateEmail(emailInput) : true;
-            const passwordValid = passwordInput ? this.validatePassword(passwordInput) : true;
-
-            if (!emailValid || !passwordValid) {
-                e.preventDefault();
-                submitBtn.blur();
-            }
-        });
-    }
-
-    /**
-     * Accessibility enhancements
+     * Setup accessibility enhancements
      */
     setupAccessibility() {
         // Add aria-describedby to inputs with errors
         const inputs = this.page.querySelectorAll('.auth-input');
         inputs.forEach((input) => {
-            const errorMsg = input.parentNode.querySelector('.auth-error-message');
+            const errorMsg = input.closest('.auth-form-group')?.querySelector('.auth-error-text');
             if (errorMsg) {
                 const errorId = `${input.id}-error`;
                 errorMsg.id = errorId;
@@ -220,7 +151,7 @@ class LoginPageEnhancer {
         // Keyboard navigation
         const form = this.page.querySelector('.auth-form');
         if (form) {
-            const inputs = form.querySelectorAll('input, button[type="submit"]');
+            const inputs = form.querySelectorAll('input:not([type="checkbox"]), button[type="submit"]');
             inputs.forEach((input, index) => {
                 input.addEventListener('keydown', (e) => {
                     if (e.key === 'Enter' && input !== inputs[inputs.length - 1]) {
@@ -230,6 +161,19 @@ class LoginPageEnhancer {
                 });
             });
         }
+
+        // Monitor for Livewire validation errors
+        document.addEventListener('livewire:updated', () => {
+            setTimeout(() => {
+                const errorElements = this.page.querySelectorAll('.auth-error-text');
+                if (errorElements.length > 0) {
+                    console.log('Validation errors found:', errorElements.length);
+                    errorElements.forEach((el, idx) => {
+                        console.log(`Error ${idx + 1}:`, el.textContent);
+                    });
+                }
+            }, 100);
+        });
     }
 
     /**
@@ -264,3 +208,4 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('livewire:navigated', () => {
     new LoginPageEnhancer();
 });
+

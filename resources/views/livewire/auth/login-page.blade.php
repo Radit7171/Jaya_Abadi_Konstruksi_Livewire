@@ -18,39 +18,39 @@
         <form wire:submit="login" class="auth-form" novalidate>
             <!-- Email Field -->
             <div class="auth-form-group">
-                <div class="auth-label-wrapper">
-                    <label for="email" class="auth-label">Email Address</label>
-                    @error('email')
-                        <span class="auth-label-error">{{ $message }}</span>
-                    @enderror
-                </div>
+                <label for="email" class="auth-label">Email Address</label>
                 <input
                     type="email"
                     id="email"
-                    wire:model="email"
+                    wire:model.live.debounce.100ms="email"
                     class="auth-input @error('email') auth-input-error @enderror"
                     placeholder="nama@example.com"
                     required
                     autocomplete="email">
+                @error('email')
+                    <span class="auth-error-text">
+                        <i class="fas fa-exclamation-circle"></i> {{ $message }}
+                    </span>
+                @enderror
             </div>
 
             <!-- Password Field -->
             <div class="auth-form-group">
-                <div class="auth-label-wrapper">
-                    <label for="password" class="auth-label">Password</label>
-                    @error('password')
-                        <span class="auth-label-error">{{ $message }}</span>
-                    @enderror
-                </div>
+                <label for="password" class="auth-label">Password</label>
                 <input
                     type="password"
                     id="password"
-                    wire:model="password"
+                    wire:model.live.debounce.100ms="password"
                     class="auth-input @error('password') auth-input-error @enderror"
                     placeholder="••••••••"
                     required
                     autocomplete="current-password">
-            </input>
+                @error('password')
+                    <span class="auth-error-text">
+                        <i class="fas fa-exclamation-circle"></i> {{ $message }}
+                    </span>
+                @enderror
+            </div>
 
             <!-- Remember Me -->
             <div class="auth-form-group auth-form-group-checkbox">

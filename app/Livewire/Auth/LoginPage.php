@@ -5,6 +5,7 @@ namespace App\Livewire\Auth;
 use Livewire\Component;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Layout;
+use Livewire\Attributes\Validate;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 
@@ -12,14 +13,13 @@ use App\Models\User;
 #[Title('Login - Jaya Abadi Konstruksi')]
 class LoginPage extends Component
 {
+    #[Validate('required|email', message: 'Email wajib diisi dan harus valid')]
     public string $email = '';
-    public string $password = '';
-    public bool $remember = false;
 
-    protected $rules = [
-        'email' => 'required|email|exists:users,email',
-        'password' => 'required|min:8',
-    ];
+    #[Validate('required|min:8', message: 'Password wajib diisi minimal 8 karakter')]
+    public string $password = '';
+
+    public bool $remember = false;
 
     protected $messages = [
         'email.required' => 'Email wajib diisi',
@@ -30,11 +30,43 @@ class LoginPage extends Component
     ];
 
     /**
+     * Real-time validation untuk email
+     */
+    public function updatedEmail()
+    {
+        try {
+            $this->validateOnly('email', [
+                'email' => 'required|email'
+            ]);
+        } catch (\Exception $e) {
+            // Validation failed, errors will be displayed
+        }
+    }
+
+    /**
+     * Real-time validation untuk password
+     */
+    public function updatedPassword()
+    {
+        try {
+            $this->validateOnly('password', [
+                'password' => 'required|min:8'
+            ]);
+        } catch (\Exception $e) {
+            // Validation failed, errors will be displayed
+        }
+    }
+
+    /**
      * Handle login attempt
      */
     public function login()
     {
-        $this->validate();
+        // Validate dengan rules lengkap termasuk exists
+        $validated = $this->validate([
+            'email' => 'required|email|exists:users,email',
+            'password' => 'required|min:8',
+        ]);
 
         // Attempt authentication
         if (Auth::attempt(
