@@ -22,7 +22,7 @@
     {{-- ======================================================
          BREADCRUMB NAVIGATION
          ====================================================== --}}
-    <nav class="projects-breadcrumb" aria-label="Navigasi breadcrumb" data-aos="fade-in" data-aos-delay="0" data-aos-duration="500">
+    <nav class="projects-breadcrumb" aria-label="Navigasi breadcrumb">
         <div class="container">
             <ol class="projects-breadcrumb-list">
                 <li><a wire:navigate href="/" class="projects-breadcrumb-link">Home</a></li>
@@ -43,25 +43,25 @@
 
                 {{-- HERO TEXT --}}
                 <div class="col-12 col-lg-6">
-                    <div class="projects-hero-badge" data-aos="fade-up" data-aos-delay="0" data-aos-duration="600">
+                    <div class="projects-hero-badge">
                         <span class="projects-hero-badge-icon">
                             <i class="fas fa-hammer"></i>
                         </span>
                         <span class="projects-hero-badge-text">Portofolio Kami</span>
                     </div>
 
-                    <h1 class="projects-hero-title" data-aos="fade-up" data-aos-delay="100" data-aos-duration="700">
+                    <h1 class="projects-hero-title">
                         Proyek-Proyek
                         <span class="projects-hero-highlight">Berkualitas Tinggi</span>
                     </h1>
 
-                    <p class="projects-hero-subtitle" data-aos="fade-up" data-aos-delay="200" data-aos-duration="700">
+                    <p class="projects-hero-subtitle">
                         Lihat koleksi lengkap proyek-proyek kami yang telah diselesaikan dengan hasil memuaskan
                         dan memberikan dampak positif bagi klien di berbagai sektor industri dan infrastruktur.
                     </p>
 
                     {{-- Quick Stats --}}
-                    <div class="projects-hero-quick-stats" data-aos="fade-up" data-aos-delay="250" data-aos-duration="700">
+                    <div class="projects-hero-quick-stats">
                         <div class="projects-quick-stat">
                             <div class="projects-quick-stat-number">500+</div>
                             <div class="projects-quick-stat-label">Proyek Selesai</div>
@@ -76,7 +76,7 @@
                         </div>
                     </div>
 
-                    <div class="projects-hero-actions" data-aos="fade-up" data-aos-delay="300" data-aos-duration="700">
+                    <div class="projects-hero-actions">
                         <a wire:navigate href="/kontak" class="projects-btn projects-btn-primary">
                             <span>Konsultasi Gratis</span>
                             <svg class="projects-btn-icon" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
@@ -91,7 +91,7 @@
 
                 {{-- HERO VISUAL --}}
                 <div class="col-12 col-lg-6">
-                    <div class="projects-hero-visual" data-aos="fade-in-left" data-aos-delay="200" data-aos-duration="800">
+                    <div class="projects-hero-visual">
                         <div class="projects-hero-image-wrapper">
                             <div class="projects-hero-image-bg"></div>
                             <img src="/images/home/hero-project.jpg"
@@ -113,13 +113,13 @@
         <div class="container">
 
             {{-- Section Header --}}
-            <div class="projects-section-header" data-aos="fade-up" data-aos-delay="0" data-aos-duration="600">
+            <div class="projects-section-header">
                 <h2 class="projects-section-title">Portofolio Proyek Terbaru</h2>
                 <p class="projects-section-subtitle">Koleksi lengkap proyek-proyek terbaik kami yang telah diselesaikan dengan dedikasi dan profesionalisme</p>
             </div>
 
             {{-- Filter Controls --}}
-            <div class="projects-filter-bar" data-aos="fade-up" data-aos-delay="100" data-aos-duration="600">
+            <div class="projects-filter-bar">
                 <div class="projects-filter-wrapper">
                     <button wire:click="filterProjects('all')"
                             @class(['projects-filter-btn', 'projects-filter-btn-active' => $selectedFilter === 'all'])
@@ -149,10 +149,7 @@
 
                 @forelse($projects as $index => $project)
                     <div class="col-12 col-md-6 col-lg-4"
-                         data-aos="fade-up"
-                         data-aos-delay="{{ 100 + ($index % 3) * 100 }}"
-                         data-aos-duration="700"
-                         data-category="{{ $project->category }}">
+                        data-category="{{ $project->category }}">
                         <article class="projects-card">
                             <div class="projects-card-image-wrapper">
                                 <img src="{{ $project->image_url ?? '/images/home/hero-project.jpg' }}"
@@ -191,7 +188,7 @@
             </div>
 
             {{-- Pagination Links --}}
-            <div class="projects-pagination" data-aos="fade-up" data-aos-delay="100" data-aos-duration="600">
+            <div class="projects-pagination">
                 {{ $projects->links('vendor.pagination.projects') }}
             </div>
 
@@ -206,7 +203,7 @@
         <div class="projects-cta-decoration projects-cta-decoration-bottom"></div>
 
         <div class="container">
-            <div class="projects-cta-content" data-aos="zoom-in" data-aos-delay="0" data-aos-duration="700">
+            <div class="projects-cta-content">
                 <h2 class="projects-cta-title">Siap Mewujudkan Proyek Impian Anda?</h2>
                 <p class="projects-cta-subtitle">Hubungi tim profesional kami untuk konsultasi dan solusi konstruksi yang tepat</p>
 
