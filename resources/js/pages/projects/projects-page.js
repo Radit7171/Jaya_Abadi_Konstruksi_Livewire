@@ -246,3 +246,79 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('livewire:initialized', () => {
     new ProjectsPage();
 });
+/**
+ * Modal Behavior Handler
+ */
+class ProjectsModalBehavior {
+    constructor() {
+        this.setupModalInteractions();
+        this.setupKeyboardShortcuts();
+    }
+
+    /**
+     * Setup modal overlay click interactions
+     */
+    setupModalInteractions() {
+        // Click outside modal to close (on overlay)
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('projects-modal-overlay')) {
+                // Modal will be closed via Livewire wire:click directive
+                const overlay = e.target;
+                this.animateModalClose(overlay);
+            }
+        });
+
+        // Close button interaction
+        const closeButtons = document.querySelectorAll('.projects-modal-close');
+        closeButtons.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const modal = btn.closest('.projects-modal-container');
+                const overlay = modal.closest('.projects-modal-overlay');
+                this.animateModalClose(overlay);
+            });
+        });
+    }
+
+    /**
+     * Setup keyboard shortcuts
+     */
+    setupKeyboardShortcuts() {
+        document.addEventListener('keydown', (e) => {
+            // Escape key to close modal
+            if (e.key === 'Escape' || e.key === 'Esc') {
+                const modal = document.querySelector('.projects-modal-overlay');
+                if (modal) {
+                    this.animateModalClose(modal);
+                }
+            }
+        });
+    }
+
+    /**
+     * Animate modal close before Livewire closes it
+     */
+    animateModalClose(overlay) {
+        if (!overlay) return;
+
+        overlay.style.animation = 'projects-modal-fade-out 0.2s ease-out forwards';
+        const container = overlay.querySelector('.projects-modal-container');
+        if (container) {
+            container.style.animation = 'projects-modal-slide-down 0.2s ease-out forwards';
+        }
+    }
+}
+
+// Initialize modal behavior
+document.addEventListener('DOMContentLoaded', () => {
+    new ProjectsModalBehavior();
+});
+
+document.addEventListener('livewire:initialized', () => {
+    new ProjectsModalBehavior();
+});
+
+// Reinitialize modal on Livewire updates
+document.addEventListener('livewire:updated', () => {
+    new ProjectsModalBehavior();
+});
