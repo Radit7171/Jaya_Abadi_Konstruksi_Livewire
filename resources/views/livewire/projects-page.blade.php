@@ -169,12 +169,12 @@
                                 <span class="projects-card-category">{{ $project->getCategoryLabel() }}</span>
                                 <h3 class="projects-card-title">{{ $project->title }}</h3>
                                 <p class="projects-card-description">{{ $project->getShortDescription() }}</p>
-                                <a href="#" class="projects-card-link">
+                                <button wire:click="openProjectDetail({{ $project->id }})" class="projects-card-link">
                                     Lihat Detail
                                     <svg width="16" height="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
                                         <path d="M5 12h14M12 5l7 7-7 7"></path>
                                     </svg>
-                                </a>
+                                </button>
                             </div>
                         </article>
                     </div>
@@ -224,5 +224,84 @@
             </div>
         </div>
     </section>
+
+    {{-- ======================================================
+         PROJECT DETAIL MODAL
+         ====================================================== --}}
+    @if($showModal && $selectedProject)
+        <div class="projects-modal-overlay" wire:click="closeModal()" @keydown.escape="closeModal()">
+            <div class="projects-modal-container" wire:click.stop>
+                {{-- Modal Header --}}
+                <div class="projects-modal-header">
+                    <h2 class="projects-modal-title">{{ $selectedProject->title }}</h2>
+                    <button wire:click="closeModal()"
+                            class="projects-modal-close"
+                            aria-label="Tutup modal">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M18 6L6 18M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                {{-- Modal Body --}}
+                <div class="projects-modal-body">
+                    {{-- Project Image --}}
+                    <div class="projects-modal-image-wrapper">
+                        <img src="{{ $selectedProject->image_url ?? '/images/home/hero-project.jpg' }}"
+                             alt="{{ $selectedProject->image_alt ?? $selectedProject->title }}"
+                             class="projects-modal-image"
+                             loading="lazy">
+                    </div>
+
+                    {{-- Project Info --}}
+                    <div class="projects-modal-info">
+                        <div class="projects-modal-meta">
+                            <span class="projects-modal-category">{{ $selectedProject->getCategoryLabel() }}</span>
+                            <span class="projects-modal-date">
+                                <i class="fas fa-calendar-alt"></i>
+                                {{ $selectedProject->published_at?->translatedFormat('d F Y') ?? 'Tanggal tidak tersedia' }}
+                            </span>
+                        </div>
+
+                        <div class="projects-modal-description">
+                            <h3 class="projects-modal-description-title">Deskripsi Proyek</h3>
+                            <p class="projects-modal-description-text">{{ $selectedProject->description }}</p>
+                        </div>
+
+                        {{-- Project Details Grid --}}
+                        <div class="projects-modal-details">
+                            <div class="projects-modal-detail-item">
+                                <span class="projects-modal-detail-label">Kategori</span>
+                                <span class="projects-modal-detail-value">{{ $selectedProject->getCategoryLabel() }}</span>
+                            </div>
+                            <div class="projects-modal-detail-item">
+                                <span class="projects-modal-detail-label">Status</span>
+                                <span class="projects-modal-detail-value">
+                                    @if($selectedProject->is_published)
+                                        <span class="projects-modal-badge-success">Dipublikasikan</span>
+                                    @else
+                                        <span class="projects-modal-badge-warning">Belum Dipublikasikan</span>
+                                    @endif
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {{-- Modal Footer --}}
+                <div class="projects-modal-footer">
+                    <a wire:navigate href="/kontak" class="projects-btn projects-btn-primary">
+                        <span>Hubungi Kami</span>
+                        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M5 12h14M12 5l7 7-7 7"></path>
+                        </svg>
+                    </a>
+                    <button wire:click="closeModal()" class="projects-btn projects-btn-outline">
+                        Tutup
+                    </button>
+                </div>
+            </div>
+        </div>
+    @endif
 
 </section>

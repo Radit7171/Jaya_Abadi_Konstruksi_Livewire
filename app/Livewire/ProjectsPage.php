@@ -17,6 +17,8 @@ class ProjectsPage extends Component
 
     // Properties
     public string $selectedFilter = 'all';
+    public bool $showModal = false;
+    public ?Project $selectedProject = null;
     private const ITEMS_PER_PAGE = 6;
 
     /**
@@ -45,10 +47,30 @@ class ProjectsPage extends Component
         $this->resetPage();
     }
 
+    /**
+     * Open project detail modal
+     */
+    public function openProjectDetail(int $projectId): void
+    {
+        $this->selectedProject = Project::findOrFail($projectId);
+        $this->showModal = true;
+    }
+
+    /**
+     * Close project detail modal
+     */
+    public function closeModal(): void
+    {
+        $this->showModal = false;
+        $this->selectedProject = null;
+    }
+
     public function render()
     {
         return view('livewire.projects-page', [
             'projects' => $this->getProjects(),
+            'showModal' => $this->showModal,
+            'selectedProject' => $this->selectedProject,
         ]);
     }
 }
