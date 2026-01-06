@@ -278,7 +278,7 @@
                             </div>
 
                             <div class="contact-maps-location-actions">
-                                <a href="javascript:void(0)" class="external-link contact-maps-btn contact-maps-btn-primary" data-link="https://www.google.com/maps/search/Jaya+Abadi+Konstruksi" rel="noopener noreferrer">
+                                <a href="javascript:void(0)" class="external-link contact-maps-btn contact-maps-btn-primary" data-link="https://maps.app.goo.gl/4UxsTT3GsyskEiFw9" rel="noopener noreferrer">
                                     <i class="fas fa-directions"></i>
                                     <span>Arah Jalan</span>
                                 </a>
