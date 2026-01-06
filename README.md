@@ -188,6 +188,7 @@ Penjelasan mendalam tentang:
 -   Accessibility features (keyboard navigation, reduced motion support, semantic HTML)
 -   Future enhancement roadmap (project detail page, advanced filters, search, galleries, testimonials, timeline view)
 
+
 ### 15. [CONTACT PAGE ARCHITECTURE](readme/15-CONTACT-PAGE.md)
 
 Penjelasan mendalam tentang:
@@ -213,6 +214,21 @@ Penjelasan mendalam tentang:
 -   Button styling consistency (primary gradient, outline, white variants)
 -   Performance optimization dengan CSS-based animations & efficient JavaScript
 -   Error handling & troubleshooting guide untuk FAQ & maps issues
+
+### 16. [PROJECTS MODAL SYSTEM](readme/16-PROJECTS-MODAL-SYSTEM.md)
+
+Penjelasan lengkap tentang:
+
+-   Sistem modal detail proyek di Projects Page (tanpa reload, SPA, Livewire reactive)
+-   Livewire logic: `$showModal`, `$selectedProject`, `openProjectDetail()`, `closeModal()`
+-   Blade markup: conditional rendering, 3 section utama (header, body, footer)
+-   Modal body: gambar, deskripsi lengkap, kategori, tanggal, status, detail grid, CTA
+-   CSS architecture: 300+ lines, fade-in & slide-up animation, glassmorphism overlay, dark mode, responsive (desktop modal, mobile bottom-sheet)
+-   Keyboard & accessibility support (Escape, overlay click, semantic HTML, aria-label)
+-   SPA integration: wire:navigate, auto close on navigation
+-   Zero custom JavaScript, zero dependencies
+-   Customization guide: max-width, image size, animation, detail fields
+-   Consistency checklist: architecture, design, code quality, integration, performance
 
 ---
 
