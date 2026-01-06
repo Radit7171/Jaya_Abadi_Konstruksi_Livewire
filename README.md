@@ -230,6 +230,28 @@ Penjelasan lengkap tentang:
 -   Customization guide: max-width, image size, animation, detail fields
 -   Consistency checklist: architecture, design, code quality, integration, performance
 
+### 17. [AUTH LOGIN SYSTEM](readme/17-AUTH-LOGIN-SYSTEM.md)
+
+Penjelasan lengkap tentang:
+
+-   Authentication system dengan email & password login
+-   Livewire LoginPage component dengan validation & session management
+-   Separate auth layout (layouts/auth.blade.php) - NOT shared dengan app.blade.php
+-   Login form dengan email, password, remember me (24 jam), password toggle eye icon
+-   Session configuration: 1440 minutes (24 hours) remember-me functionality
+-   User seeder: Raditiya Bagas Santoso / raditjal717@gmail.com / Radit717!2025
+-   CSS architecture: 552 lines, `.auth-*` scoping, mobile-first, light/dark mode, slim modern design
+-   JavaScript behavior: 279 lines, password toggle, form validation, accessibility, Livewire SPA integration
+-   Security features: password hashing, CSRF protection, session regeneration, timing attack prevention
+-   Responsive design: mobile (< 576px), tablet (576px - 991px), desktop (> 991px)
+-   Dark mode support dengan CSS variables automatic override
+-   Routes configuration: GET /login, POST /login, POST /logout dengan guest/auth middleware
+-   Database: users table dengan remember_token, sessions table untuk session storage
+-   ⚠️ KNOWN ISSUES (Work in Progress):
+    -   Input fields not clickable with left-click (requires right-click or keyboard)
+    -   Error messages not displaying properly on failed validation
+    -   Debugging needed for pointer events & CSS z-index layering
+
 ---
 
 ## 🚀 QUICK START
@@ -272,41 +294,40 @@ npm run build
 
 ## 📝 METADATA
 
-**Last Updated:** January 4, 2026  
-**Version:** 1.8.0 (Contact Page Implementation)  
+**Last Updated:** January 6, 2026  
+**Version:** 1.9.0 (Auth Login System - Alpha)  
 **Maintainer:** Frontend Team & GitHub Copilot  
 **Company:** PT Jaya Abadi Konstruksi
 
 **Latest Changes:**
 
--   Contact page implementation dengan 6 major sections (breadcrumb, hero dengan quick contact info, contact info cards dengan social media, maps embedding dengan location card, FAQ accordion, CTA)
--   WhatsApp-centric contact strategy dengan multiple touchpoints (hero, info cards, social card, maps buttons, CTA)
--   Contact info cards grid (4 columns desktop, 2 columns tablet, 1 column mobile) dengan lokasi, telepon, email, jam operasional
--   Social media links integration (WhatsApp primary highlight, Instagram, Facebook, LinkedIn)
--   Google Maps embedded iframe dengan responsive container
--   Location info card dengan main office details, operating hours, action buttons (directions, contact via WhatsApp)
--   Quick info checklist (lokasi strategis, mudah diakses, parkir gratis)
--   FAQ accordion component dengan 4 FAQs, smooth expand/collapse animation, single item open policy
--   FAQ functionality dengan JavaScript toggle logic, CSS-based max-height animation, icon color transitions (blue → green), icon rotation 180deg
--   Icon styling per section (blue primary for hero/info, green secondary for FAQ toggle)
--   CSS architecture (1217 lines) dengan scoped `.contact-*` prefix, CSS variables untuk theme-aware colors, dark mode support
--   JavaScript behavior (315 lines) dengan FAQ accordion, smooth scroll, button ripple effects, intersection observer, analytics tracking
--   Responsive button variants (primary gradient, outline, white for dark backgrounds)
--   External links handling via `class="external-link" data-link="[url]"` pattern
--   Breadcrumb navigation untuk SPA context (Home > Hubungi Kami)
--   Hero section dengan badge, headline gradient, quick contact info, dual CTAs (WhatsApp primary, services secondary)
--   CTA section dengan gradient background, decorative SVG pattern, dual buttons (white primary, outline white secondary)
--   Accessibility features (keyboard navigation on FAQ, ARIA labels on breadcrumb, semantic HTML, reduced motion support)
--   AOS animations integration (fade-up, fade-in-left) dengan staggered delays untuk hero, cards, maps, FAQ, CTA
--   Mobile-first responsive design dengan font size reductions, padding adjustments, button stacking
--   Dark mode support dengan automatic CSS variables override
--   Livewire v3 integration dengan livewire:navigated listener untuk behavior re-init
--   Performance optimization dengan CSS-based animations (no JavaScript transitions), efficient event handling
--   Error handling & troubleshooting guide (FAQ toggle issues, maps CSP errors, external link handling)
--   Contact Page documentation (15-CONTACT-PAGE.md) dengan architectural guidelines, CSS architecture, JavaScript behavior, responsive design, accessibility features
--   Complete integration dengan core architecture principles (Blade markup-only, CSS styling-only, JS behavior-only)
--   100% compliance dengan icon system, typography, design optimization, & AOS animation guidelines
--   Production-ready implementation dengan console debugging, memory management, cleanup on SPA navigation
+-   Auth login system implementation dengan Livewire LoginPage component
+-   Email & password authentication dengan validation & error handling
+-   Remember me functionality (24 hours session lifetime)
+-   User seeder dengan test credentials: Raditiya Bagas Santoso / raditjal717@gmail.com / Radit717!2025
+-   Separate auth layout (layouts/auth.blade.php) - NOT shared dengan main app.blade.php
+-   Login form dengan email input, password input + toggle eye icon, remember me checkbox
+-   Form styling: 552 lines CSS, mobile-first, slim modern design, light/dark mode support
+-   JavaScript behavior: 279 lines, password toggle, form validation, accessibility features
+-   CSS scoping dengan `.auth-*` prefix, zero global style pollution
+-   Responsive design: mobile (< 576px), tablet (576px - 991px), desktop (> 991px)
+-   Password toggle eye icon dengan Font Awesome 6 integration
+-   Error messages inline dengan label untuk save space (semantic HTML structure)
+-   Session configuration: 1440 minutes (24 hours) remember-me & session lifetime
+-   Routes setup: GET /login (guest), POST /login (guest), POST /logout (auth)
+-   Security features: bcrypt password hashing, CSRF protection, session regeneration, token management
+-   Livewire integration: wire:model, wire:submit, wire:navigate, livewire:navigated listener
+-   Bootstrap CSS integration untuk form styling & responsive utility classes
+-   Font Awesome 6 icons untuk password toggle (fa-eye, fa-eye-slash)
+-   ARIA labels & keyboard navigation untuk accessibility support
+-   Theme toggle integration dengan light/dark mode (data-bs-theme attribute)
+-   Loading state handling dengan wire:loading spinner animation
+-   Semantic HTML markup tanpa inline styles atau scripts
+-   Auth documentation (17-AUTH-LOGIN-SYSTEM.md) dengan complete architecture guide
+-   ⚠️ Known Issues (Work in Progress):
+    -   Input fields not fully clickable with left-click (requires right-click)
+    -   Error messages not displaying properly despite correct HTML structure
+    -   Need debugging for pointer-events & CSS z-index interactions
 
 ---
 

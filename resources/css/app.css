@@ -31,6 +31,9 @@
 /* import contact-page styles */
 @import './pages/contact-page.css';
 
+/* import auth login styles */
+@import './pages/auth/login.css';
+
 /* ==========================================================================
    Brand Color (Steel Theme)
    ========================================================================== */

@@ -30,6 +30,9 @@ import "./pages/projects/projects-page";
 // import contact-page
 import "./pages/contact-page";
 
+// import auth login page
+import "./pages/auth/login";
+
 // Alpine will be initialized by Livewire automatically
 
 // Initialize AOS after Livewire is ready
