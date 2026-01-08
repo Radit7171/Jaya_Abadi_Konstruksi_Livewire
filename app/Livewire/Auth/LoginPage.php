@@ -76,8 +76,8 @@ class LoginPage extends Component
             // Regenerate session for security
             session()->regenerate();
 
-            // Redirect to home after successful login
-            return redirect()->route('home');
+            // Redirect to admin dashboard after successful login (SPA compatible)
+            return redirect()->route('admin.dashboard');
         }
 
         // Authentication failed

@@ -34,6 +34,11 @@
 /* import auth login styles */
 @import './pages/auth/login.css';
 
+/* import admin styles */
+@import './pages/admin/admin-layout.css';
+@import './pages/admin/admin-dashboard.css';
+@import './pages/admin/admin-projects.css';
+
 /* ==========================================================================
    Brand Color (Steel Theme)
    ========================================================================== */

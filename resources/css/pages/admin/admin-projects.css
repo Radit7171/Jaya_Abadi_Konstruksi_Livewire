@@ -1,0 +1,649 @@
+/* ============================================================
+   ADMIN PROJECTS - Projects Management Page Styling
+   ============================================================ */
+
+/* ============================================================
+   FILTER SECTION
+   ============================================================ */
+
+.admin-filter-section {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--admin-light-border);
+}
+
+.admin-search-input {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.admin-search-input i {
+    position: absolute;
+    left: 1rem;
+    color: var(--admin-text-muted);
+    font-size: 0.875rem;
+}
+
+.admin-search-input .form-control {
+    padding-left: 2.5rem;
+    padding-right: 1rem;
+    border: 1px solid var(--admin-light-border);
+    border-radius: 0.375rem;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.875rem;
+    transition: all var(--admin-transition);
+    background-color: var(--bs-body-bg);
+    color: var(--admin-text);
+}
+
+.admin-search-input .form-control:focus {
+    border-color: var(--admin-primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    outline: none;
+}
+
+.admin-search-input .form-control::placeholder {
+    color: var(--admin-text-muted);
+}
+
+.admin-filter-buttons {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.admin-filter-btn {
+    padding: 0.625rem 1.25rem;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--admin-text-muted);
+    background-color: var(--bs-body-bg);
+    border: 1px solid var(--admin-light-border);
+    border-radius: 0.375rem;
+    cursor: pointer;
+    transition: all var(--admin-transition);
+}
+
+.admin-filter-btn:hover {
+    color: var(--admin-primary);
+    border-color: var(--admin-primary);
+    background-color: rgba(37, 99, 235, 0.05);
+}
+
+.admin-filter-btn.active {
+    color: white;
+    background-color: var(--admin-primary);
+    border-color: var(--admin-primary);
+}
+
+/* ============================================================
+   TABLE SECTION
+   ============================================================ */
+
+.admin-table-section {
+    margin-bottom: 2rem;
+}
+
+.admin-table-wrapper {
+    background-color: var(--bs-body-bg);
+    border: 1px solid var(--admin-light-border);
+    border-radius: 0.5rem;
+    overflow-x: auto;
+    margin-bottom: 1.5rem;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.admin-table-head {
+    background-color: var(--admin-light-bg);
+    border-bottom: 2px solid var(--admin-light-border);
+}
+
+.admin-table-th {
+    padding: 1rem;
+    text-align: left;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--admin-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.admin-table-body {
+    background-color: var(--bs-body-bg);
+}
+
+.admin-table-row {
+    border-bottom: 1px solid var(--admin-light-border);
+    transition: background-color var(--admin-transition);
+}
+
+.admin-table-row:hover {
+    background-color: var(--admin-light-bg);
+}
+
+.admin-table-row:last-child {
+    border-bottom: none;
+}
+
+.admin-table-td {
+    padding: 1rem;
+    font-size: 0.875rem;
+    color: var(--admin-text);
+    vertical-align: middle;
+}
+
+.admin-table-project-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.admin-table-project-image {
+    width: 60px;
+    height: 60px;
+    border-radius: 0.375rem;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.admin-table-project-title {
+    font-weight: 600;
+    color: var(--admin-text);
+    margin-bottom: 0.25rem;
+}
+
+.admin-table-project-desc {
+    font-size: 0.8125rem;
+    color: var(--admin-text-muted);
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+.admin-table-date {
+    font-size: 0.8125rem;
+    color: var(--admin-text-muted);
+}
+
+.admin-table-actions {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.admin-action-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--admin-light-border);
+    background-color: var(--bs-body-bg);
+    color: var(--admin-text-muted);
+    border-radius: 0.375rem;
+    cursor: pointer;
+    transition: all var(--admin-transition);
+    font-size: 0.875rem;
+}
+
+.admin-action-btn:hover {
+    border-color: var(--admin-light-border);
+    background-color: var(--admin-light-bg);
+    transform: translateY(-1px);
+}
+
+.admin-action-view:hover {
+    color: var(--admin-info);
+}
+
+.admin-action-edit:hover {
+    color: #3b82f6;
+}
+
+.admin-action-show:hover,
+.admin-action-hide:hover {
+    color: var(--admin-success);
+}
+
+.admin-action-delete:hover {
+    color: var(--admin-danger);
+}
+
+/* ============================================================
+   EMPTY STATE
+   ============================================================ */
+
+.admin-empty-state {
+    text-align: center;
+    padding: 2rem;
+    color: var(--admin-text-muted);
+}
+
+.admin-empty-state i {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    opacity: 0.3;
+    display: block;
+}
+
+.admin-empty-state p {
+    font-size: 0.875rem;
+    margin: 0;
+}
+
+/* ============================================================
+   PAGINATION
+   ============================================================ */
+
+.admin-pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.admin-pagination .pagination {
+    gap: 0.5rem;
+}
+
+.admin-pagination .page-link {
+    padding: 0.5rem 0.75rem;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.875rem;
+    color: var(--admin-primary);
+    background-color: transparent;
+    border: 1px solid var(--admin-light-border);
+    border-radius: 0.375rem;
+    transition: all var(--admin-transition);
+}
+
+.admin-pagination .page-link:hover {
+    color: white;
+    background-color: var(--admin-primary);
+    border-color: var(--admin-primary);
+}
+
+.admin-pagination .page-item.active .page-link {
+    color: white;
+    background-color: var(--admin-primary);
+    border-color: var(--admin-primary);
+}
+
+.admin-pagination .page-item.disabled .page-link {
+    color: var(--admin-text-muted);
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* ============================================================
+   MODAL OVERLAY & CONTAINER
+   ============================================================ */
+
+.admin-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1050;
+    padding: 1rem;
+    animation: fadeIn 0.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.admin-modal {
+    background-color: var(--bs-body-bg);
+    border-radius: 0.5rem;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    animation: slideUp 0.3s ease-in-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================================
+   MODAL HEADER
+   ============================================================ */
+
+.admin-modal-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--admin-light-border);
+    position: sticky;
+    top: 0;
+    background-color: var(--bs-body-bg);
+    z-index: 10;
+}
+
+.admin-modal-title {
+    font-family: 'Sora', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--admin-text);
+    margin: 0;
+}
+
+.admin-modal-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--admin-text-muted);
+    cursor: pointer;
+    padding: 0;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.375rem;
+    transition: all var(--admin-transition);
+}
+
+.admin-modal-close:hover {
+    background-color: var(--admin-light-bg);
+    color: var(--admin-text);
+}
+
+/* ============================================================
+   MODAL BODY
+   ============================================================ */
+
+.admin-modal-body {
+    padding: 2rem;
+}
+
+.admin-modal-image {
+    width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    object-fit: cover;
+    margin-bottom: 1.5rem;
+}
+
+.admin-modal-view {
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-modal-info {
+    margin-bottom: 1.5rem;
+}
+
+.admin-modal-label {
+    display: block;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--admin-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+}
+
+.admin-modal-value {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.875rem;
+    color: var(--admin-text);
+    margin: 0;
+    line-height: 1.6;
+    word-break: break-word;
+}
+
+/* ============================================================
+   FORM STYLING
+   ============================================================ */
+
+.admin-modal-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-form-group {
+    margin-bottom: 1.5rem;
+}
+
+.admin-form-label {
+    display: block;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--admin-text);
+    margin-bottom: 0.5rem;
+}
+
+.admin-form-input,
+.admin-form-select,
+.admin-form-textarea {
+    width: 100%;
+    padding: 0.625rem 1rem;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.875rem;
+    color: var(--admin-text);
+    background-color: var(--bs-body-bg);
+    border: 1px solid var(--admin-light-border);
+    border-radius: 0.375rem;
+    transition: all var(--admin-transition);
+    box-sizing: border-box;
+}
+
+.admin-form-input:focus,
+.admin-form-select:focus,
+.admin-form-textarea:focus {
+    outline: none;
+    border-color: var(--admin-primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    background-color: var(--bs-body-bg);
+}
+
+.admin-form-input::placeholder,
+.admin-form-textarea::placeholder {
+    color: var(--admin-text-muted);
+}
+
+.admin-form-input.is-invalid,
+.admin-form-select.is-invalid,
+.admin-form-textarea.is-invalid {
+    border-color: var(--admin-danger);
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+}
+
+.admin-form-textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.admin-form-error {
+    display: block;
+    margin-top: 0.375rem;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.8125rem;
+    color: var(--admin-danger);
+}
+
+.admin-form-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+}
+
+.admin-form-checkbox input {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: var(--admin-primary);
+}
+
+.admin-form-checkbox-label {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.875rem;
+    color: var(--admin-text);
+    cursor: pointer;
+    margin: 0;
+}
+
+/* ============================================================
+   MODAL ACTIONS
+   ============================================================ */
+
+.admin-modal-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--admin-light-border);
+}
+
+.admin-modal-actions .admin-btn {
+    flex: 1;
+}
+
+/* ============================================================
+   BADGE STYLING
+   ============================================================ */
+
+.admin-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.375rem 0.75rem;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 0.25rem;
+    white-space: nowrap;
+}
+
+.admin-badge-info {
+    background-color: rgba(6, 182, 212, 0.2);
+    color: var(--admin-info);
+}
+
+.admin-badge-success {
+    background-color: rgba(22, 163, 74, 0.2);
+    color: var(--admin-success);
+}
+
+.admin-badge-warning {
+    background-color: rgba(202, 138, 4, 0.2);
+    color: var(--admin-warning);
+}
+
+.admin-badge-danger {
+    background-color: rgba(220, 38, 38, 0.2);
+    color: var(--admin-danger);
+}
+
+/* ============================================================
+   RESPONSIVE - TABLET & MOBILE
+   ============================================================ */
+
+@media (max-width: 768px) {
+    .admin-filter-section {
+        margin-bottom: 1.5rem;
+    }
+
+    .admin-table-project-image {
+        width: 50px;
+        height: 50px;
+    }
+
+    .admin-table-project-info {
+        gap: 0.75rem;
+    }
+
+    .admin-modal {
+        max-width: 95%;
+    }
+
+    .admin-modal-body {
+        padding: 1.5rem;
+    }
+
+    .admin-modal-actions {
+        flex-direction: column;
+    }
+
+    .admin-modal-actions .admin-btn {
+        width: 100%;
+    }
+
+    .admin-action-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .admin-table-project-info {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .admin-table-project-image {
+        width: 100%;
+        height: 200px;
+    }
+
+    .admin-table-actions {
+        flex-wrap: wrap;
+        margin-top: 0.75rem;
+    }
+
+    .admin-filter-buttons {
+        justify-content: center;
+    }
+
+    .admin-filter-btn {
+        font-size: 0.75rem;
+        padding: 0.5rem 1rem;
+    }
+}
+
+/* ============================================================
+   ACCESSIBILITY
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+    .admin-modal-overlay,
+    .admin-modal,
+    .admin-action-btn,
+    .admin-form-input,
+    .admin-filter-btn {
+        animation: none;
+        transition: none;
+    }
+}

@@ -1,0 +1,179 @@
+/* ============================================================
+   ADMIN DASHBOARD - Dashboard Page Styling
+   ============================================================ */
+
+/* ============================================================
+   DASHBOARD STATS
+   ============================================================ */
+
+.admin-dashboard-stats {
+    margin-bottom: 3rem;
+}
+
+.admin-stat-card {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background-color: var(--bs-body-bg);
+    border: 1px solid var(--admin-light-border);
+    border-radius: 0.5rem;
+    transition: all var(--admin-transition);
+}
+
+.admin-stat-card:hover {
+    border-color: var(--admin-primary);
+    box-shadow: var(--admin-shadow-md);
+    transform: translateY(-2px);
+}
+
+.admin-stat-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.admin-stat-icon.bg-primary {
+    background-color: var(--admin-primary);
+}
+
+.admin-stat-icon.bg-success {
+    background-color: var(--admin-success);
+}
+
+.admin-stat-icon.bg-warning {
+    background-color: var(--admin-warning);
+}
+
+.admin-stat-icon.bg-info {
+    background-color: var(--admin-info);
+}
+
+.admin-stat-content {
+    flex: 1;
+}
+
+.admin-stat-value {
+    font-family: 'Sora', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--admin-text);
+    margin-bottom: 0.25rem;
+}
+
+.admin-stat-label {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.875rem;
+    color: var(--admin-text-muted);
+    margin: 0;
+}
+
+/* ============================================================
+   DASHBOARD ACTIONS
+   ============================================================ */
+
+.admin-dashboard-actions {
+    margin-bottom: 2rem;
+}
+
+.admin-actions-card {
+    padding: 2rem;
+    background-color: var(--bs-body-bg);
+    border: 1px solid var(--admin-light-border);
+    border-radius: 0.5rem;
+}
+
+.admin-actions-title {
+    font-family: 'Sora', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--admin-text);
+    margin-bottom: 1.5rem;
+}
+
+.admin-actions-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.admin-actions-buttons .admin-btn {
+    flex: 0 1 auto;
+}
+
+/* ============================================================
+   RESPONSIVE - TABLET & MOBILE
+   ============================================================ */
+
+@media (max-width: 768px) {
+    .admin-dashboard-stats {
+        margin-bottom: 2rem;
+    }
+
+    .admin-stat-card {
+        gap: 1rem;
+        padding: 1.25rem;
+    }
+
+    .admin-stat-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.25rem;
+    }
+
+    .admin-stat-value {
+        font-size: 1.5rem;
+    }
+
+    .admin-stat-label {
+        font-size: 0.8125rem;
+    }
+
+    .admin-actions-card {
+        padding: 1.5rem;
+    }
+
+    .admin-actions-title {
+        font-size: 1.125rem;
+    }
+
+    .admin-actions-buttons {
+        flex-direction: column;
+    }
+
+    .admin-actions-buttons .admin-btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .admin-stat-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .admin-stat-icon {
+        width: 50px;
+        height: 50px;
+    }
+
+    .admin-stat-value {
+        font-size: 1.375rem;
+    }
+}
+
+/* ============================================================
+   ACCESSIBILITY
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+    .admin-stat-card {
+        transition: none;
+    }
+}

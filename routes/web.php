@@ -7,6 +7,8 @@ use App\Livewire\ServicesPage;
 use App\Livewire\ProjectsPage;
 use App\Livewire\ContactPage;
 use App\Livewire\Auth\LoginPage;
+use App\Livewire\Admin\AdminDashboard;
+use App\Livewire\Admin\AdminProjects;
 
 // Livewire Component Routes - SPA Navigation (Public)
 Route::get('/', HomePage::class)->name('home');
@@ -23,6 +25,13 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::post('/logout', [LoginPage::class, 'logout'])->name('logout');
+    Route::get('/logout', [LoginPage::class, 'logout'])->name('logout.get'); // Temporary GET route for testing
+
+    // Admin Routes - Protected by auth middleware
+    Route::prefix('admin')->name('admin.')->group(function () {
+        Route::get('/dashboard', AdminDashboard::class)->name('dashboard');
+        Route::get('/projects', AdminProjects::class)->name('projects');
+    });
 });
 
 // Optional: API or non-SPA routes

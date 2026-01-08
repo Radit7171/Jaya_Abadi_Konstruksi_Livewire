@@ -33,6 +33,9 @@ import "./pages/contact-page";
 // import auth login page
 import "./pages/auth/login";
 
+// import admin dashboard
+import "./pages/admin/admin-dashboard";
+
 // Alpine will be initialized by Livewire automatically
 
 // Initialize AOS after Livewire is ready
