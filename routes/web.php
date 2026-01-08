@@ -25,7 +25,7 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::post('/logout', [LoginPage::class, 'logout'])->name('logout');
-    Route::get('/logout', [LoginPage::class, 'logout'])->name('logout.get'); // Temporary GET route for testing
+    // Route::get('/logout', [LoginPage::class, 'logout'])->name('logout.get'); // Temporary GET route for testing
 
     // Admin Routes - Protected by auth middleware
     Route::prefix('admin')->name('admin.')->group(function () {

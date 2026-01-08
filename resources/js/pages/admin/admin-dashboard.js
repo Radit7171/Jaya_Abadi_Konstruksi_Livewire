@@ -9,14 +9,13 @@ export class AdminDashboard {
         this.sidebar = document.querySelector('.admin-sidebar');
         this.mainWrapper = document.querySelector('.admin-main-wrapper');
         this.layout = document.querySelector('.admin-layout');
+        this.isMobile = window.innerWidth < 992;
 
-        this.init();
-    }
+        // Initialize mobile-hidden class on mobile
+        if (this.isMobile && this.sidebar) {
+            this.sidebar.classList.add('mobile-hidden');
+        }
 
-    /**
-     * Initialize admin dashboard
-     */
-    init() {
         this.setupSidebarToggle();
         this.setupModalClosing();
         this.setupFormValidation();
@@ -25,7 +24,7 @@ export class AdminDashboard {
     }
 
     /**
-     * Setup sidebar toggle for mobile
+     * Setup sidebar toggle for mobile and desktop
      */
     setupSidebarToggle() {
         if (!this.sidebarToggleBtn) return;
@@ -35,21 +34,34 @@ export class AdminDashboard {
             this.toggleSidebar();
         });
 
-        // Close sidebar when clicking outside on mobile
+        // Close sidebar when clicking sidebar links on mobile only
+        if (this.sidebar) {
+            const sidebarLinks = this.sidebar.querySelectorAll('.admin-sidebar-link');
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (this.isMobile) {
+                        this.closeSidebar();
+                    }
+                });
+            });
+        }
+
+        // Close sidebar when clicking outside on mobile only
         document.addEventListener('click', (e) => {
-            if (window.innerWidth < 992) {
+            if (this.isMobile && this.sidebar) {
                 if (!this.sidebar.contains(e.target) && !this.sidebarToggleBtn.contains(e.target)) {
                     this.closeSidebar();
                 }
             }
         });
 
-        // Close sidebar on window resize
+        // Update mobile flag on window resize
         window.addEventListener('resize', () => {
-            if (window.innerWidth >= 992) {
-                this.openSidebar();
-            } else {
-                this.closeSidebar();
+            this.isMobile = window.innerWidth < 992;
+            if (window.innerWidth >= 992 && this.sidebar) {
+                this.sidebar.classList.remove('mobile-hidden');
+            } else if (window.innerWidth < 992 && this.sidebar && !this.sidebar.classList.contains('mobile-hidden')) {
+                this.sidebar.classList.add('mobile-hidden');
             }
         });
     }
@@ -58,28 +70,26 @@ export class AdminDashboard {
      * Toggle sidebar visibility
      */
     toggleSidebar() {
-        if (this.sidebar.style.transform === 'translateX(0px)' || !this.sidebar.style.transform) {
-            this.closeSidebar();
-        } else {
-            this.openSidebar();
-        }
+        this.sidebar.classList.toggle('mobile-hidden');
+        // Also toggle the layout class for desktop
+        this.layout.classList.toggle('sidebar-collapsed');
     }
 
     /**
      * Open sidebar
      */
     openSidebar() {
-        if (window.innerWidth < 992) {
-            this.sidebar.style.transform = 'translateX(0)';
-        }
+        this.sidebar.classList.remove('mobile-hidden');
+        this.layout.classList.remove('sidebar-collapsed');
     }
 
     /**
      * Close sidebar
      */
     closeSidebar() {
-        if (window.innerWidth < 992) {
-            this.sidebar.style.transform = 'translateX(-100%)';
+        if (this.isMobile) {
+            this.sidebar.classList.add('mobile-hidden');
+            this.layout.classList.remove('sidebar-collapsed');
         }
     }
 

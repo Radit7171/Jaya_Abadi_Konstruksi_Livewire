@@ -8,11 +8,11 @@
             </button>
         </div>
 
-        <!-- Right Side - User Menu -->
+        <!-- Right Side - User Menu (Profile only on mobile, hide theme) -->
         <div class="admin-navbar-right d-flex align-items-center gap-3">
 
-            <!-- Theme Toggle -->
-            <div class="admin-navbar-theme">
+            <!-- Theme Toggle (Hidden on mobile) -->
+            <div class="admin-navbar-theme d-none d-lg-flex">
                 <x-theme-toggle :showLabel="false" />
             </div>
 
