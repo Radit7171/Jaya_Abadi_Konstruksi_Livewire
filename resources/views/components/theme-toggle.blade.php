@@ -1,4 +1,4 @@
-@props(['showLabel' => true])
+@props(['showLabel' => true, 'compact' => false])
 
 <div class="d-flex align-items-center">
     @if($showLabel)
@@ -8,7 +8,7 @@
     @endif
 
     <div
-        class="theme-capsule"
+        class="theme-capsule {{ $compact ? 'theme-capsule-compact' : '' }}"
         role="group"
         aria-label="Theme toggle"
         x-bind:data-theme="$store.theme.current"

@@ -1,0 +1,644 @@
+/**
+ * LOGIN PAGE STYLES
+ * Mobile-first responsive design with light/dark mode support
+ * Prefix: .auth-* (scoped)
+ */
+
+/* =============================================
+   CSS VARIABLES & THEME
+   ============================================= */
+
+:root {
+    --auth-primary: #2563eb;
+    --auth-primary-dark: #1d4ed8;
+    --auth-primary-light: #eff6ff;
+    --auth-secondary: #10b981;
+    --auth-accent: #f59e0b;
+    --auth-light: #f8fafc;
+    --auth-dark: #1e293b;
+    --auth-gray: #64748b;
+    --auth-text: #1e293b;
+    --auth-text-muted: #64748b;
+    --auth-border: #e2e8f0;
+    --auth-bg: #ffffff;
+    --auth-input-bg: #f9fafb;
+    --auth-error: #ef4444;
+    --auth-error-light: #fee2e2;
+    --auth-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --auth-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --auth-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    --auth-radius: 8px;
+    --auth-radius-lg: 12px;
+    --auth-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-bs-theme="dark"] {
+    --auth-primary: #60a5fa;
+    --auth-primary-dark: #3b82f6;
+    --auth-primary-light: #1e3a8a;
+    --auth-secondary: #34d399;
+    --auth-accent: #fbbf24;
+    --auth-light: #1f2937;
+    --auth-dark: #f1f5f9;
+    --auth-gray: #9ca3af;
+    --auth-text: #f1f5f9;
+    --auth-text-muted: #9ca3af;
+    --auth-border: #374151;
+    --auth-bg: #111827;
+    --auth-input-bg: #1f2937;
+    --auth-error: #f87171;
+    --auth-error-light: #7f1d1d;
+}
+
+/* =============================================
+   LAYOUT & STRUCTURE
+   ============================================= */
+
+.auth-layout {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background-color: var(--auth-bg);
+    color: var(--auth-text);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* CRITICAL: Prevent AOS from blocking auth page interactions */
+.auth-layout *,
+.auth-layout [data-aos] {
+    pointer-events: auto !important;
+}
+
+/* CRITICAL: Ensure form is interactive */
+.auth-login-page,
+.auth-login-page *,
+.auth-form,
+.auth-form *,
+.auth-form-group,
+.auth-form-group * {
+    pointer-events: auto !important;
+}
+
+.auth-layout.theme-transition-disabled,
+.auth-layout.theme-transition-disabled * {
+    transition: none !important;
+    animation: none !important;
+}
+
+.auth-main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+    padding-top: 2rem !important;
+}
+
+/* =============================================
+   THEME TOGGLE POSITIONING
+   ============================================= */
+
+.auth-theme-toggle {
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+}
+
+@media (max-width: 575px) {
+    .auth-theme-toggle {
+        top: 1rem;
+        right: 1rem;
+    }
+}
+
+/* =============================================
+   LOGIN PAGE CONTAINER
+   ============================================= */
+
+.auth-login-page {
+    width: 100%;
+    max-width: 380px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+    pointer-events: auto !important;
+}
+
+/* =============================================
+   AUTH CONTAINER & CARD
+   ============================================= */
+
+.auth-container {
+    background-color: var(--auth-bg);
+    border: 1px solid var(--auth-border);
+    border-radius: var(--auth-radius-lg);
+    padding: 1.5rem 1.25rem;
+    box-shadow: var(--auth-shadow-md);
+    transition: var(--auth-transition);
+    position: relative;
+    z-index: 10;
+    pointer-events: auto !important;
+}
+
+@media (max-width: 575px) {
+    .auth-container {
+        padding: 1.25rem 1rem;
+        border-radius: var(--auth-radius);
+        box-shadow: none;
+    }
+}
+
+.auth-container:hover {
+    box-shadow: var(--auth-shadow-lg);
+}
+
+/* =============================================
+   HEADER SECTION
+   ============================================= */
+
+.auth-logo-section {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.auth-logo {
+    max-width: 100px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.05));
+    transition: var(--auth-transition);
+}
+
+.auth-logo:hover {
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+}
+
+@media (max-width: 575px) {
+    .auth-logo {
+        max-width: 85px;
+    }
+}
+
+.auth-header {
+    margin-bottom: 1.25rem;
+    text-align: center;
+}
+
+.auth-title {
+    font-family: 'Sora', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 1.625rem;
+    font-weight: 700;
+    margin: 0;
+    margin-bottom: 0.375rem;
+    color: var(--auth-text);
+    letter-spacing: -0.025em;
+}
+
+@media (max-width: 575px) {
+    .auth-title {
+        font-size: 1.375rem;
+    }
+}
+
+.auth-subtitle {
+    font-size: 0.875rem;
+    color: var(--auth-text-muted);
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* =============================================
+   FORM STYLES
+   ============================================= */
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    overflow: visible;
+    position: relative;
+    z-index: 10;
+}
+
+.auth-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+    overflow: visible;
+    position: relative;
+    z-index: 10;
+    pointer-events: auto;
+}
+
+.auth-label {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--auth-text);
+    display: block;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.375rem;
+    pointer-events: none;
+}
+
+/**
+ * Label wrapper - contains label and error message inline
+ */
+.auth-label-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 0.375rem;
+    flex-wrap: wrap;
+}
+
+.auth-label-wrapper .auth-label {
+    margin-bottom: 0;
+    flex-shrink: 0;
+}
+
+/* Error message - displayed next to label */
+.auth-error-text {
+    font-size: 0.75rem;
+    color: var(--auth-error);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.4;
+    pointer-events: auto;
+    z-index: 5;
+    position: relative;
+}
+
+.auth-error-text i {
+    flex-shrink: 0;
+    font-size: 0.875rem;
+}
+
+/**
+ * Mobile responsive - stack error below label on small screens
+ */
+@media (max-width: 480px) {
+    .auth-label-wrapper {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+    }
+
+    .auth-error-text {
+        font-size: 0.7rem;
+    }
+}
+
+.auth-input {
+    font-size: 0.9375rem;
+    padding: 0.625rem 0.875rem;
+    border: 1px solid var(--auth-border);
+    border-radius: var(--auth-radius);
+    background-color: var(--auth-input-bg);
+    color: var(--auth-text);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    transition: var(--auth-transition);
+    width: 100%;
+    box-sizing: border-box;
+    pointer-events: auto !important;
+    cursor: text !important;
+    user-select: text;
+    position: relative;
+    z-index: 10;
+}
+
+.auth-input::placeholder {
+    color: var(--auth-text-muted);
+    opacity: 0.7;
+}
+
+.auth-input:focus {
+    outline: none;
+    border-color: var(--auth-primary);
+    background-color: var(--auth-input-bg);
+    box-shadow: 0 0 0 3px var(--auth-primary-light);
+}
+
+.auth-input:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.auth-input-error {
+    border-color: var(--auth-error);
+}
+
+.auth-input-error:focus {
+    box-shadow: 0 0 0 3px var(--auth-error-light);
+}
+
+/* =============================================
+   PASSWORD TOGGLE BUTTON
+   ============================================= */
+
+.auth-password-wrapper {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    pointer-events: auto;
+    z-index: 10;
+}
+
+.auth-password-wrapper .auth-input {
+    padding-right: 3rem;
+    position: relative;
+    z-index: 1;
+    pointer-events: auto;
+    flex: 1;
+    min-width: 0;
+}
+
+.auth-password-toggle {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--auth-text-muted);
+    font-size: 1rem;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--auth-transition);
+    pointer-events: auto;
+    z-index: 11;
+}
+
+.auth-password-toggle:hover {
+    color: var(--auth-primary);
+}
+
+.auth-password-toggle:focus {
+    outline: 2px solid var(--auth-primary);
+    outline-offset: 2px;
+    border-radius: 0.25rem;
+}
+
+/* =============================================
+   ERROR MESSAGES
+   ============================================= */
+
+.auth-error-message {
+    font-size: 0.8125rem;
+    color: var(--auth-error);
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    margin-top: -0.375rem;
+}
+
+/* =============================================
+   CHECKBOX (Remember Me)
+   ============================================= */
+
+.auth-form-group-checkbox {
+    gap: 0;
+    margin-top: -0.25rem;
+}
+
+/**
+ * Focus state for form group - visual feedback when input is focused
+ */
+.auth-form-group-focused .auth-label-wrapper .auth-label {
+    color: var(--auth-primary);
+    font-weight: 700;
+}
+
+.auth-checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    user-select: none;
+    font-size: 0.8125rem;
+    color: var(--auth-text);
+    padding: 0.5rem 0;
+    margin: -0.5rem 0;
+    pointer-events: auto !important;
+}
+
+.auth-checkbox {
+    cursor: pointer !important;
+    width: 1.25rem;
+    height: 1.25rem;
+    min-width: 1.25rem;
+    min-height: 1.25rem;
+    flex-shrink: 0;
+    accent-color: var(--auth-primary);
+    border-radius: 0.25rem;
+    pointer-events: auto !important;
+    position: relative;
+    z-index: 10;
+}
+
+.auth-checkbox:hover {
+    accent-color: var(--auth-primary-dark);
+}
+
+.auth-checkbox:focus {
+    outline: 2px solid var(--auth-primary);
+    outline-offset: 2px;
+}
+
+.auth-checkbox-text {
+    line-height: 1.4;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* =============================================
+   BUTTONS
+   ============================================= */
+
+.auth-btn {
+    padding: 0.75rem 1.25rem;
+    border: none;
+    border-radius: var(--auth-radius);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    cursor: pointer !important;
+    transition: var(--auth-transition);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    text-decoration: none;
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+    pointer-events: auto !important;
+    z-index: 10;
+}
+
+.auth-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Primary Button */
+.auth-btn-primary {
+    background: linear-gradient(135deg, var(--auth-primary), var(--auth-secondary));
+    color: white;
+    width: 100%;
+    box-shadow: var(--auth-shadow-sm);
+}
+
+.auth-btn-primary:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: var(--auth-shadow-md);
+    background: linear-gradient(135deg, var(--auth-primary-dark), #059669);
+}
+
+.auth-btn-primary:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+/* Outline Button */
+.auth-btn-outline {
+    border: 1px solid var(--auth-border);
+    background-color: transparent;
+    color: var(--auth-text);
+}
+
+.auth-btn-outline:hover:not(:disabled) {
+    background-color: var(--auth-light);
+    border-color: var(--auth-primary);
+    color: var(--auth-primary);
+}
+
+/* =============================================
+   LOADING STATE
+   ============================================= */
+
+.auth-loading-state {
+    text-align: center;
+    font-size: 0.875rem;
+    color: var(--auth-text-muted);
+    margin-top: 1rem;
+    animation: fadeInUp 0.3s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =============================================
+   FOOTER SECTION
+   ============================================= */
+
+.auth-footer {
+    margin-top: 1rem;
+    text-align: center;
+    padding-top: 1rem;
+    border-top: 1px solid var(--auth-border);
+}
+
+.auth-footer-text {
+    font-size: 0.8125rem;
+    color: var(--auth-text-muted);
+    margin: 0;
+}
+
+.auth-footer-link {
+    color: var(--auth-primary);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--auth-transition);
+}
+
+.auth-footer-link:hover {
+    color: var(--auth-primary-dark);
+    text-decoration: underline;
+}
+
+/* =============================================
+   RESPONSIVE DESIGN
+   ============================================= */
+
+/* Tablet and up */
+@media (min-width: 768px) {
+    .auth-main {
+        padding: 3rem 1rem;
+    }
+
+    .auth-container {
+        padding: 2.5rem 2rem;
+    }
+
+    .auth-form {
+        gap: 1.5rem;
+    }
+}
+
+/* Desktop */
+@media (min-width: 992px) {
+    .auth-login-page {
+        max-width: 500px;
+    }
+
+    .auth-container {
+        box-shadow: var(--auth-shadow-lg);
+    }
+
+    .auth-container:hover {
+        box-shadow: var(--auth-shadow-lg);
+    }
+}
+
+/* =============================================
+   ACCESSIBILITY
+   ============================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: more) {
+    .auth-input {
+        border-width: 2px;
+    }
+
+    .auth-btn {
+        border: 2px solid currentColor;
+    }
+}
+
+/* Keyboard focus visible */
+.auth-input:focus-visible,
+.auth-btn:focus-visible,
+.auth-checkbox:focus-visible,
+.auth-footer-link:focus-visible {
+    outline: 2px solid var(--auth-primary);
+    outline-offset: 2px;
+}

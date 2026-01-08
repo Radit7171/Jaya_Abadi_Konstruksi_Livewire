@@ -22,6 +22,7 @@
                                     ['url' => '/layanan', 'label' => 'Layanan'],
                                     ['url' => '/proyek', 'label' => 'Proyek'],
                                     ['url' => '/kontak', 'label' => 'Kontak'],
+                                    ['url' => '/login', 'label' => 'Login'],
                                 ]"
                             />
                         </div>
@@ -70,6 +71,7 @@
                                                     <li><a href="/layanan" wire:navigate class="small text-body-secondary d-block py-1">Layanan</a></li>
                                                     <li><a href="/proyek" wire:navigate class="small text-body-secondary d-block py-1">Proyek</a></li>
                                                     <li><a href="/kontak" wire:navigate class="small text-body-secondary d-block py-1">Kontak</a></li>
+                                                    <li><a href="/login" wire:navigate class="small text-body-secondary d-block py-1">Login</a></li>
                                                 </ul>
                                             </div>
                                         </div>

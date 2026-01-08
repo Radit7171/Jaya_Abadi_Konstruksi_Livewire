@@ -188,6 +188,7 @@ Penjelasan mendalam tentang:
 -   Accessibility features (keyboard navigation, reduced motion support, semantic HTML)
 -   Future enhancement roadmap (project detail page, advanced filters, search, galleries, testimonials, timeline view)
 
+
 ### 15. [CONTACT PAGE ARCHITECTURE](readme/15-CONTACT-PAGE.md)
 
 Penjelasan mendalam tentang:
@@ -213,6 +214,95 @@ Penjelasan mendalam tentang:
 -   Button styling consistency (primary gradient, outline, white variants)
 -   Performance optimization dengan CSS-based animations & efficient JavaScript
 -   Error handling & troubleshooting guide untuk FAQ & maps issues
+
+### 16. [PROJECTS MODAL SYSTEM](readme/16-PROJECTS-MODAL-SYSTEM.md)
+
+Penjelasan lengkap tentang:
+
+-   Sistem modal detail proyek di Projects Page (tanpa reload, SPA, Livewire reactive)
+-   Livewire logic: `$showModal`, `$selectedProject`, `openProjectDetail()`, `closeModal()`
+-   Blade markup: conditional rendering, 3 section utama (header, body, footer)
+-   Modal body: gambar, deskripsi lengkap, kategori, tanggal, status, detail grid, CTA
+-   CSS architecture: 300+ lines, fade-in & slide-up animation, glassmorphism overlay, dark mode, responsive (desktop modal, mobile bottom-sheet)
+-   Keyboard & accessibility support (Escape, overlay click, semantic HTML, aria-label)
+-   SPA integration: wire:navigate, auto close on navigation
+-   Zero custom JavaScript, zero dependencies
+-   Customization guide: max-width, image size, animation, detail fields
+-   Consistency checklist: architecture, design, code quality, integration, performance
+
+### 17. [AUTH LOGIN SYSTEM](readme/17-AUTH-LOGIN-SYSTEM.md)
+
+Penjelasan lengkap tentang:
+
+-   Authentication system dengan email & password login
+-   Livewire LoginPage component dengan validation & session management
+-   Separate auth layout (layouts/auth.blade.php) - NOT shared dengan app.blade.php
+-   Login form dengan email, password, remember me (24 jam), password toggle eye icon
+-   Session configuration: 1440 minutes (24 hours) remember-me functionality
+-   User seeder: Raditiya Bagas Santoso / raditjal717@gmail.com / Radit717!2025
+-   CSS architecture: 637 lines, `.auth-*` scoping, mobile-first, light/dark mode, slim modern design
+-   JavaScript behavior: 203 lines, password toggle, form validation, accessibility, blur/unfocus, Livewire SPA integration
+-   Security features: password hashing, CSRF protection, session regeneration, timing attack prevention
+-   Responsive design: mobile (< 576px), tablet (576px - 991px), desktop (> 991px)
+-   Dark mode support dengan CSS variables automatic override
+-   Routes configuration: GET /login, POST /login, POST /logout dengan guest/auth middleware
+-   Database: users table dengan remember_token, sessions table untuk session storage
+-   ✅ **ENHANCED UX (Jan 8, 2026):**
+    -   Error messages moved from below input to inline with label (cleaner layout)
+    -   Auto blur/unfocus inputs when clicking outside form (standard form behavior)
+    -   Visual feedback: label color changes to primary when input focused (clear active state)
+    -   Password wrapper properly integrated in blade (not lost on Livewire re-render)
+    -   All interactions tested & working smoothly on mobile, tablet, desktop views
+    -   Status: STABLE & PRODUCTION READY (v1.1.0)
+
+### 18. [ADMIN DASHBOARD STRUCTURE](readme/18-ADMIN-DASHBOARD-STRUCTURE.md)
+
+Penjelasan lengkap tentang:
+
+-   Admin dashboard blade structure & file organization
+-   Layout files: master layout, navbar, sidebar components
+-   Livewire components: AdminDashboard, AdminProjects
+-   Route setup dengan auth middleware protection
+-   Navbar features: sidebar toggle, theme toggle, user dropdown
+-   Sidebar features: navigation menu, active state, SPA navigation, mobile toggle
+-   Dashboard page: stat cards, quick actions
+-   Projects page: search bar, filters, dual layout (table + cards)
+-   Projects table columns: title, category, status, date, actions
+-   Projects card layout: image, title, description, metadata, action buttons
+-   Modal system untuk view/edit/create projects
+-   ✅ **RECENT ENHANCEMENTS (Jan 8, 2026):**
+    -   Custom pagination component dengan smart page numbering
+    -   Modern slim pagination design (34px → 28px responsive)
+    -   Mobile card layout dengan responsive grid
+    -   Color-coded action buttons (View: Cyan, Edit: Blue, Show: Green, Hide: Amber, Delete: Red)
+    -   Fixed sidebar toggle bug dengan proper event listener cleanup
+    -   Sidebar works correctly after Livewire navigation
+
+### 19. [ADMIN CSS & JAVASCRIPT GUIDE](readme/19-ADMIN-CSS-JS-GUIDE.md)
+
+Penjelasan lengkap tentang:
+
+-   CSS files architecture (5 files): layout, dashboard, projects, pagination, cards
+-   admin-layout.css: sidebar, navbar, responsive design, CSS variables, dark mode
+-   admin-dashboard.css: stat cards, quick actions, hover effects
+-   admin-projects.css: table, filter, modal, form, badges, buttons
+-   admin-pagination.css: custom pagination dengan slim modern design
+-   admin-projects-cards.css: mobile card layout, responsive grid, metadata alignment
+-   JavaScript AdminDashboard class dengan comprehensive interaction handling
+-   Methods: init, setupSidebarToggle, removeSidebarListeners, setupModalClosing, setupFormValidation, setupTableInteractions, setupSearchDebounce, reinit
+-   Color palette: primary (blue), danger (red), success (green), warning (amber), info (cyan)
+-   Responsive breakpoints: desktop (≥992px), tablet (768px-991px), mobile (<576px)
+-   Sidebar toggle: smooth animation, auto-cleanup event listeners, mobile auto-hide
+-   Card layout: 180px image height, flexbox metadata alignment, color-coded buttons
+-   Pagination: responsive button sizing, pagination info display
+-   Livewire integration: wire attributes, form validation styling, SPA navigation support
+-   Mobile optimizations: responsive sidebar, sticky navbar, card grid, full-width modal
+-   ✅ **BUG FIXES (Jan 8, 2026):**
+    -   Fixed sidebar toggle not working after Livewire navigation
+    -   Added proper event listener cleanup dengan removeSidebarListeners()
+    -   Element references refresh on init() called from reinit()
+    -   Bound function references stored untuk proper removal
+    -   Status: STABLE & PRODUCTION READY (v2.0.0)
 
 ---
 
@@ -256,41 +346,31 @@ npm run build
 
 ## 📝 METADATA
 
-**Last Updated:** January 4, 2026  
-**Version:** 1.8.0 (Contact Page Implementation)  
+**Last Updated:** January 8, 2026  
+**Version:** 2.2.0 (Admin Dashboard with Mobile Layout & Sidebar Toggle Fix - Jan 8, 2026)  
 **Maintainer:** Frontend Team & GitHub Copilot  
 **Company:** PT Jaya Abadi Konstruksi
 
-**Latest Changes:**
+**Latest Changes (Jan 8, 2026 - Admin Dashboard Enhancement Checkpoint):**
 
--   Contact page implementation dengan 6 major sections (breadcrumb, hero dengan quick contact info, contact info cards dengan social media, maps embedding dengan location card, FAQ accordion, CTA)
--   WhatsApp-centric contact strategy dengan multiple touchpoints (hero, info cards, social card, maps buttons, CTA)
--   Contact info cards grid (4 columns desktop, 2 columns tablet, 1 column mobile) dengan lokasi, telepon, email, jam operasional
--   Social media links integration (WhatsApp primary highlight, Instagram, Facebook, LinkedIn)
--   Google Maps embedded iframe dengan responsive container
--   Location info card dengan main office details, operating hours, action buttons (directions, contact via WhatsApp)
--   Quick info checklist (lokasi strategis, mudah diakses, parkir gratis)
--   FAQ accordion component dengan 4 FAQs, smooth expand/collapse animation, single item open policy
--   FAQ functionality dengan JavaScript toggle logic, CSS-based max-height animation, icon color transitions (blue → green), icon rotation 180deg
--   Icon styling per section (blue primary for hero/info, green secondary for FAQ toggle)
--   CSS architecture (1217 lines) dengan scoped `.contact-*` prefix, CSS variables untuk theme-aware colors, dark mode support
--   JavaScript behavior (315 lines) dengan FAQ accordion, smooth scroll, button ripple effects, intersection observer, analytics tracking
--   Responsive button variants (primary gradient, outline, white for dark backgrounds)
--   External links handling via `class="external-link" data-link="[url]"` pattern
--   Breadcrumb navigation untuk SPA context (Home > Hubungi Kami)
--   Hero section dengan badge, headline gradient, quick contact info, dual CTAs (WhatsApp primary, services secondary)
--   CTA section dengan gradient background, decorative SVG pattern, dual buttons (white primary, outline white secondary)
--   Accessibility features (keyboard navigation on FAQ, ARIA labels on breadcrumb, semantic HTML, reduced motion support)
--   AOS animations integration (fade-up, fade-in-left) dengan staggered delays untuk hero, cards, maps, FAQ, CTA
--   Mobile-first responsive design dengan font size reductions, padding adjustments, button stacking
--   Dark mode support dengan automatic CSS variables override
--   Livewire v3 integration dengan livewire:navigated listener untuk behavior re-init
--   Performance optimization dengan CSS-based animations (no JavaScript transitions), efficient event handling
--   Error handling & troubleshooting guide (FAQ toggle issues, maps CSP errors, external link handling)
--   Contact Page documentation (15-CONTACT-PAGE.md) dengan architectural guidelines, CSS architecture, JavaScript behavior, responsive design, accessibility features
--   Complete integration dengan core architecture principles (Blade markup-only, CSS styling-only, JS behavior-only)
--   100% compliance dengan icon system, typography, design optimization, & AOS animation guidelines
--   Production-ready implementation dengan console debugging, memory management, cleanup on SPA navigation
+### Admin Dashboard Enhancements:
+-   ✅ **ADDED:** Custom pagination component dengan smart page numbering
+-   ✅ **ADDED:** Modern slim pagination design (button size 34px → 28px mobile)
+-   ✅ **ADDED:** Mobile card layout untuk projects dengan responsive grid
+-   ✅ **ADDED:** Color-coded action buttons (View: Cyan, Edit: Blue, Show: Green, Hide: Amber, Delete: Red)
+-   ✅ **ADDED:** Proper card metadata alignment dengan flexbox centering
+-   ✅ **FIXED:** Sidebar toggle bug setelah Livewire navigation
+-   ✅ **FIXED:** Card meta alignment dengan proper flexbox properties
+-   ✅ **TESTED:** All sidebar toggle interactions pada mobile, tablet, desktop
+-   ✅ **TESTED:** Card layout responsiveness pada semua breakpoints
+-   ✅ **TESTED:** Pagination navigation functionality
+-   ✅ **DOCUMENTED:** Updated readme 18 & 19 dengan latest changes
+-   **Files Modified:**
+    -   `resources/js/pages/admin/admin-dashboard.js` - Fixed sidebar toggle dengan event listener cleanup
+    -   `resources/css/pages/admin/admin-projects-cards.css` - Proper card meta alignment
+    -   `readme/18-ADMIN-DASHBOARD-STRUCTURE.md` - Updated dengan new features
+    -   `readme/19-ADMIN-CSS-JS-GUIDE.md` - Updated dengan CSS/JS changes & bug fixes
+    -   `README.md` - Added section 18 & 19, updated metadata
 
 ---
 
