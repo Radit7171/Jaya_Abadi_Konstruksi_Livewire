@@ -232,6 +232,7 @@
     overflow: visible;
     position: relative;
     z-index: 10;
+    pointer-events: auto;
 }
 
 .auth-label {
@@ -256,6 +257,9 @@
     word-wrap: break-word;
     overflow-wrap: break-word;
     line-height: 1.4;
+    pointer-events: auto;
+    z-index: 5;
+    position: relative;
 }
 
 .auth-error-text i {
@@ -313,8 +317,10 @@
 .auth-password-wrapper {
     position: relative;
     width: 100%;
-    display: block;
+    display: flex;
+    align-items: center;
     pointer-events: auto;
+    z-index: 10;
 }
 
 .auth-password-wrapper .auth-input {
@@ -322,6 +328,8 @@
     position: relative;
     z-index: 1;
     pointer-events: auto;
+    flex: 1;
+    min-width: 0;
 }
 
 .auth-password-toggle {
@@ -340,7 +348,7 @@
     justify-content: center;
     transition: var(--auth-transition);
     pointer-events: auto;
-    z-index: 2;
+    z-index: 11;
 }
 
 .auth-password-toggle:hover {

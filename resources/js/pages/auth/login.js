@@ -77,28 +77,19 @@ class LoginPageEnhancer {
         const passwordInput = this.page.querySelector('#password');
         if (!passwordInput) return;
 
-        const formGroup = passwordInput.closest('.auth-form-group');
-        if (!formGroup) return;
+        const wrapper = passwordInput.closest('.auth-password-wrapper');
+        if (!wrapper) return;
 
-        // Create wrapper only for toggle button positioning
-        let wrapper = formGroup.querySelector('.auth-password-wrapper');
-        if (!wrapper) {
-            wrapper = document.createElement('div');
-            wrapper.className = 'auth-password-wrapper';
-            passwordInput.parentNode.insertBefore(wrapper, passwordInput);
-            wrapper.appendChild(passwordInput);
-        }
-
-        // Create toggle button if not exists
+        // Get the toggle button (should already exist in blade)
         let toggleBtn = wrapper.querySelector('.auth-password-toggle');
         if (!toggleBtn) {
+            // Fallback: create if somehow missing
             toggleBtn = document.createElement('button');
             toggleBtn.type = 'button';
             toggleBtn.className = 'auth-password-toggle';
             toggleBtn.setAttribute('aria-label', 'Toggle password visibility');
             toggleBtn.setAttribute('title', 'Tampilkan/Sembunyikan password');
             toggleBtn.innerHTML = '<i class="fas fa-eye"></i>';
-            toggleBtn.style.pointerEvents = 'auto';
             wrapper.appendChild(toggleBtn);
         }
 

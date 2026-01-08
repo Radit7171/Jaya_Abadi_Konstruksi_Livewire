@@ -37,14 +37,23 @@
             <!-- Password Field -->
             <div class="auth-form-group">
                 <label for="password" class="auth-label">Password</label>
-                <input
-                    type="password"
-                    id="password"
-                    wire:model.live.debounce.100ms="password"
-                    class="auth-input @error('password') auth-input-error @enderror"
-                    placeholder="••••••••"
-                    required
-                    autocomplete="current-password">
+                <div class="auth-password-wrapper">
+                    <input
+                        type="password"
+                        id="password"
+                        wire:model.live.debounce.100ms="password"
+                        class="auth-input @error('password') auth-input-error @enderror"
+                        placeholder="••••••••"
+                        required
+                        autocomplete="current-password">
+                    <button
+                        type="button"
+                        class="auth-password-toggle"
+                        aria-label="Toggle password visibility"
+                        title="Tampilkan/Sembunyikan password">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </div>
                 @error('password')
                     <span class="auth-error-text">
                         <i class="fas fa-exclamation-circle"></i> {{ $message }}
