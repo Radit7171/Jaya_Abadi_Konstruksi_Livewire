@@ -18,7 +18,14 @@
         <form wire:submit="login" class="auth-form" novalidate>
             <!-- Email Field -->
             <div class="auth-form-group">
-                <label for="email" class="auth-label">Email Address</label>
+                <div class="auth-label-wrapper">
+                    <label for="email" class="auth-label">Email Address</label>
+                    @error('email')
+                        <span class="auth-error-text">
+                            <i class="fas fa-exclamation-circle"></i> {{ $message }}
+                        </span>
+                    @enderror
+                </div>
                 <input
                     type="email"
                     id="email"
@@ -27,16 +34,18 @@
                     placeholder="nama@example.com"
                     required
                     autocomplete="email">
-                @error('email')
-                    <span class="auth-error-text">
-                        <i class="fas fa-exclamation-circle"></i> {{ $message }}
-                    </span>
-                @enderror
             </div>
 
             <!-- Password Field -->
             <div class="auth-form-group">
-                <label for="password" class="auth-label">Password</label>
+                <div class="auth-label-wrapper">
+                    <label for="password" class="auth-label">Password</label>
+                    @error('password')
+                        <span class="auth-error-text">
+                            <i class="fas fa-exclamation-circle"></i> {{ $message }}
+                        </span>
+                    @enderror
+                </div>
                 <div class="auth-password-wrapper">
                     <input
                         type="password"
@@ -54,11 +63,6 @@
                         <i class="fas fa-eye"></i>
                     </button>
                 </div>
-                @error('password')
-                    <span class="auth-error-text">
-                        <i class="fas fa-exclamation-circle"></i> {{ $message }}
-                    </span>
-                @enderror
             </div>
 
             <!-- Remember Me -->
