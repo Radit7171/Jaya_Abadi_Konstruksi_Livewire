@@ -414,6 +414,14 @@
     margin-top: -0.25rem;
 }
 
+/**
+ * Focus state for form group - visual feedback when input is focused
+ */
+.auth-form-group-focused .auth-label-wrapper .auth-label {
+    color: var(--auth-primary);
+    font-weight: 700;
+}
+
 .auth-checkbox-label {
     display: flex;
     align-items: center;

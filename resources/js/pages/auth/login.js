@@ -20,6 +20,7 @@ class LoginPageEnhancer {
         this.ensureInputsClickable();
         this.setupPasswordToggle();
         this.setupAccessibility();
+        this.setupInputBlur();
         console.log('Login page enhancer initialized (validation by Livewire)');
     }
 
@@ -164,6 +165,38 @@ class LoginPageEnhancer {
                     });
                 }
             }, 100);
+        });
+    }
+
+    /**
+     * Setup input blur/unfocus when clicking outside
+     */
+    setupInputBlur() {
+        const inputs = this.page.querySelectorAll('.auth-input');
+
+        // Handle blur when clicking outside form
+        document.addEventListener('click', (e) => {
+            // Check if click is outside the form
+            const form = this.page.querySelector('.auth-form');
+            const isClickInsideForm = form.contains(e.target);
+
+            // If click is outside form, blur all inputs
+            if (!isClickInsideForm) {
+                inputs.forEach((input) => {
+                    input.blur();
+                });
+            }
+        });
+
+        // Add visual feedback for focus state
+        inputs.forEach((input) => {
+            input.addEventListener('focus', () => {
+                input.closest('.auth-form-group')?.classList.add('auth-form-group-focused');
+            });
+
+            input.addEventListener('blur', () => {
+                input.closest('.auth-form-group')?.classList.remove('auth-form-group-focused');
+            });
         });
     }
 

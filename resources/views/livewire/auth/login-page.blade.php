@@ -11,7 +11,7 @@
         <!-- Header -->
         <div class="auth-header">
             <h1 class="auth-title">Masuk ke Akun</h1>
-            <p class="auth-subtitle">Selamat datang kembali di PT Jaya Abadi Konstruksi</p>
+            <p class="auth-subtitle">Selamat datang kembali di Jaya Abadi Konstruksi</p>
         </div>
 
         <!-- Login Form -->
