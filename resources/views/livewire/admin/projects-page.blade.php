@@ -56,11 +56,14 @@
         </div>
     </div>
 
-    <!-- Projects Table -->
+    <!-- Projects Table & Cards -->
     <div class="admin-table-section">
         <div class="container-fluid">
-            <div class="admin-table-wrapper">
-                <table class="admin-table">
+
+            <!-- Desktop Table View -->
+            <div class="admin-projects-table-wrapper">
+                <div class="admin-table-wrapper">
+                    <table class="admin-table">
                     <thead class="admin-table-head">
                         <tr>
                             <th class="admin-table-th">Judul Proyek</th>
@@ -145,6 +148,74 @@
                         @endforelse
                     </tbody>
                 </table>
+                </div>
+            </div>
+
+            <!-- Mobile Card View -->
+            <div class="admin-projects-cards">
+                @forelse($projects as $project)
+                    <div class="admin-projects-card">
+                        <img src="{{ $project->image_url }}"
+                             alt="{{ $project->image_alt }}"
+                             class="admin-card-image">
+
+                        <div class="admin-card-header">
+                            <h3 class="admin-card-title">{{ $project->title }}</h3>
+                            <p class="admin-card-desc">{{ $project->getShortDescription() }}</p>
+                        </div>
+
+                        <div class="admin-card-meta">
+                            <span class="admin-card-category admin-badge admin-badge-info">
+                                {{ $project->getCategoryLabel() }}
+                            </span>
+                            <span class="admin-card-date">
+                                {{ $project->created_at->format('d M Y') }}
+                            </span>
+                            <span class="admin-card-status">
+                                @if($project->is_published)
+                                    <span class="admin-badge admin-badge-success">
+                                        <i class="fas fa-check-circle"></i>
+                                    </span>
+                                @else
+                                    <span class="admin-badge admin-badge-warning">
+                                        <i class="fas fa-file-alt"></i>
+                                    </span>
+                                @endif
+                            </span>
+                        </div>
+
+                        <div class="admin-card-actions">
+                            <button wire:click="viewProject({{ $project->id }})"
+                                    class="admin-card-action-btn admin-action-view"
+                                    title="Lihat">
+                                <i class="fas fa-eye"></i>
+                                <span>Lihat</span>
+                            </button>
+                            <button wire:click="editProject({{ $project->id }})"
+                                    class="admin-card-action-btn admin-action-edit"
+                                    title="Edit">
+                                <i class="fas fa-edit"></i>
+                                <span>Edit</span>
+                            </button>
+                            <button wire:click="togglePublish({{ $project->id }})"
+                                    class="admin-card-action-btn {{ $project->is_published ? 'admin-action-hide' : 'admin-action-show' }}"
+                                    title="{{ $project->is_published ? 'Sembunyikan' : 'Tampilkan' }}">
+                                <i class="fas {{ $project->is_published ? 'fa-eye-slash' : 'fa-eye' }}"></i>
+                            </button>
+                            <button wire:click="deleteProject({{ $project->id }})"
+                                    wire:confirm="Apakah Anda yakin ingin menghapus proyek ini?"
+                                    class="admin-card-action-btn admin-action-delete"
+                                    title="Hapus">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                @empty
+                    <div class="admin-empty-state" style="text-align: center; padding: 2rem;">
+                        <i class="fas fa-inbox"></i>
+                        <p>Tidak ada proyek ditemukan</p>
+                    </div>
+                @endforelse
             </div>
 
             <!-- Pagination -->
