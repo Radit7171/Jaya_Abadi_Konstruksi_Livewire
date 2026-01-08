@@ -5,6 +5,13 @@
 
 export class AdminDashboard {
     constructor() {
+        this.init();
+    }
+
+    /**
+     * Initialize all elements and setup handlers
+     */
+    init() {
         this.sidebarToggleBtn = document.getElementById('sidebarToggle');
         this.sidebar = document.querySelector('.admin-sidebar');
         this.mainWrapper = document.querySelector('.admin-main-wrapper');
@@ -14,6 +21,8 @@ export class AdminDashboard {
         // Initialize mobile-hidden class on mobile
         if (this.isMobile && this.sidebar) {
             this.sidebar.classList.add('mobile-hidden');
+        } else if (!this.isMobile && this.sidebar) {
+            this.sidebar.classList.remove('mobile-hidden');
         }
 
         this.setupSidebarToggle();
@@ -27,69 +36,103 @@ export class AdminDashboard {
      * Setup sidebar toggle for mobile and desktop
      */
     setupSidebarToggle() {
-        if (!this.sidebarToggleBtn) return;
+        if (!this.sidebarToggleBtn || !this.sidebar || !this.layout) return;
 
-        this.sidebarToggleBtn.addEventListener('click', (e) => {
+        // Remove old listeners if they exist
+        this.removeSidebarListeners();
+
+        // Toggle button click handler
+        this.boundToggleClick = (e) => {
+            e.preventDefault();
             e.stopPropagation();
-            this.toggleSidebar();
-        });
+            this.sidebar.classList.toggle('mobile-hidden');
+            this.layout.classList.toggle('sidebar-collapsed');
+        };
 
-        // Close sidebar when clicking sidebar links on mobile only
-        if (this.sidebar) {
-            const sidebarLinks = this.sidebar.querySelectorAll('.admin-sidebar-link');
-            sidebarLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    if (this.isMobile) {
-                        this.closeSidebar();
-                    }
-                });
-            });
-        }
+        // Click outside to close sidebar on mobile
+        this.boundDocumentClick = (e) => {
+            if (!this.isMobile) return;
 
-        // Close sidebar when clicking outside on mobile only
-        document.addEventListener('click', (e) => {
-            if (this.isMobile && this.sidebar) {
-                if (!this.sidebar.contains(e.target) && !this.sidebarToggleBtn.contains(e.target)) {
-                    this.closeSidebar();
-                }
+            const clickedOnSidebar = this.sidebar.contains(e.target);
+            const clickedOnToggle = this.sidebarToggleBtn.contains(e.target);
+
+            if (!clickedOnSidebar && !clickedOnToggle) {
+                this.sidebar.classList.add('mobile-hidden');
             }
-        });
+        };
 
-        // Update mobile flag on window resize
-        window.addEventListener('resize', () => {
+        // Window resize handler
+        this.boundWindowResize = () => {
             this.isMobile = window.innerWidth < 992;
             if (window.innerWidth >= 992 && this.sidebar) {
                 this.sidebar.classList.remove('mobile-hidden');
-            } else if (window.innerWidth < 992 && this.sidebar && !this.sidebar.classList.contains('mobile-hidden')) {
+            } else if (window.innerWidth < 992 && this.sidebar) {
                 this.sidebar.classList.add('mobile-hidden');
             }
+        };
+
+        // Attach event listeners
+        this.sidebarToggleBtn.addEventListener('click', this.boundToggleClick);
+        document.addEventListener('click', this.boundDocumentClick);
+        window.addEventListener('resize', this.boundWindowResize);
+
+        // Close sidebar on link click (mobile only)
+        const sidebarLinks = this.sidebar.querySelectorAll('.admin-sidebar-link');
+        sidebarLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (this.isMobile) {
+                    setTimeout(() => {
+                        this.sidebar.classList.add('mobile-hidden');
+                    }, 100);
+                }
+            });
         });
+    }
+
+    /**
+     * Remove old sidebar event listeners
+     */
+    removeSidebarListeners() {
+        if (this.boundToggleClick && this.sidebarToggleBtn) {
+            this.sidebarToggleBtn.removeEventListener('click', this.boundToggleClick);
+        }
+        if (this.boundDocumentClick) {
+            document.removeEventListener('click', this.boundDocumentClick);
+        }
+        if (this.boundWindowResize) {
+            window.removeEventListener('resize', this.boundWindowResize);
+        }
     }
 
     /**
      * Toggle sidebar visibility
      */
     toggleSidebar() {
-        this.sidebar.classList.toggle('mobile-hidden');
-        // Also toggle the layout class for desktop
-        this.layout.classList.toggle('sidebar-collapsed');
+        if (this.sidebar && this.layout) {
+            this.sidebar.classList.toggle('mobile-hidden');
+            this.layout.classList.toggle('sidebar-collapsed');
+        }
     }
 
     /**
      * Open sidebar
      */
     openSidebar() {
-        this.sidebar.classList.remove('mobile-hidden');
-        this.layout.classList.remove('sidebar-collapsed');
+        if (this.sidebar && this.layout) {
+            this.sidebar.classList.remove('mobile-hidden');
+            this.layout.classList.remove('sidebar-collapsed');
+        }
     }
 
     /**
      * Close sidebar
      */
     closeSidebar() {
-        if (this.isMobile) {
+        if (this.sidebar) {
             this.sidebar.classList.add('mobile-hidden');
-            this.layout.classList.remove('sidebar-collapsed');
+            if (!this.isMobile && this.layout) {
+                this.layout.classList.remove('sidebar-collapsed');
+            }
         }
     }
 
@@ -186,12 +229,7 @@ export class AdminDashboard {
      * Reinitialize after Livewire navigation
      */
     reinit() {
-        // Reset sidebar to open state on desktop
-        if (window.innerWidth >= 992) {
-            this.openSidebar();
-        }
-
-        // Re-setup all interactions
+        // Refresh DOM element references
         this.init();
     }
 
