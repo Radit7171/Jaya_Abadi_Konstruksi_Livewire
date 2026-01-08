@@ -148,9 +148,7 @@
             </div>
 
             <!-- Pagination -->
-            <div class="admin-pagination">
-                {{ $projects->links() }}
-            </div>
+            <x-admin-pagination :paginator="$projects" />
 
         </div>
     </div>

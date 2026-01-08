@@ -1,0 +1,332 @@
+/* ============================================================
+   ADMIN PAGINATION STYLING
+   ============================================================ */
+
+.admin-pagination-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 3rem;
+    padding: 2.5rem 0 2rem 0;
+}
+
+/* Pagination Info Section */
+.admin-pagination-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.875rem;
+    color: var(--admin-text-muted);
+}
+
+.pagination-current {
+    color: var(--admin-text);
+    font-weight: 500;
+}
+
+.pagination-separator {
+    color: var(--admin-text-muted);
+}
+
+.pagination-total {
+    color: var(--admin-text);
+    font-weight: 500;
+}
+
+/* Pagination List Container */
+.admin-pagination-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    flex-wrap: wrap;
+}
+
+/* Pagination Item */
+.admin-pagination-item {
+    margin: 0;
+    padding: 0;
+}
+
+/* Pagination Link */
+.admin-pagination-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.625rem 0.875rem;
+    min-width: 40px;
+    height: 40px;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--admin-text-muted);
+    background-color: var(--bs-body-bg);
+    border: 1.5px solid var(--admin-light-border);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    user-select: none;
+}
+
+/* Ripple Effect on Hover */
+.admin-pagination-link::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(37, 99, 235, 0.15);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.4s ease, height 0.4s ease;
+    z-index: 0;
+}
+
+.admin-pagination-link {
+    position: relative;
+    z-index: 1;
+}
+
+/* Pagination Link Hover */
+.admin-pagination-item:not(.disabled):not(.active) .admin-pagination-link:hover::before {
+    width: 100%;
+    height: 100%;
+}
+
+.admin-pagination-item:not(.disabled):not(.active) .admin-pagination-link:hover {
+    color: var(--admin-primary);
+    border-color: var(--admin-primary);
+    background-color: rgba(37, 99, 235, 0.08);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+}
+
+/* Active Page Link */
+.admin-pagination-item.active .admin-pagination-link {
+    color: white;
+    background: linear-gradient(135deg, var(--admin-primary) 0%, #1e40af 100%);
+    border-color: var(--admin-primary);
+    font-weight: 600;
+    box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
+    position: relative;
+}
+
+.admin-pagination-item.active .admin-pagination-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: white;
+    opacity: 0.5;
+    border-radius: 2px;
+}
+
+/* Disabled State */
+.admin-pagination-item.disabled .admin-pagination-link {
+    color: var(--admin-text-muted);
+    background-color: var(--bs-body-bg);
+    border-color: var(--admin-light-border);
+    cursor: not-allowed;
+    opacity: 0.5;
+    transition: none;
+}
+
+.admin-pagination-item.disabled .admin-pagination-link:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+/* Dots Separator */
+.pagination-dots {
+    cursor: default;
+    border: none;
+    background: transparent;
+    padding: 0 0.25rem;
+    color: var(--admin-text-muted);
+    font-weight: 600;
+    pointer-events: none;
+}
+
+/* Pagination Label */
+.pagination-label {
+    display: none;
+}
+
+@media (min-width: 576px) {
+    .pagination-label {
+        display: inline;
+    }
+}
+
+/* Pagination Summary */
+.admin-pagination-summary {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.8125rem;
+    color: var(--admin-text-muted);
+    margin-top: 0.5rem;
+    font-weight: 500;
+}
+
+/* ============================================================
+   RESPONSIVE - TABLET
+   ============================================================ */
+
+@media (max-width: 991px) {
+    .admin-pagination-wrapper {
+        gap: 1rem;
+        margin-top: 2.5rem;
+        padding: 2rem 0 1.5rem 0;
+    }
+
+    .admin-pagination-link {
+        padding: 0.5rem 0.75rem;
+        min-width: 38px;
+        height: 38px;
+        font-size: 0.75rem;
+    }
+
+    .admin-pagination-info {
+        font-size: 0.8rem;
+    }
+
+    .admin-pagination-summary {
+        font-size: 0.75rem;
+    }
+}
+
+/* ============================================================
+   RESPONSIVE - MOBILE
+   ============================================================ */
+
+@media (max-width: 768px) {
+    .admin-pagination-wrapper {
+        gap: 0.75rem;
+        margin-top: 2rem;
+        padding: 1.5rem 0 1rem 0;
+    }
+
+    .admin-pagination-list {
+        gap: 0.35rem;
+    }
+
+    .admin-pagination-link {
+        padding: 0.4rem 0.6rem;
+        min-width: 36px;
+        height: 36px;
+        font-size: 0.7rem;
+        border-radius: 0.4rem;
+    }
+
+    .pagination-label {
+        display: none;
+    }
+
+    .admin-pagination-info {
+        font-size: 0.75rem;
+        text-align: center;
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+
+    .admin-pagination-summary {
+        font-size: 0.7rem;
+    }
+}
+
+/* ============================================================
+   RESPONSIVE - SMALL MOBILE
+   ============================================================ */
+
+@media (max-width: 576px) {
+    .admin-pagination-wrapper {
+        gap: 0.6rem;
+        margin-top: 1.5rem;
+        padding: 1rem 0 0.5rem 0;
+    }
+
+    .admin-pagination-list {
+        gap: 0.25rem;
+        justify-content: center;
+    }
+
+    .admin-pagination-link {
+        padding: 0.35rem 0.5rem;
+        min-width: 32px;
+        height: 32px;
+        font-size: 0.65rem;
+        border-radius: 0.35rem;
+        border-width: 1px;
+    }
+
+    .pagination-dots {
+        padding: 0 0.15rem;
+        font-size: 0.6rem;
+    }
+
+    .admin-pagination-info {
+        font-size: 0.7rem;
+        gap: 0.15rem;
+    }
+
+    .admin-pagination-info strong {
+        font-weight: 600;
+    }
+
+    .admin-pagination-summary {
+        font-size: 0.65rem;
+        margin-top: 0.35rem;
+    }
+
+    .pagination-label {
+        display: none;
+    }
+}
+
+/* ============================================================
+   DARK MODE SUPPORT
+   ============================================================ */
+
+[data-bs-theme="dark"] .admin-pagination-link {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-bs-theme="dark"] .admin-pagination-item:not(.disabled):not(.active) .admin-pagination-link:hover {
+    background-color: rgba(37, 99, 235, 0.15);
+    border-color: var(--admin-primary);
+}
+
+/* ============================================================
+   ACCESSIBILITY
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+    .admin-pagination-link,
+    .admin-pagination-link::before {
+        transition: none;
+        animation: none;
+    }
+
+    .admin-pagination-item:not(.disabled):not(.active) .admin-pagination-link:hover {
+        transform: none;
+    }
+}
+
+/* Focus Styles for Keyboard Navigation */
+.admin-pagination-link:focus-visible {
+    outline: 2px solid var(--admin-primary);
+    outline-offset: 2px;
+}
