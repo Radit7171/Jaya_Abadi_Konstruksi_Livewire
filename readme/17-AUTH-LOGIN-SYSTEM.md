@@ -9,7 +9,7 @@ yang memungkinkan user login dengan email & password, dengan fitur remember me 2
 2. Login Page UI - Blade markup, form fields, error messages
 3. Session Management - 24-hour remember me functionality
 4. Form Styling - Mobile-first, slim modern design, light/dark mode
-5. User Interactivity - Password toggle, form validation, accessibility
+5. User Interactivity - Password toggle, form validation, accessibility, blur/unfocus
 
 ---
 
@@ -52,8 +52,8 @@ yang memungkinkan user login dengan email & password, dengan fitur remember me 2
 -   **Backend:** Laravel 12 Auth, Livewire v3 components
 -   **Database:** Users table with remember_token, sessions table
 -   **Blade:** Pure HTML markup only
--   **CSS:** 552 lines, scoped `.auth-*` prefix
--   **JavaScript:** Progressive enhancement class (279 lines)
+-   **CSS:** 637 lines, scoped `.auth-*` prefix
+-   **JavaScript:** Progressive enhancement class (203 lines)
 -   **Security:** Password hashing, CSRF protection, session invalidation
 
 ---
@@ -730,6 +730,67 @@ setupPasswordToggle() {
 -   Focus management
 -   Screen reader support
 
+#### `setupInputBlur()`
+
+**FEATURES:**
+
+-   Auto blur/unfocus inputs when clicking outside form
+-   Visual feedback when input is focused (label color change)
+-   Clear indication of active input field
+-   Smooth transitions
+
+**BEHAVIOR:**
+
+1. **When Input Focused:**
+   - Label changes to primary color (blue)
+   - Label text becomes bolder (font-weight: 700)
+   - Focus ring visible on input
+
+2. **When Click Outside Form:**
+   - All inputs automatically blur/unfocus
+   - Label returns to normal color
+   - Form group loses `.auth-form-group-focused` class
+
+**CODE:**
+
+```javascript
+setupInputBlur() {
+    const inputs = this.page.querySelectorAll('.auth-input');
+    
+    // Handle blur when clicking outside form
+    document.addEventListener('click', (e) => {
+        const form = this.page.querySelector('.auth-form');
+        const isClickInsideForm = form.contains(e.target);
+        
+        if (!isClickInsideForm) {
+            inputs.forEach((input) => {
+                input.blur();
+            });
+        }
+    });
+
+    // Add visual feedback for focus state
+    inputs.forEach((input) => {
+        input.addEventListener('focus', () => {
+            input.closest('.auth-form-group')?.classList.add('auth-form-group-focused');
+        });
+
+        input.addEventListener('blur', () => {
+            input.closest('.auth-form-group')?.classList.remove('auth-form-group-focused');
+        });
+    });
+}
+```
+
+**CSS SUPPORT:**
+
+```css
+.auth-form-group-focused .auth-label-wrapper .auth-label {
+    color: var(--auth-primary);
+    font-weight: 700;
+}
+```
+
 ### LIVEWIRE INTEGRATION
 
 ```javascript
@@ -1172,19 +1233,19 @@ php artisan serve --host=0.0.0.0 --port=8000
 ## METADATA
 
 **Created:** January 6, 2026
-**Last Updated:** January 7, 2026 (Bugfix checkpoint - input clickability + error display fixed)
+**Last Updated:** January 8, 2026 (Error message placement + blur/unfocus feature added)
 **Status:** STABLE - Core auth working, all major issues resolved
-**Version:** 1.0.0 (Production Ready)
+**Version:** 1.1.0 (Enhanced UX with blur functionality)
 
 **Component Files:**
--   `app/Livewire/Auth/LoginPage.php` (120 lines)
--   `resources/views/livewire/auth/login-page.blade.php` (95 lines)
+-   `app/Livewire/Auth/LoginPage.php` (104 lines)
+-   `resources/views/livewire/auth/login-page.blade.php` (106 lines)
 -   `resources/views/layouts/auth.blade.php` (30 lines)
--   `resources/css/pages/auth/login.css` (552 lines)
--   `resources/js/pages/auth/login.js` (279 lines)
+-   `resources/css/pages/auth/login.css` (637 lines)
+-   `resources/js/pages/auth/login.js` (203 lines)
 -   `database/seeders/UserSeeder.php` (20 lines)
 
-**Total:** ~1096 lines of code
+**Total:** ~1100 lines of code
 
 **Dependencies:**
 -   Laravel 12

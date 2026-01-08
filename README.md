@@ -240,18 +240,20 @@ Penjelasan lengkap tentang:
 -   Login form dengan email, password, remember me (24 jam), password toggle eye icon
 -   Session configuration: 1440 minutes (24 hours) remember-me functionality
 -   User seeder: Raditiya Bagas Santoso / raditjal717@gmail.com / Radit717!2025
--   CSS architecture: 552 lines, `.auth-*` scoping, mobile-first, light/dark mode, slim modern design
--   JavaScript behavior: 279 lines, password toggle, form validation, accessibility, Livewire SPA integration
+-   CSS architecture: 637 lines, `.auth-*` scoping, mobile-first, light/dark mode, slim modern design
+-   JavaScript behavior: 203 lines, password toggle, form validation, accessibility, blur/unfocus, Livewire SPA integration
 -   Security features: password hashing, CSRF protection, session regeneration, timing attack prevention
 -   Responsive design: mobile (< 576px), tablet (576px - 991px), desktop (> 991px)
 -   Dark mode support dengan CSS variables automatic override
 -   Routes configuration: GET /login, POST /login, POST /logout dengan guest/auth middleware
 -   Database: users table dengan remember_token, sessions table untuk session storage
--   ✅ **BUGFIX CHECKPOINT (Jan 7, 2026):**
-    -   Input fields now fully clickable with normal left-click (pointer-events fix + JS enhancement)
-    -   Error messages display in real-time as user types (100ms debounce validation feedback)
-    -   All interactions tested & working on mobile, tablet, desktop views
-    -   Status: STABLE & PRODUCTION READY
+-   ✅ **ENHANCED UX (Jan 8, 2026):**
+    -   Error messages moved from below input to inline with label (cleaner layout)
+    -   Auto blur/unfocus inputs when clicking outside form (standard form behavior)
+    -   Visual feedback: label color changes to primary when input focused (clear active state)
+    -   Password wrapper properly integrated in blade (not lost on Livewire re-render)
+    -   All interactions tested & working smoothly on mobile, tablet, desktop views
+    -   Status: STABLE & PRODUCTION READY (v1.1.0)
 
 ---
 
@@ -296,7 +298,7 @@ npm run build
 ## 📝 METADATA
 
 **Last Updated:** January 7, 2026  
-**Version:** 2.0.0 (Auth Login System - Stable)  
+**Version:** 2.1.0 (Enhanced Auth UX - Jan 8, 2026)  
 **Maintainer:** Frontend Team & GitHub Copilot  
 **Company:** PT Jaya Abadi Konstruksi
 
