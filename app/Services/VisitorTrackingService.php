@@ -11,6 +11,7 @@ class VisitorTrackingService
 {
     /**
      * Track a visitor visit (smart - avoid duplicate tracking)
+     * Setiap IP hanya dicatat sekali per hari (24 jam)
      */
     public static function track(Request $request): ?Visitor
     {
@@ -20,10 +21,10 @@ class VisitorTrackingService
         $ipAddress = self::getClientIp($request);
         $pageUrl = $request->url();
 
-        // Check apakah IP ini sudah visit halaman yang sama dalam 5 menit terakhir
+        // Check apakah IP ini sudah visit halaman yang sama dalam 24 jam terakhir
         $recentVisit = Visitor::where('ip_address', $ipAddress)
             ->where('page_url', $pageUrl)
-            ->where('created_at', '>=', now()->subMinutes(5))
+            ->where('created_at', '>=', now()->subHours(24))
             ->first();
 
         // Jika sudah ada recent visit dari IP yang sama ke page yang sama, skip

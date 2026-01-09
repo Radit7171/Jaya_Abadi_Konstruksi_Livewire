@@ -2,7 +2,7 @@
 
 ## Overview
 
-Sistem pencatatan pengunjung web yang lengkap dan terintegrasi dengan Livewire v3. Sistem ini otomatis mencatat setiap kunjungan ke website dengan informasi detail seperti IP address, device type, browser, OS, halaman yang dikunjungi, dan lainnya.
+Sistem pencatatan pengunjung web yang lengkap dan terintegrasi dengan Livewire v3. Sistem ini otomatis mencatat setiap kunjungan ke website dengan informasi detail seperti IP address, device type, browser, OS, halaman yang dikunjungi, dan lainnya. **Setiap IP hanya dicatat sekali per 24 jam (1 hari) untuk halaman yang sama.**
 
 ---
 

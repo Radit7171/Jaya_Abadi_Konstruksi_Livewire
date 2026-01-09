@@ -311,7 +311,7 @@ Penjelasan lengkap tentang:
 -   Sistem pencatatan pengunjung website yang terintegrasi
 -   Database schema: visitors table dengan IP, device, browser, OS, page tracking
 -   Visitor Model dengan scopes dan query methods
--   VisitorTrackingService dengan smart duplicate prevention (5-minute window)
+-   VisitorTrackingService dengan smart duplicate prevention (24-hour/1-day window)
 -   TrackVisitor middleware dengan smart route filtering (excludes admin, api, static files)
 -   Auto-tracking untuk public pages hanya (/, /tentang-kami, /layanan, /proyek, /kontak)
 -   Unique visitor detection berdasarkan IP + page combination
@@ -443,7 +443,7 @@ npm run build
 
 ### Visitor Tracking & Analytics System:
 -   ✅ **ADDED:** Visitor tracking system dengan database migration
--   ✅ **ADDED:** VisitorTrackingService dengan smart 5-minute duplicate prevention
+-   ✅ **ADDED:** VisitorTrackingService dengan smart 24-hour duplicate prevention
 -   ✅ **ADDED:** TrackVisitor middleware dengan intelligent route filtering
 -   ✅ **ADDED:** Auto-tracking untuk public pages (/, /tentang-kami, /layanan, /proyek, /kontak)
 -   ✅ **ADDED:** Visitor dashboard stats (total, unique, today visitors)
