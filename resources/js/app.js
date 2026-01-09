@@ -36,6 +36,7 @@ import "./pages/auth/login";
 // import admin dashboard
 import "./pages/admin/admin-dashboard";
 import "./pages/admin/admin-pagination";
+import "./pages/admin/visitor-charts";
 
 // Alpine will be initialized by Livewire automatically
 

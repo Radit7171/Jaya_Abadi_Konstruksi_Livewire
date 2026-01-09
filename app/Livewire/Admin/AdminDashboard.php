@@ -7,6 +7,7 @@ use Livewire\Attributes\Title;
 use Livewire\Attributes\Layout;
 use App\Models\Project;
 use App\Models\User;
+use App\Models\Visitor;
 
 #[Layout('layouts.admin')]
 #[Title('Dashboard - Admin Jaya Abadi Konstruksi')]
@@ -22,6 +23,9 @@ class AdminDashboard extends Component
             'published_projects' => Project::where('is_published', true)->count(),
             'draft_projects' => Project::where('is_published', false)->count(),
             'total_users' => User::count(),
+            'total_visitors' => Visitor::count(),
+            'unique_visitors' => Visitor::totalUniqueVisitors(),
+            'today_visitors' => Visitor::today()->count(),
         ];
     }
 

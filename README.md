@@ -304,6 +304,94 @@ Penjelasan lengkap tentang:
     -   Bound function references stored untuk proper removal
     -   Status: STABLE & PRODUCTION READY (v2.0.0)
 
+### 20. [VISITOR TRACKING SYSTEM](readme/20-VISITOR-TRACKING-SYSTEM.md)
+
+Penjelasan lengkap tentang:
+
+-   Sistem pencatatan pengunjung website yang terintegrasi
+-   Database schema: visitors table dengan IP, device, browser, OS, page tracking
+-   Visitor Model dengan scopes dan query methods
+-   VisitorTrackingService dengan smart duplicate prevention (5-minute window)
+-   TrackVisitor middleware dengan smart route filtering (excludes admin, api, static files)
+-   Auto-tracking untuk public pages hanya (/, /tentang-kami, /layanan, /proyek, /kontak)
+-   Unique visitor detection berdasarkan IP + page combination
+-   Device type detection (mobile, tablet, desktop)
+-   Browser & OS detection menggunakan Jenssegers\Agent
+-   Dashboard integration dengan visitor stats cards (total, unique, today)
+-   Performance optimization & cleanup command untuk old data
+-   Testing checklist & implementation guide
+-   Status: STABLE & PRODUCTION READY (v1.0.0 - Jan 9, 2026)
+
+### 21. [VISITOR TRACKING SETUP](readme/21-VISITOR-TRACKING-SETUP.md)
+
+Panduan setup lengkap untuk visitor tracking system:
+
+-   Files created checklist
+-   Migration instructions
+-   Model & Service configuration
+-   Middleware registration
+-   Dashboard integration
+-   Testing & validation steps
+-   Troubleshooting common issues
+-   Performance tuning recommendations
+-   Database backup considerations
+
+### 22. [VISITOR TRACKING CHECKLIST](readme/22-VISITOR-TRACKING-CHECKLIST.md)
+
+Checklist implementasi lengkap untuk visitor tracking:
+
+-   Migration status
+-   Model implementation
+-   Service configuration
+-   Middleware setup
+-   Livewire component setup
+-   View integration
+-   Console command setup
+-   Configuration updates
+-   Documentation status
+-   Testing & validation
+-   Quick start guide untuk production
+
+### 23. [VISITOR CHARTS VISUALIZATION](readme/23-VISITOR-CHARTS-VISUALIZATION.md)
+
+Penjelasan lengkap tentang visitor analytics visualization:
+
+-   Chart.js v4.4.0 integration
+-   Line chart untuk tren kunjungan (Harian, Mingguan, Bulanan, Tahunan)
+-   Doughnut chart untuk distribusi perangkat (Desktop, Mobile, Tablet)
+-   Bar chart untuk distribusi browser
+-   VisitorCharts Livewire component dengan data methods
+-   Period selector dengan wire:click
+-   Responsive design untuk mobile, tablet, desktop
+-   Dark mode support dengan CSS variables
+-   Interactive tooltips & legends
+-   Color palette dengan pleasant colors
+-   Performance optimization & lazy loading
+-   Accessibility features & keyboard navigation
+-   Testing checklist & implementation best practices
+-   Status: STABLE & PRODUCTION READY (v1.0.0 - Jan 9, 2026)
+
+### 24. [VISITOR CHARTS SETUP](readme/24-VISITOR-CHARTS-SETUP.md)
+
+Panduan setup lengkap untuk visitor charts system:
+
+-   Files created checklist (Component, View, CSS, JS)
+-   Chart.js CDN integration
+-   Livewire component data flow
+-   Blade view structure
+-   CSS styling architecture dengan dark mode
+-   JavaScript initialization & event handling
+-   Period selector functionality
+-   Chart type configurations
+-   Data binding dengan canvas data-attributes
+-   Integration dengan admin dashboard
+-   Dark mode support implementation
+-   Theme toggle detection dengan MutationObserver
+-   Event listeners untuk Livewire updates
+-   Troubleshooting chart display issues
+-   Performance optimization tips
+-   Browser compatibility notes
+
 ---
 
 ## 🚀 QUICK START
@@ -346,31 +434,48 @@ npm run build
 
 ## 📝 METADATA
 
-**Last Updated:** January 8, 2026  
-**Version:** 2.2.0 (Admin Dashboard with Mobile Layout & Sidebar Toggle Fix - Jan 8, 2026)  
+**Last Updated:** January 9, 2026  
+**Version:** 2.4.0 (Visitor Tracking & Charts System - Jan 9, 2026)  
 **Maintainer:** Frontend Team & GitHub Copilot  
 **Company:** PT Jaya Abadi Konstruksi
 
-**Latest Changes (Jan 8, 2026 - Admin Dashboard Enhancement Checkpoint):**
+**Latest Changes (Jan 9, 2026 - Visitor Analytics System Checkpoint):**
 
-### Admin Dashboard Enhancements:
--   ✅ **ADDED:** Custom pagination component dengan smart page numbering
--   ✅ **ADDED:** Modern slim pagination design (button size 34px → 28px mobile)
--   ✅ **ADDED:** Mobile card layout untuk projects dengan responsive grid
--   ✅ **ADDED:** Color-coded action buttons (View: Cyan, Edit: Blue, Show: Green, Hide: Amber, Delete: Red)
--   ✅ **ADDED:** Proper card metadata alignment dengan flexbox centering
--   ✅ **FIXED:** Sidebar toggle bug setelah Livewire navigation
--   ✅ **FIXED:** Card meta alignment dengan proper flexbox properties
--   ✅ **TESTED:** All sidebar toggle interactions pada mobile, tablet, desktop
--   ✅ **TESTED:** Card layout responsiveness pada semua breakpoints
--   ✅ **TESTED:** Pagination navigation functionality
--   ✅ **DOCUMENTED:** Updated readme 18 & 19 dengan latest changes
--   **Files Modified:**
-    -   `resources/js/pages/admin/admin-dashboard.js` - Fixed sidebar toggle dengan event listener cleanup
-    -   `resources/css/pages/admin/admin-projects-cards.css` - Proper card meta alignment
-    -   `readme/18-ADMIN-DASHBOARD-STRUCTURE.md` - Updated dengan new features
-    -   `readme/19-ADMIN-CSS-JS-GUIDE.md` - Updated dengan CSS/JS changes & bug fixes
-    -   `README.md` - Added section 18 & 19, updated metadata
+### Visitor Tracking & Analytics System:
+-   ✅ **ADDED:** Visitor tracking system dengan database migration
+-   ✅ **ADDED:** VisitorTrackingService dengan smart 5-minute duplicate prevention
+-   ✅ **ADDED:** TrackVisitor middleware dengan intelligent route filtering
+-   ✅ **ADDED:** Auto-tracking untuk public pages (/, /tentang-kami, /layanan, /proyek, /kontak)
+-   ✅ **ADDED:** Visitor dashboard stats (total, unique, today visitors)
+-   ✅ **ADDED:** Device type detection (Mobile, Tablet, Desktop)
+-   ✅ **ADDED:** Browser & OS detection dengan Jenssegers\Agent
+-   ✅ **ADDED:** Visitor analytics charts (Line, Doughnut, Bar)
+-   ✅ **ADDED:** Period selector (Harian, Mingguan, Bulanan, Tahunan)
+-   ✅ **ADDED:** Dark mode support untuk charts dengan CSS variables
+-   ✅ **ADDED:** Font Awesome icons untuk charts (fas fa-calendar-*, fa-chart-*, fa-mobile-alt, fa-globe)
+-   ✅ **FIXED:** Charts persistence saat ganti period
+-   ✅ **FIXED:** Dark mode colors untuk period selector & row spacing
+-   ✅ **FIXED:** Theme toggle detection dengan MutationObserver
+-   ✅ **TESTED:** Charts functionality pada period change
+-   ✅ **TESTED:** Dark/light mode toggle dengan automatic chart re-render
+-   ✅ **TESTED:** Responsive design pada mobile, tablet, desktop
+-   ✅ **REORGANIZED:** Moved documentation to readme folder (20-24)
+-   ✅ **CLEANED UP:** Root folder (removed duplicate README copy.md)
+-   **Files Modified/Created:**
+    -   `app/Models/Visitor.php` - Visitor model dengan scopes
+    -   `app/Services/VisitorTrackingService.php` - Tracking service
+    -   `app/Http/Middleware/TrackVisitor.php` - Auto-tracking middleware
+    -   `app/Livewire/Admin/VisitorCharts.php` - Charts component
+    -   `resources/views/livewire/admin/visitor-charts.blade.php` - Charts view
+    -   `resources/css/pages/admin/visitor-charts.css` - Charts styling
+    -   `resources/js/pages/admin/visitor-charts.js` - Charts behavior
+    -   `database/migrations/2026_01_09_000000_create_visitors_table.php` - DB migration
+    -   `readme/20-VISITOR-TRACKING-SYSTEM.md` - New documentation
+    -   `readme/21-VISITOR-TRACKING-SETUP.md` - New documentation
+    -   `readme/22-VISITOR-TRACKING-CHECKLIST.md` - New documentation
+    -   `readme/23-VISITOR-CHARTS-VISUALIZATION.md` - New documentation
+    -   `readme/24-VISITOR-CHARTS-SETUP.md` - New documentation
+    -   `README.md` - Updated dengan sections 20-24
 
 ---
 

@@ -1,0 +1,224 @@
+/**
+ * VISITOR CHARTS STYLING
+ * Location: resources/css/pages/admin/visitor-charts.css
+ * Scope: .visitor-charts-*
+ *
+ * Dark Mode Support:
+ * - Uses CSS variables from Bootstrap theme
+ * - Automatically adapts to data-bs-theme="light" or "dark"
+ */
+
+:root {
+    --visitor-charts-primary: #0d6efd;
+    --visitor-charts-primary-dark: #0a58ca;
+    --visitor-charts-text: #333;
+    --visitor-charts-border: #e2e8f0;
+    --visitor-charts-card-bg: #ffffff;
+    --visitor-charts-grid: rgba(0, 0, 0, 0.05);
+}
+
+[data-bs-theme="dark"] {
+    --visitor-charts-text: #e0e0e0;
+    --visitor-charts-border: #334155;
+    --visitor-charts-card-bg: #1e293b;
+    --visitor-charts-grid: rgba(255, 255, 255, 0.1);
+}
+
+.visitor-charts-container {
+    background: var(--bs-body-bg);
+    padding: 30px 0;
+    margin: 40px 0;
+    color: var(--bs-body-color);
+}
+
+.admin-charts-section {
+    background: var(--bs-body-bg);
+    padding: 30px 0;
+    margin: 40px 0;
+    color: var(--bs-body-color);
+}
+
+.visitor-charts-section {
+    width: 100%;
+    background: var(--bs-body-bg);
+}
+
+/* Container */
+.visitor-charts-section .container-fluid {
+    background: var(--bs-body-bg);
+}
+
+/* Period Selector Buttons */
+.visitor-charts-period-selector {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.visitor-charts-period-btn {
+    transition: all 0.2s ease;
+    color: var(--bs-body-color);
+    background-color: transparent;
+    border-color: var(--bs-border-color);
+}
+
+.visitor-charts-period-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    border-color: var(--visitor-charts-primary);
+    color: var(--visitor-charts-primary);
+}
+
+.visitor-charts-period-btn.active {
+    background: linear-gradient(135deg, var(--visitor-charts-primary) 0%, var(--visitor-charts-primary-dark) 100%);
+    border-color: var(--visitor-charts-primary);
+    color: #fff;
+}
+
+.visitor-charts-period-btn.btn-outline-primary {
+    color: var(--bs-body-color);
+    border-color: var(--bs-border-color);
+}
+
+.visitor-charts-period-btn.btn-outline-primary:hover {
+    background-color: transparent;
+    border-color: var(--visitor-charts-primary);
+    color: var(--visitor-charts-primary);
+}
+
+.visitor-charts-period-btn.btn-primary {
+    background-color: var(--visitor-charts-primary);
+    border-color: var(--visitor-charts-primary);
+    color: #fff;
+}
+
+/* Row & Spacing */
+.visitor-charts-section .row {
+    background: var(--bs-body-bg);
+}
+
+.visitor-charts-section .row.g-4 {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 1.5rem;
+}
+
+/* Chart Cards */
+.visitor-charts-card {
+    background: var(--visitor-charts-card-bg);
+    border: 1px solid var(--visitor-charts-border);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    min-height: 400px;
+    color: var(--visitor-charts-text);
+}
+
+.visitor-charts-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+    border-color: var(--visitor-charts-primary);
+}
+
+[data-bs-theme="dark"] .visitor-charts-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.visitor-charts-card-title {
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    color: var(--visitor-charts-text);
+}
+
+.visitor-charts-card-small {
+    min-height: 350px;
+}
+
+/* Chart Containers */
+.visitor-charts-line-container {
+    position: relative;
+    height: 350px;
+    width: 100%;
+    background: var(--bs-body-bg);
+}
+
+.visitor-charts-device-container {
+    position: relative;
+    height: 250px;
+    width: 100%;
+    background: var(--bs-body-bg);
+}
+
+.visitor-charts-browser-container {
+    position: relative;
+    height: 250px;
+    width: 100%;
+    background: var(--bs-body-bg);
+}
+
+/* Canvas styling */
+.visitor-charts-card canvas {
+    background: var(--visitor-charts-card-bg);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .visitor-charts-card {
+        min-height: 300px;
+    }
+
+    .visitor-charts-card-small {
+        min-height: 280px;
+    }
+
+    .visitor-charts-line-container {
+        height: 300px;
+    }
+
+    .visitor-charts-device-container {
+        height: 200px;
+    }
+
+    .visitor-charts-browser-container {
+        height: 200px;
+    }
+
+    .visitor-charts-period-selector {
+        gap: 0.5rem;
+    }
+
+    .visitor-charts-period-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.875rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .visitor-charts-container {
+        padding: 15px 0;
+        margin: 20px 0;
+    }
+
+    .visitor-charts-card {
+        padding: 1rem;
+        min-height: 250px;
+    }
+
+    .visitor-charts-card-title {
+        font-size: 0.95rem;
+        margin-bottom: 1rem;
+    }
+
+    .visitor-charts-line-container {
+        height: 250px;
+    }
+
+    .visitor-charts-device-container {
+        height: 180px;
+    }
+
+    .visitor-charts-browser-container {
+        height: 180px;
+    }
+}
