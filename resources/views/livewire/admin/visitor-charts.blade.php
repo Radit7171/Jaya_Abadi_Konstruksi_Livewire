@@ -14,42 +14,109 @@
 |--------------------------------------------------------------------------
 --}}
 
-<div class="visitor-charts-section" wire:key="visitor-charts-{{ $chartPeriod }}">
+<div class="visitor-charts-section" id="visitor-charts-container">
     <!-- Chart.js CDN -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 
     <div class="container-fluid">
-        <!-- Period Selector -->
-        <div class="visitor-charts-period-selector">
-            <button wire:click="$set('chartPeriod', 'daily')"
-                class="btn visitor-charts-period-btn {{ $chartPeriod === 'daily' ? 'btn-primary active' : 'btn-outline-primary' }} btn-sm">
-                <i class="fas fa-calendar-day me-2"></i>Harian
-            </button>
-            <button wire:click="$set('chartPeriod', 'weekly')"
-                class="btn visitor-charts-period-btn {{ $chartPeriod === 'weekly' ? 'btn-primary active' : 'btn-outline-primary' }} btn-sm">
-                <i class="fas fa-calendar-week me-2"></i>Mingguan
-            </button>
-            <button wire:click="$set('chartPeriod', 'monthly')"
-                class="btn visitor-charts-period-btn {{ $chartPeriod === 'monthly' ? 'btn-primary active' : 'btn-outline-primary' }} btn-sm">
-                <i class="fas fa-calendar me-2"></i>Bulanan
-            </button>
-            <button wire:click="$set('chartPeriod', 'yearly')"
-                class="btn visitor-charts-period-btn {{ $chartPeriod === 'yearly' ? 'btn-primary active' : 'btn-outline-primary' }} btn-sm">
-                <i class="fas fa-chart-line me-2"></i>Tahunan
-            </button>
+        <!-- Header Section -->
+        <div class="visitor-charts-header-section">
+            <div class="visitor-charts-header-content">
+                <div class="visitor-charts-header-left">
+                    <h2 class="visitor-charts-main-title">
+                        <i class="fas fa-chart-line"></i>
+                        Analitik Kunjungan
+                    </h2>
+                    <p class="visitor-charts-subtitle">Pantau tren kunjungan website Anda secara real-time</p>
+                </div>
+            </div>
         </div>
 
-        <!-- Line Chart - Visitor Trends -->
-        <div class="row g-4 mb-4">
-            <div class="col-12">
-                <div class="visitor-charts-card">
-                    <h5 class="visitor-charts-card-title">
-                        <i class="fas fa-chart-area me-2"></i>Tren Kunjungan - {{ $lineChartData['period'] }}
-                    </h5>
-                    <div class="visitor-charts-line-container">
-                        <canvas id="visitorChartsLine" wire:ignore
-                            data-labels="{{ json_encode($lineChartData['labels']) }}"
-                            data-data="{{ json_encode($lineChartData['data']) }}">
+        <!-- 4 Line Charts Grid -->
+        <div class="visitor-charts-cards-grid">
+            <!-- Daily Chart -->
+            <div class="visitor-charts-card-wrapper">
+                <div class="visitor-charts-card visitor-charts-card-primary">
+                    <div class="visitor-charts-card-header">
+                        <div class="visitor-charts-card-icon">
+                            <i class="fas fa-sun"></i>
+                        </div>
+                        <div class="visitor-charts-card-title-group">
+                            <h5 class="visitor-charts-card-title">Harian</h5>
+                            <p class="visitor-charts-card-subtitle">30 hari terakhir</p>
+                        </div>
+                    </div>
+                    <div class="visitor-charts-line-container" style="height: 280px;">
+                        <canvas id="visitorChartsDaily"
+                            data-labels='@json($dailyData['labels'])'
+                            data-data='@json($dailyData['data'])'
+                            wire:key="daily-chart">
+                        </canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Weekly Chart -->
+            <div class="visitor-charts-card-wrapper">
+                <div class="visitor-charts-card visitor-charts-card-info">
+                    <div class="visitor-charts-card-header">
+                        <div class="visitor-charts-card-icon">
+                            <i class="fas fa-calendar-week"></i>
+                        </div>
+                        <div class="visitor-charts-card-title-group">
+                            <h5 class="visitor-charts-card-title">Mingguan</h5>
+                            <p class="visitor-charts-card-subtitle">12 minggu terakhir</p>
+                        </div>
+                    </div>
+                    <div class="visitor-charts-line-container" style="height: 280px;">
+                        <canvas id="visitorChartsWeekly"
+                            data-labels='@json($weeklyData['labels'])'
+                            data-data='@json($weeklyData['data'])'
+                            wire:key="weekly-chart">
+                        </canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Monthly Chart -->
+            <div class="visitor-charts-card-wrapper">
+                <div class="visitor-charts-card visitor-charts-card-success">
+                    <div class="visitor-charts-card-header">
+                        <div class="visitor-charts-card-icon">
+                            <i class="fas fa-calendar"></i>
+                        </div>
+                        <div class="visitor-charts-card-title-group">
+                            <h5 class="visitor-charts-card-title">Bulanan</h5>
+                            <p class="visitor-charts-card-subtitle">12 bulan terakhir</p>
+                        </div>
+                    </div>
+                    <div class="visitor-charts-line-container" style="height: 280px;">
+                        <canvas id="visitorChartsMonthly"
+                            data-labels='@json($monthlyData['labels'])'
+                            data-data='@json($monthlyData['data'])'
+                            wire:key="monthly-chart">
+                        </canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Yearly Chart -->
+            <div class="visitor-charts-card-wrapper">
+                <div class="visitor-charts-card visitor-charts-card-warning">
+                    <div class="visitor-charts-card-header">
+                        <div class="visitor-charts-card-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="visitor-charts-card-title-group">
+                            <h5 class="visitor-charts-card-title">Tahunan</h5>
+                            <p class="visitor-charts-card-subtitle">5 tahun terakhir</p>
+                        </div>
+                    </div>
+                    <div class="visitor-charts-line-container" style="height: 280px;">
+                        <canvas id="visitorChartsYearly"
+                            data-labels='@json($yearlyData['labels'])'
+                            data-data='@json($yearlyData['data'])'
+                            wire:key="yearly-chart">
                         </canvas>
                     </div>
                 </div>
@@ -57,28 +124,46 @@
         </div>
 
         <!-- Device & Browser Distribution -->
-        <div class="row g-4">
+        <div class="visitor-charts-cards-grid visitor-charts-distribution-grid">
             <!-- Device Distribution Doughnut Chart -->
-            <div class="col-12 col-lg-6">
-                <div class="visitor-charts-card visitor-charts-card-small">
-                    <h5 class="visitor-charts-card-title"><i class="fas fa-mobile-alt me-2"></i>Distribusi Perangkat</h5>
-                    <div class="visitor-charts-device-container">
-                        <canvas id="visitorChartsDevice" wire:ignore
-                            data-labels="{{ json_encode($deviceData['labels']) }}"
-                            data-data="{{ json_encode($deviceData['data']) }}">
+            <div class="visitor-charts-card-wrapper">
+                <div class="visitor-charts-card visitor-charts-card-secondary">
+                    <div class="visitor-charts-card-header">
+                        <div class="visitor-charts-card-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <div class="visitor-charts-card-title-group">
+                            <h5 class="visitor-charts-card-title">Distribusi Perangkat</h5>
+                            <p class="visitor-charts-card-subtitle">Device pengunjung</p>
+                        </div>
+                    </div>
+                    <div class="visitor-charts-device-container" style="height: 250px;">
+                        <canvas id="visitorChartsDevice"
+                            data-labels='@json($deviceData['labels'])'
+                            data-data='@json($deviceData['data'])'
+                            wire:key="device-chart">
                         </canvas>
                     </div>
                 </div>
             </div>
 
             <!-- Browser Distribution Bar Chart -->
-            <div class="col-12 col-lg-6">
-                <div class="visitor-charts-card visitor-charts-card-small">
-                    <h5 class="visitor-charts-card-title"><i class="fas fa-globe me-2"></i>Browser Pengunjung</h5>
-                    <div class="visitor-charts-browser-container">
-                        <canvas id="visitorChartsBrowser" wire:ignore
-                            data-labels="{{ json_encode($browserData['labels']) }}"
-                            data-data="{{ json_encode($browserData['data']) }}">
+            <div class="visitor-charts-card-wrapper">
+                <div class="visitor-charts-card visitor-charts-card-secondary">
+                    <div class="visitor-charts-card-header">
+                        <div class="visitor-charts-card-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <div class="visitor-charts-card-title-group">
+                            <h5 class="visitor-charts-card-title">Browser Pengunjung</h5>
+                            <p class="visitor-charts-card-subtitle">Browser statistik</p>
+                        </div>
+                    </div>
+                    <div class="visitor-charts-browser-container" style="height: 250px;">
+                        <canvas id="visitorChartsBrowser"
+                            data-labels='@json($browserData['labels'])'
+                            data-data='@json($browserData['data'])'
+                            wire:key="browser-chart">
                         </canvas>
                     </div>
                 </div>
@@ -86,3 +171,4 @@
         </div>
     </div>
 </div>
+

@@ -4,12 +4,9 @@ namespace App\Livewire\Admin;
 
 use Livewire\Component;
 use App\Models\Visitor;
-use Carbon\Carbon;
 
 class VisitorCharts extends Component
 {
-    public $chartPeriod = 'daily'; // daily, weekly, monthly, yearly
-
     /**
      * Get daily visitor data (last 30 days)
      */
@@ -156,7 +153,10 @@ class VisitorCharts extends Component
     public function render()
     {
         return view('livewire.admin.visitor-charts', [
-            'lineChartData' => $this->getSelectedData(),
+            'dailyData' => $this->getDailyData(),
+            'weeklyData' => $this->getWeeklyData(),
+            'monthlyData' => $this->getMonthlyData(),
+            'yearlyData' => $this->getYearlyData(),
             'deviceData' => $this->getDeviceData(),
             'browserData' => $this->getBrowserData(),
         ]);

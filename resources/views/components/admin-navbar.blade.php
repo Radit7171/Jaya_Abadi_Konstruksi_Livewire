@@ -4,7 +4,7 @@
         <!-- Left Side - Menu Toggle -->
         <div class="admin-navbar-left d-flex align-items-center gap-3">
             <button class="admin-navbar-toggle btn btn-sm btn-light" id="sidebarToggle">
-                <i class="fas fa-bars"></i>
+                <i class="fas fa-bars" id="sidebarToggleIcon"></i>
             </button>
         </div>
 
