@@ -338,6 +338,15 @@ class AboutPage {
      * Cleanup untuk Livewire navigation
      */
     cleanup() {
+        // Guard clause - jika root sudah null atau tidak ada, jangan lanjut
+        if (!this.root || !document.contains(this.root)) {
+            // Hanya disconnect observers
+            this.observers.forEach(observer => observer.disconnect());
+            this.observers = [];
+            this.animatingCounters.clear();
+            return;
+        }
+
         // Disconnect semua observers
         this.observers.forEach(observer => observer.disconnect());
         this.observers = [];
@@ -345,18 +354,30 @@ class AboutPage {
         // Clear animating counters set
         this.animatingCounters.clear();
 
-        // Remove event listeners dari cards
-        const cards = this.root.querySelectorAll('.about-card');
-        cards.forEach(card => {
-            card.replaceWith(card.cloneNode(true));
-        });
+        // Remove event listeners dari cards - dengan null check
+        try {
+            const cards = this.root.querySelectorAll('.about-card');
+            if (cards && cards.length > 0) {
+                cards.forEach(card => {
+                    card.replaceWith(card.cloneNode(true));
+                });
+            }
+        } catch (e) {
+            console.debug('[AboutPage] Error removing card listeners:', e);
+        }
 
-        // Reset counter display
-        const counters = this.root.querySelectorAll('.about-achievement-number');
-        counters.forEach(counter => {
-            counter.textContent = '0';
-            counter.removeAttribute('data-animated');
-        });
+        // Reset counter display - dengan null check
+        try {
+            const counters = this.root.querySelectorAll('.about-achievement-number');
+            if (counters && counters.length > 0) {
+                counters.forEach(counter => {
+                    counter.textContent = '0';
+                    counter.removeAttribute('data-animated');
+                });
+            }
+        } catch (e) {
+            console.debug('[AboutPage] Error resetting counters:', e);
+        }
     }
 }
 
@@ -379,19 +400,35 @@ if (document.readyState === 'loading') {
 if (typeof Livewire !== 'undefined') {
     // Cleanup dan reinitialize saat component diupdate
     document.addEventListener('livewire:updated', () => {
-        if (aboutPageInstance) {
-            aboutPageInstance.cleanup();
+        try {
+            if (aboutPageInstance) {
+                aboutPageInstance.cleanup();
+            }
+            // Only create new instance if about page still exists in DOM
+            const aboutSection = document.querySelector('.about-page-section');
+            if (aboutSection) {
+                aboutPageInstance = new AboutPage();
+            }
+        } catch (e) {
+            console.debug('[AboutPage] Error during livewire:updated:', e);
         }
-        aboutPageInstance = new AboutPage();
     });
 
     // Alternative hook untuk compatibility
     Livewire.hook('morph.updated', ({ component }) => {
         setTimeout(() => {
-            if (aboutPageInstance) {
-                aboutPageInstance.cleanup();
+            try {
+                if (aboutPageInstance) {
+                    aboutPageInstance.cleanup();
+                }
+                // Only create new instance if about page still exists in DOM
+                const aboutSection = document.querySelector('.about-page-section');
+                if (aboutSection) {
+                    aboutPageInstance = new AboutPage();
+                }
+            } catch (e) {
+                console.debug('[AboutPage] Error during morph.updated:', e);
             }
-            aboutPageInstance = new AboutPage();
         }, 100);
     });
 }

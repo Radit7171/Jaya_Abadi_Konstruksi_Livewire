@@ -633,4 +633,4 @@
 
 </section>
 
-@vite(['resources/js/pages/about/about-page.js'])
+{{-- @vite(['resources/js/pages/about/about-page.js']) --}}

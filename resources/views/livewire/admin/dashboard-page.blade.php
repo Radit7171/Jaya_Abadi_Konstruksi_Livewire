@@ -69,6 +69,45 @@
                     </div>
                 </div>
 
+                <!-- Total Visitors Card -->
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="admin-stat-card">
+                        <div class="admin-stat-icon bg-secondary">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <div class="admin-stat-content">
+                            <h3 class="admin-stat-value">{{ number_format($stats['total_visitors']) }}</h3>
+                            <p class="admin-stat-label">Total Kunjungan</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Unique Visitors Card -->
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="admin-stat-card">
+                        <div class="admin-stat-icon bg-dark">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div class="admin-stat-content">
+                            <h3 class="admin-stat-value">{{ number_format($stats['unique_visitors']) }}</h3>
+                            <p class="admin-stat-label">Pengunjung Unik</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Today Visitors Card -->
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="admin-stat-card">
+                        <div class="admin-stat-icon bg-danger">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="admin-stat-content">
+                            <h3 class="admin-stat-value">{{ $stats['today_visitors'] }}</h3>
+                            <p class="admin-stat-label">Kunjungan Hari Ini</p>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
@@ -94,6 +133,11 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- Visitor Charts Section -->
+    <div class="admin-charts-section">
+        <livewire:admin.visitor-charts />
     </div>
 
 </div>

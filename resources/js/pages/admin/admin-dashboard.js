@@ -47,6 +47,7 @@ export class AdminDashboard {
             e.stopPropagation();
             this.sidebar.classList.toggle('mobile-hidden');
             this.layout.classList.toggle('sidebar-collapsed');
+            this.updateToggleIcon();
         };
 
         // Click outside to close sidebar on mobile
@@ -58,6 +59,7 @@ export class AdminDashboard {
 
             if (!clickedOnSidebar && !clickedOnToggle) {
                 this.sidebar.classList.add('mobile-hidden');
+                this.updateToggleIcon();
             }
         };
 
@@ -66,8 +68,10 @@ export class AdminDashboard {
             this.isMobile = window.innerWidth < 992;
             if (window.innerWidth >= 992 && this.sidebar) {
                 this.sidebar.classList.remove('mobile-hidden');
+                this.updateToggleIcon();
             } else if (window.innerWidth < 992 && this.sidebar) {
                 this.sidebar.classList.add('mobile-hidden');
+                this.updateToggleIcon();
             }
         };
 
@@ -83,10 +87,29 @@ export class AdminDashboard {
                 if (this.isMobile) {
                     setTimeout(() => {
                         this.sidebar.classList.add('mobile-hidden');
+                        this.updateToggleIcon();
                     }, 100);
                 }
             });
         });
+
+        // Initialize icon
+        this.updateToggleIcon();
+    }
+
+    /**
+     * Update toggle icon based on sidebar state
+     */
+    updateToggleIcon() {
+        const icon = document.getElementById('sidebarToggleIcon');
+        if (!icon) return;
+
+        const isCollapsed = this.layout.classList.contains('sidebar-collapsed');
+        if (isCollapsed) {
+            icon.className = 'fas fa-chevron-right';
+        } else {
+            icon.className = 'fas fa-chevron-left';
+        }
     }
 
     /**
