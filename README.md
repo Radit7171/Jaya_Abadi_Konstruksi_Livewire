@@ -378,19 +378,18 @@ Panduan setup lengkap untuk visitor charts system:
 -   Files created checklist (Component, View, CSS, JS)
 -   Chart.js CDN integration
 -   Livewire component data flow
--   Blade view structure
--   CSS styling architecture dengan dark mode
--   JavaScript initialization & event handling
--   Period selector functionality
--   Chart type configurations
--   Data binding dengan canvas data-attributes
--   Integration dengan admin dashboard
--   Dark mode support implementation
--   Theme toggle detection dengan MutationObserver
--   Event listeners untuk Livewire updates
--   Troubleshooting chart display issues
--   Performance optimization tips
--   Browser compatibility notes
+
+### 25. [VISITOR TRACKING EXPLAINED](readme/25-VISITOR-TRACKING-EXPLAINED.md)
+
+Penjelasan sistem pencatatan pengunjung yang simple dan efisien:
+
+-   **1 IP = 1 record dalam 24 jam**
+-   Tidak dicatat setiap ganti halaman
+-   Jika IP yang sama masuk lagi dalam 24 jam, tidak tercatat
+-   Setelah 24 jam, dihitung sebagai visitor baru
+-   Testing dengan `php artisan visitor:test`
+-   Query examples untuk statistics
+-   Troubleshooting & monitoring
 
 ---
 
@@ -434,48 +433,27 @@ npm run build
 
 ## 📝 METADATA
 
-**Last Updated:** January 9, 2026  
-**Version:** 2.4.0 (Visitor Tracking & Charts System - Jan 9, 2026)  
+**Last Updated:** January 10, 2026  
+**Version:** 2.5.0 (Session-Based Visitor Tracking Fix - Jan 10, 2026)  
 **Maintainer:** Frontend Team & GitHub Copilot  
 **Company:** PT Jaya Abadi Konstruksi
 
-**Latest Changes (Jan 9, 2026 - Visitor Analytics System Checkpoint):**
+**Latest Changes (Jan 10, 2026 - Visitor Tracking System Refinement):**
 
-### Visitor Tracking & Analytics System:
--   ✅ **ADDED:** Visitor tracking system dengan database migration
--   ✅ **ADDED:** VisitorTrackingService dengan smart 24-hour duplicate prevention
--   ✅ **ADDED:** TrackVisitor middleware dengan intelligent route filtering
--   ✅ **ADDED:** Auto-tracking untuk public pages (/, /tentang-kami, /layanan, /proyek, /kontak)
--   ✅ **ADDED:** Visitor dashboard stats (total, unique, today visitors)
--   ✅ **ADDED:** Device type detection (Mobile, Tablet, Desktop)
--   ✅ **ADDED:** Browser & OS detection dengan Jenssegers\Agent
--   ✅ **ADDED:** Visitor analytics charts (Line, Doughnut, Bar)
--   ✅ **ADDED:** Period selector (Harian, Mingguan, Bulanan, Tahunan)
--   ✅ **ADDED:** Dark mode support untuk charts dengan CSS variables
--   ✅ **ADDED:** Font Awesome icons untuk charts (fas fa-calendar-*, fa-chart-*, fa-mobile-alt, fa-globe)
--   ✅ **FIXED:** Charts persistence saat ganti period
--   ✅ **FIXED:** Dark mode colors untuk period selector & row spacing
--   ✅ **FIXED:** Theme toggle detection dengan MutationObserver
--   ✅ **TESTED:** Charts functionality pada period change
--   ✅ **TESTED:** Dark/light mode toggle dengan automatic chart re-render
--   ✅ **TESTED:** Responsive design pada mobile, tablet, desktop
--   ✅ **REORGANIZED:** Moved documentation to readme folder (20-24)
--   ✅ **CLEANED UP:** Root folder (removed duplicate README copy.md)
--   **Files Modified/Created:**
-    -   `app/Models/Visitor.php` - Visitor model dengan scopes
-    -   `app/Services/VisitorTrackingService.php` - Tracking service
-    -   `app/Http/Middleware/TrackVisitor.php` - Auto-tracking middleware
-    -   `app/Livewire/Admin/VisitorCharts.php` - Charts component
-    -   `resources/views/livewire/admin/visitor-charts.blade.php` - Charts view
-    -   `resources/css/pages/admin/visitor-charts.css` - Charts styling
-    -   `resources/js/pages/admin/visitor-charts.js` - Charts behavior
-    -   `database/migrations/2026_01_09_000000_create_visitors_table.php` - DB migration
-    -   `readme/20-VISITOR-TRACKING-SYSTEM.md` - New documentation
-    -   `readme/21-VISITOR-TRACKING-SETUP.md` - New documentation
-    -   `readme/22-VISITOR-TRACKING-CHECKLIST.md` - New documentation
-    -   `readme/23-VISITOR-CHARTS-VISUALIZATION.md` - New documentation
-    -   `readme/24-VISITOR-CHARTS-SETUP.md` - New documentation
-    -   `README.md` - Updated dengan sections 20-24
+### Visitor Tracking System Refinement:
+-   ✅ **FIXED:** Changed from session-based to IP-based 24-hour tracking
+-   ✅ **IMPROVED:** 1 IP = 1 record per 24 hours (no more page-change duplicates)
+-   ✅ **OPTIMIZED:** Simplified logic - only check IP address within 24-hour window
+-   ✅ **CLEANED:** Removed session_id, last_page_url, pages_visited columns
+-   ✅ **VERIFIED:** System tested and working correctly
+-   ✅ **DOCUMENTED:** Created readme/25-VISITOR-TRACKING-EXPLAINED.md
+-   **Files Modified:**
+    -   `app/Services/VisitorTrackingService.php` - Updated tracking logic
+    -   `app/Models/Visitor.php` - Restored to original structure
+    -   `database/migrations/2026_01_09_000000_create_visitors_table.php` - Reverted to original
+    -   `app/Console/Commands/VisitorTrackingTest.php` - Updated test command
+    -   `readme/25-VISITOR-TRACKING-EXPLAINED.md` - New documentation
+    -   `README.md` - Updated documentation
 
 ---
 

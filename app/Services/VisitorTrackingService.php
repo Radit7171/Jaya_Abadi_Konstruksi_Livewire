@@ -10,27 +10,28 @@ use Jenssegers\Agent\Agent;
 class VisitorTrackingService
 {
     /**
-     * Track a visitor visit (smart - avoid duplicate tracking)
-     * Setiap IP hanya dicatat sekali per hari (24 jam)
+     * Track a visitor (IP-based - 1 IP = 1 record dalam 24 jam)
+     * Setiap IP hanya dicatat sekali dalam 24 jam, tidak peduli halaman mana
+     * Tidak akan update atau insert ulang selama 24 jam belum lewat
      */
     public static function track(Request $request): ?Visitor
     {
-        $agent = new Agent();
-        $agent->setUserAgent($request->userAgent());
-
         $ipAddress = self::getClientIp($request);
         $pageUrl = $request->url();
 
-        // Check apakah IP ini sudah visit halaman yang sama dalam 24 jam terakhir
+        // Cek apakah IP ini sudah visit dalam 24 jam terakhir
         $recentVisit = Visitor::where('ip_address', $ipAddress)
-            ->where('page_url', $pageUrl)
             ->where('created_at', '>=', now()->subHours(24))
             ->first();
 
-        // Jika sudah ada recent visit dari IP yang sama ke page yang sama, skip
+        // Jika sudah ada visit dalam 24 jam, skip (jangan insert atau update)
         if ($recentVisit) {
             return null; // Don't create duplicate
         }
+
+        // Jika belum ada visit dalam 24 jam, create record visitor baru
+        $agent = new Agent();
+        $agent->setUserAgent($request->userAgent());
 
         $data = [
             'ip_address' => $ipAddress,
@@ -47,7 +48,8 @@ class VisitorTrackingService
         if (function_exists('geoip')) {
             try {
                 /** @phpstan-ignore-next-line */
-                $geoip = geoip()->getLocation($data['ip_address']);
+                /** @noinspection PhpUndefinedFunctionInspection */
+                $geoip = call_user_func('geoip')->getLocation($data['ip_address']);
                 if ($geoip) {
                     $data['country'] = $geoip->country;
                     $data['city'] = $geoip->city;
