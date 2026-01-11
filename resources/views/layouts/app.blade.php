@@ -7,7 +7,7 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('title', 'Jaya Abadi Konstruksi')</title>
+    <title>@yield('title', $title ?? 'Jaya Abadi Konstruksi')</title>
     <meta name="description" content="@yield('description', 'Spesialis konstruksi besi dan baja profesional')">
 
     <!-- Google Fonts - Modern Typography System -->

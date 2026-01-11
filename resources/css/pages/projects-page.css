@@ -1,6 +1,6 @@
 /**
  * PROJECTS PAGE STYLING
- * PT Jaya Abadi Konstruksi
+ * Jaya Abadi Konstruksi
  *
  * Architecture:
  * - All classes scoped with .projects- prefix
@@ -499,7 +499,7 @@
 
 .projects-cta {
     position: relative;
-    padding: 4rem 0;
+    padding: 3.5rem 0;
     background: linear-gradient(135deg, var(--projects-primary), var(--projects-secondary));
     color: white;
     overflow: hidden;

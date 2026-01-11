@@ -1,4 +1,4 @@
-<nav class="admin-navbar bg-body border-bottom">
+<nav class="admin-navbar bg-body border-bottom" x-data>
     <div class="admin-navbar-container d-flex align-items-center justify-content-between">
 
         <!-- Left Side - Menu Toggle -->
@@ -39,13 +39,12 @@
                     </li>
                     <li><hr class="dropdown-divider"></li>
                     <li>
-                        <form method="POST" action="{{ route('logout') }}" class="m-0">
-                            @csrf
-                            <button type="submit" class="dropdown-item text-danger">
-                                <i class="fas fa-sign-out-alt me-2"></i>
-                                Logout
-                            </button>
-                        </form>
+                        <button type="button"
+                                class="dropdown-item text-danger d-flex align-items-center gap-2"
+                                x-on:click.prevent="$dispatch('show-logout-confirm')">
+                            <i class="fas fa-sign-out-alt"></i>
+                            Logout
+                        </button>
                     </li>
                 </ul>
             </div>

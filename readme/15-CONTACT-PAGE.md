@@ -2,7 +2,7 @@
 
 ## Overview
 
-Contact Page merupakan halaman kontak utama PT Jaya Abadi Konstruksi yang dirancang untuk memudahkan pelanggan menghubungi perusahaan melalui berbagai channel. Page ini mengikuti arsitektur dan guideline yang telah ditetapkan dalam project.
+Contact Page merupakan halaman kontak utama Jaya Abadi Konstruksi yang dirancang untuk memudahkan pelanggan menghubungi perusahaan melalui berbagai channel. Page ini mengikuti arsitektur dan guideline yang telah ditetapkan dalam project.
 
 **URL Route:** `/contact` atau `/hubungi-kami`
 **Livewire Component:** `App\Livewire\ContactPage`

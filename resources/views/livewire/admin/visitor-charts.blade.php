@@ -15,8 +15,6 @@
 --}}
 
 <div class="visitor-charts-section" id="visitor-charts-container">
-    <!-- Chart.js CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 
     <div class="container-fluid">
         <!-- Header Section -->
@@ -46,7 +44,7 @@
                             <p class="visitor-charts-card-subtitle">30 hari terakhir</p>
                         </div>
                     </div>
-                    <div class="visitor-charts-line-container" style="height: 280px;">
+                    <div class="visitor-charts-line-container">
                         <canvas id="visitorChartsDaily"
                             data-labels='@json($dailyData['labels'])'
                             data-data='@json($dailyData['data'])'
@@ -68,7 +66,7 @@
                             <p class="visitor-charts-card-subtitle">12 minggu terakhir</p>
                         </div>
                     </div>
-                    <div class="visitor-charts-line-container" style="height: 280px;">
+                    <div class="visitor-charts-line-container">
                         <canvas id="visitorChartsWeekly"
                             data-labels='@json($weeklyData['labels'])'
                             data-data='@json($weeklyData['data'])'
@@ -90,7 +88,7 @@
                             <p class="visitor-charts-card-subtitle">12 bulan terakhir</p>
                         </div>
                     </div>
-                    <div class="visitor-charts-line-container" style="height: 280px;">
+                    <div class="visitor-charts-line-container">
                         <canvas id="visitorChartsMonthly"
                             data-labels='@json($monthlyData['labels'])'
                             data-data='@json($monthlyData['data'])'
@@ -112,7 +110,7 @@
                             <p class="visitor-charts-card-subtitle">5 tahun terakhir</p>
                         </div>
                     </div>
-                    <div class="visitor-charts-line-container" style="height: 280px;">
+                    <div class="visitor-charts-line-container">
                         <canvas id="visitorChartsYearly"
                             data-labels='@json($yearlyData['labels'])'
                             data-data='@json($yearlyData['data'])'
@@ -137,7 +135,7 @@
                             <p class="visitor-charts-card-subtitle">Device pengunjung</p>
                         </div>
                     </div>
-                    <div class="visitor-charts-device-container" style="height: 250px;">
+                    <div class="visitor-charts-device-container">
                         <canvas id="visitorChartsDevice"
                             data-labels='@json($deviceData['labels'])'
                             data-data='@json($deviceData['data'])'
@@ -159,7 +157,7 @@
                             <p class="visitor-charts-card-subtitle">Browser statistik</p>
                         </div>
                     </div>
-                    <div class="visitor-charts-browser-container" style="height: 250px;">
+                    <div class="visitor-charts-browser-container">
                         <canvas id="visitorChartsBrowser"
                             data-labels='@json($browserData['labels'])'
                             data-data='@json($browserData['data'])'

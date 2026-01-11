@@ -1,6 +1,6 @@
 {{--
     Custom Pagination View for Projects Page
-    PT Jaya Abadi Konstruksi
+    Jaya Abadi Konstruksi
     Modern, clean, and professional look
 --}}
 @if ($paginator->hasPages())

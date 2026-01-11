@@ -1,6 +1,6 @@
 {{--
 |--------------------------------------------------------------------------
-| CONTACT PAGE — PT JAYA ABADI KONSTRUKSI
+| CONTACT PAGE — JAYA ABADI KONSTRUKSI
 |--------------------------------------------------------------------------
 | FINAL RULES (JANGAN DILANGGAR):
 | - Blade = MARKUP ONLY
@@ -103,7 +103,7 @@
                         <div class="contact-hero-image-wrapper">
                             <div class="contact-hero-image-bg"></div>
                             <img src="/images/home/hero-project.jpg"
-                                 alt="Tim customer service PT Jaya Abadi Konstruksi siap membantu Anda"
+                                 alt="Tim customer service Jaya Abadi Konstruksi siap membantu Anda"
                                  class="contact-hero-image"
                                  loading="eager">
                         </div>

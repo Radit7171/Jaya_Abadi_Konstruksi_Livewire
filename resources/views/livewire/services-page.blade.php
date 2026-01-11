@@ -1,6 +1,6 @@
 {{--
 |--------------------------------------------------------------------------
-| SERVICES PAGE — PT JAYA ABADI KONSTRUKSI
+| SERVICES PAGE — JAYA ABADI KONSTRUKSI
 |--------------------------------------------------------------------------
 | FINAL RULES (JANGAN DILANGGAR):
 | - Blade = MARKUP ONLY
@@ -95,7 +95,7 @@
                         <div class="services-hero-image-wrapper">
                             <div class="services-hero-image-bg"></div>
                             <img src="/images/home/hero-project.jpg"
-                                 alt="Layanan konstruksi PT Jaya Abadi Konstruksi"
+                                 alt="Layanan konstruksi Jaya Abadi Konstruksi"
                                  class="services-hero-image"
                                  loading="eager">
                         </div>

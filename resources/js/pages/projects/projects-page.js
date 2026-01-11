@@ -1,6 +1,6 @@
 /**
  * PROJECTS PAGE - JavaScript Behavior
- * PT Jaya Abadi Konstruksi
+ * Jaya Abadi Konstruksi
  *
  * Responsibilities:
  * - Image lazy loading

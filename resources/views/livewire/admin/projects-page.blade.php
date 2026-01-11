@@ -172,8 +172,8 @@
                                  alt="Gambar proyek {{ $project->title }}"
                                  class="admin-card-image">
                         @else
-                            <div class="admin-card-image" style="background-color: #e9ecef; display: flex; align-items: center; justify-content: center;">
-                                <i class="fas fa-image" style="font-size: 3rem; color: #adb5bd;"></i>
+                            <div class="admin-card-image admin-card-image-placeholder">
+                                <i class="fas fa-image"></i>
                             </div>
                         @endif
 

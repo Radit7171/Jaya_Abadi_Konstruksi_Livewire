@@ -33,6 +33,9 @@
 /* import contact-page styles */
 @import './pages/contact-page.css';
 
+/* import legal pages styles */
+@import './pages/legal-page.css';
+
 /* import auth login styles */
 @import './pages/auth/login.css';
 
@@ -42,6 +45,7 @@
 @import './pages/admin/admin-pagination.css';
 @import './pages/admin/admin-projects.css';
 @import './pages/admin/admin-projects-cards.css';
+@import './pages/admin/visitor-stats.css';
 @import './pages/admin/visitor-charts.css';
 
 /* ==========================================================================

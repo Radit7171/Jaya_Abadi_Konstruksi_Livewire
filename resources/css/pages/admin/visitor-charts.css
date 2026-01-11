@@ -101,6 +101,16 @@
     margin-top: 20px;
 }
 
+/* ==================== CHART CONTAINERS ==================== */
+.visitor-charts-line-container {
+    height: 280px;
+}
+
+.visitor-charts-device-container,
+.visitor-charts-browser-container {
+    height: 250px;
+}
+
 .visitor-charts-card-wrapper {
     display: flex;
     flex-direction: column;

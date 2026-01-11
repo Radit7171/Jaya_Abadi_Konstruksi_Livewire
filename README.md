@@ -1,6 +1,6 @@
 # FRONTEND ARCHITECTURE - PT JAYA ABADI KONSTRUKSI
 
-Dokumentasi lengkap arsitektur frontend website PT Jaya Abadi Konstruksi.
+Dokumentasi lengkap arsitektur frontend website Jaya Abadi Konstruksi.
 
 Dokumen ini menjelaskan struktur teknis, terstruktur, dan konsisten untuk:
 
@@ -476,7 +476,7 @@ npm run build
 **Last Updated:** January 11, 2026  
 **Version:** 2.8.0 (Admin Projects UI & Pro Image Management - Jan 11, 2026)  
 **Maintainer:** Frontend Team & GitHub Copilot  
-**Company:** PT Jaya Abadi Konstruksi
+**Company:** Jaya Abadi Konstruksi
 
 ### Latest Changes (January 11, 2026 - Admin Projects UI & Image Management):
 

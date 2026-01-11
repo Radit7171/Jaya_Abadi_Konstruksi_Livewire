@@ -73,11 +73,19 @@ class LoginPage extends Component
             ['email' => $this->email, 'password' => $this->password],
             $this->remember
         )) {
+            // Set custom session lifetime if remember is checked (24 hours) vs standard (1 hour)
+            if ($this->remember) {
+                config(['session.lifetime' => 1440]); // 24 hours
+            } else {
+                config(['session.lifetime' => 60]);   // 1 hour
+            }
+
             // Regenerate session for security
             session()->regenerate();
 
             // Redirect to admin dashboard after successful login (SPA compatible)
-            return redirect()->route('admin.dashboard');
+            // intended() will redirect back to the page they tried to access before login
+            return redirect()->intended(route('admin.dashboard'));
         }
 
         // Authentication failed

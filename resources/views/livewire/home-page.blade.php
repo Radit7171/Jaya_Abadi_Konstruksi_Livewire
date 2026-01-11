@@ -1,6 +1,6 @@
 {{--
 |--------------------------------------------------------------------------
-| HOME PAGE — PT JAYA ABADI KONSTRUKSI
+| HOME PAGE — JAYA ABADI KONSTRUKSI
 |--------------------------------------------------------------------------
 | FINAL RULES (JANGAN DILANGGAR):
 | - Blade = MARKUP ONLY
@@ -77,7 +77,7 @@
                     <div class="home-hero-visual" data-aos="fade-in-left" data-aos-delay="200" data-aos-duration="800">
                         <div class="home-hero-image-wrapper">
                             <img src="/images/home/hero-project.jpg"
-                                 alt="Proyek konstruksi modern PT Jaya Abadi Konstruksi"
+                                 alt="Proyek konstruksi modern Jaya Abadi Konstruksi"
                                  class="home-hero-image"
                                  loading="eager">
                         </div>
@@ -122,7 +122,7 @@
                     <div class="home-about-visual" data-aos="fade-in-right" data-aos-duration="800">
                         <div class="home-about-image-wrapper">
                             <img src="/images/founder.jpg"
-                                 alt="Tim profesional PT Jaya Abadi Konstruksi"
+                                 alt="Tim profesional Jaya Abadi Konstruksi"
                                  class="home-about-image"
                                  loading="lazy">
                         </div>

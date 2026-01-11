@@ -30,6 +30,13 @@
 }
 
 /* ============================================================
+   ALPINE CLOAK
+   ============================================================ */
+[x-cloak] {
+    display: none !important;
+}
+
+/* ============================================================
    ADMIN LAYOUT CONTAINER
    ============================================================ */
 
@@ -264,7 +271,7 @@
     border-bottom: 1px solid var(--admin-light-border);
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 1001;
     display: flex;
     align-items: center;
 }
@@ -276,7 +283,7 @@
         left: 0;
         right: 0;
         width: 100%;
-        z-index: 100;
+        z-index: 1001;
         box-shadow: var(--admin-shadow-sm);
         transition: left 0.3s ease, width 0.3s ease;
     }

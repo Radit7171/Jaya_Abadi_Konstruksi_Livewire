@@ -21,7 +21,7 @@
     {{-- Description (Hidden on small mobile, shown on tablet+) --}}
     <div class="footer-description mt-3 d-none d-sm-block">
         <p class="small text-body-secondary mb-0">
-            PT Jaya Abadi Konstruksi adalah perusahaan spesialis konstruksi baja terpercaya
+            Jaya Abadi Konstruksi adalah perusahaan spesialis konstruksi baja terpercaya
             dengan pengalaman lebih dari 10 tahun.
         </p>
     </div>

@@ -12,7 +12,7 @@
                             <p class="text-muted small mb-1">Total Kunjungan</p>
                             <h3 class="h4 fw-bold mb-0">{{ number_format($stats['total_visits']) }}</h3>
                         </div>
-                        <div class="stats-icon" style="font-size: 2.5rem;">👁️</div>
+                        <div class="stats-icon">👁️</div>
                     </div>
                 </div>
             </div>
@@ -25,7 +25,7 @@
                             <p class="text-muted small mb-1">Pengunjung Unik</p>
                             <h3 class="h4 fw-bold mb-0">{{ number_format($stats['total_unique']) }}</h3>
                         </div>
-                        <div class="stats-icon" style="font-size: 2.5rem;">👥</div>
+                        <div class="stats-icon">👥</div>
                     </div>
                 </div>
             </div>
@@ -38,7 +38,7 @@
                             <p class="text-muted small mb-1">Kunjungan Hari Ini</p>
                             <h3 class="h4 fw-bold mb-0">{{ number_format($stats['today_visits']) }}</h3>
                         </div>
-                        <div class="stats-icon" style="font-size: 2.5rem;">📅</div>
+                        <div class="stats-icon">📅</div>
                     </div>
                 </div>
             </div>
@@ -51,7 +51,7 @@
                             <p class="text-muted small mb-1">Unik Hari Ini</p>
                             <h3 class="h4 fw-bold mb-0">{{ number_format($stats['today_unique']) }}</h3>
                         </div>
-                        <div class="stats-icon" style="font-size: 2.5rem;">🎯</div>
+                        <div class="stats-icon">🎯</div>
                     </div>
                 </div>
             </div>
@@ -150,31 +150,5 @@
                 </table>
             </div>
         </div>
-
-        <style>
-            .stats-card {
-                transition: all 0.3s ease;
-            }
-
-            .stats-card:hover {
-                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-                transform: translateY(-2px);
-            }
-
-            .stats-icon {
-                opacity: 0.8;
-            }
-
-            .device-breakdown .text-capitalize::first-letter {
-                text-transform: uppercase;
-            }
-
-            code {
-                background-color: rgba(0, 0, 0, 0.05);
-                padding: 2px 6px;
-                border-radius: 3px;
-                font-size: 0.85em;
-            }
-        </style>
     </div>
 </div>

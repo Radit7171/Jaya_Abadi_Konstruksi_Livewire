@@ -1,6 +1,6 @@
 {{--
 |--------------------------------------------------------------------------
-| ABOUT PAGE — PT JAYA ABADI KONSTRUKSI
+| ABOUT PAGE — JAYA ABADI KONSTRUKSI
 |--------------------------------------------------------------------------
 | FINAL RULES (JANGAN DILANGGAR):
 | - Blade = MARKUP ONLY
@@ -50,7 +50,7 @@
                     </div>
 
                     <h1 class="about-hero-title" data-aos="fade-up" data-aos-delay="100" data-aos-duration="700">
-                        PT Jaya Abadi Konstruksi
+                        Jaya Abadi Konstruksi
                         <span class="about-hero-highlight">Membangun Kepercayaan</span>
                     </h1>
 
@@ -94,7 +94,7 @@
                         <div class="about-hero-image-wrapper">
                             <div class="about-hero-image-bg"></div>
                             <img src="/images/home/hero-project.jpg"
-                                 alt="PT Jaya Abadi Konstruksi - Perusahaan konstruksi profesional"
+                                 alt="Jaya Abadi Konstruksi - Perusahaan konstruksi profesional"
                                  class="about-hero-image"
                                  loading="eager">
                         </div>
@@ -128,7 +128,7 @@
                         <div class="about-history-image-wrapper">
                             <div class="about-history-image-bg"></div>
                             <img src="/images/home/hero-project.jpg"
-                                 alt="Sejarah dan perkembangan PT Jaya Abadi Konstruksi"
+                                 alt="Sejarah dan perkembangan Jaya Abadi Konstruksi"
                                  class="about-history-image"
                                  loading="lazy">
                         </div>
@@ -151,7 +151,7 @@
                         </h2>
 
                         <p class="about-history-intro" data-aos="fade-up" data-aos-delay="100" data-aos-duration="700">
-                            Didirikan pada tahun 2013, PT Jaya Abadi Konstruksi memulai perjalanan
+                            Didirikan pada tahun 2013, Jaya Abadi Konstruksi memulai perjalanan
                             inspiratif dengan visi sederhana namun kuat: menjadi mitra konstruksi
                             terpercaya yang menghadirkan inovasi dan kualitas terbaik untuk setiap proyek.
                         </p>
@@ -164,7 +164,7 @@
                                 </div>
                                 <div class="about-timeline-content">
                                     <h3 class="about-timeline-year">2013</h3>
-                                    <p class="about-timeline-text">Peluncuran PT Jaya Abadi Konstruksi dengan fokus strategis pada proyek-proyek konstruksi skala menengah berkualitas tinggi.</p>
+                                    <p class="about-timeline-text">Peluncuran Jaya Abadi Konstruksi dengan fokus strategis pada proyek-proyek konstruksi skala menengah berkualitas tinggi.</p>
                                 </div>
                             </div>
 
@@ -482,7 +482,7 @@
                         <div class="about-expertise-image-wrapper">
                             <div class="about-expertise-image-bg"></div>
                             <img src="/images/home/hero-project.jpg"
-                                 alt="Tim profesional PT Jaya Abadi Konstruksi di lapangan"
+                                 alt="Tim profesional Jaya Abadi Konstruksi di lapangan"
                                  class="about-expertise-image"
                                  loading="lazy">
                         </div>
@@ -592,7 +592,7 @@
                         </h2>
                         <p class="about-cta-text">
                             Hubungi tim ahli kami hari ini dan mari kita diskusikan bagaimana
-                            PT Jaya Abadi Konstruksi dapat membantu mewujudkan visi dan impian
+                            Jaya Abadi Konstruksi dapat membantu mewujudkan visi dan impian
                             konstruksi Anda dengan solusi inovatif dan berkualitas tinggi.
                         </p>
 
