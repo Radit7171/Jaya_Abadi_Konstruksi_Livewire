@@ -129,16 +129,16 @@ code, pre, .code {
 }
 
 /* Adjust main content for fixed navbar */
-main {
+/* main {
     padding-top: 65px;
-}
+} */
 
 /* Mobile navbar adjustment - match navbar min-height */
-@media (max-width: 991.98px) {
+/* @media (max-width: 991.98px) {
     main {
         padding-top: 60px;
     }
-}
+} */
 
 /* Loading overlay default state
    (digunakan bersama wire:loading di layout) */
