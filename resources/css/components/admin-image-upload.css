@@ -1,30 +1,31 @@
 /**
  * ADMIN IMAGE UPLOAD STYLING
  *
- * Styling untuk image upload component dengan preview
+ * Styling untuk image upload component dengan preview & dark mode support
  */
 
 .admin-image-upload-area {
-    border: 2px dashed var(--admin-border-color, #dee2e6);
+    border: 2px dashed var(--admin-light-border);
     border-radius: 8px;
     padding: 3rem 2rem;
     text-align: center;
     cursor: pointer;
     transition: all 0.3s ease;
-    background-color: var(--admin-input-bg, #ffffff);
+    background-color: var(--bs-body-bg);
     position: relative;
     pointer-events: auto !important;
     z-index: auto;
 }
 
 .admin-image-upload-area:hover {
-    border-color: var(--admin-primary-color, #0d6efd);
-    background-color: var(--admin-hover-bg, #f8f9ff);
+    border-color: var(--admin-primary);
+    background-color: rgba(37, 99, 235, 0.05);
 }
 
 .admin-image-upload-area.drag-active {
-    border-color: var(--admin-primary-color, #0d6efd);
-    background-color: var(--admin-hover-bg, #f8f9ff);
+    border-color: var(--admin-primary);
+    background-color: rgba(37, 99, 235, 0.08);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
 .admin-image-input {
@@ -50,20 +51,25 @@
 
 .admin-upload-hint i {
     font-size: 2.5rem;
-    color: var(--admin-text-muted, #6c757d);
+    color: var(--admin-text-muted);
     margin-bottom: 0.5rem;
     display: block;
+    transition: color 0.3s ease;
+}
+
+.admin-image-upload-area:hover .admin-upload-hint i {
+    color: var(--admin-primary);
 }
 
 .admin-upload-hint p {
     font-size: 1rem;
     font-weight: 500;
-    color: var(--admin-text-color, #212529);
+    color: var(--admin-text);
     margin-bottom: 0.25rem;
 }
 
 .admin-upload-hint small {
-    color: var(--admin-text-muted, #6c757d);
+    color: var(--admin-text-muted);
     display: block;
 }
 
@@ -78,10 +84,11 @@
     position: relative;
     border-radius: 8px;
     overflow: hidden;
-    background-color: var(--admin-input-bg, #f8f9fa);
+    background-color: var(--admin-light-bg);
     aspect-ratio: 1;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
     transition: transform 0.2s ease;
+    border: 1px solid var(--admin-light-border);
 }
 
 .admin-image-preview-item:hover {
@@ -92,11 +99,45 @@
     opacity: 1;
 }
 
+.admin-image-preview-item:hover .admin-preview-info {
+    opacity: 1;
+}
+
 .admin-preview-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
+}
+
+.admin-preview-info {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.5) 70%, transparent 100%);
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    color: white;
+    font-size: 0.7rem;
+    word-break: break-all;
+    z-index: 1;
+}
+
+.admin-preview-filename {
+    font-weight: 500;
+    margin-bottom: 0.2rem;
+    line-height: 1.2;
+}
+
+.admin-preview-size {
+    font-size: 0.65rem;
+    opacity: 0.9;
 }
 
 .admin-preview-delete {
@@ -117,26 +158,11 @@
     transition: all 0.2s ease;
     padding: 0;
     font-size: 0.875rem;
+    z-index: 5;
 }
 
 .admin-preview-delete:hover {
     background-color: rgba(220, 53, 69, 1);
-}
-
-/* Dark mode support */
-@media (prefers-color-scheme: dark) {
-    .admin-image-upload-area {
-        border-color: var(--admin-border-color-dark, #495057);
-        background-color: var(--admin-input-bg-dark, #212529);
-    }
-
-    .admin-image-upload-area:hover {
-        background-color: var(--admin-hover-bg-dark, #2c3035);
-    }
-
-    .admin-upload-hint p {
-        color: var(--admin-text-color-dark, #e9ecef);
-    }
 }
 
 /* Responsive */

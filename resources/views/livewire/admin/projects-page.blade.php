@@ -66,6 +66,7 @@
                     <table class="admin-table">
                     <thead class="admin-table-head">
                         <tr>
+                            <th class="admin-table-th" style="width: 80px;">Foto</th>
                             <th class="admin-table-th">Judul Proyek</th>
                             <th class="admin-table-th">Kategori</th>
                             <th class="admin-table-th">Status</th>
@@ -76,6 +77,19 @@
                     <tbody class="admin-table-body">
                         @forelse($projects as $project)
                             <tr class="admin-table-row">
+                                <td class="admin-table-td">
+                                    <div class="admin-table-image-container">
+                                        @if($project->images && count($project->images) > 0)
+                                            <img src="{{ asset('storage/' . $project->images[0]) }}"
+                                                 alt="{{ $project->title }}"
+                                                 class="admin-table-thumb">
+                                        @else
+                                            <div class="admin-table-thumb-empty">
+                                                <i class="fas fa-image"></i>
+                                            </div>
+                                        @endif
+                                    </div>
+                                </td>
                                 <td class="admin-table-td">
                                     <div>
                                         <p class="admin-table-project-title">{{ $project->title }}</p>
@@ -126,8 +140,7 @@
                                                 title="{{ $project->is_published ? 'Sembunyikan' : 'Tampilkan' }}">
                                             <i class="fas {{ $project->is_published ? 'fa-eye-slash' : 'fa-eye' }}"></i>
                                         </button>
-                                        <button wire:click="deleteProject({{ $project->id }})"
-                                                onclick="return confirm('Apakah Anda yakin ingin menghapus proyek ini?')"
+                                        <button wire:click="confirmDelete({{ $project->id }})"
                                                 class="admin-action-btn admin-action-delete"
                                                 title="Hapus">
                                             <i class="fas fa-trash"></i>
@@ -206,12 +219,13 @@
                                     class="admin-card-action-btn {{ $project->is_published ? 'admin-action-hide' : 'admin-action-show' }}"
                                     title="{{ $project->is_published ? 'Sembunyikan' : 'Tampilkan' }}">
                                 <i class="fas {{ $project->is_published ? 'fa-eye-slash' : 'fa-eye' }}"></i>
+                                <span>{{ $project->is_published ? 'Sembunyi' : 'Tampil' }}</span>
                             </button>
-                            <button wire:click="deleteProject({{ $project->id }})"
-                                    onclick="return confirm('Apakah Anda yakin ingin menghapus proyek ini?')"
+                            <button wire:click="confirmDelete({{ $project->id }})"
                                     class="admin-card-action-btn admin-action-delete"
                                     title="Hapus">
                                 <i class="fas fa-trash"></i>
+                                <span>Hapus</span>
                             </button>
                         </div>
                     </div>
@@ -260,47 +274,81 @@
                 <div class="admin-modal-body">
                     @if($modalMode === 'view')
                         <!-- View Mode -->
-                        <div class="admin-modal-view">
-                            <div class="admin-modal-info mb-3">
-                                <label class="admin-modal-label">Judul</label>
-                                <p class="admin-modal-value">{{ $selectedProject->title }}</p>
-                            </div>
+                        <div class="admin-modal-view" x-data="{
+                            activeImage: '{{ count($selectedProject->getImageUrls()) > 0 ? $selectedProject->getImageUrls()[0] : '' }}'
+                        }">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="admin-modal-info mb-3">
+                                        <label class="admin-modal-label">Judul</label>
+                                        <p class="admin-modal-value fw-bold text-primary" style="font-size: 1.1rem;">{{ $selectedProject->title }}</p>
+                                    </div>
 
-                            <div class="admin-modal-info mb-3">
-                                <label class="admin-modal-label">Kategori</label>
-                                <p class="admin-modal-value">{{ $selectedProject->getCategoryLabel() }}</p>
-                            </div>
+                                    <div class="admin-modal-info mb-3">
+                                        <label class="admin-modal-label">Kategori</label>
+                                        <p class="admin-modal-value">
+                                            <span class="admin-badge admin-badge-info">
+                                                {{ $selectedProject->getCategoryLabel() }}
+                                            </span>
+                                        </p>
+                                    </div>
 
-                            <div class="admin-modal-info mb-3">
-                                <label class="admin-modal-label">Deskripsi</label>
-                                <p class="admin-modal-value">{{ $selectedProject->description }}</p>
-                            </div>
+                                    <div class="admin-modal-info mb-3">
+                                        <label class="admin-modal-label">Status</label>
+                                        <p class="admin-modal-value">
+                                            @if($selectedProject->is_published)
+                                                <span class="admin-badge admin-badge-success">
+                                                    <i class="fas fa-check-circle me-1"></i> Dipublikasi
+                                                </span>
+                                            @else
+                                                <span class="admin-badge admin-badge-warning">
+                                                    <i class="fas fa-file-alt me-1"></i> Draft
+                                                </span>
+                                            @endif
+                                        </p>
+                                    </div>
 
-                            <div class="admin-modal-info mb-3">
-                                <label class="admin-modal-label">Status</label>
-                                <p class="admin-modal-value">
-                                    @if($selectedProject->is_published)
-                                        <span class="badge bg-success">Dipublikasi</span>
-                                    @else
-                                        <span class="badge bg-warning">Draft</span>
-                                    @endif
-                                </p>
-                            </div>
-
-                            @if($selectedProject->images && count($selectedProject->images) > 0)
-                                <div class="admin-modal-info mb-3">
-                                    <label class="admin-modal-label">Foto Proyek</label>
-                                    <div class="admin-images-gallery" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1rem; margin-top: 0.5rem;">
-                                        @foreach($selectedProject->getImageUrls() as $imageUrl)
-                                            <div style="aspect-ratio: 1; overflow: hidden; border-radius: 8px;">
-                                                <img src="{{ $imageUrl }}"
-                                                     alt="Project image"
-                                                     style="width: 100%; height: 100%; object-fit: cover;">
-                                            </div>
-                                        @endforeach
+                                    <div class="admin-modal-info mb-3">
+                                        <label class="admin-modal-label">Deskripsi</label>
+                                        <p class="admin-modal-value text-muted" style="line-height: 1.6; font-size: 0.9rem;">
+                                            {{ $selectedProject->description }}
+                                        </p>
                                     </div>
                                 </div>
-                            @endif
+
+                                <div class="col-md-7">
+                                    @if($selectedProject->images && count($selectedProject->images) > 0)
+                                        <div class="admin-modal-info mb-3">
+                                            <label class="admin-modal-label">Galeri Proyek</label>
+
+                                            <!-- Main Image Display -->
+                                            <div class="admin-gallery-main mb-3">
+                                                <div class="admin-main-image-wrapper">
+                                                    <img :src="activeImage" alt="Active Project Image" class="admin-main-img">
+                                                </div>
+                                            </div>
+
+                                            <!-- Thumbnails List -->
+                                            <div class="admin-gallery-thumbs">
+                                                <div class="admin-thumbs-grid">
+                                                    @foreach($selectedProject->getImageUrls() as $imageUrl)
+                                                        <div class="admin-thumb-item"
+                                                             :class="{ 'active': activeImage === '{{ $imageUrl }}' }"
+                                                             @click="activeImage = '{{ $imageUrl }}'">
+                                                            <img src="{{ $imageUrl }}" alt="Project thumb">
+                                                        </div>
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @else
+                                        <div class="admin-empty-gallery py-5 text-center bg-light rounded">
+                                            <i class="fas fa-image text-muted mb-2" style="font-size: 2rem;"></i>
+                                            <p class="text-muted smaller">Tidak ada foto untuk proyek ini</p>
+                                        </div>
+                                    @endif
+                                </div>
+                            </div>
                         </div>
                     @else
                         <!-- Edit/Create Mode -->
@@ -344,15 +392,58 @@
                                 @enderror
                             </div>
 
+                            <!-- Uploaded Images Section (Shows for both Create and Edit) -->
+                            @if(!empty($uploadedImages))
+                                <div class="admin-existing-images-section mb-4">
+                                    <label class="admin-form-label">
+                                        {{ $modalMode === 'edit' ? 'Gambar Saat Ini' : 'Gambar Terupload' }}
+                                    </label>
+                                    <div class="admin-existing-images-grid">
+                                        @foreach($uploadedImages as $index => $path)
+                                            <div class="admin-existing-image-item" x-data="{ confirmingDelete: false }">
+                                                <img src="{{ asset('storage/' . $path) }}" alt="Project image {{ $index + 1 }}">
+
+                                                <!-- Trash Icon (Initial State) -->
+                                                <button type="button"
+                                                        class="admin-image-remove-btn"
+                                                        x-show="!confirmingDelete"
+                                                        @click="confirmingDelete = true">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </button>
+
+                                                <!-- Confirm Overlay (Active State) -->
+                                                <div class="admin-image-delete-confirm" x-show="confirmingDelete" x-cloak x-transition>
+                                                    <p>Hapus?</p>
+                                                    <div class="d-flex gap-1 justify-content-center">
+                                                        <button type="button"
+                                                                class="btn btn-danger btn-sm p-1"
+                                                                style="font-size: 0.6rem;"
+                                                                wire:click="markImageForDelete('{{ $path }}')">
+                                                            Ya
+                                                        </button>
+                                                        <button type="button"
+                                                                class="btn btn-light btn-sm p-1"
+                                                                style="font-size: 0.6rem;"
+                                                                @click="confirmingDelete = false">
+                                                            No
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            @endif
+
                             <!-- Multiple Image Upload Section -->
                             <div class="admin-form-group mb-4">
                                 <label for="projectImages" class="admin-form-label">
-                                    Upload Foto Proyek *
+                                    Upload Foto Baru
                                     <span class="text-muted" style="font-size: 0.85rem;">
                                         (JPG, PNG, WebP - Auto compress & watermark)
                                     </span>
                                 </label>
-                                <div class="admin-image-upload-area">
+                                <div class="admin-image-upload-area" wire:ignore>
                                     <input type="file"
                                            id="projectImages"
                                            class="admin-image-input"
@@ -368,22 +459,8 @@
                                     <span class="admin-form-error">{{ $message }}</span>
                                 @enderror
 
-                                <!-- Uploaded Images Preview -->
-                                <div class="admin-images-preview mt-4" id="imagesPreview">
-                                    @if(!empty($uploadedImages))
-                                        @foreach($uploadedImages as $imagePath)
-                                            <div class="admin-image-preview-item" data-image-path="{{ $imagePath }}">
-                                                <img src="{{ asset('storage/' . $imagePath) }}"
-                                                     alt="Preview"
-                                                     class="admin-preview-img">
-                                                <button type="button"
-                                                        class="admin-preview-delete"
-                                                        wire:click="markImageForDelete('{{ $imagePath }}')">
-                                                    <i class="fas fa-trash"></i>
-                                                </button>
-                                            </div>
-                                        @endforeach
-                                    @endif
+                                <!-- Uploaded Images Preview (handled by JavaScript) -->
+                                <div class="admin-images-preview mt-4" id="imagesPreview" wire:ignore>
                                 </div>
                             </div>
 
@@ -414,6 +491,35 @@
                     @endif
                 </div>
 
+            </div>
+        </div>
+    @endif
+
+    <!-- Delete Confirmation Modal -->
+    @if($showDeleteModal)
+        <div class="admin-modal-overlay"
+             wire:click.self="cancelDelete()"
+             role="presentation"
+             aria-modal="true"
+             tabindex="-1">
+            <div class="admin-modal admin-modal-sm" onclick="event.stopPropagation()">
+                <div class="admin-modal-body text-center py-5">
+                    <div class="admin-delete-icon-wrapper mb-4">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h3 class="admin-modal-title mb-3">Hapus Proyek?</h3>
+                    <p class="text-muted mb-4">
+                        Apakah Anda yakin ingin menghapus proyek ini? Tindakan ini tidak dapat dibatalkan dan semua data terkait akan hilang secara permanen.
+                    </p>
+                    <div class="d-flex justify-content-center gap-3">
+                        <button wire:click="deleteProject" class="admin-btn admin-btn-danger px-4">
+                            <i class="fas fa-trash me-2"></i>Hapus
+                        </button>
+                        <button wire:click="cancelDelete" class="admin-btn admin-btn-outline px-4">
+                            Batal
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     @endif

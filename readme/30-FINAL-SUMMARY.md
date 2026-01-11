@@ -22,23 +22,25 @@
 - [x] No server-side processing (server tidak berat)
 
 ### ✅ Requirement: Watermark
-- [x] Text: "Properti Jaya Abadi Konstruksi"
-- [x] Pojok positions: 4 corners (small)
-- [x] Center position: large
-- [x] Semi-transparent white dengan dark shadow
-- [x] Automatic sizing based on image dimensions
+- [x] **Stylized System**: Professional modern look
+- [x] **Diagonal Pattern**: Tiled repeating text (bg protection)
+- [x] **Main Signature**: Centered with dynamic rotation
+- [x] **Copyright Stamp**: "© JAYA ABADI KONSTRUKSI" (bottom-right)
+- [x] **Typography**: Sora/Inter font compliance
+- [x] Semi-transparent white dengan dark shadow/glow
 
 ### ✅ Requirement: File Organization
 - [x] Folder: `public/uploads/`
 - [x] Subfolder per tanggal: `YYYY-MM-DD/`
 - [x] Random filename generation
+- [x] **Live Upload**: Server sync immediately after client-side processing
 - [x] Accessible via `/storage/uploads/...` URL
 
-### ✅ Bonus: Full CRUD Implementation
-- [x] CREATE: Add project dengan multiple images
-- [x] READ: View project dengan image gallery
-- [x] UPDATE: Edit project, add/remove images
-- [x] DELETE: Delete project & all associated images
+### ✅ Bonus: Enhanced UI/UX
+- [x] **Project Table Thumbnails**: Quick visual reference in list
+- [x] **Interactive Gallery**: Main image switcher in modal via Alpine.js
+- [x] **Pro Photo Deletion**: custom confirm overlay (Ya/No)
+- [x] **UI Feedback**: Loaders and fade transitions for upload/delete
 
 ---
 

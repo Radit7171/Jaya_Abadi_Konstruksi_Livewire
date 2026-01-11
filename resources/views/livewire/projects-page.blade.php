@@ -242,13 +242,32 @@
 
                 {{-- Modal Body --}}
                 <div class="projects-modal-body">
-                    {{-- Project Image --}}
-                    <div class="projects-modal-image-wrapper">
-                        <img src="{{ $selectedProject->image_url ?? '/images/home/hero-project.jpg' }}"
-                             alt="{{ $selectedProject->image_alt ?? $selectedProject->title }}"
-                             class="projects-modal-image"
-                             loading="lazy">
-                    </div>
+                    {{-- Project Images --}}
+                    @if($selectedProject->images && count($selectedProject->images) > 1)
+                        <div class="projects-modal-gallery">
+                            <div class="projects-modal-main-image">
+                                <img src="{{ $selectedProject->image_url ?? '/images/home/hero-project.jpg' }}"
+                                     alt="{{ $selectedProject->title }}"
+                                     id="mainModalImage"
+                                     class="projects-modal-image">
+                            </div>
+                            <div class="projects-modal-thumbnails">
+                                @foreach($selectedProject->getImageUrls() as $index => $imageUrl)
+                                    <div class="projects-modal-thumb @if($index === 0) active @endif"
+                                         data-image="{{ $imageUrl }}">
+                                        <img src="{{ $imageUrl }}" alt="Thumbnail {{ $index + 1 }}">
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    @else
+                        <div class="projects-modal-image-wrapper">
+                            <img src="{{ $selectedProject->image_url ?? '/images/home/hero-project.jpg' }}"
+                                 alt="{{ $selectedProject->image_alt ?? $selectedProject->title }}"
+                                 class="projects-modal-image"
+                                 loading="lazy">
+                        </div>
+                    @endif
 
                     {{-- Project Info --}}
                     <div class="projects-modal-info">

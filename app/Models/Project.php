@@ -75,6 +75,21 @@ class Project extends Model
     }
 
     /**
+     * Get first image URL
+     */
+    protected function imageUrl(): Attribute
+    {
+        return Attribute::make(
+            get: function () {
+                if (!$this->images || empty($this->images)) {
+                    return null;
+                }
+                return asset('storage/' . $this->images[0]);
+            }
+        );
+    }
+
+    /**
      * Scope to get only published projects
      */
     public function scopePublished($query)

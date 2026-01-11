@@ -18,7 +18,9 @@ class AdminProjects extends Component
     public string $searchQuery = '';
     public string $filterStatus = 'all'; // all, published, draft
     public bool $showModal = false;
+    public bool $showDeleteModal = false; // New: tracking deletion modal
     public ?Project $selectedProject = null;
+    public ?int $projectIdToDelete = null; // New: tracking project to delete
     public string $modalMode = 'view'; // view, edit, create
 
     // Form properties for create/edit
@@ -101,6 +103,9 @@ class AdminProjects extends Component
         $this->imagesToDelete = [];
 
         $this->showModal = true;
+
+        // Trigger initialization of image uploader in JS
+        $this->dispatch('projectFormReset');
     }
 
     /**
@@ -112,6 +117,9 @@ class AdminProjects extends Component
         $this->selectedProject = null;
         $this->modalMode = 'create';
         $this->showModal = true;
+
+        // Trigger initialization of image uploader in JS
+        $this->dispatch('projectFormReset');
     }
 
     /**
@@ -162,11 +170,11 @@ class AdminProjects extends Component
             $this->imagesToDelete[] = $imagePath;
         }
 
-        // Remove dari uploaded images array
-        $this->uploadedImages = array_filter(
+        // Remove dari uploaded images array dan re-index
+        $this->uploadedImages = array_values(array_filter(
             $this->uploadedImages,
             fn ($path) => $path !== $imagePath
-        );
+        ));
     }
 
     /**
@@ -216,11 +224,33 @@ class AdminProjects extends Component
     }
 
     /**
+     * Show delete confirmation modal
+     */
+    public function confirmDelete(int $projectId): void
+    {
+        $this->projectIdToDelete = $projectId;
+        $this->showDeleteModal = true;
+    }
+
+    /**
+     * Cancel deletion
+     */
+    public function cancelDelete(): void
+    {
+        $this->showDeleteModal = false;
+        $this->projectIdToDelete = null;
+    }
+
+    /**
      * Delete project dan semua images nya
      */
-    public function deleteProject(int $projectId): void
+    public function deleteProject(): void
     {
-        $project = Project::findOrFail($projectId);
+        if (!$this->projectIdToDelete) {
+            return;
+        }
+
+        $project = Project::findOrFail($this->projectIdToDelete);
 
         // Delete all images from storage
         if ($project->images && is_array($project->images)) {
@@ -228,6 +258,11 @@ class AdminProjects extends Component
         }
 
         $project->delete();
+
+        $this->showDeleteModal = false;
+        $this->projectIdToDelete = null;
+
+        $this->dispatch('showSuccessNotification', ['message' => 'Proyek berhasil dihapus!']);
     }
 
     /**

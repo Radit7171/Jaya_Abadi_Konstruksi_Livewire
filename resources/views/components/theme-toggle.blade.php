@@ -1,6 +1,6 @@
 @props(['showLabel' => true, 'compact' => false])
 
-<div class="d-flex align-items-center">
+<div class="d-flex align-items-center" x-data>
     @if($showLabel)
         <span class="text-muted me-2 d-none d-lg-block" style="font-size: 0.75rem; font-weight: 500;">
             TEMA

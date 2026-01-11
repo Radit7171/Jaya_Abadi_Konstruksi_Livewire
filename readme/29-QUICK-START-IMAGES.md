@@ -7,13 +7,13 @@
 ## 📋 WHAT'S NEW
 
 Sistem upload gambar proyek dengan fitur lengkap:
-- ✅ Upload multiple images sekaligus
-- ✅ Auto compress ke WebP (max 350KB)
-- ✅ Auto watermark "Properti Jaya Abadi Konstruksi"
-- ✅ Watermark di 4 pojok + tengah
-- ✅ All processing on client-side (server tidak berat)
-- ✅ Folder per tanggal: `public/uploads/YYYY-MM-DD/`
-- ✅ Full CRUD operations
+- ✅ **New Thumbnail Column** - Lihat preview foto langsung di tabel proyek
+- ✅ **Live Upload** - Foto diunggah langsung segera setelah dipilih
+- ✅ **Interactive View Gallery** - Ganti gambar utama dengan klik thumbnails
+- ✅ **Professional Delete** - Konfirmasi hapus "Ya/No" khusus untuk foto
+- ✅ **Pro Watermark System** - Diagonal pattern + Main signature + Copyright stamp
+- ✅ **Auto compress** ke WebP (max 350KB)
+- ✅ **Folder per tanggal**: `public/uploads/YYYY-MM-DD/`
 
 ---
 

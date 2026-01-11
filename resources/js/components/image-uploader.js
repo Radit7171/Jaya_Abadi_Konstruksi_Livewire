@@ -16,6 +16,7 @@ export class ImageUploader {
         this.imageInput = null;
         this.previewContainer = null;
         this.uploadedImagesData = new Map(); // Store base64 data
+        this.onImageProcessed = null; // Callback for immediate handling
     }
 
     /**
@@ -38,17 +39,26 @@ export class ImageUploader {
     async handleImageSelect(event) {
         const files = Array.from(event.target.files);
 
+        console.log('Image select triggered, files count:', files.length);
+
         for (const file of files) {
             if (!this.validateFile(file)) {
                 continue;
             }
 
             try {
+                console.log('Processing file:', file.name);
                 const base64Data = await this.processImage(file);
                 if (base64Data) {
                     const imageId = `img_${Date.now()}_${Math.random()}`;
                     this.uploadedImagesData.set(imageId, base64Data);
+                    console.log('Image stored with ID:', imageId, 'Total images:', this.uploadedImagesData.size);
                     this.addPreviewImage(imageId, base64Data, file.name);
+
+                    // Call immediate upload callback if exists
+                    if (this.onImageProcessed) {
+                        this.onImageProcessed(base64Data, imageId);
+                    }
                 }
             } catch (error) {
                 console.error('Error processing image:', error);
@@ -126,7 +136,7 @@ export class ImageUploader {
     }
 
     /**
-     * Add watermarks: pojok + center
+     * Add watermarks: Stylized diagonal pattern + main signature
      */
     async addWatermarks(img) {
         const canvas = document.createElement('canvas');
@@ -139,78 +149,44 @@ export class ImageUploader {
         // Draw original image
         ctx.drawImage(img, 0, 0);
 
-        // Configure watermark text
-        const fontSize = Math.max(20, Math.floor(canvas.height / 15));
-        const fontFamily = 'Arial, sans-serif';
-        const textColor = 'rgba(255, 255, 255, 0.7)';
-        const shadowColor = 'rgba(0, 0, 0, 0.5)';
+        // Configure watermark style
+        const baseFontSize = Math.max(16, Math.floor(canvas.width / 25));
+        const fontFamily = 'Sora, Inter, Arial, sans-serif';
+        const colorMain = 'rgba(255, 255, 255, 0.4)';
+        const colorPattern = 'rgba(255, 255, 255, 0.15)';
+        const colorShadow = 'rgba(0, 0, 0, 0.3)';
 
-        // Draw center watermark (larger)
+        // 1. Draw Tiled Diagonal Pattern (Professional background protection)
+        this.drawDiagonalPattern(ctx, this.watermarkText, baseFontSize * 0.8, colorPattern);
+
+        // 2. Draw Main Center Watermark (Semi-transparent, professional)
+        ctx.save();
+        ctx.translate(canvas.width / 2, canvas.height / 2);
+        ctx.rotate(-Math.atan(canvas.height / canvas.width)); // Align with diagonal
+
         this.drawWatermark(
             ctx,
             this.watermarkText,
-            canvas.width / 2,
-            canvas.height / 2,
-            fontSize * 1.5,
+            0,
+            0,
+            baseFontSize * 2,
             fontFamily,
-            textColor,
-            shadowColor,
+            colorMain,
+            colorShadow,
             'center'
         );
+        ctx.restore();
 
-        // Draw corner watermarks (smaller)
-        const cornerFontSize = fontSize * 0.7;
-        const padding = fontSize;
-
-        // Top-left
+        // 3. Draw Bottom Right "Official Stamp" feel
         this.drawWatermark(
             ctx,
-            this.watermarkText,
-            padding,
-            padding + cornerFontSize,
-            cornerFontSize,
+            `© JAYA ABADI KONSTRUKSI`,
+            canvas.width - (baseFontSize),
+            canvas.height - (baseFontSize),
+            baseFontSize * 0.6,
             fontFamily,
-            textColor,
-            shadowColor,
-            'left'
-        );
-
-        // Top-right
-        this.drawWatermark(
-            ctx,
-            this.watermarkText,
-            canvas.width - padding,
-            padding + cornerFontSize,
-            cornerFontSize,
-            fontFamily,
-            textColor,
-            shadowColor,
-            'right'
-        );
-
-        // Bottom-left
-        this.drawWatermark(
-            ctx,
-            this.watermarkText,
-            padding,
-            canvas.height - padding,
-            cornerFontSize,
-            fontFamily,
-            textColor,
-            shadowColor,
-            'left'
-        );
-
-        // Bottom-right
-        this.drawWatermark(
-            ctx,
-            this.watermarkText,
-            canvas.width - padding,
-            canvas.height - padding,
-            cornerFontSize,
-            fontFamily,
-            textColor,
-            shadowColor,
+            'rgba(255, 255, 255, 0.6)',
+            colorShadow,
             'right'
         );
 
@@ -218,22 +194,51 @@ export class ImageUploader {
     }
 
     /**
-     * Draw text watermark dengan shadow
+     * Draw repeating diagonal pattern across the canvas
+     */
+    drawDiagonalPattern(ctx, text, fontSize, color) {
+        ctx.save();
+        ctx.font = `600 ${fontSize}px Sora, Inter, sans-serif`;
+        ctx.fillStyle = color;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+
+        const angle = -30 * Math.PI / 180;
+        ctx.rotate(angle);
+
+        // Determine area to cover after rotation
+        const spaceX = fontSize * 10;
+        const spaceY = fontSize * 5;
+
+        // Offset to start before the visible area to cover everything after rotation
+        for (let y = -ctx.canvas.height; y < ctx.canvas.height * 2; y += spaceY) {
+            for (let x = -ctx.canvas.width; x < ctx.canvas.width * 2; x += spaceX) {
+                ctx.fillText(text, x, y);
+            }
+        }
+        ctx.restore();
+    }
+
+    /**
+     * Draw text watermark with stylized shadow/glow
      */
     drawWatermark(ctx, text, x, y, fontSize, fontFamily, textColor, shadowColor, align) {
-        ctx.font = `${fontSize}px ${fontFamily}`;
+        ctx.save();
+        ctx.font = `700 ${fontSize}px ${fontFamily}`;
         ctx.textAlign = align;
         ctx.textBaseline = 'middle';
 
-        // Draw shadow
-        ctx.fillStyle = shadowColor;
-        ctx.lineWidth = 3;
-        ctx.strokeStyle = shadowColor;
-        ctx.strokeText(text, x, y);
+        // Add subtle glow/shadow for readability on light backgrounds
+        ctx.shadowColor = shadowColor;
+        ctx.shadowBlur = fontSize / 4;
+        ctx.shadowOffsetX = 2;
+        ctx.shadowOffsetY = 2;
 
         // Draw text
         ctx.fillStyle = textColor;
         ctx.fillText(text, x, y);
+
+        ctx.restore();
     }
 
     /**
@@ -280,31 +285,36 @@ export class ImageUploader {
     }
 
     /**
-     * Add preview image ke UI
+     * Add preview image ke UI dengan info size
      */
     addPreviewImage(imageId, base64Data, originalFileName) {
         if (!this.previewContainer) return;
 
+        // Calculate compressed size
+        const base64String = base64Data.split(',')[1];
+        const sizeInBytes = (base64String.length * 3) / 4;
+        const sizeInKB = (sizeInBytes / 1024).toFixed(2);
+
         const previewItem = document.createElement('div');
-        previewItem.className = 'image-preview-item';
+        previewItem.className = 'admin-image-preview-item';
         previewItem.dataset.imageId = imageId;
         previewItem.innerHTML = `
-            <div class="image-preview-wrapper">
-                <img src="${base64Data}" alt="Preview" class="image-preview-img">
-                <div class="image-preview-info">
-                    <p class="image-preview-name">${originalFileName}</p>
-                </div>
-                <button type="button" class="image-preview-delete" data-image-id="${imageId}">
-                    <i class="fas fa-trash"></i>
-                </button>
+            <img src="${base64Data}" alt="Preview - ${originalFileName}" class="admin-preview-img">
+            <div class="admin-preview-info">
+                <div class="admin-preview-filename">${originalFileName}</div>
+                <div class="admin-preview-size">${sizeInKB} KB</div>
             </div>
+            <button type="button" class="admin-preview-delete" data-image-id="${imageId}" title="Hapus gambar">
+                <i class="fas fa-trash"></i>
+            </button>
         `;
 
         this.previewContainer.appendChild(previewItem);
 
         // Add delete handler
-        previewItem.querySelector('.image-preview-delete').addEventListener('click', (e) => {
+        previewItem.querySelector('.admin-preview-delete').addEventListener('click', (e) => {
             e.preventDefault();
+            e.stopPropagation();
             this.removePreviewImage(imageId);
         });
     }

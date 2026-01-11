@@ -15,9 +15,12 @@
 ✅ **Image Processing (Client-Side)**
 - Compress to WebP format
 - Max size: 350KB per image
-- Watermark dengan text "Properti Jaya Abadi Konstruksi"
-- Watermark di 4 pojok + tengah
-- All processing on client-side agar server tidak berat
+- **Stylized Professional Watermark**: 
+  - Diagonal tiled pattern (bg protection)
+  - Main project signature (centered)
+  - Official copyright stamp (bottom-right)
+- All processing on client-side for performance
+- **Live Sync**: Immediate upload to server after selection
 
 ✅ **File Organization**
 - Save di `public/uploads/`

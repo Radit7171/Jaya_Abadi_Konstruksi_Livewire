@@ -405,15 +405,31 @@ Panduan setup lengkap untuk visitor charts system:
 
 ### 25. [VISITOR TRACKING EXPLAINED](readme/25-VISITOR-TRACKING-EXPLAINED.md)
 
-Penjelasan sistem pencatatan pengunjung yang simple dan efisien:
+Penjelasan sistem pencatatan pengunjung yang simple dan efisien.
 
--   **1 IP = 1 record dalam 24 jam**
--   Tidak dicatat setiap ganti halaman
--   Jika IP yang sama masuk lagi dalam 24 jam, tidak tercatat
--   Setelah 24 jam, dihitung sebagai visitor baru
--   Testing dengan `php artisan visitor:test`
--   Query examples untuk statistics
--   Troubleshooting & monitoring
+### 26. [JANUARY 2026 UPDATES](readme/26-JANUARY-2026-UPDATES.md)
+
+Changelog lengkap untuk semua pembaruan besar di Januari 2026 (Navbar, Charts, Projects).
+
+### 27. [PROJECTS IMAGE UPLOAD SYSTEM](readme/27-PROJECTS-IMAGE-UPLOAD-SYSTEM.md)
+
+Penjelasan teknis sistem upload, kompresi, dan watermark profesional.
+
+### 28. [IMPLEMENTATION SUMMARY](readme/28-IMPLEMENTATION-SUMMARY.md)
+
+Ringkasan teknis implementasi fitur CRUD proyek dengan gambar.
+
+### 29. [QUICK START IMAGES](readme/29-QUICK-START-IMAGES.md)
+
+Panduan cepat penggunaan fitur pengelolaan gambar proyek bagi admin.
+
+### 30. [FINAL SUMMARY](readme/30-FINAL-SUMMARY.md)
+
+Laporan akhir pencapaian target fitur pengelolaan gambar proyek.
+
+### 31. [FILE STRUCTURE REFERENCE](readme/31-FILE-STRUCTURE-REFERENCE.md)
+
+Referensi struktur file lengkap untuk sistem pengelolaan gambar proyek.
 
 ---
 
@@ -457,35 +473,39 @@ npm run build
 
 ## 📝 METADATA
 
-**Last Updated:** January 10, 2026  
-**Version:** 2.6.0 (Admin Navbar Fixed & Visitor Charts Professional Redesign - Jan 10, 2026)  
+**Last Updated:** January 11, 2026  
+**Version:** 2.8.0 (Admin Projects UI & Pro Image Management - Jan 11, 2026)  
 **Maintainer:** Frontend Team & GitHub Copilot  
 **Company:** PT Jaya Abadi Konstruksi
 
-### Latest Changes (January 10, 2026 - Admin Navbar & Visitor Charts Update):
+### Latest Changes (January 11, 2026 - Admin Projects UI & Image Management):
 
-**1. Admin Dashboard Navbar - Fixed Position**
-- ✅ Navbar is now **fixed** on desktop (1200px+) for persistent navigation
-- ✅ Navbar remains sticky on mobile for proper UX
-- ✅ Higher z-index (1001) for proper layering
-- ✅ Main content has proper top margin to prevent overlap
+**1. Pro Image Management & UI Enhancements**
+- ✅ **New Thumbnail Column** in admin projects table for quick visual reference.
+- ✅ **Professional Delete Confirmation** overlay for images in Edit mode.
+- ✅ **Live Image Upload System** with instant server-side processing and UI feedback (loaders/fade transitions).
+- ✅ **Modern View Gallery** featuring a main image display with interactive thumbnails in the project detail modal.
+- ✅ **Stylized Professional Watermark** including a diagonal tiled pattern, main project signature, and copyright stamp.
+- **Files Modified:** 
+  - `app/Livewire/Admin/AdminProjects.php`
+  - `resources/js/components/image-uploader.js`
+  - `resources/js/pages/admin/admin-projects.js`
+  - `resources/views/livewire/admin/projects-page.blade.php`
+  - `resources/css/pages/admin/admin-projects.css`
+
+**2. Admin Dashboard Navbar - Fixed Position (Jan 10, 2026)**
+- ✅ Navbar is now **fixed** on desktop (1200px+) for persistent navigation.
+- ✅ Higher z-index for proper layering.
 - **Files Modified:** `resources/css/pages/admin/admin-layout.css`
 
-**2. Visitor Charts Professional Redesign**
-- ✅ **4 Separate Line Charts** instead of 1 with period selector
-  - Daily (30 days, Primary Blue, sun icon)
-  - Weekly (12 weeks, Info Cyan, calendar-week icon)
-  - Monthly (12 months, Success Green, calendar icon)
-  - Yearly (5 years, Warning Orange, chart-line icon)
-- ✅ **Professional Card Styling** with gradient headers & icon badges
-- ✅ **Period Selector Removed** - All periods visible, simpler UX
-- ✅ **Mobile Optimized** - Single column, overflow prevention, responsive fonts
-- ✅ **Dark Mode Support** - Complete CSS variable system
+**3. Visitor Charts Professional Redesign (Jan 10, 2026)**
+- ✅ **4 Separate Line Charts** (Daily, Weekly, Monthly, Yearly) for clearer analytics.
+- ✅ **Professional Card Styling** with gradient headers & icon badges.
 - **Files Modified:**
-  - `app/Livewire/Admin/VisitorCharts.php` - Removed period selector logic
-  - `resources/views/livewire/admin/visitor-charts.blade.php` - Static chart structure
-  - `resources/js/pages/admin/visitor-charts.js` - Professional Chart.js options
-  - `resources/css/pages/admin/visitor-charts.css` - Complete redesign with 4 breakpoints
+  - `app/Livewire/Admin/VisitorCharts.php`
+  - `resources/views/livewire/admin/visitor-charts.blade.php`
+  - `resources/js/pages/admin/visitor-charts.js`
+  - `resources/css/pages/admin/visitor-charts.css`
 
 **3. Documentation Updates**
 - ✅ Updated `readme/18-ADMIN-DASHBOARD-STRUCTURE.md` with navbar & charts info

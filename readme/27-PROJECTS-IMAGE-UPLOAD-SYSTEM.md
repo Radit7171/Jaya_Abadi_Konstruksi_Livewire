@@ -9,12 +9,12 @@
 
 Sistem upload gambar proyek dengan fitur:
 - ✅ **Multiple file upload** - Upload multiple images sekaligus
+- ✅ **Live Server Sync** - Foto diunggah langsung ke server segera setelah dipilih
 - ✅ **Client-side compression** - Compress ke WebP format (max 350KB)
-- ✅ **Client-side watermark** - Watermark otomatis di 4 pojok + tengah
-- ✅ **Drag-drop support** - Intuitive file upload
-- ✅ **Preview before save** - Lihat preview sebelum save
-- ✅ **Auto folder structure** - Folder `public/uploads/YYYY-MM-DD/`
-- ✅ **Server-light processing** - Server hanya menerima file siap simpan
+- ✅ **Stylized Professional Watermark** - Diagonal pattern + center signature + bottom-right stamp
+- ✅ **Drag-drop support** - Intuitive file upload area
+- ✅ **Professional Management** - Existing images grid dengan custom delete confirmation
+- ✅ **Modern View Mode** - Interactive gallery dengan main image & thumbnails
 
 ---
 
@@ -47,23 +47,21 @@ User Select Files
      ↓
 JavaScript: ImageUploader.processImage()
      ↓
-Load → Compress → Add Watermark → Convert WebP → Validate Size
+Load → Compress → Add Stylized Watermarks → Convert WebP → Validate Size
      ↓
-Base64 Array stored in JS memory
+onImageProcessed Callback
      ↓
-User click Submit
+Upload to Server Immediately via component.saveProjectImages()
      ↓
-Dispatch Livewire event: saveProjectImages([base64_array])
+UI Feedback: Show Loader Spinner 
      ↓
-AdminProjects.saveProjectImages() - validate & save paths
+Server: ImageService.saveUploadedImage(base64)
      ↓
-Form submission: saveProject()
+Server: Store path to uploadedImages array
      ↓
-Laravel: ImageService.saveUploadedImage(base64)
+Livewire: Update View (Foto muncul di grid management)
      ↓
-Save to: storage/app/public/uploads/YYYY-MM-DD/{uuid}.webp
-     ↓
-Store paths array in DB as JSON
+User click Save Project (Saves other fields like title/desc)
 ```
 
 ### Database Schema

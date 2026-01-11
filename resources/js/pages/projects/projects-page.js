@@ -251,39 +251,89 @@ document.addEventListener('livewire:initialized', () => {
  */
 class ProjectsModalBehavior {
     constructor() {
-        this.setupModalInteractions();
+        // Use event delegation for all modal related clicks
+        this.initDelegatedEvents();
         this.setupKeyboardShortcuts();
     }
 
     /**
-     * Setup modal overlay click interactions
+     * Use event delegation on document to handle all modal interactions
+     * This is more robust for Livewire updates
      */
-    setupModalInteractions() {
-        // Click outside modal to close (on overlay)
-        document.addEventListener('click', (e) => {
-            if (e.target.classList.contains('projects-modal-overlay')) {
-                // Modal will be closed via Livewire wire:click directive
-                const overlay = e.target;
-                this.animateModalClose(overlay);
-            }
-        });
+    initDelegatedEvents() {
+        // Prevent multiple listeners if re-instrumented
+        if (window._modalClickSetup) return;
+        window._modalClickSetup = true;
 
-        // Close button interaction
-        const closeButtons = document.querySelectorAll('.projects-modal-close');
-        closeButtons.forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                const modal = btn.closest('.projects-modal-container');
-                const overlay = modal.closest('.projects-modal-overlay');
+        // CRITICAL: We use { capture: true } here because the modal container
+        // has wire:click.stop which prevents event bubbling.
+        // Capture phase catches the click before it's stopped.
+        document.addEventListener('click', (e) => {
+            // 1. Handle Thumbnail Clicks
+            const thumb = e.target.closest('.projects-modal-thumb');
+            if (thumb) {
+                this.handleThumbnailClick(thumb);
+                return;
+            }
+
+            // 2. Handle Overlay Click (Close)
+            if (e.target.classList.contains('projects-modal-overlay')) {
+                // Ensure we are clicking the actual overlay, not some child that bubbled up
+                this.animateModalClose(e.target);
+                return;
+            }
+
+            // 3. Handle Close Button Click
+            const closeBtn = e.target.closest('.projects-modal-close');
+            if (closeBtn) {
+                const overlay = closeBtn.closest('.projects-modal-overlay');
                 this.animateModalClose(overlay);
+                return;
+            }
+        }, { capture: true });
+    }
+
+    /**
+     * Handle thumbnail switching
+     */
+    handleThumbnailClick(thumb) {
+        const mainImage = document.getElementById('mainModalImage');
+        const newSrc = thumb.getAttribute('data-image');
+
+        if (!mainImage || !newSrc) return;
+
+        // Change main image with a smooth fade
+        mainImage.style.opacity = '0.4';
+
+        setTimeout(() => {
+            mainImage.src = newSrc;
+
+            // Return opacity to 1 once loaded
+            if (mainImage.complete) {
+                mainImage.style.opacity = '1';
+            } else {
+                mainImage.onload = () => { mainImage.style.opacity = '1'; };
+            }
+        }, 50);
+
+        // Update active class on thumbnails
+        const container = thumb.closest('.projects-modal-thumbnails');
+        if (container) {
+            container.querySelectorAll('.projects-modal-thumb').forEach(t => {
+                t.classList.remove('active');
             });
-        });
+            thumb.classList.add('active');
+        }
     }
 
     /**
      * Setup keyboard shortcuts
      */
     setupKeyboardShortcuts() {
+        // Only add once
+        if (window._modalKeyboardSetup) return;
+        window._modalKeyboardSetup = true;
+
         document.addEventListener('keydown', (e) => {
             // Escape key to close modal
             if (e.key === 'Escape' || e.key === 'Esc') {
@@ -310,15 +360,14 @@ class ProjectsModalBehavior {
 }
 
 // Initialize modal behavior
-document.addEventListener('DOMContentLoaded', () => {
+const initModalBehavior = () => {
+    // We don't check for .projects-page here because the event listener
+    // is on document and will just do nothing if elements aren't found
     new ProjectsModalBehavior();
-});
+};
 
-document.addEventListener('livewire:initialized', () => {
-    new ProjectsModalBehavior();
-});
+document.addEventListener('livewire:navigated', initModalBehavior);
+document.addEventListener('DOMContentLoaded', initModalBehavior);
 
-// Reinitialize modal on Livewire updates
-document.addEventListener('livewire:updated', () => {
-    new ProjectsModalBehavior();
-});
+// Support for older Livewire versions if needed
+document.addEventListener('livewire:initialized', initModalBehavior);

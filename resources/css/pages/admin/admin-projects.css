@@ -141,6 +141,31 @@
     vertical-align: middle;
 }
 
+.admin-table-image-container {
+    width: 60px;
+}
+
+.admin-table-thumb {
+    width: 50px;
+    height: 50px;
+    border-radius: 6px;
+    object-fit: cover;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border: 1px solid var(--admin-light-border);
+}
+
+.admin-table-thumb-empty {
+    width: 50px;
+    height: 50px;
+    border-radius: 6px;
+    background: var(--admin-light-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--admin-text-muted);
+    border: 1px dashed var(--admin-light-border);
+}
+
 .admin-table-project-info {
     display: flex;
     align-items: center;
@@ -396,6 +421,40 @@ select,
     color: var(--admin-text);
 }
 
+.admin-modal-sm {
+    max-width: 400px;
+}
+
+.admin-delete-icon-wrapper {
+    width: 80px;
+    height: 80px;
+    background-color: #fef2f2;
+    color: #ef4444;
+    font-size: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+.admin-btn-danger {
+    background-color: #ef4444;
+    color: white;
+    border: none;
+    transition: all 0.2s ease;
+}
+
+.admin-btn-danger:hover {
+    background-color: #dc2626;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px -1px rgba(220, 38, 38, 0.2);
+}
+
+.admin-btn-danger:active {
+    transform: translateY(0);
+}
+
 /* ============================================================
    MODAL BODY
    ============================================================ */
@@ -603,6 +662,174 @@ select,
 .admin-badge-danger {
     background-color: rgba(220, 38, 38, 0.2);
     color: var(--admin-danger);
+}
+
+/* ============================================================
+   EXISTING IMAGES GRID
+   ============================================================ */
+
+.admin-existing-images-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 12px;
+    margin-top: 10px;
+    padding: 12px;
+    background: var(--admin-light-bg);
+    border-radius: 8px;
+    border: 1px dashed var(--admin-light-border);
+}
+
+.admin-existing-image-item {
+    position: relative;
+    aspect-ratio: 1;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 2px solid transparent;
+    transition: all var(--admin-transition);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.admin-existing-image-item:hover {
+    border-color: var(--admin-primary);
+    transform: translateY(-2px);
+}
+
+.admin-existing-image-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.admin-image-remove-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 24px;
+    height: 24px;
+    background: rgba(220, 38, 38, 0.9);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    cursor: pointer;
+    transition: all var(--admin-transition);
+    z-index: 2;
+    padding: 0;
+    line-height: 1;
+}
+
+.admin-image-remove-btn:hover {
+    background: #b91c1c;
+    transform: scale(1.1);
+}
+
+.admin-image-delete-confirm {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    z-index: 3;
+    padding: 5px;
+    text-align: center;
+}
+
+.admin-image-delete-confirm p {
+    margin: 0 0 5px 0;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+/* ============================================================
+   VIEW MODE GALLERY
+   ============================================================ */
+
+.admin-main-image-wrapper {
+    width: 100%;
+    aspect-ratio: 16/9;
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--admin-light-bg);
+    border: 1px solid var(--admin-light-border);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.admin-main-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: #000;
+}
+
+.admin-thumbs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.admin-thumb-item {
+    aspect-ratio: 1;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 3px solid transparent;
+    transition: all var(--admin-transition);
+    opacity: 0.6;
+}
+
+.admin-thumb-item:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+}
+
+.admin-thumb-item.active {
+    border-color: var(--admin-primary);
+    opacity: 1;
+    box-shadow: 0 0 10px rgba(37, 99, 235, 0.3);
+}
+
+.admin-thumb-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ============================================================
+   IMAGE UPLOAD - LIVE FEEDBACK
+   ============================================================ */
+
+.admin-image-upload-loader {
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    font-size: 1.5rem;
+    color: var(--admin-primary);
+}
+
+.fade-out {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: all 0.3s ease;
+}
+
+.admin-empty-gallery {
+    border: 2px dashed var(--admin-light-border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
 }
 
 /* ============================================================
