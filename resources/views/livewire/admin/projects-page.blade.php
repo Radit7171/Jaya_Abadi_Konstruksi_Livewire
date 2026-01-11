@@ -77,14 +77,13 @@
                         @forelse($projects as $project)
                             <tr class="admin-table-row">
                                 <td class="admin-table-td">
-                                    <div class="admin-table-project-info">
-                                        <img src="{{ $project->image_url }}"
-                                             alt="{{ $project->image_alt }}"
-                                             class="admin-table-project-image">
-                                        <div>
-                                            <p class="admin-table-project-title">{{ $project->title }}</p>
-                                            <p class="admin-table-project-desc">{{ $project->getShortDescription() }}</p>
-                                        </div>
+                                    <div>
+                                        <p class="admin-table-project-title">{{ $project->title }}</p>
+                                        <p class="admin-table-project-desc">{{ $project->getShortDescription() }}</p>
+                                        <small class="text-muted">
+                                            {{ count($project->images ?? []) }}
+                                            {{ count($project->images ?? []) === 1 ? 'gambar' : 'gambar' }}
+                                        </small>
                                     </div>
                                 </td>
                                 <td class="admin-table-td">
@@ -128,7 +127,7 @@
                                             <i class="fas {{ $project->is_published ? 'fa-eye-slash' : 'fa-eye' }}"></i>
                                         </button>
                                         <button wire:click="deleteProject({{ $project->id }})"
-                                                wire:confirm="Apakah Anda yakin ingin menghapus proyek ini?"
+                                                onclick="return confirm('Apakah Anda yakin ingin menghapus proyek ini?')"
                                                 class="admin-action-btn admin-action-delete"
                                                 title="Hapus">
                                             <i class="fas fa-trash"></i>
@@ -155,9 +154,15 @@
             <div class="admin-projects-cards">
                 @forelse($projects as $project)
                     <div class="admin-projects-card">
-                        <img src="{{ $project->image_url }}"
-                             alt="{{ $project->image_alt }}"
-                             class="admin-card-image">
+                        @if($project->images && count($project->images) > 0)
+                            <img src="{{ asset('storage/' . $project->images[0]) }}"
+                                 alt="Gambar proyek {{ $project->title }}"
+                                 class="admin-card-image">
+                        @else
+                            <div class="admin-card-image" style="background-color: #e9ecef; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-image" style="font-size: 3rem; color: #adb5bd;"></i>
+                            </div>
+                        @endif
 
                         <div class="admin-card-header">
                             <h3 class="admin-card-title">{{ $project->title }}</h3>
@@ -203,7 +208,7 @@
                                 <i class="fas {{ $project->is_published ? 'fa-eye-slash' : 'fa-eye' }}"></i>
                             </button>
                             <button wire:click="deleteProject({{ $project->id }})"
-                                    wire:confirm="Apakah Anda yakin ingin menghapus proyek ini?"
+                                    onclick="return confirm('Apakah Anda yakin ingin menghapus proyek ini?')"
                                     class="admin-card-action-btn admin-action-delete"
                                     title="Hapus">
                                 <i class="fas fa-trash"></i>
@@ -227,7 +232,7 @@
     <!-- Modal - Create/Edit/View Project -->
     @if($showModal && ($selectedProject || $modalMode === 'create'))
         <div class="admin-modal-overlay" wire:click="closeModal()">
-            <div class="admin-modal" wire:click.stop>
+            <div class="admin-modal" @click.stop>
 
                 <!-- Modal Header -->
                 <div class="admin-modal-header d-flex align-items-center justify-content-between">
@@ -252,10 +257,6 @@
                     @if($modalMode === 'view')
                         <!-- View Mode -->
                         <div class="admin-modal-view">
-                            <img src="{{ $selectedProject->image_url }}"
-                                 alt="{{ $selectedProject->image_alt }}"
-                                 class="admin-modal-image mb-4">
-
                             <div class="admin-modal-info mb-3">
                                 <label class="admin-modal-label">Judul</label>
                                 <p class="admin-modal-value">{{ $selectedProject->title }}</p>
@@ -281,6 +282,21 @@
                                     @endif
                                 </p>
                             </div>
+
+                            @if($selectedProject->images && count($selectedProject->images) > 0)
+                                <div class="admin-modal-info mb-3">
+                                    <label class="admin-modal-label">Foto Proyek</label>
+                                    <div class="admin-images-gallery" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1rem; margin-top: 0.5rem;">
+                                        @foreach($selectedProject->getImageUrls() as $imageUrl)
+                                            <div style="aspect-ratio: 1; overflow: hidden; border-radius: 8px;">
+                                                <img src="{{ $imageUrl }}"
+                                                     alt="Project image"
+                                                     style="width: 100%; height: 100%; object-fit: cover;">
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            @endif
                         </div>
                     @else
                         <!-- Edit/Create Mode -->
@@ -324,28 +340,47 @@
                                 @enderror
                             </div>
 
+                            <!-- Multiple Image Upload Section -->
                             <div class="admin-form-group mb-4">
-                                <label for="imageUrl" class="admin-form-label">URL Gambar *</label>
-                                <input type="url"
-                                       id="imageUrl"
-                                       wire:model="imageUrl"
-                                       class="admin-form-input @error('imageUrl') is-invalid @enderror"
-                                       placeholder="https://example.com/image.jpg">
-                                @error('imageUrl')
+                                <label for="projectImages" class="admin-form-label">
+                                    Upload Foto Proyek *
+                                    <span class="text-muted" style="font-size: 0.85rem;">
+                                        (JPG, PNG, WebP - Auto compress & watermark)
+                                    </span>
+                                </label>
+                                <div class="admin-image-upload-area">
+                                    <input type="file"
+                                           id="projectImages"
+                                           class="admin-image-input"
+                                           multiple
+                                           accept="image/jpeg,image/png,image/webp">
+                                    <div class="admin-upload-hint">
+                                        <i class="fas fa-cloud-upload-alt"></i>
+                                        <p>Klik atau drag-drop gambar di sini</p>
+                                        <small>Setiap gambar akan dikompresi otomatis dan ditambahkan watermark</small>
+                                    </div>
+                                </div>
+                                @error('uploadedImages')
                                     <span class="admin-form-error">{{ $message }}</span>
                                 @enderror
-                            </div>
 
-                            <div class="admin-form-group mb-4">
-                                <label for="imageAlt" class="admin-form-label">Alt Text Gambar *</label>
-                                <input type="text"
-                                       id="imageAlt"
-                                       wire:model="imageAlt"
-                                       class="admin-form-input @error('imageAlt') is-invalid @enderror"
-                                       placeholder="Deskripsi singkat gambar">
-                                @error('imageAlt')
-                                    <span class="admin-form-error">{{ $message }}</span>
-                                @enderror
+                                <!-- Uploaded Images Preview -->
+                                <div class="admin-images-preview mt-4" id="imagesPreview">
+                                    @if(!empty($uploadedImages))
+                                        @foreach($uploadedImages as $imagePath)
+                                            <div class="admin-image-preview-item" data-image-path="{{ $imagePath }}">
+                                                <img src="{{ asset('storage/' . $imagePath) }}"
+                                                     alt="Preview"
+                                                     class="admin-preview-img">
+                                                <button type="button"
+                                                        class="admin-preview-delete"
+                                                        wire:click="markImageForDelete('{{ $imagePath }}')">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </div>
+                                        @endforeach
+                                    @endif
+                                </div>
                             </div>
 
                             <div class="admin-form-group mb-4">

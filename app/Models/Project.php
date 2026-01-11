@@ -19,8 +19,7 @@ class Project extends Model
         'title',
         'description',
         'category',
-        'image_url',
-        'image_alt',
+        'images', // JSON array of image paths from upload
         'is_published',
         'published_at',
     ];
@@ -31,6 +30,7 @@ class Project extends Model
      * @var array<string, string>
      */
     protected $casts = [
+        'images' => 'array', // Cast JSON to array
         'is_published' => 'boolean',
         'published_at' => 'datetime',
         'created_at' => 'datetime',
@@ -58,6 +58,20 @@ class Project extends Model
         return strlen($this->description) > 150
             ? substr($this->description, 0, 150) . '...'
             : $this->description;
+    }
+
+    /**
+     * Get all images with full URLs
+     */
+    public function getImageUrls(): array
+    {
+        if (!$this->images || empty($this->images)) {
+            return [];
+        }
+
+        return array_map(function ($path) {
+            return asset('storage/' . $path);
+        }, $this->images);
     }
 
     /**

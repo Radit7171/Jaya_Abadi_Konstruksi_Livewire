@@ -7,6 +7,7 @@ use Livewire\WithPagination;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Layout;
 use App\Models\Project;
+use App\Services\ImageService;
 
 #[Layout('layouts.admin')]
 #[Title('Kelola Proyek - Admin Jaya Abadi Konstruksi')]
@@ -24,9 +25,9 @@ class AdminProjects extends Component
     public string $title = '';
     public string $description = '';
     public string $category = 'konstruksi-gedung';
-    public string $imageUrl = '';
-    public string $imageAlt = '';
     public bool $isPublished = false;
+    public array $uploadedImages = []; // JSON array of image paths
+    public array $imagesToDelete = []; // Images to delete from storage
 
     private const ITEMS_PER_PAGE = 10;
 
@@ -95,9 +96,9 @@ class AdminProjects extends Component
         $this->title = $this->selectedProject->title;
         $this->description = $this->selectedProject->description;
         $this->category = $this->selectedProject->category;
-        $this->imageUrl = $this->selectedProject->image_url;
-        $this->imageAlt = $this->selectedProject->image_alt;
         $this->isPublished = $this->selectedProject->is_published;
+        $this->uploadedImages = $this->selectedProject->images ?? [];
+        $this->imagesToDelete = [];
 
         $this->showModal = true;
     }
@@ -121,13 +122,55 @@ class AdminProjects extends Component
         $this->title = '';
         $this->description = '';
         $this->category = 'konstruksi-gedung';
-        $this->imageUrl = '';
-        $this->imageAlt = '';
         $this->isPublished = false;
+        $this->uploadedImages = [];
+        $this->imagesToDelete = [];
     }
 
     /**
-     * Save project (create or update)
+     * Save project images dari client-side base64 array
+     * Called dari JavaScript setelah images sudah dikompresi & watermarked
+     */
+    #[\Livewire\Attributes\On('saveProjectImages')]
+    public function saveProjectImages($imagesBase64Array): void
+    {
+        if (empty($imagesBase64Array)) {
+            return;
+        }
+
+        foreach ($imagesBase64Array as $base64Data) {
+            // Validate base64 size (max 350KB)
+            if (!ImageService::validateBase64Image($base64Data)) {
+                session()->flash('error', 'Ukuran salah satu gambar melebihi 350KB');
+                return;
+            }
+
+            // Save image dan tambah path ke uploaded images
+            $imagePath = ImageService::saveUploadedImage($base64Data);
+            if ($imagePath) {
+                $this->uploadedImages[] = $imagePath;
+            }
+        }
+    }
+
+    /**
+     * Mark image untuk didelete saat save
+     */
+    public function markImageForDelete(string $imagePath): void
+    {
+        if (!in_array($imagePath, $this->imagesToDelete)) {
+            $this->imagesToDelete[] = $imagePath;
+        }
+
+        // Remove dari uploaded images array
+        $this->uploadedImages = array_filter(
+            $this->uploadedImages,
+            fn ($path) => $path !== $imagePath
+        );
+    }
+
+    /**
+     * Save project (create or update) dengan images
      */
     public function saveProject(): void
     {
@@ -135,17 +178,25 @@ class AdminProjects extends Component
             'title' => 'required|min:3|max:255',
             'description' => 'required|min:10',
             'category' => 'required|in:konstruksi-gedung,infrastruktur,renovasi',
-            'imageUrl' => 'required|url',
-            'imageAlt' => 'required|min:3|max:255',
         ]);
+
+        // Validate ada minimal 1 gambar
+        if (empty($this->uploadedImages)) {
+            $this->addError('uploadedImages', 'Minimal tambahkan 1 gambar proyek');
+            return;
+        }
+
+        // Delete marked images dari storage
+        if (!empty($this->imagesToDelete)) {
+            ImageService::deleteImages($this->imagesToDelete);
+        }
 
         if ($this->modalMode === 'create') {
             Project::create([
                 'title' => $this->title,
                 'description' => $this->description,
                 'category' => $this->category,
-                'image_url' => $this->imageUrl,
-                'image_alt' => $this->imageAlt,
+                'images' => $this->uploadedImages, // Store as JSON
                 'is_published' => $this->isPublished,
                 'published_at' => $this->isPublished ? now() : null,
             ]);
@@ -154,22 +205,29 @@ class AdminProjects extends Component
                 'title' => $this->title,
                 'description' => $this->description,
                 'category' => $this->category,
-                'image_url' => $this->imageUrl,
-                'image_alt' => $this->imageAlt,
+                'images' => $this->uploadedImages, // Store as JSON
                 'is_published' => $this->isPublished,
                 'published_at' => $this->isPublished ? now() : null,
             ]);
         }
 
         $this->closeModal();
+        $this->dispatch('showSuccessNotification', ['message' => 'Proyek berhasil disimpan!']);
     }
 
     /**
-     * Delete project
+     * Delete project dan semua images nya
      */
     public function deleteProject(int $projectId): void
     {
-        Project::findOrFail($projectId)->delete();
+        $project = Project::findOrFail($projectId);
+
+        // Delete all images from storage
+        if ($project->images && is_array($project->images)) {
+            ImageService::deleteImages($project->images);
+        }
+
+        $project->delete();
     }
 
     /**
@@ -201,3 +259,4 @@ class AdminProjects extends Component
         ]);
     }
 }
+
