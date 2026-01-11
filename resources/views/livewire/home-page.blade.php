@@ -317,7 +317,7 @@
                             <p class="home-project-text-new small">Pembangunan pabrik industri dengan struktur baja berat & sistem integrasi modern.</p>
                             <div class="home-project-info">
                                 <div class="info-item">
-                                    <i class="fas fa-map-marker-alt"></i>
+                                    <i class="fas fa-location-dot"></i>
                                     <span>Jakarta</span>
                                 </div>
                                 <div class="info-item">
@@ -347,7 +347,7 @@
                             <p class="home-project-text-new small">Pengerjaan infrastruktur jalan beton dan sistem drainase terpadu.</p>
                             <div class="home-project-info">
                                 <div class="info-item">
-                                    <i class="fas fa-map-marker-alt"></i>
+                                    <i class="fas fa-location-dot"></i>
                                     <span>Bekasi</span>
                                 </div>
                                 <div class="info-item">
@@ -377,7 +377,7 @@
                             <p class="home-project-text-new small">Renovasi dan perkuatan struktur baja pada fasilitas logistik utama.</p>
                             <div class="home-project-info">
                                 <div class="info-item">
-                                    <i class="fas fa-map-marker-alt"></i>
+                                    <i class="fas fa-location-dot"></i>
                                     <span>Tangerang</span>
                                 </div>
                                 <div class="info-item">

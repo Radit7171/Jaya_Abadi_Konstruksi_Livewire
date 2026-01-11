@@ -16,6 +16,7 @@
                 Depan SD negeri, Jl. Raya Tapos No.72, Tapos, Kota Depok, Jawa Barat 16459
             </a>
         </li>
+
         <li class="footer-contact-item">
             <div class="footer-contact-icon"><i class="fas fa-phone"></i></div>
             <a href="javascript:void(0)"

@@ -131,7 +131,7 @@
                 <div class="col-12 col-md-6 col-lg-3">
                     <div class="contact-info-card" data-aos="fade-up" data-aos-delay="100" data-aos-duration="700">
                         <div class="contact-info-card-icon">
-                            <i class="fas fa-map-marker-alt"></i>
+                            <i class="fas fa-location-dot"></i>
                         </div>
                         <h3 class="contact-info-card-title">Lokasi Kantor</h3>
                         <p class="contact-info-card-text">
@@ -253,7 +253,7 @@
                             <div class="contact-maps-location-body">
                                 <div class="contact-maps-location-item">
                                     <span class="contact-maps-location-icon">
-                                        <i class="fas fa-map-marker-alt"></i>
+                                        <i class="fas fa-location-dot"></i>
                                     </span>
                                     <div class="contact-maps-location-content">
                                         <span class="contact-maps-location-label">Alamat</span>

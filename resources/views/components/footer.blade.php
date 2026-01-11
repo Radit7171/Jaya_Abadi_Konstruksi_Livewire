@@ -42,14 +42,14 @@
                         <div class="col-md-4">
                             <h6 class="footer-section-title">Kontak Kami</h6>
                             <div class="footer-contact-item">
-                                <div class="footer-contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                                <div class="footer-contact-icon"><i class="fas fa-location-dot"></i></div>
                                 <a href="javascript:void(0)" class="external-link footer-link p-0 text-start" data-link="https://maps.app.goo.gl/4UxsTT3GsyskEiFw9">
                                     Depan SD negeri, Jl. Raya Tapos No.72, Tapos, Kota Depok, Jawa Barat 16459
                                 </a>
                             </div>
                             <div class="footer-contact-item">
                                 <div class="footer-contact-icon"><i class="fas fa-phone"></i></div>
-                                <a href="javascript:void(0)" class="external-link footer-link p-0" data-link="https://wa.me/+6287817695973">
+                                <a href="javascript:void(0)" class="external-link footer-link p-0" data-link="tel:+6287817695973">
                                     +62 878 1769 5973
                                 </a>
                             </div>
@@ -64,6 +64,7 @@
                                 <span class="footer-link p-0">Setiap Hari: 08:00 - 17:00 WIB</span>
                             </div>
                         </div>
+
                     </div>
                 </div>
 
@@ -149,10 +150,11 @@
                 <div class="col-12 col-md-6">
                     <div class="d-flex justify-content-md-end gap-2">
 
-                        <a href="#" class="social-icon" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon" title="Facebook"><i class="fab fa-facebook"></i></a>
                         <a href="#" class="social-icon" title="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-icon" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-icon" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
                         <a href="https://wa.me/6287817695973" class="social-icon" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+
                     </div>
                 </div>
             </div>
