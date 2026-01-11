@@ -56,7 +56,7 @@
 
                     <p class="about-hero-subtitle" data-aos="fade-up" data-aos-delay="200" data-aos-duration="700">
                         Lebih dari satu dekade berdedikasi menghadirkan solusi konstruksi inovatif,
-                        berkualitas premium, dan berstandar internasional untuk memenuhi visi dan impian Anda.
+                        kualitas premium, dan hasil yang terpercaya untuk memenuhi visi dan impian Anda.
                     </p>
 
                     {{-- Quick Stats --}}
@@ -98,12 +98,7 @@
                                  class="about-hero-image"
                                  loading="eager">
                         </div>
-                        {{-- <div class="about-hero-image-overlay">
-                            <div class="about-hero-overlay-badge">
-                                <i class="fas fa-certificate"></i>
-                                <span>ISO 9001:2015</span>
-                            </div>
-                        </div> --}}
+                        {{-- Removed certification mentions --}}
                     </div>
                 </div>
 
@@ -194,7 +189,7 @@
                                 </div>
                                 <div class="about-timeline-content">
                                     <h3 class="about-timeline-year">2023</h3>
-                                    <p class="about-timeline-text">Melampaui 500+ proyek sukses dan menjadi pemimpin industri konstruksi terpercaya dengan reputasi internasional.</p>
+                                    <p class="about-timeline-text">Melampaui 500+ proyek sukses dan menjadi pemimpin industri konstruksi terpercaya dengan reputasi yang kokoh.</p>
                                 </div>
                             </div>
 
@@ -417,7 +412,7 @@
                         </h2>
 
                         <p class="about-expertise-intro" data-aos="fade-up" data-aos-delay="100" data-aos-duration="700">
-                            Tim kami terdiri dari para profesional bersertifikat internasional dengan
+                            Tim kami terdiri dari para profesional berpengalaman luas dengan
                             pengalaman puluhan tahun di industri konstruksi. Setiap anggota tim membawa
                             keahlian spesialisasi unik yang berkontribusi pada kesuksesan luar biasa
                             setiap proyek yang kami kelola.
@@ -568,7 +563,7 @@
                             <span class="about-achievement-symbol">+</span>
                         </div>
                         <div class="about-achievement-label">Tim Profesional</div>
-                        <p class="about-achievement-description">Tenaga terampil dan bersertifikat internasional</p>
+                        <p class="about-achievement-description">Tenaga terampil dan ahli di bidang konstruksi</p>
                     </div>
                 </div>
 

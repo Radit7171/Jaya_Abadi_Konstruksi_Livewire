@@ -154,7 +154,7 @@
                         <h3 class="services-card-title">Infrastruktur</h3>
                         <p class="services-card-text">
                             Pengembangan infrastruktur kawasan industri, jalan, drainase, dan utilitas
-                            dengan standar teknik internasional.
+                            dengan standar teknik kualitas premium.
                         </p>
                         <ul class="services-card-features">
                             <li><span class="services-feature-check">✓</span> Jalan & Transportasi</li>
