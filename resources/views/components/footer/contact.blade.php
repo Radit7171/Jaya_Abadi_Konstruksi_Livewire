@@ -7,33 +7,36 @@
     @endif
 
     <ul class="list-unstyled mb-0">
-        <li class="mb-2 d-flex align-items-start">
-            <i class="fas fa-location-dot text-primary me-2 mt-1"></i>
-            <span class="small text-body-secondary">
-                Jaya Abadi Konstruksi<br>
-                Jl. Raya Tapos No 72, Cimpaeun, Tapos, Kota Depok
-            </span>
-        </li>
-        <li class="mb-2 d-flex align-items-center">
-            <i class="fas fa-phone text-primary me-2"></i>
+        <li class="footer-contact-item">
+            <div class="footer-contact-icon"><i class="fas fa-location-dot"></i></div>
             <a href="javascript:void(0)"
-               class="external-link small text-body-secondary text-decoration-none"
-               data-link="https://wa.me/6287817695973"
+               class="external-link footer-link p-0 text-start"
+               data-link="https://maps.app.goo.gl/4UxsTT3GsyskEiFw9"
                rel="noopener noreferrer">
-                0878-1769-5973
+                Depan SD negeri, Jl. Raya Tapos No.72, Tapos, Kota Depok, Jawa Barat 16459
             </a>
         </li>
-        <li class="mb-2 d-flex align-items-center">
-            <i class="fas fa-envelope text-primary me-2"></i>
+        <li class="footer-contact-item">
+            <div class="footer-contact-icon"><i class="fas fa-phone"></i></div>
             <a href="javascript:void(0)"
-               class="external-link small text-body-secondary text-decoration-none"
+               class="external-link footer-link p-0"
+               data-link="tel:+6287817695973"
+               rel="noopener noreferrer">
+                +62 878 1769 5973
+            </a>
+        </li>
+
+        <li class="footer-contact-item">
+            <div class="footer-contact-icon"><i class="fas fa-envelope"></i></div>
+            <a href="javascript:void(0)"
+               class="external-link footer-link p-0"
                data-link="mailto:lasjayaabadi123@gmail.com">
                 lasjayaabadi123@gmail.com
             </a>
         </li>
-        <li class="d-flex align-items-center">
-            <i class="fas fa-clock text-primary me-2"></i>
-            <span class="small text-body-secondary">
+        <li class="footer-contact-item">
+            <div class="footer-contact-icon"><i class="fas fa-clock"></i></div>
+            <span class="footer-link p-0">
                 Setiap Hari : 08:00 - 17:00
             </span>
         </li>

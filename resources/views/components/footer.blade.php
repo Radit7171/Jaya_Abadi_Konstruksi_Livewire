@@ -2,8 +2,9 @@
 <footer class="site-footer" role="contentinfo">
     <div class="container px-3 px-md-4">
         {{-- Top Section --}}
-        <div class="footer-top py-4 py-lg-5">
+        <div class="footer-top">
             <div class="row gy-4">
+
                 {{-- Brand --}}
                 <div class="col-12 col-lg-4">
                     <x-footer.brand />
@@ -14,37 +15,54 @@
                     <div class="row">
                         {{-- Quick Links --}}
                         <div class="col-md-4">
-                            <x-footer.links
-                                title="Link Cepat"
-                                :links="[
-                                    ['url' => '/', 'label' => 'Home'],
-                                    ['url' => '/tentang-kami', 'label' => 'Tentang Kami'],
-                                    ['url' => '/layanan', 'label' => 'Layanan'],
-                                    ['url' => '/proyek', 'label' => 'Proyek'],
-                                    ['url' => '/kontak', 'label' => 'Kontak'],
-                                    ['url' => '/login', 'label' => 'Login'],
-                                ]"
-                            />
+                            <h6 class="footer-section-title">Link Cepat</h6>
+                            <ul class="list-unstyled mb-0">
+                                <li><a href="/" wire:navigate class="footer-link">Home</a></li>
+                                <li><a href="/tentang-kami" wire:navigate class="footer-link">Tentang Kami</a></li>
+                                <li><a href="/layanan" wire:navigate class="footer-link">Layanan</a></li>
+                                <li><a href="/proyek" wire:navigate class="footer-link">Proyek</a></li>
+                                <li><a href="/kontak" wire:navigate class="footer-link">Kontak</a></li>
+                                <li><a href="/login" wire:navigate class="footer-link">Login</a></li>
+                            </ul>
                         </div>
 
                         {{-- Services --}}
                         <div class="col-md-4">
-                            <x-footer.links
-                                title="Layanan"
-                                :links="[
-                                    ['url' => '/layanan#konstruksi-gedung', 'label' => 'Konstruksi Gedung'],
-                                    ['url' => '/layanan#infrastruktur', 'label' => 'Infrastruktur'],
-                                    ['url' => '/layanan#renovasi', 'label' => 'Renovasi & Perawatan'],
-                                    ['url' => '/layanan#quality-assurance', 'label' => 'Quality Assurance'],
-                                    ['url' => '/layanan#maintenance-support', 'label' => 'Maintenance & Support'],
-                                    ['url' => '/layanan#supply-management', 'label' => 'Supply & Management'],
-                                ]"
-                            />
+                            <h6 class="footer-section-title">Layanan</h6>
+                            <ul class="list-unstyled mb-0">
+                                <li><a href="/layanan#konstruksi-baja" wire:navigate class="footer-link">Konstruksi Baja</a></li>
+                                <li><a href="/layanan#gedung-bertingkat" wire:navigate class="footer-link">Gedung Bertingkat</a></li>
+                                <li><a href="/layanan#infrastruktur" wire:navigate class="footer-link">Infrastruktur Jalan</a></li>
+                                <li><a href="/layanan#manajemen-proyek" wire:navigate class="footer-link">Manajemen Proyek</a></li>
+                                <li><a href="/layanan#renovasi" wire:navigate class="footer-link">Renovasi & Perawatan</a></li>
+                            </ul>
                         </div>
 
                         {{-- Contact --}}
                         <div class="col-md-4">
-                            <x-footer.contact />
+                            <h6 class="footer-section-title">Kontak Kami</h6>
+                            <div class="footer-contact-item">
+                                <div class="footer-contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                                <a href="javascript:void(0)" class="external-link footer-link p-0 text-start" data-link="https://maps.app.goo.gl/4UxsTT3GsyskEiFw9">
+                                    Depan SD negeri, Jl. Raya Tapos No.72, Tapos, Kota Depok, Jawa Barat 16459
+                                </a>
+                            </div>
+                            <div class="footer-contact-item">
+                                <div class="footer-contact-icon"><i class="fas fa-phone"></i></div>
+                                <a href="javascript:void(0)" class="external-link footer-link p-0" data-link="https://wa.me/+6287817695973">
+                                    +62 878 1769 5973
+                                </a>
+                            </div>
+                            <div class="footer-contact-item">
+                                <div class="footer-contact-icon"><i class="fas fa-envelope"></i></div>
+                                <a href="javascript:void(0)" class="external-link footer-link p-0" data-link="mailto:lasjayaabadi123@gmail.com">
+                                    lasjayaabadi123@gmail.com
+                                </a>
+                            </div>
+                            <div class="footer-contact-item">
+                                <div class="footer-contact-icon"><i class="fas fa-clock"></i></div>
+                                <span class="footer-link p-0">Setiap Hari: 08:00 - 17:00 WIB</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -112,16 +130,30 @@
         </div>
 
         {{-- Bottom Section --}}
-        <div class="footer-bottom py-3 border-top">
+        <div class="footer-bottom border-top">
             <div class="row align-items-center">
-                {{-- Copyright --}}
-                <div class="col-12 col-md-6 mb-3 mb-md-0">
-                    <x-footer.copyright />
+                {{-- Copyright & Theme --}}
+                <div class="col-12 col-md-6 mb-2 mb-md-0">
+                    <div class="d-flex align-items-center gap-3">
+                        <p class="small text-muted mb-0" style="font-size: 0.8rem;">
+                            &copy; {{ date('Y') }} Jaya Abadi Konstruksi. All rights reserved.
+                        </p>
+                        <div style="transform: scale(0.85); transform-origin: left;">
+                            <x-theme-toggle />
+                        </div>
+                    </div>
                 </div>
+
 
                 {{-- Social Media --}}
                 <div class="col-12 col-md-6">
-                    <x-footer.social />
+                    <div class="d-flex justify-content-md-end gap-2">
+
+                        <a href="#" class="social-icon" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://wa.me/6287817695973" class="social-icon" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
                 </div>
             </div>
         </div>

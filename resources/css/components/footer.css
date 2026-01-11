@@ -1,54 +1,144 @@
-/* ==================== */
-/* FOOTER BASE STYLES */
-/* ==================== */
+/* Mobile Accordion Fixes */
+.mobile-footer-accordion .accordion-button {
+    background: transparent !important;
+    padding: 0.75rem 0;
+    color: var(--home-text, #1e293b);
+    box-shadow: none !important;
+}
 
-/* Link styles */
+[data-bs-theme="dark"] .mobile-footer-accordion .accordion-button {
+    color: #f8fafc;
+}
+
+.mobile-footer-accordion .accordion-button::after {
+    display: none !important; /* Force hide arrow icons */
+}
+
+.mobile-footer-accordion .accordion-item {
+    background: transparent !important;
+    border-bottom: 1px solid var(--home-glass-border, rgba(0,0,0,0.05)) !important;
+}
+
+.mobile-footer-accordion .accordion-body {
+    padding-bottom: 1.5rem !important;
+}
+
+/* Specific Arrow Fix for Dark Mode */
+[data-bs-theme="dark"] .accordion-button::after {
+    filter: none !important;
+    background-image: none !important;
+}
+
+
+[data-bs-theme="dark"] .site-footer {
+    background: #0f172a;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-top {
+    padding: 1.75rem 0 !important; /* Slightly larger but still slim */
+}
+
+/* Link styles - Modern Slim */
 .footer-link {
     position: relative;
-    padding: 2px 0;
+    padding: 0.2rem 0;
     transition: all 0.3s ease;
     display: inline-block;
+    font-size: 0.8rem; /* Scaled up slightly */
+    color: var(--home-text-muted, #64748b) !important;
+    text-decoration: none !important; /* Force remove underline */
 }
 
 .footer-link:hover {
-    color: var(--bs-primary) !important;
-    transform: translateX(5px);
+    color: var(--home-primary, #2563eb) !important;
+    transform: translateX(4px);
+    text-decoration: none !important; /* Ensure no underline on hover */
 }
 
-.footer-link::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 1px;
-    background: var(--bs-primary);
-    transition: width 0.3s ease;
+
+/* Section Titles - HIGH CONTRAST */
+.footer-section-title {
+    font-size: 0.85rem; /* Better visibility */
+    font-weight: 800; /* Bolder */
+    color: var(--home-text, #0f172a) !important; /* Force direct color */
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1.2rem;
+    font-family: 'Sora', sans-serif;
+    opacity: 1 !important; /* Remove any potential fade */
 }
 
-.footer-link:hover::after {
-    width: 100%;
+[data-bs-theme="dark"] .footer-section-title {
+    color: #f8fafc !important; /* Vivid white-ish for dark mode */
 }
+
+/* Contact Slim */
+.footer-contact-item {
+    display: flex;
+    align-items: flex-start; /* Ensure items start from top */
+    gap: 0.75rem;
+    margin-bottom: 0.65rem;
+    font-size: 0.8rem;
+    color: var(--home-text-muted, #64748b);
+}
+
+.footer-contact-icon {
+    color: var(--home-primary, #2563eb);
+    width: 16px;
+    min-width: 16px; /* Prevent shrinking */
+    font-size: 0.85rem;
+    display: flex;
+    justify-content: center;
+    padding-top: 2px; /* Precision alignment with first line of text */
+}
+
+
+/* Social Icons Slim */
+.social-icon {
+    width: 32px; /* Restored to better size */
+    height: 32px;
+    border-radius: 8px;
+    background: rgba(var(--bs-primary-rgb), 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    color: var(--home-text-muted, #64748b);
+    transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+    background: var(--home-primary, #2563eb);
+    color: white !important;
+    transform: translateY(-2px);
+}
+
+.footer-bottom {
+    padding: 1rem 0 !important;
+    background: rgba(var(--bs-primary-rgb), 0.02);
+}
+
+
+
 
 /* Contact link styles */
 .footer-contact a {
     position: relative;
     padding: 2px 0;
     transition: all 0.3s ease;
+    text-decoration: none !important;
 }
 
 .footer-contact a:hover {
     color: var(--bs-primary) !important;
-    padding-left: 5px;
+    text-decoration: none !important;
 }
 
 .footer-contact a::before {
-    content: '→';
-    position: absolute;
-    left: -15px;
-    opacity: 0;
-    transition: all 0.3s ease;
+    display: none !important; /* Remove arrow content */
 }
+
 
 .footer-contact a:hover::before {
     opacity: 1;
