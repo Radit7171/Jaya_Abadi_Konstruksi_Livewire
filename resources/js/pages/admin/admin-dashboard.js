@@ -165,7 +165,7 @@ export class AdminDashboard {
     setupModalClosing() {
         document.addEventListener('click', (e) => {
             const overlay = e.target.closest('.admin-modal-overlay');
-            if (overlay) {
+            if (overlay && overlay === e.target) {
                 const closeBtn = overlay.querySelector('.admin-modal-close');
                 if (closeBtn) {
                     closeBtn.click();

@@ -22,7 +22,7 @@
 
 </head>
 
-<body class="bg-body text-body d-flex flex-column min-vh-100 admin-dashboard-page" wire:navigate>
+<body class="bg-body text-body d-flex flex-column min-vh-100 admin-dashboard-page">
 
     <!-- ✅ LOADING OVERLAY -->
     <div wire:loading.flex wire:target="navigate"

@@ -135,4 +135,19 @@ document.addEventListener('click', (e) => {
             input.value = '';
         }
     }
+
+    // Force focus on admin form elements if left-clicked
+    if (e.target.matches('.admin-form-input, .admin-form-textarea, .admin-form-select')) {
+        e.target.focus();
+    }
+});
+
+// Extra fix: Listen specifically for mousedown to ensure focus
+document.addEventListener('mousedown', (e) => {
+    if (e.target.matches('.admin-form-input, .admin-form-textarea, .admin-form-select')) {
+        // Ensure element is not disabled
+        if (!e.target.disabled) {
+            e.target.focus();
+        }
+    }
 });

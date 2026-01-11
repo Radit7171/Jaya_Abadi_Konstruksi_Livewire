@@ -13,6 +13,8 @@
     transition: all 0.3s ease;
     background-color: var(--admin-input-bg, #ffffff);
     position: relative;
+    pointer-events: auto !important;
+    z-index: auto;
 }
 
 .admin-image-upload-area:hover {
@@ -33,8 +35,8 @@
     height: 100%;
     opacity: 0;
     cursor: pointer;
-    z-index: 1;
-    pointer-events: auto;
+    z-index: 2;
+    pointer-events: auto !important;
 }
 
 /* Ensure upload area has proper positioning */
@@ -43,7 +45,7 @@
 }
 
 .admin-upload-hint {
-    pointer-events: none;
+    pointer-events: auto !important;
 }
 
 .admin-upload-hint i {

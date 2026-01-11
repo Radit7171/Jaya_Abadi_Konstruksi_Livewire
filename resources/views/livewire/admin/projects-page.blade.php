@@ -231,8 +231,12 @@
 
     <!-- Modal - Create/Edit/View Project -->
     @if($showModal && ($selectedProject || $modalMode === 'create'))
-        <div class="admin-modal-overlay" wire:click="closeModal()">
-            <div class="admin-modal" @click.stop>
+        <div class="admin-modal-overlay"
+             wire:click.self="closeModal()"
+             role="presentation"
+             aria-modal="true"
+             tabindex="-1">
+            <div class="admin-modal" onclick="event.stopPropagation()">
 
                 <!-- Modal Header -->
                 <div class="admin-modal-header d-flex align-items-center justify-content-between">

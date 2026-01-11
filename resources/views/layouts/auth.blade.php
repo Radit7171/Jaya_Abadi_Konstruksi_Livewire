@@ -26,7 +26,7 @@
     @livewireStyles
 </head>
 
-<body class="auth-layout" wire:navigate>
+<body class="auth-layout">
     <!-- Theme Toggle -->
     <div class="auth-theme-toggle">
         <x-theme-toggle />

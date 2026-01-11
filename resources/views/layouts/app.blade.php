@@ -23,7 +23,7 @@
 
 </head>
 
-<body class="bg-body text-body d-flex flex-column min-vh-100" wire:navigate>
+<body class="bg-body text-body d-flex flex-column min-vh-100">
 
     <!-- ✅ LOADING OVERLAY -->
     <div wire:loading.flex wire:target="navigate"
