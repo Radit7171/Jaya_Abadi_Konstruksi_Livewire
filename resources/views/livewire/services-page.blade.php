@@ -45,46 +45,43 @@
                 <div class="col-12 col-lg-6">
                     <div class="services-hero-badge" data-aos="fade-up" data-aos-delay="0" data-aos-duration="600">
                         <span class="services-hero-badge-icon">
-                            <i class="fas fa-wrench"></i>
+                            <i class="fas fa-gears"></i>
                         </span>
-                        <span class="services-hero-badge-text">Layanan Kami</span>
+                        <span class="services-hero-badge-text">Solusi Konstruksi</span>
                     </div>
 
                     <h1 class="services-hero-title" data-aos="fade-up" data-aos-delay="100" data-aos-duration="700">
-                        Solusi Konstruksi
-                        <span class="services-hero-highlight">Terlengkap & Terpercaya</span>
+                        Layanan Ahli
+                        <span class="services-hero-highlight">Pembangunan Modern</span>
                     </h1>
 
                     <p class="services-hero-subtitle" data-aos="fade-up" data-aos-delay="200" data-aos-duration="700">
-                        Kami menyediakan layanan konstruksi komprehensif untuk memenuhi
-                        kebutuhan industri, komersial, dan infrastruktur Anda dengan standar kualitas tertinggi.
+                        Menghadirkan ekosistem layanan konstruksi terintegrasi dengan teknologi terbaru untuk mewujudkan infrastruktur berkualitas tinggi.
                     </p>
 
                     {{-- Quick Stats --}}
                     <div class="services-hero-quick-stats" data-aos="fade-up" data-aos-delay="250" data-aos-duration="700">
                         <div class="services-quick-stat">
                             <div class="services-quick-stat-number">500+</div>
-                            <div class="services-quick-stat-label">Proyek Selesai</div>
+                            <div class="services-quick-stat-label">Proyek</div>
                         </div>
                         <div class="services-quick-stat">
-                            <div class="services-quick-stat-number">15+</div>
-                            <div class="services-quick-stat-label">Jenis Layanan</div>
+                            <div class="services-quick-stat-number">12+</div>
+                            <div class="services-quick-stat-label">Layanan Utama</div>
                         </div>
                         <div class="services-quick-stat">
-                            <div class="services-quick-stat-number">98%</div>
-                            <div class="services-quick-stat-label">Kepuasan Klien</div>
+                            <div class="services-quick-stat-number">100%</div>
+                            <div class="services-quick-stat-label">Standard K3</div>
                         </div>
                     </div>
 
                     <div class="services-hero-actions" data-aos="fade-up" data-aos-delay="300" data-aos-duration="700">
                         <a wire:navigate href="/kontak" class="services-btn services-btn-primary">
                             <span>Konsultasi Gratis</span>
-                            <svg class="services-btn-icon" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
-                                <path d="M5 12h14M12 5l7 7-7 7"></path>
-                            </svg>
+                            <i class="fas fa-chevron-right ms-2" style="font-size: 0.8rem;"></i>
                         </a>
                         <a wire:navigate href="/proyek" class="services-btn services-btn-outline">
-                            <span>Lihat Portfolio</span>
+                            <span>Portfolio Proyek</span>
                         </a>
                     </div>
                 </div>
@@ -128,18 +125,16 @@
                     <div class="services-card" data-aos="fade-up" data-aos-delay="100" data-aos-duration="700">
                         <div class="services-card-top-accent"></div>
                         <div class="services-card-icon-wrapper">
-                            <i class="fas fa-building services-card-icon"></i>
+                            <i class="fas fa-city services-card-icon"></i>
                         </div>
                         <h3 class="services-card-title">Konstruksi Gedung</h3>
                         <p class="services-card-text">
-                            Spesialis pembangunan gedung bertingkat, perkantoran modern, dan fasilitas industri
-                            dengan teknologi konstruksi terkini.
+                            Pembangunan gedung bertingkat, perkantoran modern, dan fasilitas industri dengan presisi tinggi.
                         </p>
                         <ul class="services-card-features">
-                            <li><span class="services-feature-check">✓</span> Gedung Perkantoran & Komersial</li>
-                            <li><span class="services-feature-check">✓</span> Pabrik & Fasilitas Industri</li>
-                            <li><span class="services-feature-check">✓</span> Bangunan Bertingkat</li>
-                            <li><span class="services-feature-check">✓</span> Desain Struktural Modern</li>
+                            <li><span class="services-feature-check">✓</span> Komersial & Perkantoran</li>
+                            <li><span class="services-feature-check">✓</span> Fasilitas Industri & Pabrik</li>
+                            <li><span class="services-feature-check">✓</span> Struktur Beton & Baja</li>
                         </ul>
                     </div>
                 </div>
@@ -212,18 +207,16 @@
                     <div class="services-card" data-aos="fade-up" data-aos-delay="200" data-aos-duration="700">
                         <div class="services-card-top-accent"></div>
                         <div class="services-card-icon-wrapper">
-                            <i class="fas fa-tools services-card-icon"></i>
+                            <i class="fas fa-screwdriver-wrench services-card-icon"></i>
                         </div>
                         <h3 class="services-card-title">Maintenance & Support</h3>
                         <p class="services-card-text">
-                            Layanan pemeliharaan berkelanjutan, perbaikan, dan dukungan teknis purna jual untuk
-                            menjaga performa aset konstruksi.
+                            Pemeliharaan aset pasca-konstruksi untuk menjamin fungsionalitas dan keamanan jangka panjang.
                         </p>
                         <ul class="services-card-features">
-                            <li><span class="services-feature-check">✓</span> Pemeliharaan Rutin & Berkala</li>
-                            <li><span class="services-feature-check">✓</span> Perbaikan & Restorasi</li>
-                            <li><span class="services-feature-check">✓</span> Dukungan Teknis 24/7</li>
-                            <li><span class="services-feature-check">✓</span> Garansi Layanan</li>
+                            <li><span class="services-feature-check">✓</span> Inspeksi Fasilitas Rutin</li>
+                            <li><span class="services-feature-check">✓</span> Perbaikan Kerusakan Struktur</li>
+                            <li><span class="services-feature-check">✓</span> Konsultasi Teknis & Garansi</li>
                         </ul>
                     </div>
                 </div>
@@ -233,18 +226,16 @@
                     <div class="services-card" data-aos="fade-up" data-aos-delay="300" data-aos-duration="700">
                         <div class="services-card-top-accent"></div>
                         <div class="services-card-icon-wrapper">
-                            <i class="fas fa-box services-card-icon"></i>
+                            <i class="fas fa-truck-ramp-box services-card-icon"></i>
                         </div>
                         <h3 class="services-card-title">Supply & Management</h3>
                         <p class="services-card-text">
-                            Manajemen material, logistik proyek, dan koordinasi supplier untuk memastikan
-                            pengiriman tepat waktu dan efisiensi biaya.
+                            Pengelolaan logistik dan rantai pasok material berkualitas untuk efisiensi proyek yang maksimal.
                         </p>
                         <ul class="services-card-features">
-                            <li><span class="services-feature-check">✓</span> Manajemen Ketersediaan Material</li>
-                            <li><span class="services-feature-check">✓</span> Logistik & Pengiriman</li>
-                            <li><span class="services-feature-check">✓</span> Koordinasi Supplier</li>
-                            <li><span class="services-feature-check">✓</span> Optimasi Biaya Proyek</li>
+                            <li><span class="services-feature-check">✓</span> Pengadaan Material Premium</li>
+                            <li><span class="services-feature-check">✓</span> Manajemen Vendor Terpadu</li>
+                            <li><span class="services-feature-check">✓</span> Logistik Konstruksi Efisien</li>
                         </ul>
                     </div>
                 </div>
@@ -287,11 +278,11 @@
                 <div class="col-12 col-md-6 col-lg-3">
                     <div class="services-why-card" data-aos="zoom-in" data-aos-delay="150" data-aos-duration="700">
                         <div class="services-why-icon services-why-icon-2">
-                            <i class="fas fa-cogs"></i>
+                            <i class="fas fa-gears"></i>
                         </div>
                         <h3 class="services-why-title">Komitmen Kualitas</h3>
                         <p class="services-why-text">
-                            Standar konstruksi tinggi dengan inspeksi detail dan kontrol kualitas ketat di setiap tahap
+                            Kontrol kualitas yang ketat di setiap tahap pembangunan.
                         </p>
                     </div>
                 </div>

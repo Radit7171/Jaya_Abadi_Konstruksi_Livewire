@@ -49,7 +49,7 @@
                             </div>
                             <div class="footer-contact-item">
                                 <div class="footer-contact-icon"><i class="fas fa-phone"></i></div>
-                                <a href="javascript:void(0)" class="external-link footer-link p-0" data-link="tel:+6287817695973">
+                                <a href="javascript:void(0)" class="external-link footer-link p-0" data-link="https://wa.me/6287817695973">
                                     +62 878 1769 5973
                                 </a>
                             </div>

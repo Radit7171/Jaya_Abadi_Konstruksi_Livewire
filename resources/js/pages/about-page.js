@@ -382,53 +382,46 @@ class AboutPage {
 }
 
 /**
- * Initialize saat DOM siap
+ * ==========================================================
+ * LIVEWIRE SPA INTEGRATION
+ * ==========================================================
  */
 let aboutPageInstance = null;
 
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
+function initAboutPage() {
+    if (aboutPageInstance) {
+        aboutPageInstance.cleanup();
+    }
+
+    // Pastikan element .about-page ada sebelum init
+    if (document.querySelector('.about-page')) {
         aboutPageInstance = new AboutPage();
-    });
+    }
+}
+
+// Livewire SPA navigation support
+document.addEventListener('livewire:navigated', () => {
+    // Delay sedikit untuk memastikan DOM sudah stabil
+    setTimeout(initAboutPage, 100);
+});
+
+// Initial load
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAboutPage);
 } else {
-    aboutPageInstance = new AboutPage();
+    initAboutPage();
 }
 
 /**
- * Re-initialize saat navigasi Livewire
+ * Handle window resize (optional enhancement)
  */
-if (typeof Livewire !== 'undefined') {
-    // Cleanup dan reinitialize saat component diupdate
-    document.addEventListener('livewire:updated', () => {
-        try {
-            if (aboutPageInstance) {
-                aboutPageInstance.cleanup();
-            }
-            // Only create new instance if about page still exists in DOM
-            const aboutSection = document.querySelector('.about-page-section');
-            if (aboutSection) {
-                aboutPageInstance = new AboutPage();
-            }
-        } catch (e) {
-            console.debug('[AboutPage] Error during livewire:updated:', e);
+let resizeTimer;
+window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+        if (aboutPageInstance && document.querySelector('.about-page')) {
+            // Re-init features yang sensitif terhadap ukuran window
+            aboutPageInstance.setupIntersectionObserver();
         }
-    });
-
-    // Alternative hook untuk compatibility
-    Livewire.hook('morph.updated', ({ component }) => {
-        setTimeout(() => {
-            try {
-                if (aboutPageInstance) {
-                    aboutPageInstance.cleanup();
-                }
-                // Only create new instance if about page still exists in DOM
-                const aboutSection = document.querySelector('.about-page-section');
-                if (aboutSection) {
-                    aboutPageInstance = new AboutPage();
-                }
-            } catch (e) {
-                console.debug('[AboutPage] Error during morph.updated:', e);
-            }
-        }, 100);
-    });
-}
+    }, 250);
+});

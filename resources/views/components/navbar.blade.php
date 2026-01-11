@@ -25,9 +25,9 @@
             <ul class="navbar-nav ms-auto align-items-lg-center">
                 @php
                     $navItems = [
-                        ['route' => '/', 'label' => 'Home', 'icon' => 'fas fa-home', 'active' => request()->is('/')],
-                        ['route' => '/tentang-kami', 'label' => 'Tentang Kami', 'icon' => 'fas fa-building', 'active' => request()->is('tentang-kami*')],
-                        ['route' => '/layanan', 'label' => 'Layanan', 'icon' => 'fas fa-wrench', 'active' => request()->is('layanan*')],
+                        ['route' => '/', 'label' => 'Home', 'icon' => 'fas fa-house', 'active' => request()->is('/')],
+                        ['route' => '/tentang-kami', 'label' => 'Tentang Kami', 'icon' => 'fas fa-city', 'active' => request()->is('tentang-kami*')],
+                        ['route' => '/layanan', 'label' => 'Layanan', 'icon' => 'fas fa-gears', 'active' => request()->is('layanan*')],
                         ['route' => '/proyek', 'label' => 'Proyek', 'icon' => 'fas fa-hammer', 'active' => request()->is('proyek*')],
                         ['route' => '/kontak', 'label' => 'Kontak', 'icon' => 'fas fa-envelope', 'active' => request()->is('kontak*')],
                     ];
