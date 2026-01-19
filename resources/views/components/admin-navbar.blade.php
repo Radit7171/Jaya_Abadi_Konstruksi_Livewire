@@ -3,7 +3,13 @@
 
         <!-- Left Side - Menu Toggle -->
         <div class="admin-navbar-left d-flex align-items-center gap-3">
-            <button class="admin-navbar-toggle btn btn-sm btn-light" id="sidebarToggle">
+            <!-- Mobile Toggle -->
+            <button class="admin-navbar-toggle admin-navbar-toggle-mobile d-lg-none" id="sidebarToggleMobile">
+                <i class="fas fa-align-left"></i>
+            </button>
+
+            <!-- Desktop Toggle (Collapse Sidebar) -->
+            <button class="admin-navbar-toggle admin-navbar-toggle-desktop d-none d-lg-inline-flex" id="sidebarToggleDesktop">
                 <i class="fas fa-bars" id="sidebarToggleIcon"></i>
             </button>
         </div>

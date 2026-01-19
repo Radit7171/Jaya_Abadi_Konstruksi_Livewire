@@ -12,7 +12,8 @@ export class AdminDashboard {
      * Initialize all elements and setup handlers
      */
     init() {
-        this.sidebarToggleBtn = document.getElementById('sidebarToggle');
+        this.sidebarToggleMobile = document.getElementById('sidebarToggleMobile');
+        this.sidebarToggleDesktop = document.getElementById('sidebarToggleDesktop');
         this.sidebar = document.querySelector('.admin-sidebar');
         this.mainWrapper = document.querySelector('.admin-main-wrapper');
         this.layout = document.querySelector('.admin-layout');
@@ -36,16 +37,20 @@ export class AdminDashboard {
      * Setup sidebar toggle for mobile and desktop
      */
     setupSidebarToggle() {
-        if (!this.sidebarToggleBtn || !this.sidebar || !this.layout) return;
+        if (!this.sidebar || !this.layout) return;
 
         // Remove old listeners if they exist
         this.removeSidebarListeners();
 
-        // Toggle button click handler
-        this.boundToggleClick = (e) => {
+        // Mobile Toggle Click
+        this.boundMobileClick = (e) => {
             e.preventDefault();
-            e.stopPropagation();
             this.sidebar.classList.toggle('mobile-hidden');
+        };
+
+        // Desktop Toggle Click
+        this.boundDesktopClick = (e) => {
+            e.preventDefault();
             this.layout.classList.toggle('sidebar-collapsed');
             this.updateToggleIcon();
         };
@@ -55,28 +60,31 @@ export class AdminDashboard {
             if (!this.isMobile) return;
 
             const clickedOnSidebar = this.sidebar.contains(e.target);
-            const clickedOnToggle = this.sidebarToggleBtn.contains(e.target);
+            const clickedOnMobileToggle = this.sidebarToggleMobile && this.sidebarToggleMobile.contains(e.target);
 
-            if (!clickedOnSidebar && !clickedOnToggle) {
+            if (!clickedOnSidebar && !clickedOnMobileToggle) {
                 this.sidebar.classList.add('mobile-hidden');
-                this.updateToggleIcon();
             }
         };
 
         // Window resize handler
         this.boundWindowResize = () => {
             this.isMobile = window.innerWidth < 992;
-            if (window.innerWidth >= 992 && this.sidebar) {
+            if (!this.isMobile && this.sidebar) {
                 this.sidebar.classList.remove('mobile-hidden');
-                this.updateToggleIcon();
-            } else if (window.innerWidth < 992 && this.sidebar) {
+            } else if (this.isMobile && this.sidebar) {
                 this.sidebar.classList.add('mobile-hidden');
-                this.updateToggleIcon();
             }
+            this.updateToggleIcon();
         };
 
         // Attach event listeners
-        this.sidebarToggleBtn.addEventListener('click', this.boundToggleClick);
+        if (this.sidebarToggleMobile) {
+            this.sidebarToggleMobile.addEventListener('click', this.boundMobileClick);
+        }
+        if (this.sidebarToggleDesktop) {
+            this.sidebarToggleDesktop.addEventListener('click', this.boundDesktopClick);
+        }
         document.addEventListener('click', this.boundDocumentClick);
         window.addEventListener('resize', this.boundWindowResize);
 
@@ -87,7 +95,6 @@ export class AdminDashboard {
                 if (this.isMobile) {
                     setTimeout(() => {
                         this.sidebar.classList.add('mobile-hidden');
-                        this.updateToggleIcon();
                     }, 100);
                 }
             });
@@ -108,7 +115,7 @@ export class AdminDashboard {
         if (isCollapsed) {
             icon.className = 'fas fa-chevron-right';
         } else {
-            icon.className = 'fas fa-chevron-left';
+            icon.className = 'fas fa-bars';
         }
     }
 
@@ -116,8 +123,11 @@ export class AdminDashboard {
      * Remove old sidebar event listeners
      */
     removeSidebarListeners() {
-        if (this.boundToggleClick && this.sidebarToggleBtn) {
-            this.sidebarToggleBtn.removeEventListener('click', this.boundToggleClick);
+        if (this.boundMobileClick && this.sidebarToggleMobile) {
+            this.sidebarToggleMobile.removeEventListener('click', this.boundMobileClick);
+        }
+        if (this.boundDesktopClick && this.sidebarToggleDesktop) {
+            this.sidebarToggleDesktop.removeEventListener('click', this.boundDesktopClick);
         }
         if (this.boundDocumentClick) {
             document.removeEventListener('click', this.boundDocumentClick);
