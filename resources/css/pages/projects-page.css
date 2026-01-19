@@ -946,33 +946,39 @@
 }
 
 .projects-pagination a,
+.projects-pagination button,
 .projects-pagination span {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-width: 2.5rem;
-    height: 2.5rem;
+    min-width: 2.25rem;
+    height: 2.25rem;
     padding: 0 0.5rem;
     border: 1px solid var(--projects-border);
-    border-radius: 6px;
+    border-radius: 8px;
     color: var(--projects-text);
     text-decoration: none;
-    font-size: 0.875rem;
-    font-weight: 500;
+    font-size: 0.85rem;
+    font-weight: 600;
     transition: var(--projects-transition-fast);
     background: var(--projects-bg);
+    cursor: pointer;
 }
 
-.projects-pagination a:hover {
+.projects-pagination a:hover,
+.projects-pagination button:hover {
     border-color: var(--projects-primary);
-    background: var(--projects-gradient-light);
-    color: var(--projects-primary);
+    background: var(--projects-primary);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2);
 }
 
 .projects-pagination .active span {
     background: var(--projects-primary);
     color: white;
     border-color: var(--projects-primary);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
 }
 
 .projects-pagination .disabled span {
@@ -984,6 +990,7 @@
 
 /* Dark Mode Pagination */
 [data-bs-theme="dark"] .projects-pagination a,
+[data-bs-theme="dark"] .projects-pagination button,
 [data-bs-theme="dark"] .projects-pagination span {
     background: var(--projects-card-bg);
 }

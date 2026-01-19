@@ -13,7 +13,7 @@
                 </li>
             @else
                 <li class="projects-pagination-item">
-                    <a wire:navigate href="{{ $paginator->previousPageUrl() }}" rel="prev" class="projects-pagination-link" aria-label="Sebelumnya">&laquo;</a>
+                    <button wire:click="previousPage" rel="prev" class="projects-pagination-link" aria-label="Sebelumnya">&laquo;</button>
                 </li>
             @endif
 
@@ -30,7 +30,9 @@
                         @if ($page == $paginator->currentPage())
                             <li class="projects-pagination-item active" aria-current="page"><span class="projects-pagination-link">{{ $page }}</span></li>
                         @else
-                            <li class="projects-pagination-item"><a wire:navigate href="{{ $url }}" class="projects-pagination-link">{{ $page }}</a></li>
+                            <li class="projects-pagination-item">
+                                <button wire:click="gotoPage({{ $page }})" class="projects-pagination-link">{{ $page }}</button>
+                            </li>
                         @endif
                     @endforeach
                 @endif
@@ -39,7 +41,7 @@
             {{-- Next Page Link --}}
             @if ($paginator->hasMorePages())
                 <li class="projects-pagination-item">
-                    <a wire:navigate href="{{ $paginator->nextPageUrl() }}" rel="next" class="projects-pagination-link" aria-label="Berikutnya">&raquo;</a>
+                    <button wire:click="nextPage" rel="next" class="projects-pagination-link" aria-label="Berikutnya">&raquo;</button>
                 </li>
             @else
                 <li class="projects-pagination-item disabled" aria-disabled="true">

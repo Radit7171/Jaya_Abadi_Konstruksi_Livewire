@@ -32,7 +32,6 @@ class ProjectsPage {
         this.setupButtons();
         this.setupFilters();
         this.setupSmoothScroll();
-        this.registerLivewireListener();
     }
 
     /**
@@ -209,22 +208,6 @@ class ProjectsPage {
     }
 
     /**
-     * Register Livewire navigation listener
-     * Re-init behaviors after SPA navigation
-     */
-    registerLivewireListener() {
-        document.addEventListener('livewire:navigated', () => {
-            // Small delay to ensure DOM is updated
-            requestAnimationFrame(() => {
-                this.page = document.querySelector('.projects-page');
-                if (this.page) {
-                    this.init();
-                }
-            });
-        });
-    }
-
-    /**
      * Cleanup method (optional, for future use)
      */
     destroy() {
@@ -234,18 +217,25 @@ class ProjectsPage {
 }
 
 /**
- * Initialize when DOM is ready
+ * Global Initialization Logic
  */
-document.addEventListener('DOMContentLoaded', () => {
-    new ProjectsPage();
-});
+const initProjectsPage = () => {
+    // Only initialize if we're on the projects page
+    const pageElement = document.querySelector('.projects-page');
+    if (pageElement) {
+        new ProjectsPage();
+    }
+};
 
-/**
- * Also initialize on Livewire navigation
- */
-document.addEventListener('livewire:initialized', () => {
-    new ProjectsPage();
-});
+// Initial load
+document.addEventListener('DOMContentLoaded', initProjectsPage);
+
+// Re-init on Livewire SPA navigation
+document.addEventListener('livewire:navigated', initProjectsPage);
+
+// Support for initial Livewire setup
+document.addEventListener('livewire:initialized', initProjectsPage);
+
 /**
  * Modal Behavior Handler
  */
