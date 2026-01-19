@@ -243,15 +243,22 @@
                     @if($selectedProject->images && count($selectedProject->images) > 1)
                         <div class="projects-modal-gallery">
                             <div class="projects-modal-main-image">
+                                <button class="projects-modal-nav projects-modal-nav-prev" aria-label="Gambar sebelumnya">
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
                                 <img src="{{ $selectedProject->image_url ?? '/images/home/hero-project.jpg' }}"
                                      alt="{{ $selectedProject->title }}"
                                      id="mainModalImage"
                                      class="projects-modal-image">
+                                <button class="projects-modal-nav projects-modal-nav-next" aria-label="Gambar selanjutnya">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
                             </div>
                             <div class="projects-modal-thumbnails">
                                 @foreach($selectedProject->getImageUrls() as $index => $imageUrl)
                                     <div class="projects-modal-thumb @if($index === 0) active @endif"
-                                         data-image="{{ $imageUrl }}">
+                                         data-image="{{ $imageUrl }}"
+                                         data-index="{{ $index }}">
                                         <img src="{{ $imageUrl }}" alt="Thumbnail {{ $index + 1 }}">
                                     </div>
                                 @endforeach

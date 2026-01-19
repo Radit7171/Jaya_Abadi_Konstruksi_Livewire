@@ -276,7 +276,20 @@ class ProjectsModalBehavior {
                 return;
             }
 
-            // 2. Handle Overlay Click (Close)
+            // 2. Handle Navigation Buttons
+            const prevBtn = e.target.closest('.projects-modal-nav-prev');
+            if (prevBtn) {
+                this.handleNavClick('prev');
+                return;
+            }
+
+            const nextBtn = e.target.closest('.projects-modal-nav-next');
+            if (nextBtn) {
+                this.handleNavClick('next');
+                return;
+            }
+
+            // 3. Handle Overlay Click (Close)
             if (e.target.classList.contains('projects-modal-overlay')) {
                 // Ensure we are clicking the actual overlay, not some child that bubbled up
                 this.animateModalClose(e.target);
@@ -294,6 +307,30 @@ class ProjectsModalBehavior {
     }
 
     /**
+     * Handle navigation arrow clicks
+     */
+    handleNavClick(direction) {
+        const thumbs = document.querySelectorAll('.projects-modal-thumb');
+        if (thumbs.length <= 1) return;
+
+        let activeIndex = -1;
+        thumbs.forEach((thumb, index) => {
+            if (thumb.classList.contains('active')) activeIndex = index;
+        });
+
+        if (activeIndex === -1) return;
+
+        let nextIndex;
+        if (direction === 'next') {
+            nextIndex = (activeIndex + 1) % thumbs.length;
+        } else {
+            nextIndex = (activeIndex - 1 + thumbs.length) % thumbs.length;
+        }
+
+        this.handleThumbnailClick(thumbs[nextIndex]);
+    }
+
+    /**
      * Handle thumbnail switching
      */
     handleThumbnailClick(thumb) {
@@ -303,18 +340,24 @@ class ProjectsModalBehavior {
         if (!mainImage || !newSrc) return;
 
         // Change main image with a smooth fade
-        mainImage.style.opacity = '0.4';
+        mainImage.style.opacity = '0.3';
+        mainImage.style.transform = 'scale(0.98)';
 
         setTimeout(() => {
             mainImage.src = newSrc;
 
-            // Return opacity to 1 once loaded
-            if (mainImage.complete) {
+            // Return opacity & scale once loaded
+            const finalizeImage = () => {
                 mainImage.style.opacity = '1';
+                mainImage.style.transform = 'scale(1)';
+            };
+
+            if (mainImage.complete) {
+                finalizeImage();
             } else {
-                mainImage.onload = () => { mainImage.style.opacity = '1'; };
+                mainImage.onload = finalizeImage;
             }
-        }, 50);
+        }, 150);
 
         // Update active class on thumbnails
         const container = thumb.closest('.projects-modal-thumbnails');
@@ -323,6 +366,9 @@ class ProjectsModalBehavior {
                 t.classList.remove('active');
             });
             thumb.classList.add('active');
+
+            // Auto-scroll thumbnails into view if hidden
+            thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
         }
     }
 
@@ -335,12 +381,21 @@ class ProjectsModalBehavior {
         window._modalKeyboardSetup = true;
 
         document.addEventListener('keydown', (e) => {
+            // Check if modal is open
+            const modal = document.querySelector('.projects-modal-overlay');
+            if (!modal) return;
+
             // Escape key to close modal
             if (e.key === 'Escape' || e.key === 'Esc') {
-                const modal = document.querySelector('.projects-modal-overlay');
-                if (modal) {
-                    this.animateModalClose(modal);
-                }
+                this.animateModalClose(modal);
+                return;
+            }
+
+            // Arrow keys for navigation
+            if (e.key === 'ArrowRight') {
+                this.handleNavClick('next');
+            } else if (e.key === 'ArrowLeft') {
+                this.handleNavClick('prev');
             }
         });
     }
