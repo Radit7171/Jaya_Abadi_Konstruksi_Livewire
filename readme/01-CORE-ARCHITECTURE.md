@@ -2,7 +2,7 @@
 
 ## OVERVIEW
 
-Frontend website PT Jaya Abadi Konstruksi dibangun dengan prinsip:
+Frontend website Jaya Abadi Konstruksi dibangun dengan prinsip:
 
 -   Mobile First
 -   Light / Dark Mode (system auto + manual override)

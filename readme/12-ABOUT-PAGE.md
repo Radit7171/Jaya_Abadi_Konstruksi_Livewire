@@ -2,7 +2,7 @@
 
 ## Overview
 
-About Page merupakan halaman kedua (setelah Home) dalam SPA navigation yang menampilkan informasi lengkap tentang perusahaan PT Jaya Abadi Konstruksi. Page ini dirancang dengan prinsip yang sama seperti home page dan mengikuti semua architectural guidelines yang telah ditetapkan.
+About Page merupakan halaman kedua (setelah Home) dalam SPA navigation yang menampilkan informasi lengkap tentang perusahaan Jaya Abadi Konstruksi. Page ini dirancang dengan prinsip yang sama seperti home page dan mengikuti semua architectural guidelines yang telah ditetapkan.
 
 **URL Route:** `/about` atau `/tentang-kami`
 **Livewire Component:** `App\Livewire\AboutPage`
@@ -49,7 +49,7 @@ Home > Tentang Kami
 ### 3. History Section
 - **Title:** "Perjalanan Kami" dengan section label "HISTORY"
 - **Content:** Timeline 4 milestone penting
-  - **2013:** Peluncuran PT Jaya Abadi Konstruksi (icon: `fa-rocket`)
+  - **2013:** Peluncuran Jaya Abadi Konstruksi (icon: `fa-rocket`)
   - **2015:** Peningkatan kapasitas operasional & sistem manajemen (icon: `fa-chart-line`)
   - **2018:** Pencapaian 200+ proyek sukses & penghargaan klien (icon: `fa-trophy`)
   - **2023:** Melampaui 500+ proyek & menjadi pemimpin industri (icon: `fa-crown`)

@@ -30,6 +30,23 @@
     border-radius: 0.3rem;
 }
 
+/* Image Placeholder for Cards */
+.admin-card-image-placeholder {
+    background-color: #e9ecef;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+[data-bs-theme="dark"] .admin-card-image-placeholder {
+    background-color: #2d3748;
+}
+
+.admin-card-image-placeholder i {
+    font-size: 3rem;
+    color: #adb5bd;
+}
+
 .admin-card-header {
     display: flex;
     flex-direction: column;

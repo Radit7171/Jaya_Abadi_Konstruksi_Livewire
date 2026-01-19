@@ -1,0 +1,177 @@
+/**
+ * ADMIN IMAGE UPLOAD STYLING
+ *
+ * Styling untuk image upload component dengan preview & dark mode support
+ */
+
+.admin-image-upload-area {
+    border: 2px dashed var(--admin-light-border);
+    border-radius: 8px;
+    padding: 3rem 2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: var(--bs-body-bg);
+    position: relative;
+    pointer-events: auto !important;
+    z-index: auto;
+}
+
+.admin-image-upload-area:hover {
+    border-color: var(--admin-primary);
+    background-color: rgba(37, 99, 235, 0.05);
+}
+
+.admin-image-upload-area.drag-active {
+    border-color: var(--admin-primary);
+    background-color: rgba(37, 99, 235, 0.08);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.admin-image-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 2;
+    pointer-events: auto !important;
+}
+
+/* Ensure upload area has proper positioning */
+.admin-image-upload-area {
+    position: relative;
+}
+
+.admin-upload-hint {
+    pointer-events: auto !important;
+}
+
+.admin-upload-hint i {
+    font-size: 2.5rem;
+    color: var(--admin-text-muted);
+    margin-bottom: 0.5rem;
+    display: block;
+    transition: color 0.3s ease;
+}
+
+.admin-image-upload-area:hover .admin-upload-hint i {
+    color: var(--admin-primary);
+}
+
+.admin-upload-hint p {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--admin-text);
+    margin-bottom: 0.25rem;
+}
+
+.admin-upload-hint small {
+    color: var(--admin-text-muted);
+    display: block;
+}
+
+/* Images Preview Grid */
+.admin-images-preview {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 1rem;
+}
+
+.admin-image-preview-item {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: var(--admin-light-bg);
+    aspect-ratio: 1;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+    transition: transform 0.2s ease;
+    border: 1px solid var(--admin-light-border);
+}
+
+.admin-image-preview-item:hover {
+    transform: scale(1.02);
+}
+
+.admin-image-preview-item:hover .admin-preview-delete {
+    opacity: 1;
+}
+
+.admin-image-preview-item:hover .admin-preview-info {
+    opacity: 1;
+}
+
+.admin-preview-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.admin-preview-info {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.5) 70%, transparent 100%);
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    color: white;
+    font-size: 0.7rem;
+    word-break: break-all;
+    z-index: 1;
+}
+
+.admin-preview-filename {
+    font-weight: 500;
+    margin-bottom: 0.2rem;
+    line-height: 1.2;
+}
+
+.admin-preview-size {
+    font-size: 0.65rem;
+    opacity: 0.9;
+}
+
+.admin-preview-delete {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 32px;
+    height: 32px;
+    background-color: rgba(220, 53, 69, 0.9);
+    color: white;
+    border: none;
+    border-radius: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: all 0.2s ease;
+    padding: 0;
+    font-size: 0.875rem;
+    z-index: 5;
+}
+
+.admin-preview-delete:hover {
+    background-color: rgba(220, 53, 69, 1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .admin-image-upload-area {
+        padding: 2rem 1rem;
+    }
+
+    .admin-images-preview {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    }
+}

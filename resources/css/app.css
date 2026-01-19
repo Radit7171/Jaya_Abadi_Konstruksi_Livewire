@@ -15,6 +15,8 @@
 @import './components/footer.css';
 /* Import AOS Custom Styles */
 @import './components/aos.css';
+/* Import Admin Image Upload Styles */
+@import './components/admin-image-upload.css';
 
 /* import home-page styles */
 @import './pages/home/home-page.css';
@@ -31,6 +33,9 @@
 /* import contact-page styles */
 @import './pages/contact-page.css';
 
+/* import legal pages styles */
+@import './pages/legal-page.css';
+
 /* import auth login styles */
 @import './pages/auth/login.css';
 
@@ -40,6 +45,7 @@
 @import './pages/admin/admin-pagination.css';
 @import './pages/admin/admin-projects.css';
 @import './pages/admin/admin-projects-cards.css';
+@import './pages/admin/visitor-stats.css';
 @import './pages/admin/visitor-charts.css';
 
 /* ==========================================================================
@@ -123,16 +129,16 @@ code, pre, .code {
 }
 
 /* Adjust main content for fixed navbar */
-main {
+/* main {
     padding-top: 65px;
-}
+} */
 
 /* Mobile navbar adjustment - match navbar min-height */
-@media (max-width: 991.98px) {
+/* @media (max-width: 991.98px) {
     main {
         padding-top: 60px;
     }
-}
+} */
 
 /* Loading overlay default state
    (digunakan bersama wire:loading di layout) */

@@ -6,6 +6,8 @@ use App\Livewire\AboutPage;
 use App\Livewire\ServicesPage;
 use App\Livewire\ProjectsPage;
 use App\Livewire\ContactPage;
+use App\Livewire\PrivacyPolicy;
+use App\Livewire\TermsConditions;
 use App\Livewire\Auth\LoginPage;
 use App\Livewire\Admin\AdminDashboard;
 use App\Livewire\Admin\AdminProjects;
@@ -16,6 +18,8 @@ Route::get('/tentang-kami', AboutPage::class);
 Route::get('/layanan', ServicesPage::class);
 Route::get('/proyek', ProjectsPage::class);
 Route::get('/kontak', ContactPage::class);
+Route::get('/kebijakan-privasi', PrivacyPolicy::class);
+Route::get('/syarat-ketentuan', TermsConditions::class);
 
 // Authentication Routes
 Route::middleware('guest')->group(function () {

@@ -30,6 +30,13 @@
 }
 
 /* ============================================================
+   ALPINE CLOAK
+   ============================================================ */
+[x-cloak] {
+    display: none !important;
+}
+
+/* ============================================================
    ADMIN LAYOUT CONTAINER
    ============================================================ */
 
@@ -264,9 +271,10 @@
     border-bottom: 1px solid var(--admin-light-border);
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 1001;
     display: flex;
     align-items: center;
+    box-sizing: border-box; /* Ensure border doesn't add to height */
 }
 
 @media (min-width: 992px) {
@@ -276,7 +284,7 @@
         left: 0;
         right: 0;
         width: 100%;
-        z-index: 100;
+        z-index: 1001;
         box-shadow: var(--admin-shadow-sm);
         transition: left 0.3s ease, width 0.3s ease;
     }
@@ -286,14 +294,10 @@
         width: calc(100% - var(--admin-sidebar-width));
     }
 
-    .admin-sidebar {
-        z-index: 1000;
-        top: 0;
-        height: 100vh;
-    }
-
+    /* Fixed Top Navbar Fix: Use padding instead of margin to prevent gap */
     .admin-main-wrapper {
-        margin-top: var(--admin-navbar-height) !important;
+        margin-top: 0 !important;
+        padding-top: var(--admin-navbar-height);
         transition: margin-left 0.3s ease;
     }
 
@@ -312,19 +316,31 @@
 }
 
 .admin-navbar-toggle {
-    padding: 0.5rem 0.75rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
     color: var(--admin-text);
     background-color: var(--admin-light-bg);
     border: 1px solid var(--admin-light-border);
     border-radius: 0.375rem;
     cursor: pointer;
     transition: all var(--admin-transition);
-    font-size: 1rem;
+    font-size: 0.875rem;
+    padding: 0;
 }
 
 .admin-navbar-toggle:hover {
     background-color: rgba(37, 99, 235, 0.1);
     color: var(--admin-primary);
+    border-color: var(--admin-primary);
+}
+
+.admin-navbar-toggle-mobile {
+    background-color: rgba(37, 99, 235, 0.05);
+    color: var(--admin-primary);
+    border-color: rgba(37, 99, 235, 0.2);
 }
 
 .admin-navbar-left,
@@ -517,7 +533,8 @@
     .admin-main-wrapper {
         order: 1;
         margin-left: 0 !important;
-        margin-top: var(--admin-navbar-height);
+        margin-top: 0 !important;
+        padding-top: var(--admin-navbar-height);
         flex: 1;
     }
 

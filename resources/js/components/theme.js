@@ -3,10 +3,12 @@
  * Registers when alpine:init event fires
  */
 
-document.addEventListener("alpine:init", () => {
+const setupThemeStore = () => {
     // window.Alpine is provided by Livewire
     const Alpine = window.Alpine;
-    if (!Alpine) return;
+    if (!Alpine || Alpine.store("theme")) return;
+
+    console.log('Registering theme store...');
 
     // Register theme store
     Alpine.store("theme", {
@@ -49,12 +51,9 @@ document.addEventListener("alpine:init", () => {
             }
 
             // Re-enable transitions after theme change
-            // Use requestAnimationFrame twice to ensure the DOM has painted
-            requestAnimationFrame(() => {
-                requestAnimationFrame(() => {
-                    html.classList.remove('theme-transition-disabled');
-                });
-            });
+            setTimeout(() => {
+                html.classList.remove('theme-transition-disabled');
+            }, 100);
         }
     });
 
@@ -67,10 +66,12 @@ document.addEventListener("alpine:init", () => {
                 themeStore.apply();
             }
         });
+};
 
-    // Initialize theme after store is created
-    const themeStore = Alpine.store("theme");
-    if (themeStore && themeStore.init) {
-        themeStore.init();
-    }
-});
+// Listen for alpine:init
+document.addEventListener("alpine:init", setupThemeStore);
+
+// If Alpine is already loaded (can happen with Livewire 3)
+if (window.Alpine) {
+    setupThemeStore();
+}

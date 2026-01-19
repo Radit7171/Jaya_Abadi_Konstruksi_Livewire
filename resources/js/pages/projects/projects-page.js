@@ -1,6 +1,6 @@
 /**
  * PROJECTS PAGE - JavaScript Behavior
- * PT Jaya Abadi Konstruksi
+ * Jaya Abadi Konstruksi
  *
  * Responsibilities:
  * - Image lazy loading
@@ -32,7 +32,6 @@ class ProjectsPage {
         this.setupButtons();
         this.setupFilters();
         this.setupSmoothScroll();
-        this.registerLivewireListener();
     }
 
     /**
@@ -209,22 +208,6 @@ class ProjectsPage {
     }
 
     /**
-     * Register Livewire navigation listener
-     * Re-init behaviors after SPA navigation
-     */
-    registerLivewireListener() {
-        document.addEventListener('livewire:navigated', () => {
-            // Small delay to ensure DOM is updated
-            requestAnimationFrame(() => {
-                this.page = document.querySelector('.projects-page');
-                if (this.page) {
-                    this.init();
-                }
-            });
-        });
-    }
-
-    /**
      * Cleanup method (optional, for future use)
      */
     destroy() {
@@ -234,63 +217,175 @@ class ProjectsPage {
 }
 
 /**
- * Initialize when DOM is ready
+ * Global Initialization Logic
  */
-document.addEventListener('DOMContentLoaded', () => {
-    new ProjectsPage();
-});
+const initProjectsPage = () => {
+    // Only initialize if we're on the projects page
+    const pageElement = document.querySelector('.projects-page');
+    if (pageElement) {
+        new ProjectsPage();
+    }
+};
 
-/**
- * Also initialize on Livewire navigation
- */
-document.addEventListener('livewire:initialized', () => {
-    new ProjectsPage();
-});
+// Initial load
+document.addEventListener('DOMContentLoaded', initProjectsPage);
+
+// Re-init on Livewire SPA navigation
+document.addEventListener('livewire:navigated', initProjectsPage);
+
+// Support for initial Livewire setup
+document.addEventListener('livewire:initialized', initProjectsPage);
+
 /**
  * Modal Behavior Handler
  */
 class ProjectsModalBehavior {
     constructor() {
-        this.setupModalInteractions();
+        // Use event delegation for all modal related clicks
+        this.initDelegatedEvents();
         this.setupKeyboardShortcuts();
     }
 
     /**
-     * Setup modal overlay click interactions
+     * Use event delegation on document to handle all modal interactions
+     * This is more robust for Livewire updates
      */
-    setupModalInteractions() {
-        // Click outside modal to close (on overlay)
+    initDelegatedEvents() {
+        // Prevent multiple listeners if re-instrumented
+        if (window._modalClickSetup) return;
+        window._modalClickSetup = true;
+
+        // CRITICAL: We use { capture: true } here because the modal container
+        // has wire:click.stop which prevents event bubbling.
+        // Capture phase catches the click before it's stopped.
         document.addEventListener('click', (e) => {
-            if (e.target.classList.contains('projects-modal-overlay')) {
-                // Modal will be closed via Livewire wire:click directive
-                const overlay = e.target;
-                this.animateModalClose(overlay);
+            // 1. Handle Thumbnail Clicks
+            const thumb = e.target.closest('.projects-modal-thumb');
+            if (thumb) {
+                this.handleThumbnailClick(thumb);
+                return;
             }
+
+            // 2. Handle Navigation Buttons
+            const prevBtn = e.target.closest('.projects-modal-nav-prev');
+            if (prevBtn) {
+                this.handleNavClick('prev');
+                return;
+            }
+
+            const nextBtn = e.target.closest('.projects-modal-nav-next');
+            if (nextBtn) {
+                this.handleNavClick('next');
+                return;
+            }
+
+            // 3. Handle Overlay Click (Close)
+            if (e.target.classList.contains('projects-modal-overlay')) {
+                // Ensure we are clicking the actual overlay, not some child that bubbled up
+                this.animateModalClose(e.target);
+                return;
+            }
+
+            // 3. Handle Close Button Click
+            const closeBtn = e.target.closest('.projects-modal-close');
+            if (closeBtn) {
+                const overlay = closeBtn.closest('.projects-modal-overlay');
+                this.animateModalClose(overlay);
+                return;
+            }
+        }, { capture: true });
+    }
+
+    /**
+     * Handle navigation arrow clicks
+     */
+    handleNavClick(direction) {
+        const thumbs = document.querySelectorAll('.projects-modal-thumb');
+        if (thumbs.length <= 1) return;
+
+        let activeIndex = -1;
+        thumbs.forEach((thumb, index) => {
+            if (thumb.classList.contains('active')) activeIndex = index;
         });
 
-        // Close button interaction
-        const closeButtons = document.querySelectorAll('.projects-modal-close');
-        closeButtons.forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                const modal = btn.closest('.projects-modal-container');
-                const overlay = modal.closest('.projects-modal-overlay');
-                this.animateModalClose(overlay);
+        if (activeIndex === -1) return;
+
+        let nextIndex;
+        if (direction === 'next') {
+            nextIndex = (activeIndex + 1) % thumbs.length;
+        } else {
+            nextIndex = (activeIndex - 1 + thumbs.length) % thumbs.length;
+        }
+
+        this.handleThumbnailClick(thumbs[nextIndex]);
+    }
+
+    /**
+     * Handle thumbnail switching
+     */
+    handleThumbnailClick(thumb) {
+        const mainImage = document.getElementById('mainModalImage');
+        const newSrc = thumb.getAttribute('data-image');
+
+        if (!mainImage || !newSrc) return;
+
+        // Change main image with a smooth fade
+        mainImage.style.opacity = '0.3';
+        mainImage.style.transform = 'scale(0.98)';
+
+        setTimeout(() => {
+            mainImage.src = newSrc;
+
+            // Return opacity & scale once loaded
+            const finalizeImage = () => {
+                mainImage.style.opacity = '1';
+                mainImage.style.transform = 'scale(1)';
+            };
+
+            if (mainImage.complete) {
+                finalizeImage();
+            } else {
+                mainImage.onload = finalizeImage;
+            }
+        }, 150);
+
+        // Update active class on thumbnails
+        const container = thumb.closest('.projects-modal-thumbnails');
+        if (container) {
+            container.querySelectorAll('.projects-modal-thumb').forEach(t => {
+                t.classList.remove('active');
             });
-        });
+            thumb.classList.add('active');
+
+            // Auto-scroll thumbnails into view if hidden
+            thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
     }
 
     /**
      * Setup keyboard shortcuts
      */
     setupKeyboardShortcuts() {
+        // Only add once
+        if (window._modalKeyboardSetup) return;
+        window._modalKeyboardSetup = true;
+
         document.addEventListener('keydown', (e) => {
+            // Check if modal is open
+            const modal = document.querySelector('.projects-modal-overlay');
+            if (!modal) return;
+
             // Escape key to close modal
             if (e.key === 'Escape' || e.key === 'Esc') {
-                const modal = document.querySelector('.projects-modal-overlay');
-                if (modal) {
-                    this.animateModalClose(modal);
-                }
+                this.animateModalClose(modal);
+                return;
+            }
+
+            // Arrow keys for navigation
+            if (e.key === 'ArrowRight') {
+                this.handleNavClick('next');
+            } else if (e.key === 'ArrowLeft') {
+                this.handleNavClick('prev');
             }
         });
     }
@@ -310,15 +405,14 @@ class ProjectsModalBehavior {
 }
 
 // Initialize modal behavior
-document.addEventListener('DOMContentLoaded', () => {
+const initModalBehavior = () => {
+    // We don't check for .projects-page here because the event listener
+    // is on document and will just do nothing if elements aren't found
     new ProjectsModalBehavior();
-});
+};
 
-document.addEventListener('livewire:initialized', () => {
-    new ProjectsModalBehavior();
-});
+document.addEventListener('livewire:navigated', initModalBehavior);
+document.addEventListener('DOMContentLoaded', initModalBehavior);
 
-// Reinitialize modal on Livewire updates
-document.addEventListener('livewire:updated', () => {
-    new ProjectsModalBehavior();
-});
+// Support for older Livewire versions if needed
+document.addEventListener('livewire:initialized', initModalBehavior);

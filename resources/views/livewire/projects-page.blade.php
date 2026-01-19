@@ -1,6 +1,6 @@
 {{--
 |--------------------------------------------------------------------------
-| PROJECTS PAGE — PT JAYA ABADI KONSTRUKSI
+| PROJECTS PAGE — JAYA ABADI KONSTRUKSI
 |--------------------------------------------------------------------------
 | FINAL RULES (JANGAN DILANGGAR):
 | - Blade = MARKUP ONLY
@@ -43,10 +43,8 @@
 
                 {{-- HERO TEXT --}}
                 <div class="col-12 col-lg-6">
-                    <div class="projects-hero-badge">
-                        <span class="projects-hero-badge-icon">
-                            <i class="fas fa-hammer"></i>
-                        </span>
+                    <div class="projects-hero-badge" data-aos="fade-down" data-aos-duration="600">
+                        <span class="projects-hero-badge-dot"></span>
                         <span class="projects-hero-badge-text">Portofolio Kami</span>
                     </div>
 
@@ -95,7 +93,7 @@
                         <div class="projects-hero-image-wrapper">
                             <div class="projects-hero-image-bg"></div>
                             <img src="/images/home/hero-project.jpg"
-                                 alt="Proyek konstruksi PT Jaya Abadi Konstruksi"
+                                 alt="Proyek konstruksi Jaya Abadi Konstruksi"
                                  class="projects-hero-image"
                                  loading="eager">
                         </div>
@@ -198,26 +196,25 @@
     {{-- ======================================================
          CTA SECTION - Call to Action
          ====================================================== --}}
-    <section class="projects-cta">
+    <section class="projects-cta" data-aos="fade-up">
+        <div class="projects-cta-bg-accent"></div>
         <div class="projects-cta-decoration projects-cta-decoration-top"></div>
         <div class="projects-cta-decoration projects-cta-decoration-bottom"></div>
 
         <div class="container">
-            <div class="projects-cta-content">
-                <h2 class="projects-cta-title">Siap Mewujudkan Proyek Impian Anda?</h2>
-                <p class="projects-cta-subtitle">Hubungi tim profesional kami untuk konsultasi dan solusi konstruksi yang tepat</p>
+            <h2 class="projects-cta-title" data-aos="fade-up">Siap Mewujudkan Proyek Impian Anda?</h2>
+            <p class="projects-cta-subtitle" data-aos="fade-up" data-aos-delay="100">Hubungi tim profesional kami untuk konsultasi dan solusi konstruksi yang tepat bagi kebutuhan aset Anda.</p>
 
-                <div class="projects-cta-actions">
-                    <a wire:navigate href="/kontak" class="projects-btn projects-btn-primary-light">
-                        <span>Hubungi Kami Sekarang</span>
-                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
-                            <path d="M5 12h14M12 5l7 7-7 7"></path>
-                        </svg>
-                    </a>
-                    <a wire:navigate href="/" class="projects-btn projects-btn-outline-light">
-                        <span>Kembali ke Home</span>
-                    </a>
-                </div>
+            <div class="projects-cta-actions" data-aos="fade-up" data-aos-delay="200">
+                <a wire:navigate href="/kontak" class="projects-btn projects-btn-primary-light">
+                    <span>Hubungi Kami Sekarang</span>
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M5 12h14M12 5l7 7-7 7"></path>
+                    </svg>
+                </a>
+                <a wire:navigate href="/" class="projects-btn projects-btn-outline-light">
+                    <span>Kembali ke Home</span>
+                </a>
             </div>
         </div>
     </section>
@@ -242,13 +239,39 @@
 
                 {{-- Modal Body --}}
                 <div class="projects-modal-body">
-                    {{-- Project Image --}}
-                    <div class="projects-modal-image-wrapper">
-                        <img src="{{ $selectedProject->image_url ?? '/images/home/hero-project.jpg' }}"
-                             alt="{{ $selectedProject->image_alt ?? $selectedProject->title }}"
-                             class="projects-modal-image"
-                             loading="lazy">
-                    </div>
+                    {{-- Project Images --}}
+                    @if($selectedProject->images && count($selectedProject->images) > 1)
+                        <div class="projects-modal-gallery">
+                            <div class="projects-modal-main-image">
+                                <button class="projects-modal-nav projects-modal-nav-prev" aria-label="Gambar sebelumnya">
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <img src="{{ $selectedProject->image_url ?? '/images/home/hero-project.jpg' }}"
+                                     alt="{{ $selectedProject->title }}"
+                                     id="mainModalImage"
+                                     class="projects-modal-image">
+                                <button class="projects-modal-nav projects-modal-nav-next" aria-label="Gambar selanjutnya">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
+                            <div class="projects-modal-thumbnails">
+                                @foreach($selectedProject->getImageUrls() as $index => $imageUrl)
+                                    <div class="projects-modal-thumb @if($index === 0) active @endif"
+                                         data-image="{{ $imageUrl }}"
+                                         data-index="{{ $index }}">
+                                        <img src="{{ $imageUrl }}" alt="Thumbnail {{ $index + 1 }}">
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    @else
+                        <div class="projects-modal-image-wrapper">
+                            <img src="{{ $selectedProject->image_url ?? '/images/home/hero-project.jpg' }}"
+                                 alt="{{ $selectedProject->image_alt ?? $selectedProject->title }}"
+                                 class="projects-modal-image"
+                                 loading="lazy">
+                        </div>
+                    @endif
 
                     {{-- Project Info --}}
                     <div class="projects-modal-info">

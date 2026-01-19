@@ -7,6 +7,17 @@ import "./bootstrap";
 import aosManager from "./components/aos";
 window.aosManager = aosManager;
 
+// Check if we're on admin or auth pages
+const isAdminPage = document.body.classList.contains('admin-dashboard-page') ||
+                   document.querySelector('.admin-layout') ||
+                   document.querySelector('.auth-login-page');
+
+// Disable AOS on admin and auth pages
+if (isAdminPage) {
+    window.aosManager.initialized = true; // Mark as initialized to prevent further attempts
+    console.info('AOS disabled: Admin/Auth page detected');
+}
+
 // Import components - they register with Alpine via alpine:init event listener
 import "./components/theme";
 import "./components/scroll";
@@ -37,12 +48,15 @@ import "./pages/auth/login";
 import "./pages/admin/admin-dashboard";
 import "./pages/admin/admin-pagination";
 import "./pages/admin/visitor-charts";
+import "./pages/admin/admin-projects";
 
 // Alpine will be initialized by Livewire automatically
 
 // Initialize AOS after Livewire is ready
 document.addEventListener('livewire:initialized', () => {
-    aosManager.init();
+    if (!window.aosManager.initialized) {
+        aosManager.init();
+    }
 });
 // Fallback initialization if Livewire doesn't fire event (for non-Livewire pages)
 document.addEventListener('DOMContentLoaded', () => {

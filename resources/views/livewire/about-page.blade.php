@@ -1,6 +1,6 @@
 {{--
 |--------------------------------------------------------------------------
-| ABOUT PAGE — PT JAYA ABADI KONSTRUKSI
+| ABOUT PAGE — JAYA ABADI KONSTRUKSI
 |--------------------------------------------------------------------------
 | FINAL RULES (JANGAN DILANGGAR):
 | - Blade = MARKUP ONLY
@@ -35,82 +35,98 @@
          ABOUT HERO SECTION - Intro with Decorative Elements
          ====================================================== --}}
     <section class="about-hero">
-        <div class="about-hero-decoration about-hero-decoration-top"></div>
+        <div class="about-hero-decorator decorator-1"></div>
+        <div class="about-hero-decorator decorator-2"></div>
+        <div class="about-hero-decorator decorator-3"></div>
 
-        <div class="container">
-            <div class="row align-items-center g-5">
+        <div class="container relative-z">
+            <div class="row align-items-center g-4">
 
                 {{-- HERO TEXT --}}
                 <div class="col-12 col-lg-6">
-                    <div class="about-hero-badge" data-aos="fade-up" data-aos-delay="0" data-aos-duration="600">
-                        <span class="about-hero-badge-icon">
-                            <i class="fas fa-building"></i>
-                        </span>
-                        <span class="about-hero-badge-text">Tentang Perusahaan Kami</span>
+                    <div class="about-hero-badge" data-aos="fade-down" data-aos-delay="0" data-aos-duration="600">
+                        <span class="about-hero-badge-dot"></span>
+                        <span class="about-hero-badge-text">Profil Perusahaan</span>
                     </div>
 
                     <h1 class="about-hero-title" data-aos="fade-up" data-aos-delay="100" data-aos-duration="700">
-                        PT Jaya Abadi Konstruksi
-                        <span class="about-hero-highlight">Membangun Kepercayaan</span>
+                        Jaya Abadi Konstruksi
+                        <span class="about-hero-highlight">
+                            Membangun Masa Depan
+                            <svg class="about-hero-underline" viewBox="0 0 300 15" preserveAspectRatio="none">
+                                <path d="M5,10 C100,5 200,5 295,10" stroke="currentColor" stroke-width="4" fill="none" stroke-linecap="round"/>
+                            </svg>
+                        </span>
                     </h1>
 
                     <p class="about-hero-subtitle" data-aos="fade-up" data-aos-delay="200" data-aos-duration="700">
-                        Lebih dari satu dekade berdedikasi menghadirkan solusi konstruksi inovatif,
-                        berkualitas premium, dan berstandar internasional untuk memenuhi visi dan impian Anda.
+                        Lebih dari satu dekade menjadi garda terdepan dalam industri konstruksi Indonesia,
+                        menghadirkan standar kualitas tanpa kompromi untuk setiap inovasi pembangunan Anda.
                     </p>
 
                     {{-- Quick Stats --}}
                     <div class="about-hero-quick-stats" data-aos="fade-up" data-aos-delay="250" data-aos-duration="700">
                         <div class="about-quick-stat">
-                            <div class="about-quick-stat-number">500+</div>
-                            <div class="about-quick-stat-label">Proyek</div>
+                            <div class="about-quick-stat-number">500<small>+</small></div>
+                            <div class="about-quick-stat-label">Proyek Selesai</div>
                         </div>
+                        <div class="about-stat-divider"></div>
                         <div class="about-quick-stat">
-                            <div class="about-quick-stat-number">10+</div>
-                            <div class="about-quick-stat-label">Tahun</div>
+                            <div class="about-quick-stat-number">12<small>+</small></div>
+                            <div class="about-quick-stat-label">Tahun Berkarya</div>
                         </div>
+                        <div class="about-stat-divider"></div>
                         <div class="about-quick-stat">
-                            <div class="about-quick-stat-number">98%</div>
-                            <div class="about-quick-stat-label">Kepuasan</div>
+                            <div class="about-quick-stat-number">100<small>%</small></div>
+                            <div class="about-quick-stat-label">Terpercaya</div>
                         </div>
                     </div>
 
                     <div class="about-hero-actions" data-aos="fade-up" data-aos-delay="300" data-aos-duration="700">
                         <a wire:navigate href="/kontak" class="about-btn about-btn-primary">
                             <span>Hubungi Kami</span>
-                            <svg class="about-btn-icon" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
-                                <path d="M5 12h14M12 5l7 7-7 7"></path>
-                            </svg>
+                            <i class="fas fa-chevron-right ms-2" style="font-size: 0.8rem;"></i>
                         </a>
                         <a wire:navigate href="/proyek" class="about-btn about-btn-outline">
-                            <span>Lihat Portofolio</span>
+                            <span>Portofolio Proyek</span>
                         </a>
                     </div>
                 </div>
 
                 {{-- HERO IMAGE --}}
                 <div class="col-12 col-lg-6">
-                    <div class="about-hero-visual" data-aos="fade-in-left" data-aos-delay="200" data-aos-duration="800">
+                    <div class="about-hero-visual" data-aos="zoom-in" data-aos-delay="200" data-aos-duration="1000">
                         <div class="about-hero-image-wrapper">
-                            <div class="about-hero-image-bg"></div>
-                            <img src="/images/home/hero-project.jpg"
-                                 alt="PT Jaya Abadi Konstruksi - Perusahaan konstruksi profesional"
-                                 class="about-hero-image"
-                                 loading="eager">
-                        </div>
-                        {{-- <div class="about-hero-image-overlay">
-                            <div class="about-hero-overlay-badge">
-                                <i class="fas fa-certificate"></i>
-                                <span>ISO 9001:2015</span>
+                            <div class="about-hero-image-main">
+                                <img src="/images/home/hero-project.jpg"
+                                     alt="Jaya Abadi Konstruksi - Perusahaan konstruksi profesional"
+                                     class="about-hero-image"
+                                     loading="eager">
                             </div>
-                        </div> --}}
+
+                            {{-- Floating Badges for Visual Richness --}}
+                            <div class="about-hero-floating about-hero-floating-1" data-aos="fade-left" data-aos-delay="500">
+                                <div class="about-floating-icon">
+                                    <i class="fas fa-users-gear"></i>
+                                </div>
+                                <div class="about-floating-info">
+                                    <span class="about-floating-title">Tim Ahli</span>
+                                    <span class="about-floating-desc">Tenaga Profesional</span>
+                                </div>
+                            </div>
+
+                            <div class="about-hero-floating about-hero-floating-2" data-aos="fade-right" data-aos-delay="700">
+                                <div class="about-floating-icon-simple">
+                                    <i class="fas fa-microscope"></i>
+                                </div>
+                                <span class="about-floating-text">Pekerjaan Presisi & Detail</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
             </div>
         </div>
-
-        <div class="about-hero-decoration about-hero-decoration-bottom"></div>
     </section>
 
     {{-- ======================================================
@@ -120,7 +136,7 @@
         <div class="about-history-bg-pattern"></div>
 
         <div class="container">
-            <div class="row g-5 align-items-stretch">
+            <div class="row g-4 align-items-stretch">
 
                 {{-- HISTORY IMAGE --}}
                 <div class="col-12 col-lg-5">
@@ -128,7 +144,7 @@
                         <div class="about-history-image-wrapper">
                             <div class="about-history-image-bg"></div>
                             <img src="/images/home/hero-project.jpg"
-                                 alt="Sejarah dan perkembangan PT Jaya Abadi Konstruksi"
+                                 alt="Sejarah dan perkembangan Jaya Abadi Konstruksi"
                                  class="about-history-image"
                                  loading="lazy">
                         </div>
@@ -143,17 +159,16 @@
                 <div class="col-12 col-lg-7">
                     <div class="about-history-content">
                         <span class="about-section-label" data-aos="fade-up" data-aos-delay="0" data-aos-duration="600">
-                            <i class="fas fa-hourglass-half"></i> Perjalanan Kami
+                            <i class="fas fa-clock-rotate-left"></i> Perjalanan Kami
                         </span>
 
                         <h2 class="about-history-title" data-aos="fade-up" data-aos-delay="50" data-aos-duration="700">
-                            Dari Visi hingga Realitas
+                            Dedikasi & Perkembangan
                         </h2>
 
                         <p class="about-history-intro" data-aos="fade-up" data-aos-delay="100" data-aos-duration="700">
-                            Didirikan pada tahun 2013, PT Jaya Abadi Konstruksi memulai perjalanan
-                            inspiratif dengan visi sederhana namun kuat: menjadi mitra konstruksi
-                            terpercaya yang menghadirkan inovasi dan kualitas terbaik untuk setiap proyek.
+                            Didirikan pada tahun 2013, Jaya Abadi Konstruksi lahir dari semangat untuk memberikan yang terbaik bagi negeri.
+                            Setiap bata yang kami susun adalah bukti nyata dari integritas dan keahlian teknis kami.
                         </p>
 
                         <div class="about-history-timeline" data-aos="fade-up" data-aos-delay="150" data-aos-duration="700">
@@ -163,8 +178,8 @@
                                     <i class="fas fa-rocket"></i>
                                 </div>
                                 <div class="about-timeline-content">
-                                    <h3 class="about-timeline-year">2013</h3>
-                                    <p class="about-timeline-text">Peluncuran PT Jaya Abadi Konstruksi dengan fokus strategis pada proyek-proyek konstruksi skala menengah berkualitas tinggi.</p>
+                                    <h3 class="about-timeline-year">2013 - Fondasi Awal</h3>
+                                    <p class="about-timeline-text">Langkah pertama di industri konstruksi dengan fokus pada integritas dan kualitas proyek menengah.</p>
                                 </div>
                             </div>
 
@@ -173,18 +188,18 @@
                                     <i class="fas fa-chart-line"></i>
                                 </div>
                                 <div class="about-timeline-content">
-                                    <h3 class="about-timeline-year">2015</h3>
-                                    <p class="about-timeline-text">Peningkatan kapasitas operasional dan ekspansi ke berbagai sektor konstruksi dengan sistem manajemen proyek yang semakin matang.</p>
+                                    <h3 class="about-timeline-year">2016 - Ekspansi Nasional</h3>
+                                    <p class="about-timeline-text">Melayani berbagai proyek industri skala besar dan memperkuat sistem manajemen mutu berskala nasional.</p>
                                 </div>
                             </div>
 
                             <div class="about-timeline-item">
                                 <div class="about-timeline-dot">
-                                    <i class="fas fa-trophy"></i>
+                                    <i class="fas fa-award"></i>
                                 </div>
                                 <div class="about-timeline-content">
-                                    <h3 class="about-timeline-year">2018</h3>
-                                    <p class="about-timeline-text">Pencapaian milestone 200+ proyek sukses dan penghargaan prestisius dari berbagai klien korporat terkemuka.</p>
+                                    <h3 class="about-timeline-year">2019 - Keunggulan Teruji</h3>
+                                    <p class="about-timeline-text">Mencapai lebih dari 300 proyek sukses dengan tingkat kepuasan klien yang luar biasa di seluruh Indonesia.</p>
                                 </div>
                             </div>
 
@@ -193,8 +208,8 @@
                                     <i class="fas fa-crown"></i>
                                 </div>
                                 <div class="about-timeline-content">
-                                    <h3 class="about-timeline-year">2023</h3>
-                                    <p class="about-timeline-text">Melampaui 500+ proyek sukses dan menjadi pemimpin industri konstruksi terpercaya dengan reputasi internasional.</p>
+                                    <h3 class="about-timeline-year">Sekarang - Masa Depan</h3>
+                                    <p class="about-timeline-text">Pemimpin industri terpercaya yang terus berinovasi untuk standar konstruksi yang lebih hijau dan berkelanjutan.</p>
                                 </div>
                             </div>
 
@@ -231,19 +246,18 @@
 
                         <div class="about-card-header">
                             <div class="about-card-icon about-card-icon-mission">
-                                <i class="fas fa-target"></i>
+                                <i class="fas fa-bullseye"></i>
                             </div>
                             <h3 class="about-card-title">Misi Kami</h3>
                         </div>
 
                         <p class="about-card-text">
-                            Memberikan solusi konstruksi berkualitas premium dengan mengedepankan
-                            inovasi berkelanjutan, komitmen keselamatan kerja tertinggi, dan kepuasan
-                            pelanggan dalam setiap proyek yang kami tangani dengan profesionalisme.
+                            Menghadirkan solusi konstruksi berkualitas tinggi dengan mengutamakan efisiensi biaya,
+                            ketepatan waktu, dan integritas profesional di setiap tahapan pembangunan.
                         </p>
 
                         <div class="about-card-footer">
-                            <span class="about-card-badge">Komitmen Kami</span>
+                            <span class="about-card-badge">Eksploitasi Kualitas</span>
                         </div>
                     </div>
                 </div>
@@ -256,19 +270,17 @@
 
                         <div class="about-card-header">
                             <div class="about-card-icon about-card-icon-vision">
-                                <i class="fas fa-star"></i>
+                                <i class="fas fa-eye"></i>
                             </div>
                             <h3 class="about-card-title">Visi Kami</h3>
                         </div>
 
                         <p class="about-card-text">
-                            Menjadi perusahaan konstruksi terkemuka di Indonesia yang diakui atas
-                            dedikasi luar biasa terhadap kualitas, keberlanjutan lingkungan, dan
-                            penciptaan nilai jangka panjang untuk semua stakeholder kami.
+                            Menjadi tolok ukur utama perusahaan konstruksi di Indonesia yang berorientasi pada inovasi berkelanjutan dan pembangunan yang berdampak positif bagi masyarakat.
                         </p>
 
                         <div class="about-card-footer">
-                            <span class="about-card-badge">Aspirasi Kami</span>
+                            <span class="about-card-badge">Visi Masa Depan</span>
                         </div>
                     </div>
                 </div>
@@ -349,12 +361,11 @@
                     <div class="about-value-card" data-aos="fade-up" data-aos-delay="250" data-aos-duration="700">
                         <div class="about-value-number">04</div>
                         <div class="about-value-icon about-value-icon-4">
-                            <i class="fas fa-shield-alt"></i>
+                            <i class="fas fa-shield-halved"></i>
                         </div>
                         <h3 class="about-value-title">Keselamatan</h3>
                         <p class="about-value-text">
-                            Kesehatan dan keselamatan kerja adalah prioritas utama dan fundamental
-                            di setiap proyek konstruksi yang kami kelola.
+                            Menjunjung tinggi standar K3 (Kesehatan dan Keselamatan Kerja) sebagai prioritas mutlak di setiap area kerja konstruksi.
                         </p>
                         <div class="about-value-accent"></div>
                     </div>
@@ -403,7 +414,7 @@
         <div class="about-expertise-gradient-bg"></div>
 
         <div class="container">
-            <div class="row g-5 align-items-center">
+            <div class="row g-4 align-items-center">
 
                 {{-- EXPERTISE TEXT --}}
                 <div class="col-12 col-lg-6">
@@ -417,7 +428,7 @@
                         </h2>
 
                         <p class="about-expertise-intro" data-aos="fade-up" data-aos-delay="100" data-aos-duration="700">
-                            Tim kami terdiri dari para profesional bersertifikat internasional dengan
+                            Tim kami terdiri dari para profesional berpengalaman luas dengan
                             pengalaman puluhan tahun di industri konstruksi. Setiap anggota tim membawa
                             keahlian spesialisasi unik yang berkontribusi pada kesuksesan luar biasa
                             setiap proyek yang kami kelola.
@@ -437,21 +448,21 @@
 
                             <div class="about-expertise-item">
                                 <div class="about-expertise-icon">
-                                    <i class="fas fa-shield-alt"></i>
+                                    <i class="fas fa-shield-halved"></i>
                                 </div>
                                 <div>
-                                    <h4 class="about-expertise-item-title">Komitmen Keselamatan Kerja</h4>
-                                    <p class="about-expertise-item-text">Prioritas utama pada keselamatan kerja dengan protokol ketat dan budaya safety-first di setiap proyek</p>
+                                    <h4 class="about-expertise-item-title">Budaya Safety-First</h4>
+                                    <p class="about-expertise-item-text">Implementasi protokol keamanan tingkat tinggi untuk menjamin keselamatan seluruh tenaga kerja.</p>
                                 </div>
                             </div>
 
                             <div class="about-expertise-item">
                                 <div class="about-expertise-icon">
-                                    <i class="fas fa-cogs"></i>
+                                    <i class="fas fa-gears"></i>
                                 </div>
                                 <div>
-                                    <h4 class="about-expertise-item-title">Metodologi Kerja Terbukti</h4>
-                                    <p class="about-expertise-item-text">Proses kerja terstruktur dan terbukti efektif melalui puluhan tahun pengalaman lapangan praktis</p>
+                                    <h4 class="about-expertise-item-title">Efisiensi Operasional</h4>
+                                    <p class="about-expertise-item-text">Metodologi kerja modern yang meminimalkan limbah dan mengoptimalkan penggunaan sumber daya.</p>
                                 </div>
                             </div>
 
@@ -482,7 +493,7 @@
                         <div class="about-expertise-image-wrapper">
                             <div class="about-expertise-image-bg"></div>
                             <img src="/images/home/hero-project.jpg"
-                                 alt="Tim profesional PT Jaya Abadi Konstruksi di lapangan"
+                                 alt="Tim profesional Jaya Abadi Konstruksi di lapangan"
                                  class="about-expertise-image"
                                  loading="lazy">
                         </div>
@@ -531,14 +542,14 @@
                 <div class="col-12 col-sm-6 col-lg-3">
                     <div class="about-achievement-card" data-aos="zoom-in" data-aos-delay="150" data-aos-duration="600">
                         <div class="about-achievement-icon">
-                            <i class="fas fa-calendar-alt"></i>
+                            <i class="fas fa-calendar-days"></i>
                         </div>
                         <div class="about-achievement-counter">
-                            <span class="about-achievement-number" data-target="10">10</span>
+                            <span class="about-achievement-number" data-target="12">12</span>
                             <span class="about-achievement-symbol">+</span>
                         </div>
                         <div class="about-achievement-label">Tahun Pengalaman</div>
-                        <p class="about-achievement-description">Pertumbuhan konsisten sejak tahun 2013</p>
+                        <p class="about-achievement-description">Tumbuh dan berkembang melampaui ekspektasi pasar.</p>
                     </div>
                 </div>
 
@@ -546,14 +557,14 @@
                 <div class="col-12 col-sm-6 col-lg-3">
                     <div class="about-achievement-card" data-aos="zoom-in" data-aos-delay="200" data-aos-duration="600">
                         <div class="about-achievement-icon">
-                            <i class="fas fa-grin-stars"></i>
+                            <i class="fas fa-thumbs-up"></i>
                         </div>
                         <div class="about-achievement-counter">
-                            <span class="about-achievement-number" data-target="98">98</span>
+                            <span class="about-achievement-number" data-target="99">99</span>
                             <span class="about-achievement-symbol">%</span>
                         </div>
-                        <div class="about-achievement-label">Kepuasan Klien</div>
-                        <p class="about-achievement-description">Rating tertinggi dari klien korporat kami</p>
+                        <div class="about-achievement-label">Klien Puas</div>
+                        <p class="about-achievement-description">Dedikasi kami tercermin dalam kepercayaan klien.</p>
                     </div>
                 </div>
 
@@ -568,7 +579,7 @@
                             <span class="about-achievement-symbol">+</span>
                         </div>
                         <div class="about-achievement-label">Tim Profesional</div>
-                        <p class="about-achievement-description">Tenaga terampil dan bersertifikat internasional</p>
+                        <p class="about-achievement-description">Tenaga terampil dan ahli di bidang konstruksi</p>
                     </div>
                 </div>
 
@@ -592,7 +603,7 @@
                         </h2>
                         <p class="about-cta-text">
                             Hubungi tim ahli kami hari ini dan mari kita diskusikan bagaimana
-                            PT Jaya Abadi Konstruksi dapat membantu mewujudkan visi dan impian
+                            Jaya Abadi Konstruksi dapat membantu mewujudkan visi dan impian
                             konstruksi Anda dengan solusi inovatif dan berkualitas tinggi.
                         </p>
 

@@ -1,6 +1,6 @@
 # HOME PAGE ARCHITECTURE
 
-HOME PAGE adalah landing page utama PT Jaya Abadi Konstruksi
+HOME PAGE adalah landing page utama Jaya Abadi Konstruksi
 yang menampilkan company profile, services, projects, dan CTA.
 
 ## SECTIONS:

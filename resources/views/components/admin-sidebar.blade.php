@@ -69,13 +69,14 @@
         </div>
 
         <!-- Logout Button -->
-        <form method="POST" action="{{ route('logout') }}" class="m-0">
-            @csrf
-            <button type="submit" class="admin-sidebar-logout btn btn-sm btn-outline-danger w-100 d-flex align-items-center justify-content-center gap-2">
+        <div class="m-0" x-data>
+            <button type="button"
+                    @click="$dispatch('show-logout-confirm')"
+                    class="admin-sidebar-logout btn btn-sm btn-outline-danger w-100 d-flex align-items-center justify-content-center gap-2">
                 <i class="fas fa-sign-out-alt"></i>
                 <span>Logout</span>
             </button>
-        </form>
+        </div>
     </div>
 
 </aside>

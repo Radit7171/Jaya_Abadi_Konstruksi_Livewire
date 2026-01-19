@@ -1,6 +1,6 @@
 # AUTH LOGIN SYSTEM ARCHITECTURE
 
-AUTH LOGIN SYSTEM adalah sistem autentikasi untuk PT Jaya Abadi Konstruksi
+AUTH LOGIN SYSTEM adalah sistem autentikasi untuk Jaya Abadi Konstruksi
 yang memungkinkan user login dengan email & password, dengan fitur remember me 24 jam.
 
 ## SECTIONS:
@@ -207,7 +207,7 @@ php artisan db:seed --class=UserSeeder
         <!-- Header -->
         <div class="auth-header">
             <h1 class="auth-title">Masuk ke Akun</h1>
-            <p class="auth-subtitle">Selamat datang kembali di PT Jaya Abadi Konstruksi</p>
+            <p class="auth-subtitle">Selamat datang kembali di Jaya Abadi Konstruksi</p>
         </div>
 
         <!-- Form -->
@@ -297,7 +297,7 @@ php artisan db:seed --class=UserSeeder
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Masuk - PT Jaya Abadi Konstruksi</title>
+    <title>Masuk - Jaya Abadi Konstruksi</title>
     
     <!-- Fonts & Assets -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])

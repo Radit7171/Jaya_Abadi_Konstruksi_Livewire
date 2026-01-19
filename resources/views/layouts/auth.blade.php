@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="PT Jaya Abadi Konstruksi - Login">
+    <meta name="description" content="Jaya Abadi Konstruksi - Login">
 
     <title>{{ isset($title) ? $title . ' - ' : '' }}Jaya Abadi Konstruksi</title>
 
@@ -26,7 +26,7 @@
     @livewireStyles
 </head>
 
-<body class="auth-layout" wire:navigate>
+<body class="auth-layout">
     <!-- Theme Toggle -->
     <div class="auth-theme-toggle">
         <x-theme-toggle />
