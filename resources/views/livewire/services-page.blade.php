@@ -35,24 +35,28 @@
          HERO SECTION - Services Overview
          ====================================================== --}}
     <section class="services-hero">
-        <div class="services-hero-decoration services-hero-decoration-top"></div>
-        <div class="services-hero-decoration services-hero-decoration-bottom"></div>
+        <div class="services-hero-decorator decorator-1"></div>
+        <div class="services-hero-decorator decorator-2"></div>
+        <div class="services-hero-decorator decorator-3"></div>
 
-        <div class="container">
-            <div class="row align-items-center g-5">
+        <div class="container relative-z">
+            <div class="row align-items-center g-4">
 
                 {{-- HERO TEXT --}}
                 <div class="col-12 col-lg-6">
-                    <div class="services-hero-badge" data-aos="fade-up" data-aos-delay="0" data-aos-duration="600">
-                        <span class="services-hero-badge-icon">
-                            <i class="fas fa-gears"></i>
-                        </span>
+                    <div class="services-hero-badge" data-aos="fade-down" data-aos-delay="0" data-aos-duration="600">
+                        <span class="services-hero-badge-dot"></span>
                         <span class="services-hero-badge-text">Solusi Konstruksi</span>
                     </div>
 
                     <h1 class="services-hero-title" data-aos="fade-up" data-aos-delay="100" data-aos-duration="700">
                         Layanan Ahli
-                        <span class="services-hero-highlight">Pembangunan Modern</span>
+                        <span class="services-hero-highlight">
+                            Pembangunan Modern
+                            <svg class="services-hero-underline" viewBox="0 0 300 15" preserveAspectRatio="none">
+                                <path d="M5,10 C100,5 200,5 295,10" stroke="currentColor" stroke-width="4" fill="none" stroke-linecap="round"/>
+                            </svg>
+                        </span>
                     </h1>
 
                     <p class="services-hero-subtitle" data-aos="fade-up" data-aos-delay="200" data-aos-duration="700">
@@ -62,15 +66,17 @@
                     {{-- Quick Stats --}}
                     <div class="services-hero-quick-stats" data-aos="fade-up" data-aos-delay="250" data-aos-duration="700">
                         <div class="services-quick-stat">
-                            <div class="services-quick-stat-number">500+</div>
-                            <div class="services-quick-stat-label">Proyek</div>
+                            <div class="services-quick-stat-number">500<small>+</small></div>
+                            <div class="services-quick-stat-label">Proyek Selesai</div>
                         </div>
+                        <div class="services-stat-divider"></div>
                         <div class="services-quick-stat">
-                            <div class="services-quick-stat-number">12+</div>
-                            <div class="services-quick-stat-label">Layanan Utama</div>
+                            <div class="services-quick-stat-number">12<small>+</small></div>
+                            <div class="services-quick-stat-label">Tahun Berkarya</div>
                         </div>
+                        <div class="services-stat-divider"></div>
                         <div class="services-quick-stat">
-                            <div class="services-quick-stat-number">100%</div>
+                            <div class="services-quick-stat-number">100<small>%</small></div>
                             <div class="services-quick-stat-label">Standard K3</div>
                         </div>
                     </div>
@@ -88,13 +94,32 @@
 
                 {{-- HERO VISUAL --}}
                 <div class="col-12 col-lg-6">
-                    <div class="services-hero-visual" data-aos="fade-in-left" data-aos-delay="200" data-aos-duration="800">
+                    <div class="services-hero-visual" data-aos="zoom-in" data-aos-delay="200" data-aos-duration="1000">
                         <div class="services-hero-image-wrapper">
-                            <div class="services-hero-image-bg"></div>
-                            <img src="/images/home/hero-project.jpg"
-                                 alt="Layanan konstruksi Jaya Abadi Konstruksi"
-                                 class="services-hero-image"
-                                 loading="eager">
+                            <div class="services-hero-image-main">
+                                <img src="/images/home/hero-project.jpg"
+                                     alt="Layanan konstruksi Jaya Abadi Konstruksi"
+                                     class="services-hero-image"
+                                     loading="eager">
+                            </div>
+
+                            {{-- Floating Badges --}}
+                            <div class="services-hero-floating services-hero-floating-1" data-aos="fade-left" data-aos-delay="500">
+                                <div class="services-floating-icon">
+                                    <i class="fas fa-gem"></i>
+                                </div>
+                                <div class="services-floating-info">
+                                    <span class="services-floating-title">Kualitas Prima</span>
+                                    <span class="services-floating-desc">Standar Internasional</span>
+                                </div>
+                            </div>
+
+                            <div class="services-hero-floating services-hero-floating-2" data-aos="fade-right" data-aos-delay="700">
+                                <div class="services-floating-icon-simple">
+                                    <i class="fas fa-microscope"></i>
+                                </div>
+                                <span class="services-floating-text">Akurasi & Presisi Tinggi</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -109,13 +134,11 @@
     <section class="services-main">
         <div class="container">
             <div class="services-section-header" data-aos="fade-up" data-aos-duration="700">
-                <h2 class="services-section-title text-center">
-                    <span class="services-section-subtitle">Keahlian Kami</span>
-                    Layanan Utama
-                </h2>
-                <p class="services-section-desc text-center" data-aos="fade-up" data-aos-delay="100" data-aos-duration="700">
-                    Berbagai solusi konstruksi yang dirancang khusus untuk memenuhi kebutuhan spesifik proyek Anda
-                </p>
+                <span class="services-section-label">
+                    <i class="fas fa-gears"></i> Keahlian Kami
+                </span>
+                <h2 class="services-section-title">Layanan Utama</h2>
+                <p class="services-section-subtitle">Berbagai solusi konstruksi yang dirancang khusus untuk memenuhi kebutuhan spesifik proyek Anda</p>
             </div>
 
             <div class="row g-4">
@@ -250,14 +273,13 @@
     <section class="services-why">
         <div class="services-why-bg-accent"></div>
         <div class="container">
-            <div class="services-section-header" data-aos="fade-up" data-aos-duration="700">
-                <h2 class="services-section-title text-center" data-aos="fade-up" data-aos-delay="0" data-aos-duration="700">
-                    <span class="services-section-subtitle">Keunggulan Kompetitif</span>
-                    Mengapa Memilih Kami?
-                </h2>
-                <p class="services-section-desc text-center" data-aos="fade-up" data-aos-delay="100" data-aos-duration="700">
-                    Kami memiliki pengalaman bertahun-tahun dan tim profesional yang
-                    siap menghadirkan solusi terbaik untuk proyek Anda
+            <div class="services-section-header" data-aos="fade-up">
+                <span class="services-section-label">
+                    <i class="fas fa-check-circle me-1"></i> Keunggulan Kompetitif
+                </span>
+                <h2 class="services-section-title">Mengapa Memilih Kami?</h2>
+                <p class="services-section-subtitle">
+                    Kami memiliki pengalaman bertahun-tahun dan tim profesional yang siap menghadirkan solusi terbaik untuk proyek Anda
                 </p>
             </div>
 
@@ -320,14 +342,13 @@
          ====================================================== --}}
     <section class="services-process">
         <div class="container">
-            <div class="services-section-header" data-aos="fade-up" data-aos-duration="700">
-                <h2 class="services-section-title text-center" data-aos="fade-up" data-aos-delay="0" data-aos-duration="700">
-                    <span class="services-section-subtitle">Metodologi Kerja</span>
-                    Proses Kerja Kami
-                </h2>
-                <p class="services-section-desc text-center" data-aos="fade-up" data-aos-delay="100" data-aos-duration="700">
-                    Sistem manajemen proyek yang terstruktur dan proven untuk memastikan
-                    deliverable berkualitas tinggi setiap waktu
+            <div class="services-section-header" data-aos="fade-up">
+                <span class="services-section-label">
+                    <i class="fas fa-stairs me-1"></i> Metodologi Kerja
+                </span>
+                <h2 class="services-section-title">Proses Kerja Kami</h2>
+                <p class="services-section-subtitle">
+                    Sistem manajemen proyek yang terstruktur dan terbukti untuk memastikan hasil berkualitas tinggi tepat waktu.
                 </p>
             </div>
 
