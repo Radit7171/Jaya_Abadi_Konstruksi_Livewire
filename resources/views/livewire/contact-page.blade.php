@@ -35,32 +35,28 @@
          CONTACT HERO SECTION
          ====================================================== --}}
     <section class="contact-hero">
-        <div class="contact-hero-decoration contact-hero-decoration-top"></div>
-
         <div class="container">
-            <div class="row align-items-center g-5">
+            <div class="row align-items-center g-4">
 
                 {{-- HERO TEXT --}}
                 <div class="col-12 col-lg-6">
-                    <div class="contact-hero-badge" data-aos="fade-up" data-aos-delay="0" data-aos-duration="600">
-                        <span class="contact-hero-badge-icon">
-                            <i class="fas fa-envelope"></i>
-                        </span>
+                    <div class="contact-hero-badge" data-aos="fade-down" data-aos-duration="600">
+                        <span class="contact-hero-badge-dot"></span>
                         <span class="contact-hero-badge-text">Hubungi Kami</span>
                     </div>
 
-                    <h1 class="contact-hero-title" data-aos="fade-up" data-aos-delay="100" data-aos-duration="700">
+                    <h1 class="contact-hero-title" data-aos="fade-up" data-aos-delay="100">
                         Siap Membantu
                         <span class="contact-hero-highlight">Proyek Anda</span>
                     </h1>
 
-                    <p class="contact-hero-subtitle" data-aos="fade-up" data-aos-delay="200" data-aos-duration="700">
+                    <p class="contact-hero-subtitle" data-aos="fade-up" data-aos-delay="150">
                         Tim ahli kami siap memberikan solusi terbaik untuk kebutuhan konstruksi Anda.
                         Hubungi kami sekarang untuk konsultasi gratis dan penawaran eksklusif.
                     </p>
 
                     {{-- Quick Contact Info --}}
-                    <div class="contact-hero-info" data-aos="fade-up" data-aos-delay="250" data-aos-duration="700">
+                    <div class="contact-hero-info" data-aos="fade-up" data-aos-delay="200">
                         <div class="contact-info-item">
                             <span class="contact-info-icon">
                                 <i class="fas fa-phone"></i>
@@ -86,7 +82,7 @@
                     </div>
 
                     {{-- Hero CTA --}}
-                    <div class="contact-hero-actions" data-aos="fade-up" data-aos-delay="300" data-aos-duration="700">
+                    <div class="contact-hero-actions" data-aos="fade-up" data-aos-delay="250">
                         <a href="javascript:void(0)" class="external-link contact-btn contact-btn-primary" data-link="https://wa.me/6287817695973" rel="noopener noreferrer">
                             <i class="fab fa-whatsapp"></i>
                             <span>Chat WhatsApp</span>
@@ -99,9 +95,8 @@
 
                 {{-- HERO IMAGE --}}
                 <div class="col-12 col-lg-6">
-                    <div class="contact-hero-visual" data-aos="fade-in-left" data-aos-delay="200" data-aos-duration="800">
+                    <div class="contact-hero-visual" data-aos="fade-left" data-aos-delay="300">
                         <div class="contact-hero-image-wrapper">
-                            <div class="contact-hero-image-bg"></div>
                             <img src="/images/home/hero-project.jpg"
                                  alt="Tim customer service Jaya Abadi Konstruksi siap membantu Anda"
                                  class="contact-hero-image"
@@ -112,8 +107,6 @@
 
             </div>
         </div>
-
-        <div class="contact-hero-decoration contact-hero-decoration-bottom"></div>
     </section>
 
     {{-- ======================================================
@@ -401,7 +394,7 @@
                 </div>
 
                 <p class="contact-cta-footer">
-                    <i class="fas fa-shield-alt"></i>
+                    <i class="fas fa-shield"></i>
                     Kami menjamin respons cepat dan solusi terbaik untuk kebutuhan Anda
                 </p>
             </div>
