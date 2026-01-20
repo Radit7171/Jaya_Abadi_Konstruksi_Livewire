@@ -29,6 +29,11 @@
     --services-gradient: linear-gradient(135deg, #2563eb 0%, #10b981 100%);
     --services-gradient-accent: linear-gradient(135deg, #f59e0b 0%, #ec4899 100%);
 
+    /* CTA Theme Variables */
+    --services-cta-bg: var(--services-primary);
+    --services-cta-gradient: linear-gradient(135deg, rgba(37, 99, 235, 0.95) 0%, rgba(16, 185, 129, 0.8) 100%);
+    --services-cta-text: #ffffff;
+
     /* Animation & Interaction Variables */
     --services-ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
     --services-ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -61,6 +66,11 @@
     --services-text: #f1f5f9;
     --services-text-muted: #cbd5e1;
     --services-inverse-text: #0f172a;
+
+    /* CTA Dark Theme */
+    --services-cta-bg: #1e293b;
+    --services-cta-gradient: linear-gradient(135deg, rgba(30, 41, 59, 0.95) 0%, rgba(15, 23, 42, 0.9) 100%);
+    --services-cta-text: #f8fafc;
 }
 
 .services-page {
@@ -905,18 +915,19 @@
     padding: 3.25rem 0;
     position: relative;
     overflow: hidden;
-    background: var(--services-primary);
-    color: white;
+    background: var(--services-cta-bg);
+    color: var(--services-cta-text);
+    transition: background-color 0.3s ease;
 }
 
 [data-bs-theme="dark"] .services-cta {
-    background: #1e3a8a;
+    border-top: 1px solid var(--services-border);
 }
 
 .services-cta-bg-accent {
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(37, 99, 235, 0.95) 0%, rgba(16, 185, 129, 0.8) 100%);
+    background: var(--services-cta-gradient);
     z-index: 1;
 }
 
@@ -924,7 +935,7 @@
     position: absolute;
     width: 300px;
     height: 300px;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.08);
     border-radius: 50%;
     filter: blur(80px);
     z-index: 2;
@@ -951,7 +962,7 @@
     font-weight: 800;
     margin-bottom: 0.75rem;
     font-family: 'Sora', sans-serif;
-    color: white;
+    color: var(--services-cta-text);
 }
 
 .services-cta-subtitle {
@@ -959,6 +970,7 @@
     max-width: 550px;
     margin: 0 auto 2rem;
     opacity: 0.9;
+    color: var(--services-cta-text);
 }
 
 .services-cta-actions {
@@ -971,6 +983,28 @@
 .services-cta-actions .services-btn {
     padding: 0.6rem 1.25rem;
     font-size: 0.825rem;
+}
+
+/* CTA Specific Button Enhancements */
+[data-bs-theme="dark"] .services-cta-actions .services-btn-primary-light {
+    background: var(--services-primary);
+    color: white;
+    border-color: var(--services-primary);
+}
+
+[data-bs-theme="dark"] .services-cta-actions .services-btn-primary-light:hover {
+    background: var(--services-primary-dark);
+    border-color: var(--services-primary-dark);
+}
+
+[data-bs-theme="dark"] .services-cta-actions .services-btn-outline-light {
+    color: var(--services-text);
+    border-color: var(--services-border);
+}
+
+[data-bs-theme="dark"] .services-cta-actions .services-btn-outline-light:hover {
+    background: var(--services-border);
+    color: var(--services-text);
 }
 
 /* ==========================================================

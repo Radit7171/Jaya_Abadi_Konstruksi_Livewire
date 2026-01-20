@@ -41,6 +41,11 @@
     --projects-shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
     --projects-shadow-hover: 0 20px 25px rgba(0, 0, 0, 0.15);
 
+    /* CTA Theme Variables */
+    --projects-cta-bg: var(--projects-primary);
+    --projects-cta-gradient: linear-gradient(135deg, #2563eb 0%, #10b981 100%);
+    --projects-cta-text: #ffffff;
+
     /* Transitions */
     --projects-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --projects-transition-fast: all 0.2s ease-out;
@@ -67,6 +72,11 @@
     --projects-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3);
     --projects-shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.3);
     --projects-shadow-hover: 0 20px 25px rgba(0, 0, 0, 0.4);
+
+    /* CTA Dark Theme */
+    --projects-cta-bg: #1e293b;
+    --projects-cta-gradient: linear-gradient(135deg, rgba(30, 41, 59, 0.95) 0%, rgba(15, 23, 42, 0.9) 100%);
+    --projects-cta-text: #f8fafc;
 }
 
 /* ======================================================
@@ -587,18 +597,19 @@
     position: relative;
     padding: 3.5rem 0;
     overflow: hidden;
-    background: var(--projects-primary);
-    color: white;
+    background: var(--projects-cta-bg);
+    color: var(--projects-cta-text);
+    transition: background-color 0.3s ease;
 }
 
 [data-bs-theme="dark"] .projects-cta {
-    background: #1e3a8a;
+    border-top: 1px solid var(--projects-border);
 }
 
 .projects-cta-bg-accent {
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(37, 99, 235, 0.95) 0%, rgba(16, 185, 129, 0.8) 100%);
+    background: var(--projects-cta-gradient);
     z-index: 1;
 }
 
@@ -606,7 +617,7 @@
     position: absolute;
     width: 300px;
     height: 300px;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.08);
     border-radius: 50%;
     filter: blur(80px);
     z-index: 2;
@@ -635,7 +646,7 @@
     margin-bottom: 0.75rem;
     letter-spacing: -0.025em;
     line-height: 1.2;
-    color: white;
+    color: var(--projects-cta-text);
 }
 
 .projects-cta-subtitle {
@@ -646,6 +657,7 @@
     max-width: 550px;
     margin-left: auto;
     margin-right: auto;
+    color: var(--projects-cta-text);
 }
 
 .projects-cta-actions {
@@ -716,10 +728,21 @@
     border-color: white;
 }
 
+[data-bs-theme="dark"] .projects-btn-primary-light {
+    background: var(--projects-primary);
+    color: white;
+    border-color: var(--projects-primary);
+}
+
 .projects-btn-primary-light:hover {
     background: #f8fafc;
     transform: translateY(-2px);
     box-shadow: var(--projects-shadow-md);
+}
+
+[data-bs-theme="dark"] .projects-btn-primary-light:hover {
+    background: var(--projects-primary-dark);
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
 }
 
 /* Outline Light Button (for CTA section) */
@@ -729,8 +752,17 @@
     border-color: white;
 }
 
+[data-bs-theme="dark"] .projects-btn-outline-light {
+    color: var(--projects-primary);
+    border-color: var(--projects-primary);
+}
+
 .projects-btn-outline-light:hover {
     background: rgba(255, 255, 255, 0.1);
+}
+
+[data-bs-theme="dark"] .projects-btn-outline-light:hover {
+    background: rgba(59, 130, 246, 0.1);
 }
 
 .projects-btn-icon {

@@ -1,4 +1,4 @@
-<nav class="admin-navbar bg-body border-bottom" x-data>
+<nav class="admin-navbar bg-body" x-data>
     <div class="admin-navbar-container d-flex align-items-center justify-content-between">
 
         <!-- Left Side - Menu Toggle -->

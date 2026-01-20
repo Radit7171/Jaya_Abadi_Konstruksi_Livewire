@@ -110,7 +110,6 @@
                                 </div>
                                 <div class="services-floating-info">
                                     <span class="services-floating-title">Kualitas Prima</span>
-                                    <span class="services-floating-desc">Standar Internasional</span>
                                 </div>
                             </div>
 
