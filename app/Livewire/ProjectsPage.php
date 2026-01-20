@@ -9,7 +9,7 @@ use Livewire\Attributes\Layout;
 use App\Models\Project;
 
 #[Layout('layouts.app')]
-#[Title('Proyek - Jaya Abadi Konstruksi')]
+#[Title('Portofolio Proyek Konstruksi Terbaik - Jaya Abadi Konstruksi')]
 class ProjectsPage extends Component
 {
     use WithNavigation;

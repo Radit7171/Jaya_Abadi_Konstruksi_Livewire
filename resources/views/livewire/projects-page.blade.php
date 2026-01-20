@@ -17,6 +17,8 @@
 |--------------------------------------------------------------------------
 --}}
 
+@section('description', 'Lihat koleksi proyek sukses Jaya Abadi Konstruksi - Portofolio hasil kerja nyata kami dalam pembangunan gedung, baja, dan proyek infrastruktur.')
+
 <section class="projects-page">
 
     {{-- ======================================================
@@ -92,7 +94,7 @@
                     <div class="projects-hero-visual">
                         <div class="projects-hero-image-wrapper">
                             <div class="projects-hero-image-bg"></div>
-                            <img src="/images/home/hero-project.jpg"
+                            <img src="/images/proyek5.jpg"
                                  alt="Proyek konstruksi Jaya Abadi Konstruksi"
                                  class="projects-hero-image"
                                  loading="eager">

@@ -7,7 +7,7 @@ use Livewire\Attributes\Title;
 use Livewire\Attributes\Layout;
 
 #[Layout('layouts.app')]
-#[Title('Tentang Kami - Jaya Abadi Konstruksi')]
+#[Title('Tentang Kami - Jaya Abadi Konstruksi | Profil Perusahaan')]
 class AboutPage extends Component
 {
     use WithNavigation;

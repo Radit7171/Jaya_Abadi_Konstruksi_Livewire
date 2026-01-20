@@ -17,6 +17,8 @@
 |--------------------------------------------------------------------------
 --}}
 
+@section('description', 'Selamat datang di Jaya Abadi Konstruksi - Spesialis konstruksi besi, baja, sipil, dan fabrikasi logam profesional dengan pengalaman lebih dari 12 tahun.')
+
 <section class="home-page">
 
     {{-- ======================================================

@@ -367,7 +367,7 @@
     padding: 6px;
     box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
     border: 1px solid var(--contact-border);
-    max-width: 440px;
+    max-width: 290px;
     margin-left: auto;
     transition: var(--contact-transition-slow);
 }
@@ -1154,7 +1154,7 @@
     }
 
     .contact-hero-image-wrapper {
-        max-width: 320px;
+        max-width: 280px;
         margin: 1.5rem auto 0;
     }
 
