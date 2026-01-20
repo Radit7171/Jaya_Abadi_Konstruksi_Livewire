@@ -99,7 +99,7 @@
                 <div class="col-12 col-lg-6">
                     <div class="contact-hero-visual" data-aos="fade-left" data-aos-delay="300">
                         <div class="contact-hero-image-wrapper">
-                            <img src="/images/proyek6.jpg"
+                            <img src="/images/proyek6.webp"
                                  alt="Tim customer service Jaya Abadi Konstruksi siap membantu Anda"
                                  class="contact-hero-image"
                                  loading="eager">

@@ -99,7 +99,7 @@
                     <div class="services-hero-visual" data-aos="zoom-in" data-aos-delay="200" data-aos-duration="1000">
                         <div class="services-hero-image-wrapper">
                             <div class="services-hero-image-main">
-                                <img src="/images/proyek4.jpg"
+                                <img src="/images/proyek4.webp"
                                      alt="Layanan konstruksi Jaya Abadi Konstruksi"
                                      class="services-hero-image"
                                      loading="eager">
