@@ -185,7 +185,7 @@ class AdminProjects extends Component
         $this->validate([
             'title' => 'required|min:3|max:255',
             'description' => 'required|min:10',
-            'category' => 'required|in:konstruksi-gedung,infrastruktur,renovasi',
+            'category' => 'required|in:konstruksi-gedung,infrastruktur,renovasi,pekerjaan-selesai',
         ]);
 
         // Validate ada minimal 1 gambar

@@ -139,6 +139,11 @@
                             data-filter="renovasi">
                         Renovasi
                     </button>
+                    <button wire:click="filterProjects('pekerjaan-selesai')"
+                            @class(['projects-filter-btn', 'projects-filter-btn-active' => $selectedFilter === 'pekerjaan-selesai'])
+                            data-filter="pekerjaan-selesai">
+                        Pekerjaan Selesai
+                    </button>
                 </div>
             </div>
 

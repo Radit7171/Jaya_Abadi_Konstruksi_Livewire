@@ -374,6 +374,7 @@
                                     <option value="konstruksi-gedung">Konstruksi Gedung</option>
                                     <option value="infrastruktur">Infrastruktur</option>
                                     <option value="renovasi">Renovasi</option>
+                                    <option value="pekerjaan-selesai">Pekerjaan Selesai</option>
                                 </select>
                                 @error('category')
                                     <span class="admin-form-error">{{ $message }}</span>
