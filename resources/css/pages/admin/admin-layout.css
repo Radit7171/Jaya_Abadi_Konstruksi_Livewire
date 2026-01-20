@@ -29,6 +29,10 @@
     --admin-text-muted: #94a3b8;
 }
 
+[data-bs-theme="dark"] .admin-navbar {
+    background-color: var(--admin-light-bg);
+}
+
 /* ============================================================
    ALPINE CLOAK
    ============================================================ */
@@ -39,6 +43,11 @@
 /* ============================================================
    ADMIN LAYOUT CONTAINER
    ============================================================ */
+
+/* Reset global body padding-top that might come from public navbar.css */
+body.admin-dashboard-page {
+    padding-top: 0 !important;
+}
 
 .admin-layout {
     display: flex;
@@ -267,14 +276,14 @@
 
 .admin-navbar {
     height: var(--admin-navbar-height);
-    background-color: var(--bs-body-bg);
-    border-bottom: 1px solid var(--admin-light-border);
+    background-color: var(--admin-light-bg); /* Match content background */
+    border-bottom: none; /* Remove border to eliminate gap */
     position: sticky;
     top: 0;
     z-index: 1001;
     display: flex;
     align-items: center;
-    box-sizing: border-box; /* Ensure border doesn't add to height */
+    box-sizing: border-box;
 }
 
 @media (min-width: 992px) {
@@ -285,7 +294,7 @@
         right: 0;
         width: 100%;
         z-index: 1001;
-        box-shadow: var(--admin-shadow-sm);
+        box-shadow: none; /* Remove shadow to eliminate the gap line */
         transition: left 0.3s ease, width 0.3s ease;
     }
 
@@ -433,6 +442,7 @@
 .admin-main-content {
     flex: 1;
     padding: 1.5rem;
+    padding-top: 0; /* Set to 0 to remove gap */
     overflow-y: auto;
 }
 
@@ -441,8 +451,10 @@
    ============================================================ */
 
 .admin-page-header {
+    margin-top: 0; /* Set to 0 to remove gap */
     margin-bottom: 1.5rem;
     padding-bottom: 1rem;
+    padding-top: 1rem; /* Add padding instead if needed for breathing room */
     border-bottom: 1px solid var(--admin-light-border);
 }
 
@@ -617,6 +629,7 @@
 
     .admin-main-content {
         padding: 1.5rem;
+        padding-top: 0;
     }
 
     .admin-page-title {
@@ -648,6 +661,7 @@
 
     .admin-main-content {
         padding: 1rem;
+        padding-top: 0;
     }
 
     .admin-page-title {

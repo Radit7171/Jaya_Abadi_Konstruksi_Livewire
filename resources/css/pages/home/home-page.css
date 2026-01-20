@@ -29,6 +29,11 @@
     --home-glass: rgba(255, 255, 255, 0.7);
     --home-glass-border: rgba(0, 0, 0, 0.08);
 
+    /* CTA Theme Variables */
+    --home-cta-bg: var(--home-primary);
+    --home-cta-gradient: linear-gradient(135deg, #2563eb 0%, #10b981 100%);
+    --home-cta-text: #ffffff;
+
     /* Menggunakan variabel CSS untuk konsistensi */
     background-color: var(--home-bg);
     color: var(--home-text);
@@ -58,6 +63,11 @@
     --home-inverse-text: #0f172a;
     --home-glass: rgba(30, 41, 59, 0.7);
     --home-glass-border: rgba(255, 255, 255, 0.1);
+
+    /* CTA Dark Theme */
+    --home-cta-bg: #1e293b;
+    --home-cta-gradient: linear-gradient(135deg, rgba(30, 41, 59, 0.95) 0%, rgba(15, 23, 42, 0.9) 100%);
+    --home-cta-text: #f8fafc;
 }
 
 /* Update shadow variables untuk menggunakan warna yang dinamis */
@@ -922,10 +932,15 @@
    CTA SECTION
    ========================================================== */
 .home-cta {
-    background: linear-gradient(135deg, var(--home-primary) 0%, var(--home-primary-dark) 100%);
-    padding: 40px 0;
+    background: var(--home-cta-gradient);
+    padding: 2.5rem 0;
     position: relative;
     overflow: hidden;
+    transition: background-color 0.3s ease;
+}
+
+[data-bs-theme="dark"] .home-cta {
+    border-top: 1px solid var(--home-border);
 }
 
 .home-cta::after {
@@ -943,11 +958,11 @@
 }
 
 .home-cta-content {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 12px;
-    padding: 25px 20px;
+    padding: 1.5rem 1.25rem;
     text-align: center;
     max-width: 700px;
     margin: 0 auto;
@@ -955,17 +970,23 @@
     z-index: 2;
 }
 
+[data-bs-theme="dark"] .home-cta-content {
+    background: rgba(15, 23, 42, 0.4);
+    border-color: rgba(255, 255, 255, 0.05);
+}
+
 .home-cta-title {
     font-size: clamp(1.35rem, 2.5vw, 1.85rem);
     font-weight: 800;
-    margin-bottom: 10px;
-    color: white;
+    margin-bottom: 0.65rem;
+    color: var(--home-cta-text);
 }
 
 .home-cta-desc {
     font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.9);
-    margin-bottom: 20px;
+    color: var(--home-cta-text);
+    opacity: 0.9;
+    margin-bottom: 1.25rem;
     max-width: 500px;
     margin-left: auto;
     margin-right: auto;
@@ -976,6 +997,26 @@
     gap: 10px;
     justify-content: center;
     flex-wrap: wrap;
+}
+
+/* Specific button overrides for CTA in Dark Mode for better visibility */
+[data-bs-theme="dark"] .home-cta .home-btn-light {
+    background-color: var(--home-primary);
+    color: #ffffff;
+}
+
+[data-bs-theme="dark"] .home-cta .home-btn-light:hover {
+    background-color: var(--home-primary-dark);
+}
+
+[data-bs-theme="dark"] .home-cta .home-btn-outline-light {
+    color: var(--home-text);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+[data-bs-theme="dark"] .home-cta .home-btn-outline-light:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: var(--home-text);
 }
 
 /* ==========================================================

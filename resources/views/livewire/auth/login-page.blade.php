@@ -119,7 +119,7 @@
         <div class="auth-split-right">
             <div class="auth-hero-content">
                 <div class="auth-hero-image-wrapper">
-                    <img src="/images/home/hero-project.jpg" alt="Building Construction" class="auth-hero-image">
+                    <img src="/images/home/hero-project.webp" alt="Building Construction" class="auth-hero-image">
                     <div class="auth-hero-overlay"></div>
                 </div>
                 <div class="auth-hero-text">

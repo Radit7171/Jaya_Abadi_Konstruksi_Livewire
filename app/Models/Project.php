@@ -46,6 +46,7 @@ class Project extends Model
             'konstruksi-gedung' => 'Konstruksi Gedung',
             'infrastruktur' => 'Infrastruktur',
             'renovasi' => 'Renovasi',
+            'pekerjaan-selesai' => 'Pekerjaan Selesai',
             default => 'Lainnya',
         };
     }

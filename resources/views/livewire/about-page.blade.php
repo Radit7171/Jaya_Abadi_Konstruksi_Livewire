@@ -17,6 +17,8 @@
 |--------------------------------------------------------------------------
 --}}
 
+@section('description', 'Kenali Jaya Abadi Konstruksi - Mengenali visi, misi, dan nilai-nilai perusahaan sebagai mitra konstruksi bangunan terpercaya di Indonesia.')
+
 <section class="about-page">
 
     {{-- ======================================================
@@ -98,7 +100,7 @@
                     <div class="about-hero-visual" data-aos="zoom-in" data-aos-delay="200" data-aos-duration="1000">
                         <div class="about-hero-image-wrapper">
                             <div class="about-hero-image-main">
-                                <img src="/images/home/hero-project.jpg"
+                                <img src="/images/proyek.webp"
                                      alt="Jaya Abadi Konstruksi - Perusahaan konstruksi profesional"
                                      class="about-hero-image"
                                      loading="eager">
@@ -143,7 +145,7 @@
                     <div class="about-history-visual" data-aos="fade-in-right" data-aos-delay="0" data-aos-duration="800">
                         <div class="about-history-image-wrapper">
                             <div class="about-history-image-bg"></div>
-                            <img src="/images/home/hero-project.jpg"
+                            <img src="/images/proyek2.webp"
                                  alt="Sejarah dan perkembangan Jaya Abadi Konstruksi"
                                  class="about-history-image"
                                  loading="lazy">
@@ -492,7 +494,7 @@
                     <div class="about-expertise-visual" data-aos="fade-in-left" data-aos-delay="100" data-aos-duration="800">
                         <div class="about-expertise-image-wrapper">
                             <div class="about-expertise-image-bg"></div>
-                            <img src="/images/home/hero-project.jpg"
+                            <img src="/images/proyek3.webp"
                                  alt="Tim profesional Jaya Abadi Konstruksi di lapangan"
                                  class="about-expertise-image"
                                  loading="lazy">

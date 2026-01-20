@@ -17,6 +17,8 @@
 |--------------------------------------------------------------------------
 --}}
 
+@section('description', 'Hubungi Jaya Abadi Konstruksi untuk konsultasi gratis dan penawaran harga terbaik. Kami siap membantu mewujudkan hunian dan bangunan impian Anda.')
+
 <section class="contact-page">
 
     {{-- ======================================================
@@ -97,7 +99,7 @@
                 <div class="col-12 col-lg-6">
                     <div class="contact-hero-visual" data-aos="fade-left" data-aos-delay="300">
                         <div class="contact-hero-image-wrapper">
-                            <img src="/images/home/hero-project.jpg"
+                            <img src="/images/proyek6.webp"
                                  alt="Tim customer service Jaya Abadi Konstruksi siap membantu Anda"
                                  class="contact-hero-image"
                                  loading="eager">

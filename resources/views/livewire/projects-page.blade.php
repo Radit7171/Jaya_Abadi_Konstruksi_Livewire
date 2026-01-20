@@ -17,6 +17,8 @@
 |--------------------------------------------------------------------------
 --}}
 
+@section('description', 'Lihat koleksi proyek sukses Jaya Abadi Konstruksi - Portofolio hasil kerja nyata kami dalam pembangunan gedung, baja, dan proyek infrastruktur.')
+
 <section class="projects-page">
 
     {{-- ======================================================
@@ -92,7 +94,7 @@
                     <div class="projects-hero-visual">
                         <div class="projects-hero-image-wrapper">
                             <div class="projects-hero-image-bg"></div>
-                            <img src="/images/home/hero-project.jpg"
+                            <img src="/images/proyek5.webp"
                                  alt="Proyek konstruksi Jaya Abadi Konstruksi"
                                  class="projects-hero-image"
                                  loading="eager">
@@ -139,6 +141,11 @@
                             data-filter="renovasi">
                         Renovasi
                     </button>
+                    <button wire:click="filterProjects('pekerjaan-selesai')"
+                            @class(['projects-filter-btn', 'projects-filter-btn-active' => $selectedFilter === 'pekerjaan-selesai'])
+                            data-filter="pekerjaan-selesai">
+                        Pekerjaan Selesai
+                    </button>
                 </div>
             </div>
 
@@ -150,7 +157,7 @@
                         data-category="{{ $project->category }}">
                         <article class="projects-card">
                             <div class="projects-card-image-wrapper">
-                                <img src="{{ $project->image_url ?? '/images/home/hero-project.jpg' }}"
+                                <img src="{{ $project->image_url ?? '/images/home/hero-project.webp' }}"
                                      alt="{{ $project->image_alt ?? $project->title }}"
                                      class="projects-card-image"
                                      loading="lazy">
@@ -246,7 +253,7 @@
                                 <button class="projects-modal-nav projects-modal-nav-prev" aria-label="Gambar sebelumnya">
                                     <i class="fas fa-chevron-left"></i>
                                 </button>
-                                <img src="{{ $selectedProject->image_url ?? '/images/home/hero-project.jpg' }}"
+                                <img src="{{ $selectedProject->image_url ?? '/images/home/hero-project.webp' }}"
                                      alt="{{ $selectedProject->title }}"
                                      id="mainModalImage"
                                      class="projects-modal-image">
@@ -266,7 +273,7 @@
                         </div>
                     @else
                         <div class="projects-modal-image-wrapper">
-                            <img src="{{ $selectedProject->image_url ?? '/images/home/hero-project.jpg' }}"
+                            <img src="{{ $selectedProject->image_url ?? '/images/home/hero-project.webp' }}"
                                  alt="{{ $selectedProject->image_alt ?? $selectedProject->title }}"
                                  class="projects-modal-image"
                                  loading="lazy">

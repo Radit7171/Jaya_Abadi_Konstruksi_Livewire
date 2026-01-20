@@ -17,6 +17,8 @@
 |--------------------------------------------------------------------------
 --}}
 
+@section('description', 'Selamat datang di Jaya Abadi Konstruksi - Spesialis konstruksi besi, baja, sipil, dan fabrikasi logam profesional dengan pengalaman lebih dari 12 tahun.')
+
 <section class="home-page">
 
     {{-- ======================================================
@@ -87,7 +89,7 @@
                     <div class="home-hero-visual-wrapper" data-aos="zoom-in" data-aos-delay="300" data-aos-duration="1200">
                         <div class="home-hero-visual">
                             <div class="home-hero-image-main">
-                                <img src="/images/home/hero-project.jpg"
+                                <img src="/images/home/hero-project.webp"
                                      alt="Proyek konstruksi modern Jaya Abadi Konstruksi"
                                      class="home-hero-img shadow-lg"
                                      loading="eager">
@@ -146,7 +148,7 @@
                 <div class="col-12 col-lg-6">
                     <div class="home-about-visual" data-aos="fade-in-right" data-aos-duration="800">
                         <div class="home-about-image-wrapper">
-                            <img src="/images/founder.jpg"
+                            <img src="/images/founder.webp"
                                  alt="Tim profesional Jaya Abadi Konstruksi"
                                  class="home-about-image"
                                  loading="lazy">
@@ -309,7 +311,7 @@
                 <div class="col-12 col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="100">
                     <div class="home-project-card-new shadow-sm">
                         <div class="home-project-img-container">
-                            <img src="/images/home/proyek.jpg" alt="Gedung Industri" class="home-project-img">
+                            <img src="/images/home/proyek.webp" alt="Gedung Industri" class="home-project-img">
                             <div class="home-project-badge-float">Gedung Industri</div>
                         </div>
                         <div class="home-project-body">
@@ -339,7 +341,7 @@
                 <div class="col-12 col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="200">
                     <div class="home-project-card-new shadow-sm">
                         <div class="home-project-img-container">
-                            <img src="/images/home/proyek2.jpg" alt="Infrastruktur" class="home-project-img">
+                            <img src="/images/home/proyek2.webp" alt="Infrastruktur" class="home-project-img">
                             <div class="home-project-badge-float">Infrastruktur</div>
                         </div>
                         <div class="home-project-body">
@@ -369,7 +371,7 @@
                 <div class="col-12 col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="300">
                     <div class="home-project-card-new shadow-sm">
                         <div class="home-project-img-container">
-                            <img src="/images/home/proyek3.jpg" alt="Renovasi" class="home-project-img">
+                            <img src="/images/home/proyek3.webp" alt="Renovasi" class="home-project-img">
                             <div class="home-project-badge-float">Perawatan</div>
                         </div>
                         <div class="home-project-body">

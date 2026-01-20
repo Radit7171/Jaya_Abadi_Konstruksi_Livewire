@@ -17,6 +17,8 @@
 |--------------------------------------------------------------------------
 --}}
 
+@section('description', 'Daftar layanan konstruksi Jaya Abadi Konstruksi - Mulai dari jasa las, konstruksi gedung, infrastruktur, hingga renovasi rumah dan kantor.')
+
 <section class="services-page">
 
     {{-- ======================================================
@@ -97,7 +99,7 @@
                     <div class="services-hero-visual" data-aos="zoom-in" data-aos-delay="200" data-aos-duration="1000">
                         <div class="services-hero-image-wrapper">
                             <div class="services-hero-image-main">
-                                <img src="/images/home/hero-project.jpg"
+                                <img src="/images/proyek4.webp"
                                      alt="Layanan konstruksi Jaya Abadi Konstruksi"
                                      class="services-hero-image"
                                      loading="eager">
@@ -110,7 +112,6 @@
                                 </div>
                                 <div class="services-floating-info">
                                     <span class="services-floating-title">Kualitas Prima</span>
-                                    <span class="services-floating-desc">Standar Internasional</span>
                                 </div>
                             </div>
 
